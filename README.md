@@ -109,7 +109,7 @@ import io.swagger.client.auth.OAuth2TwoLegged;
 import io.swagger.client.auth.ThreeLeggedCredentials;
 import io.swagger.client.model.InlineResponse200;
 
-public class DerivativesApiExample {
+public class ForgeApiExample {
 
     public static void main(String[] args) {
 
