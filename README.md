@@ -14,10 +14,9 @@ Add the following dependency to the [POM](https://maven.apache.org/pom.html):
 
 ```xml
 <dependency>
-    <groupId>io.swagger</groupId>
-    <artifactId>swagger-java-client</artifactId>
+    <groupId>com.autodesk</groupId>
+    <artifactId>com-autodesk-client</artifactId>
     <version>1.0.0</version>
-    <scope>compile</scope>
 </dependency>
 ```
 
@@ -100,14 +99,14 @@ Note that access tokens expire after a short period of time. The `expiresAt` fie
 
 ```java
 // Import the libraries.
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.api.BucketsApi;
-import io.swagger.client.api.HubsApi;
-import io.swagger.client.auth.OAuth2ThreeLegged;
-import io.swagger.client.auth.OAuth2TwoLegged;
-import io.swagger.client.auth.ThreeLeggedCredentials;
-import io.swagger.client.model.InlineResponse200;
+import com.autodesk.client.ApiException;
+import com.autodesk.client.ApiResponse;
+import com.autodesk.client.api.BucketsApi;
+import com.autodesk.client.api.HubsApi;
+import com.autodesk.client.auth.OAuth2ThreeLegged;
+import com.autodesk.client.auth.OAuth2TwoLegged;
+import com.autodesk.client.auth.ThreeLeggedCredentials;
+import com.autodesk.client.model.InlineResponse200;
 
 public class ForgeApiExample {
 
