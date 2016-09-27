@@ -19,8 +19,8 @@ mvn package
 
 2. Manually install the following JARs:
 
-* target/com-autodesk-client-1.0.0.jar
-* target/lib/*.jar
+    * target/com-autodesk-client-1.0.0.jar
+    * target/lib/*.jar
 
 ## Tutorial
 Follow this tutorial to see a step-by-step authentication guide, and examples of how to use the Forge APIs.
