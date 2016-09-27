@@ -10,8 +10,8 @@ including <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" ta
 * [Apache Maven](https://maven.apache.org/).
 
 ### Installation
-
-1) Generate the JAR:
+1) Download the *forge-java-client* repository.
+2) Generate the JAR:
 
 ```shell
 mvn package
