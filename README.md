@@ -11,13 +11,13 @@ including <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" ta
 
 ### Installation
 
-At first generate the JAR by executing:
+1. Generate the JAR:
 
 ```shell
 mvn package
 ```
 
-Then manually install the following JARs:
+2. Manually install the following JARs:
 
 * target/com-autodesk-client-1.0.0.jar
 * target/lib/*.jar
