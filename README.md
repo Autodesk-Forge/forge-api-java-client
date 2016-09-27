@@ -11,13 +11,14 @@ including <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" ta
 
 ### Installation
 1) Download the *forge-java-client* repository.
+
 2) Generate the JAR:
 
 ```shell
 mvn package
 ```
 
-2) Manually install the following JARs:
+3) Manually install the following JARs:
 
 * target/com-autodesk-client-1.0.0.jar
 * target/lib/*.jar
