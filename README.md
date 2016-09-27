@@ -108,7 +108,7 @@ public class ForgeApiExample {
 
     public static void main(String[] args) {
 
-        // Configure OAuth2TwoLegged with application keys for 2-legged authorization:
+        // Configure the OAuth2TwoLegged object with application keys for 2-legged authorization:
         OAuth2TwoLegged oauth2TwoLegged = new OAuth2TwoLegged("<CLIENT_ID>", "<CLIENT_SECRET>", null);
         oauth2TwoLegged.authorize();
 
@@ -118,12 +118,12 @@ public class ForgeApiExample {
             HubsApi hubsApi = new HubsApi();
 
             // Get the buckets owned by an application.
-            // Use the oauth2TwoLegged object that you used previously.
+            // Use the OAuth2TwoLegged object that you used previously.
             ApiResponse<InlineResponse200> bucketsApiResponse = bucketsApi.getBuckets(null, null, null, oauth2TwoLegged, null);
             System.out.println(bucketsApiResponse.getData());
             
             // Get the hubs that are accessible for a member.
-            // Use the oauth2ThreeLegged object and the threeLeggedCredentials that you retrieved previously.
+            // Use the OAuth2ThreeLegged object and the threeLeggedCredentials that you retrieved previously.
             ApiResponse<Object> hubsApiResponse = hubsApi.getHubs(null, null, oauth2ThreeLegged, threeLeggedCredentials);
             System.out.println(hubsApiResponse.getData());
             
