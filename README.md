@@ -111,7 +111,7 @@ public class ForgeApiExample {
 
     public static void main(String[] args) {
 
-        // Initialize the oauth2TwoLegged object using the application keys for 2-legged authorization:
+        // Initialize the oauth2TwoLegged object using the client key and client secret you received when creating the app on the Forge Developer portal:
         OAuth2TwoLegged oauth2TwoLegged = new OAuth2TwoLegged("<CLIENT_ID>", "<CLIENT_SECRET>", null);
         oauth2TwoLegged.authorize();
 
