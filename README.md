@@ -93,6 +93,8 @@ Note that access tokens expire after a short period of time. The `expiresAt` fie
 
 #### Example API Calls
 
+Use the `threeLeggedCredentials` object to call the Forge APIs.
+
 ```java
 // Import the libraries.
 import com.autodesk.client.ApiException;
@@ -108,7 +110,7 @@ public class ForgeApiExample {
 
     public static void main(String[] args) {
 
-        // Configure the OAuth2TwoLegged object with application keys for 2-legged authorization:
+        // Initialize the oauth2TwoLegged object using the application keys for 2-legged authorization:
         OAuth2TwoLegged oauth2TwoLegged = new OAuth2TwoLegged("<CLIENT_ID>", "<CLIENT_SECRET>", null);
         oauth2TwoLegged.authorize();
 
@@ -118,12 +120,12 @@ public class ForgeApiExample {
             HubsApi hubsApi = new HubsApi();
 
             // Get the buckets owned by an application.
-            // Use the OAuth2TwoLegged object that you used previously.
+            // Use the oauth2TwoLegged object that you initialized previously.
             ApiResponse<InlineResponse200> bucketsApiResponse = bucketsApi.getBuckets(null, null, null, oauth2TwoLegged, null);
             System.out.println(bucketsApiResponse.getData());
             
             // Get the hubs that are accessible for a member.
-            // Use the OAuth2ThreeLegged object and the threeLeggedCredentials that you retrieved previously.
+            // Use the oauth2ThreeLegged object and the threeLeggedCredentials that you retrieved previously.
             ApiResponse<Object> hubsApiResponse = hubsApi.getHubs(null, null, oauth2ThreeLegged, threeLeggedCredentials);
             System.out.println(hubsApiResponse.getData());
             
