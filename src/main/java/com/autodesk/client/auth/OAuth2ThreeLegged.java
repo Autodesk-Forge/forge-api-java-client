@@ -25,8 +25,8 @@
 
 package com.autodesk.client.auth;
 import com.autodesk.client.ApiException;
-import com.autodesk.client.Pair;
 import com.autodesk.client.Configuration;
+import com.autodesk.client.Pair;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -45,7 +45,7 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.*;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class OAuth2ThreeLegged implements Authentication {
 
     private String name;
@@ -120,7 +120,7 @@ public class OAuth2ThreeLegged implements Authentication {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.selectedScopes = selectedScopes;
-    
+
         this.name = "oauth2_access_code";
         this.type = "oauth2";
         this.tokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/gettoken";
@@ -138,7 +138,7 @@ public class OAuth2ThreeLegged implements Authentication {
         this.scopes.add("account:read");
         this.scopes.add("account:write");
         this.scopes.add("user-profile:read");
-    
+
         if(this.selectedScopes == null) this.selectedScopes = this.scopes;
     }
 
@@ -221,7 +221,7 @@ public class OAuth2ThreeLegged implements Authentication {
                     Long expires_in = (Long) jsonObject.get("expires_in");
                     Long expiresAt = new Date().getTime() + expires_in * 1000;
 
-                    response = new ThreeLeggedCredentials(access_token, refresh_token, expiresAt);
+                    response = new ThreeLeggedCredentials(access_token, expiresAt, refresh_token);
 
                 } catch (ParseException e) {
                     throw new RuntimeException("Unable to parse json " + responseBody);
@@ -269,7 +269,7 @@ public class OAuth2ThreeLegged implements Authentication {
                 Long expires_in = (Long) jsonObject.get("expires_in");
                 Long expiresAt = new Date().getTime() + expires_in * 1000;
 
-                response = new ThreeLeggedCredentials(access_token, refresh_token, expiresAt);
+                response = new ThreeLeggedCredentials(access_token, expiresAt, refresh_token);
 
             } catch (ParseException e) {
                 throw new RuntimeException("Unable to parse json " + responseBody);

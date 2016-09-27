@@ -25,40 +25,21 @@
 
 package com.autodesk.client.auth;
 
-public class ThreeLeggedCredentials{
+public class ThreeLeggedCredentials extends Credentials {
 
-    private String accessToken;
     private String refreshToken;
-    private Long expiresAt;
-
-    public String getAccessToken() {
-        return accessToken;
-    }
 
     public String getRefreshToken() {
         return refreshToken;
-    }
-
-    public Long getExpiresAt() {
-        return expiresAt;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
     }
 
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
     }
 
-    public void setExpiresAt(Long expiresAt) {
-        this.expiresAt = expiresAt;
-    }
-
-    public ThreeLeggedCredentials(String accessToken, String refreshToken, Long expiresAt){
-        this.accessToken = accessToken;
+    public ThreeLeggedCredentials(String accessToken, Long expiresAt, String refreshToken){
+        super(accessToken, expiresAt);
         this.refreshToken = refreshToken;
-        this.expiresAt = expiresAt;
     }
     public ThreeLeggedCredentials(){
     }

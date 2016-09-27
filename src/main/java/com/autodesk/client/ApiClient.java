@@ -24,50 +24,35 @@
 
 package com.autodesk.client;
 
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.*;
-import com.fasterxml.jackson.datatype.joda.*;
+import com.autodesk.client.auth.Credentials;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
+import com.sun.jersey.api.client.WebResource.Builder;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.client.filter.LoggingFilter;
-import com.sun.jersey.api.client.WebResource.Builder;
-
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
 
-import javax.ws.rs.core.Response.Status.Family;
 import javax.ws.rs.core.MediaType;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.TimeZone;
-
-import java.net.URLEncoder;
-
+import javax.ws.rs.core.Response.Status.Family;
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-
+import java.net.URLEncoder;
+import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Map.Entry;
 
-import java.io.IOException;
-import java.nio.file.Files;
 
-import com.autodesk.client.auth.Authentication;
-import com.autodesk.client.auth.OAuth2ThreeLegged;
-import com.autodesk.client.auth.ThreeLeggedCredentials;
-
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
 public class ApiClient {
   private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
   private String basePath = "https://developer.api.autodesk.com/";
@@ -477,7 +462,7 @@ public class ApiClient {
     return url.toString();
   }
 
-  private ClientResponse getAPIResponse(Authentication auth, ThreeLeggedCredentials credentials, String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType) throws ApiException {
+  private ClientResponse getAPIResponse(Credentials credentials, String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType) throws ApiException {
     if (body != null && !formParams.isEmpty()) {
       throw new ApiException(500, "Cannot have body and form params");
     }
@@ -494,7 +479,7 @@ public class ApiClient {
         }
     }
 
-    updateParamsForAuth(auth, credentials, queryParams, headerParams);
+    updateParamsForAuth(credentials, headerParams);
 
     final String url = buildUrl(path, queryParams);
     Builder builder;
@@ -546,9 +531,9 @@ public class ApiClient {
    * @param authNames The authentications to apply
    * @return The response body in type of string
    */
-   public <T> ApiResponse<T> invokeAPI(Authentication auth, ThreeLeggedCredentials credentials, String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType, GenericType<T> returnType) throws ApiException {
+   public <T> ApiResponse<T> invokeAPI(Credentials credentials, String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType, GenericType<T> returnType) throws ApiException {
 
-    ClientResponse response = getAPIResponse(auth, credentials, path, method, queryParams, body, headerParams, formParams, accept, contentType);
+    ClientResponse response = getAPIResponse(credentials, path, method, queryParams, body, headerParams, formParams, accept, contentType);
 
     statusCode = response.getStatusInfo().getStatusCode();
     responseHeaders = response.getHeaders();
@@ -580,18 +565,12 @@ public class ApiClient {
   }
 
   /**
-   * Update query and header parameters based on authentication settings.
-   *
-   * @param authNames The authentications to apply
+   * Add Authorization header parameters.
    */
-  private void updateParamsForAuth(Authentication auth, ThreeLeggedCredentials credentials, List<Pair> queryParams, Map<String, String> headerParams) {
-      if (auth == null) throw new RuntimeException("Authentication undefined");
-      if(auth.getClass() == OAuth2ThreeLegged.class){
-            ((OAuth2ThreeLegged)auth).applyToParams(queryParams, headerParams, credentials);
-      }
-      else {
-            auth.applyToParams(queryParams, headerParams);
-      }
+  private void updateParamsForAuth(Credentials credentials, Map<String, String> headerParams) {
+        if (credentials != null && credentials.getAccessToken() != null) {
+            headerParams.put("Authorization", "Bearer " + credentials.getAccessToken());
+        }
   }
 
   /**

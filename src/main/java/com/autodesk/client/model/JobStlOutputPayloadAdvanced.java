@@ -25,17 +25,18 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 
 /**
  * Advanced options for &#x60;stl&#x60; type.
  */
 @ApiModel(description = "Advanced options for `stl` type.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class JobStlOutputPayloadAdvanced   {
   /**
    * Default format is `binary`. Possible values are `binary` or `ascii`.
@@ -142,7 +143,7 @@ public class JobStlOutputPayloadAdvanced   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -164,7 +165,7 @@ public class JobStlOutputPayloadAdvanced   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobStlOutputPayloadAdvanced {\n");
-    
+
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    exportColor: ").append(toIndentedString(exportColor)).append("\n");
     sb.append("    exportFileStructure: ").append(toIndentedString(exportFileStructure)).append("\n");
@@ -176,7 +177,7 @@ public class JobStlOutputPayloadAdvanced   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

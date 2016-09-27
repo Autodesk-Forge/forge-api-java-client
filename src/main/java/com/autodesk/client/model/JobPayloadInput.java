@@ -25,17 +25,18 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 
 /**
  * Group of inputs
  */
 @ApiModel(description = "Group of inputs")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class JobPayloadInput   {
   @JsonProperty("urn")
   private String urn = null;
@@ -102,7 +103,7 @@ public class JobPayloadInput   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -124,7 +125,7 @@ public class JobPayloadInput   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobPayloadInput {\n");
-    
+
     sb.append("    urn: ").append(toIndentedString(urn)).append("\n");
     sb.append("    compressedUrn: ").append(toIndentedString(compressedUrn)).append("\n");
     sb.append("    rootFilename: ").append(toIndentedString(rootFilename)).append("\n");
@@ -136,7 +137,7 @@ public class JobPayloadInput   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -25,17 +25,18 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 
 /**
  * provides the identity link (a link to itself)
  */
 @ApiModel(description = "provides the identity link (a link to itself)")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class JsonApiLinksSelf   {
   @JsonProperty("self")
   private JsonApiLink self = null;
@@ -60,7 +61,7 @@ public class JsonApiLinksSelf   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -80,7 +81,7 @@ public class JsonApiLinksSelf   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiLinksSelf {\n");
-    
+
     sb.append("    self: ").append(toIndentedString(self)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -90,7 +91,7 @@ public class JsonApiLinksSelf   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -24,26 +24,18 @@
 
 package com.autodesk.client.api;
 
-import com.sun.jersey.api.client.GenericType;
-
-import com.autodesk.client.ApiException;
-import com.autodesk.client.ApiClient;
-import com.autodesk.client.Configuration;
-import com.autodesk.client.Pair;
-import com.autodesk.client.auth.Authentication;
-import com.autodesk.client.auth.ThreeLeggedCredentials;
-import com.autodesk.client.ApiResponse;
-
-import com.autodesk.client.model.JsonApiCollection;
+import com.autodesk.client.*;
+import com.autodesk.client.auth.Credentials;
 import com.autodesk.client.model.CreateRef;
-
+import com.autodesk.client.model.JsonApiCollection;
+import com.sun.jersey.api.client.GenericType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class FoldersApi {
   private ApiClient apiClient;
 
@@ -68,22 +60,22 @@ public class FoldersApi {
    * Returns the folder by ID for any folder within a given project. All folders or sub-folders within a project are associated with their own unique ID, including the root folder. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param folderId the &#x60;folder id&#x60; (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> getFolder(String projectId, String folderId, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> getFolder(String projectId, String folderId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getFolder");
     }
-    
+
     // verify the required parameter 'folderId' is set
     if (folderId == null) {
       throw new ApiException(400, "Missing the required parameter 'folderId' when calling getFolder");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/folders/{folder_id}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -95,8 +87,8 @@ public class FoldersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -108,11 +100,11 @@ public class FoldersApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
-   * 
-   * Returns a collection of items and folders within a folder. Items represent word documents, fusion design files, drawings, spreadsheets, etc. 
+   *
+   * Returns a collection of items and folders within a folder. Items represent word documents, fusion design files, drawings, spreadsheets, etc.
    * @param projectId the &#x60;project id&#x60; (required)
    * @param folderId the &#x60;folder id&#x60; (required)
    * @param filterType filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)
@@ -121,22 +113,22 @@ public class FoldersApi {
    * @param pageNumber specify the page number (optional)
    * @param pageLimit specify the maximal number of elements per page (optional)
    * @return JsonApiCollection
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<JsonApiCollection> getFolderContents(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, Integer pageNumber, Integer pageLimit, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<JsonApiCollection> getFolderContents(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, Integer pageNumber, Integer pageLimit,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getFolderContents");
     }
-    
+
     // verify the required parameter 'folderId' is set
     if (folderId == null) {
       throw new ApiException(400, "Missing the required parameter 'folderId' when calling getFolderContents");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/folders/{folder_id}/contents".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -153,8 +145,8 @@ public class FoldersApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[number]", pageNumber));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[limit]", pageLimit));
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -166,29 +158,29 @@ public class FoldersApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<JsonApiCollection> localVarReturnType = new GenericType<JsonApiCollection>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   * 
-   * Returns the parent folder (if it exists). In a project, subfolders and resource items are stored under a folder except the root folder which does not have a parent of its own. 
+   *
+   * Returns the parent folder (if it exists). In a project, subfolders and resource items are stored under a folder except the root folder which does not have a parent of its own.
    * @param projectId the &#x60;project id&#x60; (required)
    * @param folderId the &#x60;folder id&#x60; (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> getFolderParent(String projectId, String folderId, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> getFolderParent(String projectId, String folderId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getFolderParent");
     }
-    
+
     // verify the required parameter 'folderId' is set
     if (folderId == null) {
       throw new ApiException(400, "Missing the required parameter 'folderId' when calling getFolderParent");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/folders/{folder_id}/parent".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -200,8 +192,8 @@ public class FoldersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -213,33 +205,33 @@ public class FoldersApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
-   * 
-   * Returns the resources (&#x60;items&#x60;, &#x60;folders&#x60;, and &#x60;versions&#x60;) which have a custom relationship with the given &#x60;folder_id&#x60;. Custom relationships can be established between a folder and other resources within the &#39;data&#39; domain service (folders, items, and versions). 
+   *
+   * Returns the resources (&#x60;items&#x60;, &#x60;folders&#x60;, and &#x60;versions&#x60;) which have a custom relationship with the given &#x60;folder_id&#x60;. Custom relationships can be established between a folder and other resources within the &#39;data&#39; domain service (folders, items, and versions).
    * @param projectId the &#x60;project id&#x60; (required)
    * @param folderId the &#x60;folder id&#x60; (required)
    * @param filterType filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)
    * @param filterId filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)
    * @param filterExtensionType filter by the extension type (optional)
    * @return JsonApiCollection
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<JsonApiCollection> getFolderRefs(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<JsonApiCollection> getFolderRefs(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getFolderRefs");
     }
-    
+
     // verify the required parameter 'folderId' is set
     if (folderId == null) {
       throw new ApiException(400, "Missing the required parameter 'folderId' when calling getFolderRefs");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/folders/{folder_id}/refs".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -254,8 +246,8 @@ public class FoldersApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -267,11 +259,11 @@ public class FoldersApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<JsonApiCollection> localVarReturnType = new GenericType<JsonApiCollection>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   * 
-   * Returns the custom relationships that are associated to the given &#x60;folder_id&#x60;. Custom relationships can be established between a folder and other resources within the &#39;data&#39; domain service (folders, items, and versions). 
+   *
+   * Returns the custom relationships that are associated to the given &#x60;folder_id&#x60;. Custom relationships can be established between a folder and other resources within the &#39;data&#39; domain service (folders, items, and versions).
    * @param projectId the &#x60;project id&#x60; (required)
    * @param folderId the &#x60;folder id&#x60; (required)
    * @param filterType filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)
@@ -280,22 +272,22 @@ public class FoldersApi {
    * @param filterDirection filter by the direction of the reference (optional)
    * @param filterExtensionType filter by the extension type (optional)
    * @return Object
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getFolderRelationshipsRefs(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getFolderRelationshipsRefs(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getFolderRelationshipsRefs");
     }
-    
+
     // verify the required parameter 'folderId' is set
     if (folderId == null) {
       throw new ApiException(400, "Missing the required parameter 'folderId' when calling getFolderRelationshipsRefs");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/folders/{folder_id}/relationships/refs".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -312,8 +304,8 @@ public class FoldersApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[direction]", filterDirection));
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -325,17 +317,17 @@ public class FoldersApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   * 
-   * Creates a custom relationship between a folder and another resource within the &#39;data&#39; domain service (folder, item, or version). 
+   *
+   * Creates a custom relationship between a folder and another resource within the &#39;data&#39; domain service (folder, item, or version).
    * @param projectId the &#x60;project id&#x60; (required)
    * @param folderId the &#x60;folder id&#x60; (required)
    * @param body describe the ref to be created (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> postFolderRelationshipsRef(String projectId, String folderId, CreateRef body, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> postFolderRelationshipsRef(String projectId, String folderId, CreateRef body,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = body;
     
@@ -378,6 +370,6 @@ public class FoldersApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
 }

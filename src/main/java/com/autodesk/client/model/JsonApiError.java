@@ -25,18 +25,18 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
  * JsonApiError
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class JsonApiError   {
   @JsonProperty("errors")
   private List<Object> errors = new ArrayList<Object>();
@@ -61,7 +61,7 @@ public class JsonApiError   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -81,7 +81,7 @@ public class JsonApiError   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiError {\n");
-    
+
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -91,7 +91,7 @@ public class JsonApiError   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -25,20 +25,20 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
  * 
  */
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class MetadataData   {
   @JsonProperty("type")
   private String type = "metadata";
@@ -126,7 +126,7 @@ public class MetadataData   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -149,7 +149,7 @@ public class MetadataData   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MetadataData {\n");
-    
+
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    objects: ").append(toIndentedString(objects)).append("\n");
@@ -162,7 +162,7 @@ public class MetadataData   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

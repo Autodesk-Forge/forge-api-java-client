@@ -24,25 +24,18 @@
 
 package com.autodesk.client.api;
 
-import com.sun.jersey.api.client.GenericType;
-
-import com.autodesk.client.ApiException;
-import com.autodesk.client.ApiClient;
-import com.autodesk.client.Configuration;
-import com.autodesk.client.Pair;
-import com.autodesk.client.auth.Authentication;
-import com.autodesk.client.auth.ThreeLeggedCredentials;
-import com.autodesk.client.ApiResponse;
-
+import com.autodesk.client.*;
+import com.autodesk.client.auth.Credentials;
 import com.autodesk.client.model.WorkItem;
-
+import com.autodesk.client.model.WorkItemResp;
+import com.sun.jersey.api.client.GenericType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class WorkItemsApi {
   private ApiClient apiClient;
 
@@ -67,17 +60,17 @@ public class WorkItemsApi {
    * 
    * @param workItem  (required)
    * @return WorkItemResp
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> createWorkItem(WorkItem workItem, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> createWorkItem(WorkItem workItem,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = workItem;
-    
+
     // verify the required parameter 'workItem' is set
     if (workItem == null) {
       throw new ApiException(400, "Missing the required parameter 'workItem' when calling createWorkItem");
     }
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/WorkItems".replaceAll("\\{format\\}","json");
 
@@ -87,8 +80,8 @@ public class WorkItemsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -100,23 +93,23 @@ public class WorkItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Removes a specific WorkItem.
-   * 
+   *
    * @param id  (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteWorkItem(String id, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteWorkItem(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling deleteWorkItem");
     }
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/WorkItems('{id}')".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -127,8 +120,8 @@ public class WorkItemsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -140,19 +133,19 @@ public class WorkItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Returns the details of all WorkItems.
-   * 
+   *
    * @param skip  (optional)
    * @return List<WorkItemResp>
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getAllWorkItems(Integer skip, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getAllWorkItems(Integer skip,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/WorkItems".replaceAll("\\{format\\}","json");
 
@@ -163,8 +156,8 @@ public class WorkItemsApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "$skip", skip));
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -176,16 +169,16 @@ public class WorkItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns the details of a specific WorkItem.
-   * 
+   *
    * @param id  (required)
    * @return WorkItemResp
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getWorkItem(String id, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getWorkItem(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -217,6 +210,6 @@ public class WorkItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

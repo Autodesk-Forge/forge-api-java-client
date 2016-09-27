@@ -24,23 +24,17 @@
 
 package com.autodesk.client.api;
 
+import com.autodesk.client.*;
+import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.model.Engine;
 import com.sun.jersey.api.client.GenericType;
-
-import com.autodesk.client.ApiException;
-import com.autodesk.client.ApiClient;
-import com.autodesk.client.Configuration;
-import com.autodesk.client.Pair;
-import com.autodesk.client.auth.Authentication;
-import com.autodesk.client.auth.ThreeLeggedCredentials;
-import com.autodesk.client.ApiResponse;
-
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class EnginesApi {
   private ApiClient apiClient;
 
@@ -64,12 +58,12 @@ public class EnginesApi {
    * Returns the details of all available AutoCAD core engines.
    * 
    * @return List<Engine>
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getAllEngines(Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getAllEngines( Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/Engines".replaceAll("\\{format\\}","json");
 
@@ -79,8 +73,8 @@ public class EnginesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -92,16 +86,16 @@ public class EnginesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns the details of a specific AutoCAD core engine.
-   * 
+   *
    * @param id  (required)
    * @return Engine
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getEngine(String id, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getEngine(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -133,6 +127,6 @@ public class EnginesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

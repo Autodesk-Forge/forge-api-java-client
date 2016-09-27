@@ -25,17 +25,18 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 
 /**
  * Advanced options for &#x60;step&#x60; type.
  */
 @ApiModel(description = "Advanced options for `step` type.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class JobStepOutputPayloadAdvanced   {
   /**
    * A STEP file can be generated with the following Application Protocols: `203` for configuration controlled design, `214` for core data for automotive mechanical design processes, `242` for managed model based 3D engineering. By default, `214` will be exported. 
@@ -103,7 +104,7 @@ public class JobStepOutputPayloadAdvanced   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -124,7 +125,7 @@ public class JobStepOutputPayloadAdvanced   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobStepOutputPayloadAdvanced {\n");
-    
+
     sb.append("    applicationProtocol: ").append(toIndentedString(applicationProtocol)).append("\n");
     sb.append("    tolerance: ").append(toIndentedString(tolerance)).append("\n");
     sb.append("}");
@@ -135,7 +136,7 @@ public class JobStepOutputPayloadAdvanced   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -25,15 +25,16 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 
 /**
  * Storage
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class Storage   {
   /**
    * Gets or Sets type
@@ -97,7 +98,7 @@ public class Storage   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -118,7 +119,7 @@ public class Storage   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Storage {\n");
-    
+
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
     sb.append("}");
@@ -129,7 +130,7 @@ public class Storage   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

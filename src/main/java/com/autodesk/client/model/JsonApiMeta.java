@@ -25,19 +25,20 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import io.swagger.annotations.ApiModel;
+
+import java.util.Objects;
 
 
 /**
  * resource specific meta data
  */
 @ApiModel(description = "resource specific meta data")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class JsonApiMeta   {
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -56,7 +57,7 @@ public class JsonApiMeta   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiMeta {\n");
-    
+
     sb.append("}");
     return sb.toString();
   }
@@ -65,7 +66,7 @@ public class JsonApiMeta   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

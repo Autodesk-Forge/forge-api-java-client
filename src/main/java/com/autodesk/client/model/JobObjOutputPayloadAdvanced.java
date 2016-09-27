@@ -25,19 +25,20 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
  * Advanced options for &#x60;obj&#x60; type.
  */
 @ApiModel(description = "Advanced options for `obj` type.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class JobObjOutputPayloadAdvanced   {
   /**
    * `single` (default): creates one OBJ file for all the input files (assembly file)  `multiple`: creates a separate OBJ file for each object 
@@ -124,7 +125,7 @@ public class JobObjOutputPayloadAdvanced   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -146,7 +147,7 @@ public class JobObjOutputPayloadAdvanced   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobObjOutputPayloadAdvanced {\n");
-    
+
     sb.append("    exportFileStructure: ").append(toIndentedString(exportFileStructure)).append("\n");
     sb.append("    modelGuid: ").append(toIndentedString(modelGuid)).append("\n");
     sb.append("    objectIds: ").append(toIndentedString(objectIds)).append("\n");
@@ -158,7 +159,7 @@ public class JobObjOutputPayloadAdvanced   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

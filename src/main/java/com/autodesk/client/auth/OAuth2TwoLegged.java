@@ -24,8 +24,8 @@
 
 
 package com.autodesk.client.auth;
-import com.autodesk.client.Pair;
 import com.autodesk.client.Configuration;
+import com.autodesk.client.Pair;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -45,10 +45,9 @@ import java.io.IOException;
 import java.util.*;
 
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
 public class OAuth2TwoLegged implements Authentication {
 
-    private TwoLeggedCredentials credentials;
+    private Credentials credentials;
     private String name;
     private String type;
     private OAuthFlow flow;
@@ -175,7 +174,7 @@ public class OAuth2TwoLegged implements Authentication {
      * Get the access token in a 2-legged flow
      * @return
      */
-    public TwoLeggedCredentials authorize() throws Exception{
+    public Credentials authorize() throws Exception{
 
         if(flow == OAuthFlow.application) {
 
@@ -191,7 +190,7 @@ public class OAuth2TwoLegged implements Authentication {
                 body.put("scope", scopeStr);
             }
 
-            TwoLeggedCredentials response = null;
+            Credentials response = null;
             try {
                 String bodyResponse = post(url, body, new HashMap<String, String>());
                 JSONObject jsonObject = null;
@@ -204,8 +203,8 @@ public class OAuth2TwoLegged implements Authentication {
                     String access_token = (String) jsonObject.get("access_token");
                     Long expires_in = (Long) jsonObject.get("expires_in");
                     Long expiresAt = new Date().getTime() + expires_in * 1000;
-                    this.credentials = new TwoLeggedCredentials(access_token, expiresAt);
-                    response = new TwoLeggedCredentials(access_token, expiresAt);
+                    this.credentials = new Credentials(access_token, expiresAt);
+                    response = new Credentials(access_token, expiresAt);
 
                 } catch (ParseException e) {
                     throw new RuntimeException("Unable to parse json " + body);

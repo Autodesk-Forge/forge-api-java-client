@@ -25,18 +25,19 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
  * MeshGeomBoundingBox
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class MeshGeomBoundingBox   {
   @JsonProperty("max")
   private List<BigDecimal> max = new ArrayList<BigDecimal>();
@@ -82,7 +83,7 @@ public class MeshGeomBoundingBox   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -103,7 +104,7 @@ public class MeshGeomBoundingBox   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MeshGeomBoundingBox {\n");
-    
+
     sb.append("    max: ").append(toIndentedString(max)).append("\n");
     sb.append("    min: ").append(toIndentedString(min)).append("\n");
     sb.append("}");
@@ -114,7 +115,7 @@ public class MeshGeomBoundingBox   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

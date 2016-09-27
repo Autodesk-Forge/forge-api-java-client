@@ -25,7 +25,7 @@
 
 package com.autodesk.client;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

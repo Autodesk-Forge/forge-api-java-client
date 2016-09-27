@@ -25,10 +25,10 @@
 
 package com.autodesk.client;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class ApiException extends Exception {
     private int code = 0;
     private Map<String, List<String>> responseHeaders = null;

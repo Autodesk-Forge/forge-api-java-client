@@ -24,27 +24,19 @@
 
 package com.autodesk.client.api;
 
-import com.sun.jersey.api.client.GenericType;
-
-import com.autodesk.client.ApiException;
-import com.autodesk.client.ApiClient;
-import com.autodesk.client.Configuration;
-import com.autodesk.client.Pair;
-import com.autodesk.client.auth.Authentication;
-import com.autodesk.client.auth.ThreeLeggedCredentials;
-import com.autodesk.client.ApiResponse;
-
+import com.autodesk.client.*;
+import com.autodesk.client.auth.Credentials;
 import com.autodesk.client.model.Activity;
 import com.autodesk.client.model.ActivityOptional;
 import com.autodesk.client.model.ActivityVersion;
-
+import com.sun.jersey.api.client.GenericType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class ActivitiesApi {
   private ApiClient apiClient;
 
@@ -69,17 +61,17 @@ public class ActivitiesApi {
    * 
    * @param activity  (required)
    * @return Activity
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> createActivity(Activity activity, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> createActivity(Activity activity,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = activity;
-    
+
     // verify the required parameter 'activity' is set
     if (activity == null) {
       throw new ApiException(400, "Missing the required parameter 'activity' when calling createActivity");
     }
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/Activities".replaceAll("\\{format\\}","json");
 
@@ -89,8 +81,8 @@ public class ActivitiesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -102,23 +94,23 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Removes a specific Activity.
-   * 
+   *
    * @param id  (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteActivity(String id, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteActivity(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling deleteActivity");
     }
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/Activities('{id}')".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -129,8 +121,8 @@ public class ActivitiesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -142,23 +134,23 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Removes the version history of the specified Activity.
-   * 
+   *
    * @param id  (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteActivityHistory(String id, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteActivityHistory(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling deleteActivityHistory");
     }
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/Activities('{id}')/Operations.DeleteHistory".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -169,8 +161,8 @@ public class ActivitiesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -182,24 +174,24 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Returns the details of a specific Activity.
-   * 
+   *
    * @param id  (required)
    * @return Activity
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getActivity(String id, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getActivity(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling getActivity");
     }
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/Activities('{id}')".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -210,8 +202,8 @@ public class ActivitiesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -223,24 +215,24 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns all old versions of a specified Activity.
-   * 
+   *
    * @param id  (required)
    * @return List<Activity>
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getActivityVersions(String id, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getActivityVersions(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling getActivityVersions");
     }
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/Activities('{id}')/Operations.GetVersions".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -251,8 +243,8 @@ public class ActivitiesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -264,18 +256,18 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns the details of all Activities.
-   * 
+   *
    * @return List<Activity>
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getAllActivities(Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getAllActivities( Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/Activities".replaceAll("\\{format\\}","json");
 
@@ -285,8 +277,8 @@ public class ActivitiesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -298,29 +290,29 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Updates an Activity by specifying only the changed attributes.
-   * 
+   *
    * @param id  (required)
    * @param activity  (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> patchActivity(String id, ActivityOptional activity, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> patchActivity(String id, ActivityOptional activity,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = activity;
-    
+
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling patchActivity");
     }
-    
+
     // verify the required parameter 'activity' is set
     if (activity == null) {
       throw new ApiException(400, "Missing the required parameter 'activity' when calling patchActivity");
     }
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/Activities('{id}')".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -331,8 +323,8 @@ public class ActivitiesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -344,29 +336,29 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Sets the Activity to the specified version.
-   * 
+   *
    * @param id  (required)
    * @param activityVersion  (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> setActivityVersion(String id, ActivityVersion activityVersion, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> setActivityVersion(String id, ActivityVersion activityVersion,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = activityVersion;
-    
+
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling setActivityVersion");
     }
-    
+
     // verify the required parameter 'activityVersion' is set
     if (activityVersion == null) {
       throw new ApiException(400, "Missing the required parameter 'activityVersion' when calling setActivityVersion");
     }
-    
+
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/Activities('{id}')/Operations.SetVersion".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -377,8 +369,8 @@ public class ActivitiesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -390,16 +382,16 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Updates an Activity by redefining the entire Activity object.
-   * 
+   *
    * @param id  (required)
    * @param activity  (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> updateActivity(String id, Activity activity, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> updateActivity(String id, Activity activity,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = activity;
     
@@ -436,6 +428,6 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
 }

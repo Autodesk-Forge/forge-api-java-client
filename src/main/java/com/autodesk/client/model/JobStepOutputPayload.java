@@ -25,15 +25,16 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 
 /**
  * JobStepOutputPayload
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class JobStepOutputPayload   {
   /**
    * The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
@@ -107,7 +108,7 @@ public class JobStepOutputPayload   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -128,7 +129,7 @@ public class JobStepOutputPayload   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobStepOutputPayload {\n");
-    
+
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    advanced: ").append(toIndentedString(advanced)).append("\n");
     sb.append("}");
@@ -139,7 +140,7 @@ public class JobStepOutputPayload   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

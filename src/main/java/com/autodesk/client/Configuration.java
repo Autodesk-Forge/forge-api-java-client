@@ -26,7 +26,7 @@
 package com.autodesk.client;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 

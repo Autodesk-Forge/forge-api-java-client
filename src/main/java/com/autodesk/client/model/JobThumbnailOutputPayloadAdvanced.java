@@ -25,17 +25,18 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 
 /**
  * Advanced options for &#x60;thumbnail&#x60; type.
  */
 @ApiModel(description = "Advanced options for `thumbnail` type.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class JobThumbnailOutputPayloadAdvanced   {
   @JsonProperty("width")
   private Integer width = null;
@@ -81,7 +82,7 @@ public class JobThumbnailOutputPayloadAdvanced   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -102,7 +103,7 @@ public class JobThumbnailOutputPayloadAdvanced   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobThumbnailOutputPayloadAdvanced {\n");
-    
+
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("}");
@@ -113,7 +114,7 @@ public class JobThumbnailOutputPayloadAdvanced   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

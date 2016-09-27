@@ -24,27 +24,19 @@
 
 package com.autodesk.client.api;
 
-import com.sun.jersey.api.client.GenericType;
-
-import com.autodesk.client.ApiException;
-import com.autodesk.client.ApiClient;
-import com.autodesk.client.Configuration;
-import com.autodesk.client.Pair;
-import com.autodesk.client.auth.Authentication;
-import com.autodesk.client.auth.ThreeLeggedCredentials;
-import com.autodesk.client.ApiResponse;
-
-import com.autodesk.client.model.PostBucketsPayload;
+import com.autodesk.client.*;
+import com.autodesk.client.auth.Credentials;
 import com.autodesk.client.model.Buckets;
 import com.autodesk.client.model.InlineResponse200;
-
+import com.autodesk.client.model.PostBucketsPayload;
+import com.sun.jersey.api.client.GenericType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class BucketsApi {
   private ApiClient apiClient;
 
@@ -70,17 +62,17 @@ public class BucketsApi {
    * @param postBuckets Body Structure (required)
    * @param xAdsRegion The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)
    * @return Buckets
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Buckets> createBucket(PostBucketsPayload postBuckets, String xAdsRegion, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Buckets> createBucket(PostBucketsPayload postBuckets, String xAdsRegion,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = postBuckets;
-    
+
     // verify the required parameter 'postBuckets' is set
     if (postBuckets == null) {
       throw new ApiException(400, "Missing the required parameter 'postBuckets' when calling createBucket");
     }
-    
+
     // create path and map variables
     String localVarPath = "/oss/v2/buckets".replaceAll("\\{format\\}","json");
 
@@ -93,7 +85,7 @@ public class BucketsApi {
     if (xAdsRegion != null)
       localVarHeaderParams.put("x-ads-region", apiClient.parameterToString(xAdsRegion));
 
-    
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -105,23 +97,23 @@ public class BucketsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Buckets> localVarReturnType = new GenericType<Buckets>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   * 
-   * This endpoint will delete a bucket. 
+   *
+   * This endpoint will delete a bucket.
    * @param bucketKey URL-encoded bucket key (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteBucket(String bucketKey, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteBucket(String bucketKey,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling deleteBucket");
     }
-    
+
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()));
@@ -132,8 +124,8 @@ public class BucketsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -145,24 +137,24 @@ public class BucketsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
-   * 
+   *
    * This endpoint will return the buckets owned by the application. This endpoint supports pagination.
    * @param bucketKey URL-encoded bucket key (required)
    * @return Buckets
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Buckets> getBucketDetails(String bucketKey, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Buckets> getBucketDetails(String bucketKey,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling getBucketDetails");
     }
-    
+
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}/details".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()));
@@ -173,8 +165,8 @@ public class BucketsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -186,18 +178,18 @@ public class BucketsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Buckets> localVarReturnType = new GenericType<Buckets>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   * 
-   * This endpoint will return the buckets owned by the application. This endpoint supports pagination. 
+   *
+   * This endpoint will return the buckets owned by the application. This endpoint supports pagination.
    * @param region The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)
    * @param limit Limit to the response size, Acceptable values: 1-100 Default &#x3D; 10  (optional, default to 10)
    * @param startAt Key to use as an offset to continue pagination This is typically the last bucket key found in a preceding GET buckets response  (optional)
    * @return InlineResponse200
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<InlineResponse200> getBuckets(String region, Integer limit, String startAt, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<InlineResponse200> getBuckets(String region, Integer limit, String startAt,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -226,6 +218,6 @@ public class BucketsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<InlineResponse200> localVarReturnType = new GenericType<InlineResponse200>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

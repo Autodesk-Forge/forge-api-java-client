@@ -25,37 +25,31 @@
 
 package com.autodesk.client.auth;
 
-import com.autodesk.client.Pair;
+public class Credentials{
 
-import java.util.Map;
-import java.util.List;
+    protected String accessToken;
+    protected Long expiresAt;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
-public class OAuth implements Authentication {
-  private String accessToken;
-  private String name;
-
-  public String getAccessToken() {
-    return accessToken;
-  }
-
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
-  }
-
-  public void setName(String name) {
-      this.name = name;
-  }
-
-  @Override
-  public String getName() {
-        return name;
-  }
-
-  @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams) {
-    if (accessToken != null) {
-      headerParams.put("Authorization", "Bearer " + accessToken);
+    public String getAccessToken() {
+        return accessToken;
     }
-  }
+
+    public Long getExpiresAt() {
+        return expiresAt;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    public void setExpiresAt(Long expiresAt) {
+        this.expiresAt = expiresAt;
+    }
+
+    public Credentials(String accessToken, Long expiresAt){
+        this.accessToken = accessToken;
+        this.expiresAt = expiresAt;
+    }
+    public Credentials(){
+    }
 }

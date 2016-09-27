@@ -24,26 +24,18 @@
 
 package com.autodesk.client.api;
 
-import com.sun.jersey.api.client.GenericType;
-
-import com.autodesk.client.ApiException;
-import com.autodesk.client.ApiClient;
-import com.autodesk.client.Configuration;
-import com.autodesk.client.Pair;
-import com.autodesk.client.auth.Authentication;
-import com.autodesk.client.auth.ThreeLeggedCredentials;
-import com.autodesk.client.ApiResponse;
-
-import com.autodesk.client.model.JsonApiCollection;
+import com.autodesk.client.*;
+import com.autodesk.client.auth.Credentials;
 import com.autodesk.client.model.CreateRef;
-
+import com.autodesk.client.model.JsonApiCollection;
+import com.sun.jersey.api.client.GenericType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class ItemsApi {
   private ApiClient apiClient;
 
@@ -66,12 +58,12 @@ public class ItemsApi {
   /**
    * 
    * Returns the health information for the &#x60;data&#x60; domain. The health check assesses the current working status of the &#39;data&#39; domain service. 
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> getDataHealth(Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> getDataHealth( Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/health".replaceAll("\\{format\\}","json");
 
@@ -81,8 +73,8 @@ public class ItemsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -94,30 +86,30 @@ public class ItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
-   * 
-   * Returns a resource item by ID for any item within a given project. Resource items represent word documents, fusion design files, drawings, spreadsheets, etc. 
+   *
+   * Returns a resource item by ID for any item within a given project. Resource items represent word documents, fusion design files, drawings, spreadsheets, etc.
    * @param projectId the &#x60;project id&#x60; (required)
    * @param itemId the &#x60;item id&#x60; (required)
    * @return Object
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getItem(String projectId, String itemId, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getItem(String projectId, String itemId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getItem");
     }
-    
+
     // verify the required parameter 'itemId' is set
     if (itemId == null) {
       throw new ApiException(400, "Missing the required parameter 'itemId' when calling getItem");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/items/{item_id}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -129,8 +121,8 @@ public class ItemsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -142,29 +134,29 @@ public class ItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   * 
-   * Returns the \&quot;parent\&quot; folder for the given item. 
+   *
+   * Returns the \&quot;parent\&quot; folder for the given item.
    * @param projectId the &#x60;project id&#x60; (required)
    * @param itemId the &#x60;item id&#x60; (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> getItemParentFolder(String projectId, String itemId, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> getItemParentFolder(String projectId, String itemId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getItemParentFolder");
     }
-    
+
     // verify the required parameter 'itemId' is set
     if (itemId == null) {
       throw new ApiException(400, "Missing the required parameter 'itemId' when calling getItemParentFolder");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/items/{item_id}/parent".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -176,8 +168,8 @@ public class ItemsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -189,33 +181,33 @@ public class ItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
-   * 
-   * Returns the resources (&#x60;items&#x60;, &#x60;folders&#x60;, and &#x60;versions&#x60;) which have a custom relationship with the given &#x60;item_id&#x60;. Custom relationships can be established between an item and other resources within the &#39;data&#39; domain service (folders, items, and versions). 
+   *
+   * Returns the resources (&#x60;items&#x60;, &#x60;folders&#x60;, and &#x60;versions&#x60;) which have a custom relationship with the given &#x60;item_id&#x60;. Custom relationships can be established between an item and other resources within the &#39;data&#39; domain service (folders, items, and versions).
    * @param projectId the &#x60;project id&#x60; (required)
    * @param itemId the &#x60;item id&#x60; (required)
    * @param filterType filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)
    * @param filterId filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)
    * @param filterExtensionType filter by the extension type (optional)
    * @return JsonApiCollection
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<JsonApiCollection> getItemRefs(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<JsonApiCollection> getItemRefs(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getItemRefs");
     }
-    
+
     // verify the required parameter 'itemId' is set
     if (itemId == null) {
       throw new ApiException(400, "Missing the required parameter 'itemId' when calling getItemRefs");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/items/{item_id}/refs".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -230,8 +222,8 @@ public class ItemsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -243,11 +235,11 @@ public class ItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<JsonApiCollection> localVarReturnType = new GenericType<JsonApiCollection>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   * 
-   * Returns the custom relationships that are associated to the given &#x60;item_id&#x60;. Custom relationships can be established between an item and other resources within the &#39;data&#39; domain service (folders, items, and versions). 
+   *
+   * Returns the custom relationships that are associated to the given &#x60;item_id&#x60;. Custom relationships can be established between an item and other resources within the &#39;data&#39; domain service (folders, items, and versions).
    * @param projectId the &#x60;project id&#x60; (required)
    * @param itemId the &#x60;item id&#x60; (required)
    * @param filterType filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)
@@ -256,22 +248,22 @@ public class ItemsApi {
    * @param filterDirection filter by the direction of the reference (optional)
    * @param filterExtensionType filter by the extension type (optional)
    * @return Object
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getItemRelationshipsRefs(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getItemRelationshipsRefs(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getItemRelationshipsRefs");
     }
-    
+
     // verify the required parameter 'itemId' is set
     if (itemId == null) {
       throw new ApiException(400, "Missing the required parameter 'itemId' when calling getItemRelationshipsRefs");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/items/{item_id}/relationships/refs".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -288,8 +280,8 @@ public class ItemsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[direction]", filterDirection));
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -301,30 +293,30 @@ public class ItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   * 
-   * Returns the \&quot;tip\&quot; version for the given item. Multiple versions of a resource item can be uploaded in a project. The tip version is the most recent one. 
+   *
+   * Returns the \&quot;tip\&quot; version for the given item. Multiple versions of a resource item can be uploaded in a project. The tip version is the most recent one.
    * @param projectId the &#x60;project id&#x60; (required)
    * @param itemId the &#x60;item id&#x60; (required)
    * @return Object
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getItemTip(String projectId, String itemId, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getItemTip(String projectId, String itemId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getItemTip");
     }
-    
+
     // verify the required parameter 'itemId' is set
     if (itemId == null) {
       throw new ApiException(400, "Missing the required parameter 'itemId' when calling getItemTip");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/items/{item_id}/tip".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -336,8 +328,8 @@ public class ItemsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -349,11 +341,11 @@ public class ItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   * 
-   * Returns versions for the given item. Multiple versions of a resource item can be uploaded in a project. 
+   *
+   * Returns versions for the given item. Multiple versions of a resource item can be uploaded in a project.
    * @param projectId the &#x60;project id&#x60; (required)
    * @param itemId the &#x60;item id&#x60; (required)
    * @param filterType filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)
@@ -363,22 +355,22 @@ public class ItemsApi {
    * @param pageNumber specify the page number (optional)
    * @param pageLimit specify the maximal number of elements per page (optional)
    * @return Object
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Object> getItemVersions(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, List<Integer> filterVersionNumber, Integer pageNumber, Integer pageLimit, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Object> getItemVersions(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, List<Integer> filterVersionNumber, Integer pageNumber, Integer pageLimit,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getItemVersions");
     }
-    
+
     // verify the required parameter 'itemId' is set
     if (itemId == null) {
       throw new ApiException(400, "Missing the required parameter 'itemId' when calling getItemVersions");
     }
-    
+
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/items/{item_id}/versions".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -396,8 +388,8 @@ public class ItemsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[number]", pageNumber));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[limit]", pageLimit));
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -409,17 +401,17 @@ public class ItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   * 
-   * Creates a custom relationship between an item and another resource within the &#39;data&#39; domain service (folder, item, or version). 
+   *
+   * Creates a custom relationship between an item and another resource within the &#39;data&#39; domain service (folder, item, or version).
    * @param projectId the &#x60;project id&#x60; (required)
    * @param itemId the &#x60;item id&#x60; (required)
    * @param body describe the ref to be created (required)
-   * @throws ApiException if fails to make API call
+   * @throws com.autodesk.client.ApiException if fails to make API call
    */
-  public ApiResponse<Void> postItemRelationshipsRef(String projectId, String itemId, CreateRef body, Authentication auth, ThreeLeggedCredentials credentials) throws ApiException {
+  public ApiResponse<Void> postItemRelationshipsRef(String projectId, String itemId, CreateRef body,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = body;
     
@@ -462,6 +454,6 @@ public class ItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(auth, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
 }

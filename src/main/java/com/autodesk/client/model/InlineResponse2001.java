@@ -25,18 +25,18 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
  * InlineResponse2001
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class InlineResponse2001   {
   @JsonProperty("items")
   private List<ObjectDetails> items = new ArrayList<ObjectDetails>();
@@ -82,7 +82,7 @@ public class InlineResponse2001   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -103,7 +103,7 @@ public class InlineResponse2001   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2001 {\n");
-    
+
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    next: ").append(toIndentedString(next)).append("\n");
     sb.append("}");
@@ -114,7 +114,7 @@ public class InlineResponse2001   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

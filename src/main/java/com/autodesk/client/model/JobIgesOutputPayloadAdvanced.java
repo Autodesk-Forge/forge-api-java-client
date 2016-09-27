@@ -25,17 +25,18 @@
 
 package com.autodesk.client.model;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 
 /**
  * Advanced options for &#x60;iges&#x60; type.
  */
 @ApiModel(description = "Advanced options for `iges` type.")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.ADSKJavaClientCodegen", date = "2016-09-25T18:48:45.159+03:00")
+
 public class JobIgesOutputPayloadAdvanced   {
   @JsonProperty("tolerance")
   private Float tolerance = 0.001f;
@@ -191,7 +192,7 @@ public class JobIgesOutputPayloadAdvanced   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -214,7 +215,7 @@ public class JobIgesOutputPayloadAdvanced   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobIgesOutputPayloadAdvanced {\n");
-    
+
     sb.append("    tolerance: ").append(toIndentedString(tolerance)).append("\n");
     sb.append("    surfaceType: ").append(toIndentedString(surfaceType)).append("\n");
     sb.append("    sheetType: ").append(toIndentedString(sheetType)).append("\n");
@@ -227,7 +228,7 @@ public class JobIgesOutputPayloadAdvanced   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }
