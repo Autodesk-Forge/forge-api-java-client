@@ -11,16 +11,16 @@ including <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" ta
 
 ### Installation
 
-1. Generate the JAR:
+1) Generate the JAR:
 
 ```shell
 mvn package
 ```
 
-2. Manually install the following JARs:
+2) Manually install the following JARs:
 
-    * target/com-autodesk-client-1.0.0.jar
-    * target/lib/*.jar
+* target/com-autodesk-client-1.0.0.jar
+* target/lib/*.jar
 
 ## Tutorial
 Follow this tutorial to see a step-by-step authentication guide, and examples of how to use the Forge APIs.
