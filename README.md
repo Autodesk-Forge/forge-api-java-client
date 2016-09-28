@@ -12,15 +12,15 @@ including <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" ta
 ### Installation
 1) Download the *forge-java-client* repository.
 
-2) Generate the JARs by running the following command in the downloded SDK root folder:
+2) Navigate to the *forge-java-client* folder. 
+
+3) Generate the JARs by running the following command:
 
 ```shell
 mvn package
 ```
 
-3) In order to use the SDK in your project, manually install the JARs you created in the previous step.
-   
-   &nbsp;&nbsp;&nbsp;&nbsp;You can find the JARs here:
+4) In order to use the SDK, manually install all the JARs you created in the previous step. The JARs are located in the following JAR folders:
 
 * target/com-autodesk-client-1.0.0.jar
 * target/lib/*.jar
