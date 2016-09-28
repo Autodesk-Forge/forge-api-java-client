@@ -122,12 +122,12 @@ public class ForgeApiExample {
             HubsApi hubsApi = new HubsApi();
 
             // Get the buckets owned by an application.
-            // Use the twoLeggedCredentials that you retrieved previously.
+            // Use the twoLeggedCredentials object that you retrieved previously.
             ApiResponse<InlineResponse200> bucketsApiResponse = bucketsApi.getBuckets(null, null, null, twoLeggedCredentials);
             System.out.println(bucketsApiResponse.getData());
             
             // Get the hubs that are accessible for a member.
-            // Use the threeLeggedCredentials that you retrieved previously.
+            // Use the threeLeggedCredentials object that you retrieved previously.
             ApiResponse<Object> hubsApiResponse = hubsApi.getHubs(null, null, threeLeggedCredentials);
             System.out.println(hubsApiResponse.getData());
             
