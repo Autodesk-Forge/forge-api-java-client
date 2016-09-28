@@ -20,7 +20,7 @@ including <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" ta
 mvn package
 ```
 
-4) In order to use the SDK, manually install all the JARs you created in the previous step. The JARs are located in the following JAR folders:
+4) In order to use the SDK, manually install the following JARs you generated in the previous step:
 
 * target/com-autodesk-client-1.0.0.jar
 * target/lib/*.jar
