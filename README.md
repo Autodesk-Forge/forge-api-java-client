@@ -20,7 +20,7 @@ mvn package
 
 3) In order to use the SDK in your project, manually install the JARs you created in the previous step.
    
-   You can find the JARs here:
+     You can find the JARs here:
 
 * target/com-autodesk-client-1.0.0.jar
 * target/lib/*.jar
