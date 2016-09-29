@@ -10,20 +10,8 @@ including <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" ta
 * [Apache Maven](https://maven.apache.org/).
 
 ### Installation
-1) Download the *forge-api-java-client* repository.
 
-2) Navigate to the *forge-api-java-client* folder. 
-
-3) Generate the JARs by running the following command:
-
-```shell
-mvn package
-```
-
-4) In order to use the SDK, manually install the following JARs you generated in the previous step:
-
-* target/com-autodesk-client-1.0.0.jar
-* target/lib/*.jar
+Manually install all the JARs from the <a href="https://github.com/Autodesk-Forge/forge-api-java-client-jars" target="_blank">*forge-api-java-client-jars*</a> repo.
 
 ## Tutorial
 Follow this tutorial to see a step-by-step authentication guide, and examples of how to use the Forge APIs.
