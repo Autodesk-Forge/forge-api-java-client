@@ -10,9 +10,9 @@ including <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" ta
 * [Apache Maven](https://maven.apache.org/).
 
 ### Installation
-1) Download the *forge-java-client* repository.
+1) Download the *forge-api-java-client* repository.
 
-2) Navigate to the *forge-java-client* folder. 
+2) Navigate to the *forge-api-java-client* folder. 
 
 3) Generate the JARs by running the following command:
 
