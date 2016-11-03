@@ -25,17 +25,18 @@
 
 package com.autodesk.client.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
- * InlineResponse200Items
+ * BucketsItems
  */
 
-public class InlineResponse200Items   {
+public class BucketsItems   {
   @JsonProperty("bucketKey")
   private String bucketKey = null;
 
@@ -67,7 +68,7 @@ public class InlineResponse200Items   {
   @JsonProperty("policyKey")
   private PolicyKeyEnum policyKey = null;
 
-  public InlineResponse200Items bucketKey(String bucketKey) {
+  public BucketsItems bucketKey(String bucketKey) {
     this.bucketKey = bucketKey;
     return this;
   }
@@ -85,7 +86,7 @@ public class InlineResponse200Items   {
     this.bucketKey = bucketKey;
   }
 
-  public InlineResponse200Items createdDate(Long createdDate) {
+  public BucketsItems createdDate(Long createdDate) {
     this.createdDate = createdDate;
     return this;
   }
@@ -103,7 +104,7 @@ public class InlineResponse200Items   {
     this.createdDate = createdDate;
   }
 
-  public InlineResponse200Items policyKey(PolicyKeyEnum policyKey) {
+  public BucketsItems policyKey(PolicyKeyEnum policyKey) {
     this.policyKey = policyKey;
     return this;
   }
@@ -123,17 +124,17 @@ public class InlineResponse200Items   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse200Items inlineResponse200Items = (InlineResponse200Items) o;
-    return Objects.equals(this.bucketKey, inlineResponse200Items.bucketKey) &&
-        Objects.equals(this.createdDate, inlineResponse200Items.createdDate) &&
-        Objects.equals(this.policyKey, inlineResponse200Items.policyKey);
+    BucketsItems bucketsItems = (BucketsItems) o;
+    return Objects.equals(this.bucketKey, bucketsItems.bucketKey) &&
+        Objects.equals(this.createdDate, bucketsItems.createdDate) &&
+        Objects.equals(this.policyKey, bucketsItems.policyKey);
   }
 
   @Override
@@ -144,8 +145,8 @@ public class InlineResponse200Items   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse200Items {\n");
-
+    sb.append("class BucketsItems {\n");
+    
     sb.append("    bucketKey: ").append(toIndentedString(bucketKey)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    policyKey: ").append(toIndentedString(policyKey)).append("\n");
@@ -157,7 +158,7 @@ public class InlineResponse200Items   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

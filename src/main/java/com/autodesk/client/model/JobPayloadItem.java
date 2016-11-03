@@ -25,9 +25,16 @@
 
 package com.autodesk.client.model;
 
-import io.swagger.annotations.ApiModel;
-
 import java.util.Objects;
+import com.autodesk.client.model.JobIgesOutputPayload;
+import com.autodesk.client.model.JobObjOutputPayload;
+import com.autodesk.client.model.JobObjOutputPayloadAdvanced;
+import com.autodesk.client.model.JobStepOutputPayload;
+import com.autodesk.client.model.JobStlOutputPayload;
+import com.autodesk.client.model.JobSvfOutputPayload;
+import com.autodesk.client.model.JobThumbnailOutputPayload;
+import io.swagger.annotations.ApiModel;
+import java.util.List;
 
 
 /**
@@ -38,7 +45,7 @@ import java.util.Objects;
 public class JobPayloadItem   {
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -57,7 +64,7 @@ public class JobPayloadItem   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobPayloadItem {\n");
-
+    
     sb.append("}");
     return sb.toString();
   }
@@ -66,7 +73,7 @@ public class JobPayloadItem   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

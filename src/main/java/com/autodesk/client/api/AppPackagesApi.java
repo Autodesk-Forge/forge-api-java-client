@@ -24,13 +24,24 @@
 
 package com.autodesk.client.api;
 
-import com.autodesk.client.*;
+import com.sun.jersey.api.client.GenericType;
+
+import com.autodesk.client.ApiException;
+import com.autodesk.client.ApiClient;
+import com.autodesk.client.Configuration;
+import com.autodesk.client.model.*;
+import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.ApiResponse;
+
+import java.io.File;
+
 import com.autodesk.client.model.AppPackage;
 import com.autodesk.client.model.AppPackageOptional;
 import com.autodesk.client.model.AppPackageVersion;
-import com.sun.jersey.api.client.GenericType;
 
+
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,17 +72,17 @@ public class AppPackagesApi {
    * 
    * @param appPackage  (required)
    * @return AppPackage
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> createAppPackage(AppPackage appPackage,  Credentials credentials) throws ApiException {
+  public ApiResponse<AppPackage> createAppPackage(AppPackage appPackage,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = appPackage;
-
+    
     // verify the required parameter 'appPackage' is set
     if (appPackage == null) {
       throw new ApiException(400, "Missing the required parameter 'appPackage' when calling createAppPackage");
     }
-
+    
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/AppPackages".replaceAll("\\{format\\}","json");
 
@@ -81,8 +92,8 @@ public class AppPackagesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -93,24 +104,24 @@ public class AppPackagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<AppPackage> localVarReturnType = new GenericType<AppPackage>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Removes a specific AppPackage.
-   *
+   * 
    * @param id  (required)
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> deleteAppPackage(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling deleteAppPackage");
     }
-
+    
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -121,8 +132,8 @@ public class AppPackagesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -138,19 +149,19 @@ public class AppPackagesApi {
   }
   /**
    * Removes the version history of the specified AppPackage.
-   *
+   * 
    * @param id  (required)
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> deleteAppPackageHistory(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling deleteAppPackageHistory");
     }
-
+    
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')/Operations.DeleteHistory".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -161,8 +172,8 @@ public class AppPackagesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -178,14 +189,14 @@ public class AppPackagesApi {
   }
   /**
    * Returns the details of all AppPackages.
-   *
+   * 
    * @return List<AppPackage>
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getAllAppPackages( Credentials credentials) throws ApiException {
+  public ApiResponse<List<AppPackage>> getAllAppPackages( Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/AppPackages".replaceAll("\\{format\\}","json");
 
@@ -195,8 +206,8 @@ public class AppPackagesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -207,25 +218,25 @@ public class AppPackagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<List<AppPackage>> localVarReturnType = new GenericType<List<AppPackage>>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns the details of a specific AppPackage.
-   *
+   * 
    * @param id  (required)
    * @return AppPackage
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getAppPackage(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<AppPackage> getAppPackage(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling getAppPackage");
     }
-
+    
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -236,8 +247,8 @@ public class AppPackagesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -248,25 +259,25 @@ public class AppPackagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<AppPackage> localVarReturnType = new GenericType<AppPackage>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns all old versions of a specified AppPackage.
-   *
+   * 
    * @param id  (required)
    * @return List<AppPackage>
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getAppPackageVersions(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<List<AppPackage>> getAppPackageVersions(String id,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling getAppPackageVersions");
     }
-
+    
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')/Operations.GetVersions".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -277,8 +288,8 @@ public class AppPackagesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -289,18 +300,18 @@ public class AppPackagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<List<AppPackage>> localVarReturnType = new GenericType<List<AppPackage>>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage.
-   *
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * 
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> getUploadUrl( Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/AppPackages/Operations.GetUploadUrl".replaceAll("\\{format\\}","json");
 
@@ -310,8 +321,8 @@ public class AppPackagesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -327,19 +338,19 @@ public class AppPackagesApi {
   }
   /**
    * Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type&#x3D;binary/octet-stream.
-   *
+   * 
    * @param require  (required)
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> getUploadUrlWithRequireContentType(Boolean require,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'require' is set
     if (require == null) {
       throw new ApiException(400, "Missing the required parameter 'require' when calling getUploadUrlWithRequireContentType");
     }
-
+    
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/AppPackage/Operations.GetUploadUrl(RequireContentType={require})".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "require" + "\\}", apiClient.escapeString(require.toString()));
@@ -350,8 +361,8 @@ public class AppPackagesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -367,25 +378,25 @@ public class AppPackagesApi {
   }
   /**
    * Updates an AppPackage by specifying only the changed attributes.
-   *
+   * 
    * @param id  (required)
    * @param appPackage  (required)
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> patchAppPackage(String id, AppPackageOptional appPackage,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = appPackage;
-
+    
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling patchAppPackage");
     }
-
+    
     // verify the required parameter 'appPackage' is set
     if (appPackage == null) {
       throw new ApiException(400, "Missing the required parameter 'appPackage' when calling patchAppPackage");
     }
-
+    
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -396,8 +407,8 @@ public class AppPackagesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -413,25 +424,25 @@ public class AppPackagesApi {
   }
   /**
    * Sets the AppPackage to the specified version.
-   *
+   * 
    * @param id  (required)
    * @param appPackageVersion  (required)
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> setAppPackageVersion(String id, AppPackageVersion appPackageVersion,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = appPackageVersion;
-
+    
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling setAppPackageVersion");
     }
-
+    
     // verify the required parameter 'appPackageVersion' is set
     if (appPackageVersion == null) {
       throw new ApiException(400, "Missing the required parameter 'appPackageVersion' when calling setAppPackageVersion");
     }
-
+    
     // create path and map variables
     String localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')/Operations.SetVersion".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -442,8 +453,8 @@ public class AppPackagesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -459,10 +470,10 @@ public class AppPackagesApi {
   }
   /**
    * Updates an AppPackage by redefining the entire Activity object.
-   *
+   * 
    * @param id  (required)
    * @param appPackage  (required)
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> updateAppPackage(String id, AppPackage appPackage,  Credentials credentials) throws ApiException {
 

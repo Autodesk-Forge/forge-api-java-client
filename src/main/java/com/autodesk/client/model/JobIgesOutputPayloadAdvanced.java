@@ -25,11 +25,11 @@
 
 package com.autodesk.client.model;
 
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Objects;
 
 
 /**
@@ -192,7 +192,7 @@ public class JobIgesOutputPayloadAdvanced   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -215,7 +215,7 @@ public class JobIgesOutputPayloadAdvanced   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobIgesOutputPayloadAdvanced {\n");
-
+    
     sb.append("    tolerance: ").append(toIndentedString(tolerance)).append("\n");
     sb.append("    surfaceType: ").append(toIndentedString(surfaceType)).append("\n");
     sb.append("    sheetType: ").append(toIndentedString(sheetType)).append("\n");
@@ -228,7 +228,7 @@ public class JobIgesOutputPayloadAdvanced   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

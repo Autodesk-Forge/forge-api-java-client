@@ -25,151 +25,66 @@
 
 package com.autodesk.client.model;
 
+import java.util.Objects;
+import com.autodesk.client.model.BucketsItems;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 /**
- * Bucket json response
+ * Buckets
  */
-@ApiModel(description = "Bucket json response")
 
 public class Buckets   {
-  @JsonProperty("bucketKey")
-  private String bucketKey = null;
+  @JsonProperty("items")
+  private List<BucketsItems> items = new ArrayList<BucketsItems>();
 
-  @JsonProperty("bucketOwner")
-  private String bucketOwner = null;
+  @JsonProperty("next")
+  private String next = null;
 
-  @JsonProperty("createdDate")
-  private Long createdDate = null;
-
-  @JsonProperty("permissions")
-  private List<BucketsPermissions> permissions = new ArrayList<BucketsPermissions>();
-
-  /**
-   * [Data retention policy](https://developer.autodesk.com/en/docs/data/v2/overview/retention-policy/)  Acceptable values: `transient`, `temporary` or `persistent` 
-   */
-  public enum PolicyKeyEnum {
-    TRANSIENT("transient"),
-    
-    TEMPORARY("temporary"),
-    
-    PERSISTENT("persistent");
-
-    private String value;
-
-    PolicyKeyEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-  }
-
-  @JsonProperty("policyKey")
-  private PolicyKeyEnum policyKey = null;
-
-  public Buckets bucketKey(String bucketKey) {
-    this.bucketKey = bucketKey;
+  public Buckets items(List<BucketsItems> items) {
+    this.items = items;
     return this;
   }
 
    /**
-   * The key for the created bucket
-   * @return bucketKey
+   * Array of items representing the buckets
+   * @return items
   **/
-  @ApiModelProperty(example = "null", required = true, value = "The key for the created bucket")
-  public String getBucketKey() {
-    return bucketKey;
+  @ApiModelProperty(example = "null", required = true, value = "Array of items representing the buckets")
+  public List<BucketsItems> getItems() {
+    return items;
   }
 
-  public void setBucketKey(String bucketKey) {
-    this.bucketKey = bucketKey;
+  public void setItems(List<BucketsItems> items) {
+    this.items = items;
   }
 
-  public Buckets bucketOwner(String bucketOwner) {
-    this.bucketOwner = bucketOwner;
+  public Buckets next(String next) {
+    this.next = next;
     return this;
   }
 
    /**
-   * Owner of the bucket
-   * @return bucketOwner
+   * Next possible request
+   * @return next
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Owner of the bucket")
-  public String getBucketOwner() {
-    return bucketOwner;
+  @ApiModelProperty(example = "null", required = true, value = "Next possible request")
+  public String getNext() {
+    return next;
   }
 
-  public void setBucketOwner(String bucketOwner) {
-    this.bucketOwner = bucketOwner;
-  }
-
-  public Buckets createdDate(Long createdDate) {
-    this.createdDate = createdDate;
-    return this;
-  }
-
-   /**
-   * Timestamp in epoch time
-   * @return createdDate
-  **/
-  @ApiModelProperty(example = "null", required = true, value = "Timestamp in epoch time")
-  public Long getCreatedDate() {
-    return createdDate;
-  }
-
-  public void setCreatedDate(Long createdDate) {
-    this.createdDate = createdDate;
-  }
-
-  public Buckets permissions(List<BucketsPermissions> permissions) {
-    this.permissions = permissions;
-    return this;
-  }
-
-   /**
-   * Array of objects representing the applications with access granted at bucket creation
-   * @return permissions
-  **/
-  @ApiModelProperty(example = "null", required = true, value = "Array of objects representing the applications with access granted at bucket creation")
-  public List<BucketsPermissions> getPermissions() {
-    return permissions;
-  }
-
-  public void setPermissions(List<BucketsPermissions> permissions) {
-    this.permissions = permissions;
-  }
-
-  public Buckets policyKey(PolicyKeyEnum policyKey) {
-    this.policyKey = policyKey;
-    return this;
-  }
-
-   /**
-   * [Data retention policy](https://developer.autodesk.com/en/docs/data/v2/overview/retention-policy/)  Acceptable values: `transient`, `temporary` or `persistent` 
-   * @return policyKey
-  **/
-  @ApiModelProperty(example = "null", required = true, value = "[Data retention policy](https://developer.autodesk.com/en/docs/data/v2/overview/retention-policy/)  Acceptable values: `transient`, `temporary` or `persistent` ")
-  public PolicyKeyEnum getPolicyKey() {
-    return policyKey;
-  }
-
-  public void setPolicyKey(PolicyKeyEnum policyKey) {
-    this.policyKey = policyKey;
+  public void setNext(String next) {
+    this.next = next;
   }
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -177,28 +92,22 @@ public class Buckets   {
       return false;
     }
     Buckets buckets = (Buckets) o;
-    return Objects.equals(this.bucketKey, buckets.bucketKey) &&
-        Objects.equals(this.bucketOwner, buckets.bucketOwner) &&
-        Objects.equals(this.createdDate, buckets.createdDate) &&
-        Objects.equals(this.permissions, buckets.permissions) &&
-        Objects.equals(this.policyKey, buckets.policyKey);
+    return Objects.equals(this.items, buckets.items) &&
+        Objects.equals(this.next, buckets.next);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bucketKey, bucketOwner, createdDate, permissions, policyKey);
+    return Objects.hash(items, next);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Buckets {\n");
-
-    sb.append("    bucketKey: ").append(toIndentedString(bucketKey)).append("\n");
-    sb.append("    bucketOwner: ").append(toIndentedString(bucketOwner)).append("\n");
-    sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    policyKey: ").append(toIndentedString(policyKey)).append("\n");
+    
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    next: ").append(toIndentedString(next)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -207,7 +116,7 @@ public class Buckets   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

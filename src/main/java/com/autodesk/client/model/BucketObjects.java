@@ -25,44 +25,46 @@
 
 package com.autodesk.client.model;
 
+import java.util.Objects;
+import com.autodesk.client.model.ObjectDetails;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 /**
- * InlineResponse200
+ * BucketObjects
  */
 
-public class InlineResponse200   {
+public class BucketObjects   {
   @JsonProperty("items")
-  private List<InlineResponse200Items> items = new ArrayList<InlineResponse200Items>();
+  private List<ObjectDetails> items = new ArrayList<ObjectDetails>();
 
   @JsonProperty("next")
   private String next = null;
 
-  public InlineResponse200 items(List<InlineResponse200Items> items) {
+  public BucketObjects items(List<ObjectDetails> items) {
     this.items = items;
     return this;
   }
 
    /**
-   * Array of items representing the buckets
+   * Get items
    * @return items
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Array of items representing the buckets")
-  public List<InlineResponse200Items> getItems() {
+  @ApiModelProperty(example = "null", value = "")
+  public List<ObjectDetails> getItems() {
     return items;
   }
 
-  public void setItems(List<InlineResponse200Items> items) {
+  public void setItems(List<ObjectDetails> items) {
     this.items = items;
   }
 
-  public InlineResponse200 next(String next) {
+  public BucketObjects next(String next) {
     this.next = next;
     return this;
   }
@@ -71,7 +73,7 @@ public class InlineResponse200   {
    * Next possible request
    * @return next
   **/
-  @ApiModelProperty(example = "null", required = true, value = "Next possible request")
+  @ApiModelProperty(example = "null", value = "Next possible request")
   public String getNext() {
     return next;
   }
@@ -82,16 +84,16 @@ public class InlineResponse200   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse200 inlineResponse200 = (InlineResponse200) o;
-    return Objects.equals(this.items, inlineResponse200.items) &&
-        Objects.equals(this.next, inlineResponse200.next);
+    BucketObjects bucketObjects = (BucketObjects) o;
+    return Objects.equals(this.items, bucketObjects.items) &&
+        Objects.equals(this.next, bucketObjects.next);
   }
 
   @Override
@@ -102,8 +104,8 @@ public class InlineResponse200   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse200 {\n");
-
+    sb.append("class BucketObjects {\n");
+    
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    next: ").append(toIndentedString(next)).append("\n");
     sb.append("}");
@@ -114,7 +116,7 @@ public class InlineResponse200   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

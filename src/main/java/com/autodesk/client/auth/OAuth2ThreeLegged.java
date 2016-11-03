@@ -25,8 +25,8 @@
 
 package com.autodesk.client.auth;
 import com.autodesk.client.ApiException;
-import com.autodesk.client.Configuration;
 import com.autodesk.client.Pair;
+import com.autodesk.client.Configuration;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -120,7 +120,7 @@ public class OAuth2ThreeLegged implements Authentication {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.selectedScopes = selectedScopes;
-
+    
         this.name = "oauth2_access_code";
         this.type = "oauth2";
         this.tokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/gettoken";
@@ -138,7 +138,7 @@ public class OAuth2ThreeLegged implements Authentication {
         this.scopes.add("account:read");
         this.scopes.add("account:write");
         this.scopes.add("user-profile:read");
-
+    
         if(this.selectedScopes == null) this.selectedScopes = this.scopes;
     }
 

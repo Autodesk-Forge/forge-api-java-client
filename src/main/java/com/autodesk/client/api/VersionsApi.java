@@ -24,12 +24,23 @@
 
 package com.autodesk.client.api;
 
-import com.autodesk.client.*;
-import com.autodesk.client.auth.Credentials;
-import com.autodesk.client.model.CreateRef;
-import com.autodesk.client.model.JsonApiCollection;
 import com.sun.jersey.api.client.GenericType;
 
+import com.autodesk.client.ApiException;
+import com.autodesk.client.ApiClient;
+import com.autodesk.client.Configuration;
+import com.autodesk.client.model.*;
+import com.autodesk.client.Pair;
+import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.ApiResponse;
+
+import java.io.File;
+
+import com.autodesk.client.model.JsonApiCollection;
+import com.autodesk.client.model.CreateRef;
+
+
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,22 +72,22 @@ public class VersionsApi {
    * @param projectId the &#x60;project id&#x60; (required)
    * @param versionId the &#x60;version id&#x60; (required)
    * @return Object
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Object> getVersion(String projectId, String versionId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getVersion");
     }
-
+    
     // verify the required parameter 'versionId' is set
     if (versionId == null) {
       throw new ApiException(400, "Missing the required parameter 'versionId' when calling getVersion");
     }
-
+    
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/versions/{version_id}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -88,8 +99,8 @@ public class VersionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -104,27 +115,27 @@ public class VersionsApi {
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
-   * Returns the item the given version is associated with.
+   * 
+   * Returns the item the given version is associated with. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param versionId the &#x60;version id&#x60; (required)
    * @return Object
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Object> getVersionItem(String projectId, String versionId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getVersionItem");
     }
-
+    
     // verify the required parameter 'versionId' is set
     if (versionId == null) {
       throw new ApiException(400, "Missing the required parameter 'versionId' when calling getVersionItem");
     }
-
+    
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/versions/{version_id}/item".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -136,8 +147,8 @@ public class VersionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -152,30 +163,30 @@ public class VersionsApi {
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
-   * Returns the resources (&#x60;items&#x60;, &#x60;folders&#x60;, and &#x60;versions&#x60;) which have a custom relationship with the given &#x60;version_id&#x60;. Custom relationships can be established between a version of an item and other resources within the &#39;data&#39; domain service (folders, items, and versions).
+   * 
+   * Returns the resources (&#x60;items&#x60;, &#x60;folders&#x60;, and &#x60;versions&#x60;) which have a custom relationship with the given &#x60;version_id&#x60;. Custom relationships can be established between a version of an item and other resources within the &#39;data&#39; domain service (folders, items, and versions). 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param versionId the &#x60;version id&#x60; (required)
    * @param filterType filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)
    * @param filterId filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)
    * @param filterExtensionType filter by the extension type (optional)
    * @return JsonApiCollection
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<JsonApiCollection> getVersionRefs(String projectId, String versionId, List<String> filterType, List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getVersionRefs");
     }
-
+    
     // verify the required parameter 'versionId' is set
     if (versionId == null) {
       throw new ApiException(400, "Missing the required parameter 'versionId' when calling getVersionRefs");
     }
-
+    
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/versions/{version_id}/refs".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -190,8 +201,8 @@ public class VersionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -206,8 +217,8 @@ public class VersionsApi {
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
-   * Returns the custom relationships that are associated to the given &#x60;version_id&#x60;. Custom relationships can be established between a version of an item and other resources within the &#39;data&#39; domain service (folders, items, and versions).
+   * 
+   * Returns the custom relationships that are associated to the given &#x60;version_id&#x60;. Custom relationships can be established between a version of an item and other resources within the &#39;data&#39; domain service (folders, items, and versions). 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param versionId the &#x60;version id&#x60; (required)
    * @param filterType filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)
@@ -216,22 +227,22 @@ public class VersionsApi {
    * @param filterDirection filter by the direction of the reference (optional)
    * @param filterExtensionType filter by the extension type (optional)
    * @return Object
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Object> getVersionRelationshipsRefs(String projectId, String versionId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'projectId' is set
     if (projectId == null) {
       throw new ApiException(400, "Missing the required parameter 'projectId' when calling getVersionRelationshipsRefs");
     }
-
+    
     // verify the required parameter 'versionId' is set
     if (versionId == null) {
       throw new ApiException(400, "Missing the required parameter 'versionId' when calling getVersionRelationshipsRefs");
     }
-
+    
     // create path and map variables
     String localVarPath = "/data/v1/projects/{project_id}/versions/{version_id}/relationships/refs".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
@@ -248,8 +259,8 @@ public class VersionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[direction]", filterDirection));
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -264,12 +275,12 @@ public class VersionsApi {
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
-   * Creates a custom relationship between a version and another resource within the &#39;data&#39; domain service (folder, item, or version).
+   * 
+   * Creates a custom relationship between a version and another resource within the &#39;data&#39; domain service (folder, item, or version). 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param versionId the &#x60;version id&#x60; (required)
    * @param body describe the ref to be created (required)
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> postVersionRelationshipsRef(String projectId, String versionId, CreateRef body,  Credentials credentials) throws ApiException {
 

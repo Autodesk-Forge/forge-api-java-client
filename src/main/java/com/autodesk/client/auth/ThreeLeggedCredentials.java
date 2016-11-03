@@ -25,7 +25,7 @@
 
 package com.autodesk.client.auth;
 
-public class ThreeLeggedCredentials extends Credentials {
+public class ThreeLeggedCredentials extends Credentials{
 
     private String refreshToken;
 

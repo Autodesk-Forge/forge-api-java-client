@@ -27,8 +27,8 @@ package com.autodesk.client.auth;
 
 import com.autodesk.client.Pair;
 
-import java.util.List;
 import java.util.Map;
+import java.util.List;
 
 public interface Authentication {
     /**

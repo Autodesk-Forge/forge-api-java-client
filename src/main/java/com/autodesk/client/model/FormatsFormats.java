@@ -25,12 +25,13 @@
 
 package com.autodesk.client.model;
 
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 /**
@@ -166,7 +167,7 @@ public class FormatsFormats   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -191,7 +192,7 @@ public class FormatsFormats   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FormatsFormats {\n");
-
+    
     sb.append("    svf: ").append(toIndentedString(svf)).append("\n");
     sb.append("    thumbnail: ").append(toIndentedString(thumbnail)).append("\n");
     sb.append("    stl: ").append(toIndentedString(stl)).append("\n");
@@ -206,7 +207,7 @@ public class FormatsFormats   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

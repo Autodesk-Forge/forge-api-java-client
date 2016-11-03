@@ -24,12 +24,34 @@
 
 package com.autodesk.client.api;
 
-import com.autodesk.client.*;
-import com.autodesk.client.auth.Credentials;
-import com.autodesk.client.model.*;
 import com.sun.jersey.api.client.GenericType;
 
-import java.util.*;
+import com.autodesk.client.ApiException;
+import com.autodesk.client.ApiClient;
+import com.autodesk.client.Configuration;
+import com.autodesk.client.model.*;
+import com.autodesk.client.Pair;
+import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.ApiResponse;
+
+import java.io.File;
+
+import com.autodesk.client.model.ObjectDetails;
+import com.autodesk.client.model.PostObjectSigned;
+import com.autodesk.client.model.PostBucketsSigned;
+import com.autodesk.client.model.InputStream;
+import java.util.Date;
+import com.autodesk.client.model.ObjectFullDetails;
+import com.autodesk.client.model.BucketObjects;
+import com.autodesk.client.model.Reason;
+import com.autodesk.client.model.Result;
+
+
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class ObjectsApi {
@@ -58,27 +80,27 @@ public class ObjectsApi {
    * @param objectName URL-encoded object name (required)
    * @param newObjName URL-encoded Object key to use as the destination (required)
    * @return ObjectDetails
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<ObjectDetails> copyTo(String bucketKey, String objectName, String newObjName,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling copyTo");
     }
-
+    
     // verify the required parameter 'objectName' is set
     if (objectName == null) {
       throw new ApiException(400, "Missing the required parameter 'objectName' when calling copyTo");
     }
-
+    
     // verify the required parameter 'newObjName' is set
     if (newObjName == null) {
       throw new ApiException(400, "Missing the required parameter 'newObjName' when calling copyTo");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}/copyTo/{newObjName}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
@@ -91,8 +113,8 @@ public class ObjectsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -107,34 +129,34 @@ public class ObjectsApi {
     return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
+   * 
    * This endpoint creates a signed URL that can be used to download an object within the specified expiration time. Be aware that if the object the signed URL points to is deleted or expires before the signed URL expires, then the signed URL will no longer be valid. A successful call to this endpoint requires bucket owner access.
    * @param bucketKey URL-encoded bucket key (required)
    * @param objectName URL-encoded object name (required)
    * @param postBucketsSigned Body Structure (required)
    * @param access Access for signed resource Acceptable values: &#x60;read&#x60;, &#x60;write&#x60;, &#x60;readwrite&#x60;. Default value: &#x60;read&#x60;  (optional, default to read)
    * @return PostObjectSigned
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<PostObjectSigned> createSignedResource(String bucketKey, String objectName, PostBucketsSigned postBucketsSigned, String access,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = postBucketsSigned;
-
+    
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling createSignedResource");
     }
-
+    
     // verify the required parameter 'objectName' is set
     if (objectName == null) {
       throw new ApiException(400, "Missing the required parameter 'objectName' when calling createSignedResource");
     }
-
+    
     // verify the required parameter 'postBucketsSigned' is set
     if (postBucketsSigned == null) {
       throw new ApiException(400, "Missing the required parameter 'postBucketsSigned' when calling createSignedResource");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}/signed".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
@@ -149,7 +171,7 @@ public class ObjectsApi {
     if (access != null)
       localVarHeaderParams.put("access", apiClient.parameterToString(access));
 
-
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -164,26 +186,26 @@ public class ObjectsApi {
     return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
+   * 
    * Deletes an object from the bucket.
    * @param bucketKey URL-encoded bucket key (required)
    * @param objectName URL-encoded object name (required)
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> deleteObject(String bucketKey, String objectName,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling deleteObject");
     }
-
+    
     // verify the required parameter 'objectName' is set
     if (objectName == null) {
       throw new ApiException(400, "Missing the required parameter 'objectName' when calling deleteObject");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
@@ -195,10 +217,10 @@ public class ObjectsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
-
+      
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
@@ -211,22 +233,22 @@ public class ObjectsApi {
     return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
-   *
+   * 
    * Delete a signed URL. A successful call to this endpoint requires bucket owner access.
    * @param id Id of signed resource (required)
    * @param region The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)
    * @return InputStream
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<InputStream> deleteSignedResource(String id, String region,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling deleteSignedResource");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/signedresources/{id}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -238,8 +260,8 @@ public class ObjectsApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "region", region));
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "text/plain"
     };
@@ -254,7 +276,7 @@ public class ObjectsApi {
     return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
+   * 
    * Download an object.
    * @param bucketKey URL-encoded bucket key (required)
    * @param objectName URL-encoded object name (required)
@@ -263,22 +285,22 @@ public class ObjectsApi {
    * @param ifModifiedSince If the requested object has not been modified since the time specified in this field, an entity will not be returned from the server; instead, a 304 (not modified) response will be returned without any message body.  (optional)
    * @param acceptEncoding When gzip is specified, a gzip compressed stream of the object’s bytes will be returned in the response. Cannot use “Accept-Encoding:gzip” with Range header containing an end byte range. End byte range will not be honored if “Accept-Encoding: gzip” header is used.  (optional)
    * @return InputStream
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<InputStream> getObject(String bucketKey, String objectName, String range, String ifNoneMatch, Date ifModifiedSince, String acceptEncoding,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling getObject");
     }
-
+    
     // verify the required parameter 'objectName' is set
     if (objectName == null) {
       throw new ApiException(400, "Missing the required parameter 'objectName' when calling getObject");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
@@ -299,7 +321,7 @@ if (ifModifiedSince != null)
 if (acceptEncoding != null)
       localVarHeaderParams.put("Accept-Encoding", apiClient.parameterToString(acceptEncoding));
 
-
+    
     final String[] localVarAccepts = {
       "application/octet-stream"
     };
@@ -314,29 +336,29 @@ if (acceptEncoding != null)
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
+   * 
    * Returns object details in JSON format.
    * @param bucketKey URL-encoded bucket key (required)
    * @param objectName URL-encoded object name (required)
    * @param ifModifiedSince If the requested object has not been modified since the time specified in this field, an entity will not be returned from the server; instead, a 304 (not modified) response will be returned without any message body.  (optional)
    * @param with Extra information in details; multiple uses are supported Acceptable values: &#x60;createdDate&#x60;, &#x60;lastAccessedDate&#x60;, &#x60;lastModifiedDate&#x60;  (optional)
    * @return ObjectFullDetails
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<ObjectFullDetails> getObjectDetails(String bucketKey, String objectName, Date ifModifiedSince, String with,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling getObjectDetails");
     }
-
+    
     // verify the required parameter 'objectName' is set
     if (objectName == null) {
       throw new ApiException(400, "Missing the required parameter 'objectName' when calling getObjectDetails");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}/details".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
@@ -352,7 +374,7 @@ if (acceptEncoding != null)
     if (ifModifiedSince != null)
       localVarHeaderParams.put("If-Modified-Since", apiClient.parameterToString(ifModifiedSince));
 
-
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -367,24 +389,24 @@ if (acceptEncoding != null)
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
+   * 
    * List objects in a bucket. It is only available to the bucket creator.
    * @param bucketKey URL-encoded bucket key (required)
    * @param limit Limit to the response size, Acceptable values: 1-100 Default &#x3D; 10  (optional, default to 10)
    * @param beginsWith Provides a way to filter the based on object key name (optional)
    * @param startAt Key to use as an offset to continue pagination This is typically the last bucket key found in a preceding GET buckets response  (optional)
-   * @return InlineResponse2001
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @return BucketObjects
+   * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InlineResponse2001> getObjects(String bucketKey, Integer limit, String beginsWith, String startAt,  Credentials credentials) throws ApiException {
+  public ApiResponse<BucketObjects> getObjects(String bucketKey, Integer limit, String beginsWith, String startAt,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling getObjects");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}/objects".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()));
@@ -398,8 +420,8 @@ if (acceptEncoding != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "beginsWith", beginsWith));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "startAt", startAt));
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -410,37 +432,37 @@ if (acceptEncoding != null)
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<InlineResponse2001> localVarReturnType = new GenericType<InlineResponse2001>() {};
+    GenericType<BucketObjects> localVarReturnType = new GenericType<BucketObjects>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
+   * 
    * This endpoint returns status information about a resumable upload.
    * @param bucketKey URL-encoded bucket key (required)
    * @param objectName URL-encoded object name (required)
    * @param sessionId Unique identifier of a session of a file being uploaded (required)
    * @return Result
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Result> getSessionid(String bucketKey, String objectName, String sessionId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling getSessionid");
     }
-
+    
     // verify the required parameter 'objectName' is set
     if (objectName == null) {
       throw new ApiException(400, "Missing the required parameter 'objectName' when calling getSessionid");
     }
-
+    
     // verify the required parameter 'sessionId' is set
     if (sessionId == null) {
       throw new ApiException(400, "Missing the required parameter 'sessionId' when calling getSessionid");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}/status/{sessionId}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
@@ -453,8 +475,8 @@ if (acceptEncoding != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -469,7 +491,7 @@ if (acceptEncoding != null)
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
+   * 
    * Download an object using a signed URL.
    * @param id Id of signed resource (required)
    * @param range A range of bytes to download from the specified object. (optional)
@@ -478,17 +500,17 @@ if (acceptEncoding != null)
    * @param acceptEncoding When gzip is specified, a gzip compressed stream of the object’s bytes will be returned in the response. Cannot use “Accept-Encoding:gzip” with Range header containing an end byte range. End byte range will not be honored if “Accept-Encoding: gzip” header is used.  (optional)
    * @param region The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)
    * @return InputStream
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<InputStream> getSignedResource(String id, String range, String ifNoneMatch, Date ifModifiedSince, String acceptEncoding, String region,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling getSignedResource");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/signedresources/{id}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -509,7 +531,7 @@ if (ifModifiedSince != null)
 if (acceptEncoding != null)
       localVarHeaderParams.put("Accept-Encoding", apiClient.parameterToString(acceptEncoding));
 
-
+    
     final String[] localVarAccepts = {
       "application/octet-stream"
     };
@@ -524,7 +546,7 @@ if (acceptEncoding != null)
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
+   * 
    * This endpoint allows resumable uploads for large files in chunks.
    * @param bucketKey URL-encoded bucket key (required)
    * @param objectName URL-encoded object name (required)
@@ -535,42 +557,42 @@ if (acceptEncoding != null)
    * @param contentDisposition The suggested default filename when downloading this object to a file after it has been uploaded. (optional)
    * @param ifMatch If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)
    * @return ObjectDetails
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<ObjectDetails> uploadChunk(String bucketKey, String objectName, Integer contentLength, String contentRange, String sessionId, InputStream body, String contentDisposition, String ifMatch,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = body;
-
+    
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling uploadChunk");
     }
-
+    
     // verify the required parameter 'objectName' is set
     if (objectName == null) {
       throw new ApiException(400, "Missing the required parameter 'objectName' when calling uploadChunk");
     }
-
+    
     // verify the required parameter 'contentLength' is set
     if (contentLength == null) {
       throw new ApiException(400, "Missing the required parameter 'contentLength' when calling uploadChunk");
     }
-
+    
     // verify the required parameter 'contentRange' is set
     if (contentRange == null) {
       throw new ApiException(400, "Missing the required parameter 'contentRange' when calling uploadChunk");
     }
-
+    
     // verify the required parameter 'sessionId' is set
     if (sessionId == null) {
       throw new ApiException(400, "Missing the required parameter 'sessionId' when calling uploadChunk");
     }
-
+    
     // verify the required parameter 'body' is set
     if (body == null) {
       throw new ApiException(400, "Missing the required parameter 'body' when calling uploadChunk");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}/resumable".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
@@ -593,7 +615,7 @@ if (ifMatch != null)
 if (sessionId != null)
       localVarHeaderParams.put("Session-Id", apiClient.parameterToString(sessionId));
 
-
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -608,8 +630,8 @@ if (sessionId != null)
     return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
-   * Upload an object. If the specified object name already exists in the bucket, the uploaded content will overwrite the existing content for the bucket name/object name combination.
+   * 
+   * Upload an object. If the specified object name already exists in the bucket, the uploaded content will overwrite the existing content for the bucket name/object name combination. 
    * @param bucketKey URL-encoded bucket key (required)
    * @param objectName URL-encoded object name (required)
    * @param contentLength Indicates the size of the request body. (required)
@@ -617,32 +639,32 @@ if (sessionId != null)
    * @param contentDisposition The suggested default filename when downloading this object to a file after it has been uploaded. (optional)
    * @param ifMatch If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)
    * @return ObjectDetails
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<ObjectDetails> uploadObject(String bucketKey, String objectName, Integer contentLength, InputStream body, String contentDisposition, String ifMatch,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = body;
-
+    
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
       throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling uploadObject");
     }
-
+    
     // verify the required parameter 'objectName' is set
     if (objectName == null) {
       throw new ApiException(400, "Missing the required parameter 'objectName' when calling uploadObject");
     }
-
+    
     // verify the required parameter 'contentLength' is set
     if (contentLength == null) {
       throw new ApiException(400, "Missing the required parameter 'contentLength' when calling uploadObject");
     }
-
+    
     // verify the required parameter 'body' is set
     if (body == null) {
       throw new ApiException(400, "Missing the required parameter 'body' when calling uploadObject");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
@@ -661,7 +683,7 @@ if (contentDisposition != null)
 if (ifMatch != null)
       localVarHeaderParams.put("If-Match", apiClient.parameterToString(ifMatch));
 
-
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -676,8 +698,8 @@ if (ifMatch != null)
     return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
-   * Overwrite a existing object using a signed URL.  Conditions to call this operation:  Object is available Expiration period is valid Signed URL should be created with &#x60;write&#x60; or &#x60;readwrite&#x60;
+   * 
+   * Overwrite a existing object using a signed URL.  Conditions to call this operation:  Object is available Expiration period is valid Signed URL should be created with &#x60;write&#x60; or &#x60;readwrite&#x60; 
    * @param id Id of signed resource (required)
    * @param contentLength Indicates the size of the request body. (required)
    * @param body  (required)
@@ -685,27 +707,27 @@ if (ifMatch != null)
    * @param xAdsRegion The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)
    * @param ifMatch If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)
    * @return PostObjectSigned
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<PostObjectSigned> uploadSignedResource(String id, Integer contentLength, InputStream body, String contentDisposition, String xAdsRegion, String ifMatch,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = body;
-
+    
     // verify the required parameter 'id' is set
     if (id == null) {
       throw new ApiException(400, "Missing the required parameter 'id' when calling uploadSignedResource");
     }
-
+    
     // verify the required parameter 'contentLength' is set
     if (contentLength == null) {
       throw new ApiException(400, "Missing the required parameter 'contentLength' when calling uploadSignedResource");
     }
-
+    
     // verify the required parameter 'body' is set
     if (body == null) {
       throw new ApiException(400, "Missing the required parameter 'body' when calling uploadSignedResource");
     }
-
+    
     // create path and map variables
     String localVarPath = "/oss/v2/signedresources/{id}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
@@ -725,7 +747,7 @@ if (xAdsRegion != null)
 if (ifMatch != null)
       localVarHeaderParams.put("If-Match", apiClient.parameterToString(ifMatch));
 
-
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -740,7 +762,7 @@ if (ifMatch != null)
     return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
+   * 
    * Resumable upload for signed URLs.
    * @param id Id of signed resource (required)
    * @param contentRange Byte range of a segment being uploaded (required)
@@ -749,7 +771,7 @@ if (ifMatch != null)
    * @param contentDisposition The suggested default filename when downloading this object to a file after it has been uploaded. (optional)
    * @param xAdsRegion The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)
    * @return PostObjectSigned
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<PostObjectSigned> uploadSignedResourcesChunk(String id, String contentRange, String sessionId, InputStream body, String contentDisposition, String xAdsRegion,  Credentials credentials) throws ApiException {
 

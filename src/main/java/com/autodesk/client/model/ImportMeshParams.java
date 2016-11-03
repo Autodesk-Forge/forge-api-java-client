@@ -25,12 +25,13 @@
 
 package com.autodesk.client.model;
 
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 /**
@@ -124,7 +125,7 @@ public class ImportMeshParams   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -147,7 +148,7 @@ public class ImportMeshParams   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImportMeshParams {\n");
-
+    
     sb.append("    fileId: ").append(toIndentedString(fileId)).append("\n");
     sb.append("    fileType: ").append(toIndentedString(fileType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -160,7 +161,7 @@ public class ImportMeshParams   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

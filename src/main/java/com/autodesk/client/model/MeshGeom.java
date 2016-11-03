@@ -25,10 +25,12 @@
 
 package com.autodesk.client.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.Objects;
+import com.autodesk.client.model.MeshGeomBoundingBox;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -122,7 +124,7 @@ public class MeshGeom   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -145,7 +147,7 @@ public class MeshGeom   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MeshGeom {\n");
-
+    
     sb.append("    numVertices: ").append(toIndentedString(numVertices)).append("\n");
     sb.append("    numTriangles: ").append(toIndentedString(numTriangles)).append("\n");
     sb.append("    hasUvs: ").append(toIndentedString(hasUvs)).append("\n");
@@ -158,7 +160,7 @@ public class MeshGeom   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

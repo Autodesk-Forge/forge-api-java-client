@@ -25,10 +25,13 @@
 
 package com.autodesk.client.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.Objects;
+import com.autodesk.client.model.JobPayloadInput;
+import com.autodesk.client.model.JobPayloadOutput;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -80,7 +83,7 @@ public class JobPayload   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -101,7 +104,7 @@ public class JobPayload   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobPayload {\n");
-
+    
     sb.append("    input: ").append(toIndentedString(input)).append("\n");
     sb.append("    output: ").append(toIndentedString(output)).append("\n");
     sb.append("}");
@@ -112,7 +115,7 @@ public class JobPayload   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

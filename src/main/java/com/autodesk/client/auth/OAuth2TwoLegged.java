@@ -24,8 +24,8 @@
 
 
 package com.autodesk.client.auth;
-import com.autodesk.client.Configuration;
 import com.autodesk.client.Pair;
+import com.autodesk.client.Configuration;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -43,6 +43,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.*;
+
 
 
 public class OAuth2TwoLegged implements Authentication {

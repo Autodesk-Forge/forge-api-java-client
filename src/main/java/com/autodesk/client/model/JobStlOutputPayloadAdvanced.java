@@ -25,11 +25,11 @@
 
 package com.autodesk.client.model;
 
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Objects;
 
 
 /**
@@ -143,7 +143,7 @@ public class JobStlOutputPayloadAdvanced   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -165,7 +165,7 @@ public class JobStlOutputPayloadAdvanced   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobStlOutputPayloadAdvanced {\n");
-
+    
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    exportColor: ").append(toIndentedString(exportColor)).append("\n");
     sb.append("    exportFileStructure: ").append(toIndentedString(exportFileStructure)).append("\n");
@@ -177,7 +177,7 @@ public class JobStlOutputPayloadAdvanced   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

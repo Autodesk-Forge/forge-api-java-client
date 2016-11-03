@@ -25,11 +25,12 @@
 
 package com.autodesk.client.model;
 
+import java.util.Objects;
+import com.autodesk.client.model.JsonApiLink;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Objects;
 
 
 /**
@@ -124,7 +125,7 @@ public class JsonApiLinksPaging   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -147,7 +148,7 @@ public class JsonApiLinksPaging   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiLinksPaging {\n");
-
+    
     sb.append("    first: ").append(toIndentedString(first)).append("\n");
     sb.append("    prev: ").append(toIndentedString(prev)).append("\n");
     sb.append("    next: ").append(toIndentedString(next)).append("\n");
@@ -160,7 +161,7 @@ public class JsonApiLinksPaging   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

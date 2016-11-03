@@ -25,10 +25,12 @@
 
 package com.autodesk.client.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.util.Objects;
+import com.autodesk.client.model.JsonApiLink;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -122,7 +124,7 @@ public class BaseAttributesExtensionObject   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -145,7 +147,7 @@ public class BaseAttributesExtensionObject   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseAttributesExtensionObject {\n");
-
+    
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    schema: ").append(toIndentedString(schema)).append("\n");
@@ -158,7 +160,7 @@ public class BaseAttributesExtensionObject   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -24,10 +24,21 @@
 
 package com.autodesk.client.api;
 
-import com.autodesk.client.*;
-import com.autodesk.client.auth.Credentials;
 import com.sun.jersey.api.client.GenericType;
 
+import com.autodesk.client.ApiException;
+import com.autodesk.client.ApiClient;
+import com.autodesk.client.Configuration;
+import com.autodesk.client.model.*;
+import com.autodesk.client.Pair;
+import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.ApiResponse;
+
+import java.io.File;
+
+
+
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,17 +68,17 @@ public class HubsApi {
    * 
    * Returns data on a specific &#x60;hub_id&#x60;. 
    * @param hubId the &#x60;hub id&#x60; for the current operation (required)
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> getHub(String hubId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'hubId' is set
     if (hubId == null) {
       throw new ApiException(400, "Missing the required parameter 'hubId' when calling getHub");
     }
-
+    
     // create path and map variables
     String localVarPath = "/project/v1/hubs/{hub_id}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "hub_id" + "\\}", apiClient.escapeString(hubId.toString()));
@@ -78,8 +89,8 @@ public class HubsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -94,23 +105,23 @@ public class HubsApi {
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
-   *
-   * Returns a collection of projects for a given &#x60;hub_id&#x60;. A project represents an A360 project or a BIM 360 project which is set up under an A360 hub or BIM 360 account, respectively. Within a hub or an account, multiple projects can be created to be used.
+   * 
+   * Returns a collection of projects for a given &#x60;hub_id&#x60;. A project represents an A360 project or a BIM 360 project which is set up under an A360 hub or BIM 360 account, respectively. Within a hub or an account, multiple projects can be created to be used. 
    * @param hubId the &#x60;hub id&#x60; for the current operation (required)
    * @param filterId filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)
    * @param filterExtensionType filter by the extension type (optional)
    * @return Object
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Object> getHubProjects(String hubId, List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
-
+    
     // verify the required parameter 'hubId' is set
     if (hubId == null) {
       throw new ApiException(400, "Missing the required parameter 'hubId' when calling getHubProjects");
     }
-
+    
     // create path and map variables
     String localVarPath = "/project/v1/hubs/{hub_id}/projects".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "hub_id" + "\\}", apiClient.escapeString(hubId.toString()));
@@ -123,8 +134,8 @@ public class HubsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -139,12 +150,12 @@ public class HubsApi {
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
-   *
-   * Returns a collection of accessible hubs for this member. A Hub represents an A360 Team/Personal hub or a BIM 360 account.
+   * 
+   * Returns a collection of accessible hubs for this member. A Hub represents an A360 Team/Personal hub or a BIM 360 account. 
    * @param filterId filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)
    * @param filterExtensionType filter by the extension type (optional)
    * @return Object
-   * @throws com.autodesk.client.ApiException if fails to make API call
+   * @throws ApiException if fails to make API call
    */
   public ApiResponse<Object> getHubs(List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 

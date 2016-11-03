@@ -25,13 +25,14 @@
 
 package com.autodesk.client.model;
 
+import java.util.Objects;
+import com.autodesk.client.model.PostBucketsPayloadAllow;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 /**
@@ -127,7 +128,7 @@ public class PostBucketsPayload   {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -149,7 +150,7 @@ public class PostBucketsPayload   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostBucketsPayload {\n");
-
+    
     sb.append("    bucketKey: ").append(toIndentedString(bucketKey)).append("\n");
     sb.append("    allow: ").append(toIndentedString(allow)).append("\n");
     sb.append("    policyKey: ").append(toIndentedString(policyKey)).append("\n");
@@ -161,7 +162,7 @@ public class PostBucketsPayload   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
