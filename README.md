@@ -92,36 +92,35 @@ import com.autodesk.client.ApiException;
 import com.autodesk.client.ApiResponse;
 import com.autodesk.client.api.BucketsApi;
 import com.autodesk.client.api.HubsApi;
-import com.autodesk.client.auth.OAuth2ThreeLegged;
-import com.autodesk.client.auth.OAuth2TwoLegged;
-import com.autodesk.client.auth.Credentials;
-import com.autodesk.client.auth.ThreeLeggedCredentials;
+import com.autodesk.client.auth.*;
 import com.autodesk.client.model.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ForgeApiExample {
 
     public static void main(String[] args) {
 
-        // Initialize the oauth2TwoLegged object using the client key and client secret you received when creating the app on the Forge Developer portal:
-        OAuth2TwoLegged oauth2TwoLegged = new OAuth2TwoLegged("<CLIENT_ID>", "<CLIENT_SECRET>", null);
-        Credentials twoLeggedCredentials = oauth2TwoLegged.authorize();
-
         try {
+            // Initialize the oauth2TwoLegged object using the client key and client secret you received when creating the app on the Forge Developer portal:
+            OAuth2TwoLegged oauth2TwoLegged = new OAuth2TwoLegged("<CLIENT_ID>", "<CLIENT_SECRET>", scopes, true);
+            Credentials twoLeggedCredentials = oauth2TwoLegged.authenticate();
+                
             // Initialize the relevant clients; in this example, the Hubs and Buckets clients (part of the Data Management API).
             BucketsApi bucketsApi = new BucketsApi();
             HubsApi hubsApi = new HubsApi();
 
             // Get the buckets owned by an application.
-            // Use the twoLeggedCredentials object that you retrieved previously.
-            ApiResponse<Buckets> bucketsApiResponse = bucketsApi.getBuckets(null, null, null, twoLeggedCredentials);
+            // Use the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
+            ApiResponse<Buckets> bucketsApiResponse = bucketsApi.getBuckets(null, null, null, oauth2TwoLegged, twoLeggedCredentials);
             System.out.println(bucketsApiResponse.getData());
             
             // Get the hubs that are accessible for a member.
-            // Use the threeLeggedCredentials object that you retrieved previously.
-            ApiResponse<Hubs> hubsApiResponse = hubsApi.getHubs(null, null, threeLeggedCredentials);
+            // Use the oauth2ThreeLegged and threeLeggedCredentials objects that you retrieved previously.
+            ApiResponse<Hubs> hubsApiResponse = hubsApi.getHubs(null, null, oauth2ThreeLegged, threeLeggedCredentials);
             System.out.println(hubsApiResponse.getData());
             
-        } catch (ApiException e) {
+        } catch (Exception e) {
             System.err.println("Exception when calling Forge APIs");
             e.printStackTrace();
         }
