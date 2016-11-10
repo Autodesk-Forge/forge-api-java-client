@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,6 +26,7 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
 import com.autodesk.client.model.JsonApiResource;
 import com.autodesk.client.model.JsonApiVersion;
 import com.autodesk.client.model.JsonApiVersionJsonapi;
@@ -42,8 +43,29 @@ import java.util.List;
  */
 
 public class JsonApiCollection   {
+  @JsonProperty("jsonapi")
+  private JsonApiVersionJsonapi jsonapi = null;
+
   @JsonProperty("data")
   private List<JsonApiResource> data = new ArrayList<JsonApiResource>();
+
+  public JsonApiCollection jsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+    return this;
+  }
+
+   /**
+   * Get jsonapi
+   * @return jsonapi
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiVersionJsonapi getJsonapi() {
+    return jsonapi;
+  }
+
+  public void setJsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+  }
 
   public JsonApiCollection data(List<JsonApiResource> data) {
     this.data = data;
@@ -73,12 +95,13 @@ public class JsonApiCollection   {
       return false;
     }
     JsonApiCollection jsonApiCollection = (JsonApiCollection) o;
-    return Objects.equals(this.data, jsonApiCollection.data);
+    return Objects.equals(this.jsonapi, jsonApiCollection.jsonapi) &&
+        Objects.equals(this.data, jsonApiCollection.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(jsonapi, data);
   }
 
   @Override
@@ -86,6 +109,7 @@ public class JsonApiCollection   {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiCollection {\n");
     
+    sb.append("    jsonapi: ").append(toIndentedString(jsonapi)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

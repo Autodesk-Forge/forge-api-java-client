@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,6 +26,8 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
+import com.autodesk.client.model.JsonApiErrorErrors;
 import com.autodesk.client.model.JsonApiVersion;
 import com.autodesk.client.model.JsonApiVersionJsonapi;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -41,10 +43,31 @@ import java.util.List;
  */
 
 public class JsonApiError   {
-  @JsonProperty("errors")
-  private List<Object> errors = new ArrayList<Object>();
+  @JsonProperty("jsonapi")
+  private JsonApiVersionJsonapi jsonapi = null;
 
-  public JsonApiError errors(List<Object> errors) {
+  @JsonProperty("errors")
+  private List<JsonApiErrorErrors> errors = new ArrayList<JsonApiErrorErrors>();
+
+  public JsonApiError jsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+    return this;
+  }
+
+   /**
+   * Get jsonapi
+   * @return jsonapi
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiVersionJsonapi getJsonapi() {
+    return jsonapi;
+  }
+
+  public void setJsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+  }
+
+  public JsonApiError errors(List<JsonApiErrorErrors> errors) {
     this.errors = errors;
     return this;
   }
@@ -54,11 +77,11 @@ public class JsonApiError   {
    * @return errors
   **/
   @ApiModelProperty(example = "null", required = true, value = "")
-  public List<Object> getErrors() {
+  public List<JsonApiErrorErrors> getErrors() {
     return errors;
   }
 
-  public void setErrors(List<Object> errors) {
+  public void setErrors(List<JsonApiErrorErrors> errors) {
     this.errors = errors;
   }
 
@@ -72,12 +95,13 @@ public class JsonApiError   {
       return false;
     }
     JsonApiError jsonApiError = (JsonApiError) o;
-    return Objects.equals(this.errors, jsonApiError.errors);
+    return Objects.equals(this.jsonapi, jsonApiError.jsonapi) &&
+        Objects.equals(this.errors, jsonApiError.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors);
+    return Objects.hash(jsonapi, errors);
   }
 
   @Override
@@ -85,6 +109,7 @@ public class JsonApiError   {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiError {\n");
     
+    sb.append("    jsonapi: ").append(toIndentedString(jsonapi)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();

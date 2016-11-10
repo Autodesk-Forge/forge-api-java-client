@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,6 +26,7 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
 import com.autodesk.client.model.Permission;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;

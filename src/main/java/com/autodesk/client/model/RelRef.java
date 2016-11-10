@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,10 +26,12 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
 import com.autodesk.client.model.JsonApiAttributes;
 import com.autodesk.client.model.JsonApiLinks;
 import com.autodesk.client.model.JsonApiRelationships;
 import com.autodesk.client.model.JsonApiResource;
+import com.autodesk.client.model.RelRefMeta;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -41,6 +43,9 @@ import io.swagger.annotations.ApiModelProperty;
  */
 
 public class RelRef   {
+  @JsonProperty("id")
+  private String id = null;
+
   /**
    * Gets or Sets type
    */
@@ -66,8 +71,35 @@ public class RelRef   {
   @JsonProperty("type")
   private TypeEnum type = null;
 
+  @JsonProperty("attributes")
+  private JsonApiAttributes attributes = null;
+
   @JsonProperty("meta")
-  private Object meta = null;
+  private RelRefMeta meta = null;
+
+  @JsonProperty("relationships")
+  private JsonApiRelationships relationships = null;
+
+  @JsonProperty("links")
+  private JsonApiLinks links = null;
+
+  public RelRef id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * resource id
+   * @return id
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "resource id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 
   public RelRef type(TypeEnum type) {
     this.type = type;
@@ -87,7 +119,25 @@ public class RelRef   {
     this.type = type;
   }
 
-  public RelRef meta(Object meta) {
+  public RelRef attributes(JsonApiAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(JsonApiAttributes attributes) {
+    this.attributes = attributes;
+  }
+
+  public RelRef meta(RelRefMeta meta) {
     this.meta = meta;
     return this;
   }
@@ -96,13 +146,49 @@ public class RelRef   {
    * Get meta
    * @return meta
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public Object getMeta() {
+  @ApiModelProperty(example = "null", value = "")
+  public RelRefMeta getMeta() {
     return meta;
   }
 
-  public void setMeta(Object meta) {
+  public void setMeta(RelRefMeta meta) {
     this.meta = meta;
+  }
+
+  public RelRef relationships(JsonApiRelationships relationships) {
+    this.relationships = relationships;
+    return this;
+  }
+
+   /**
+   * Get relationships
+   * @return relationships
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiRelationships getRelationships() {
+    return relationships;
+  }
+
+  public void setRelationships(JsonApiRelationships relationships) {
+    this.relationships = relationships;
+  }
+
+  public RelRef links(JsonApiLinks links) {
+    this.links = links;
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiLinks getLinks() {
+    return links;
+  }
+
+  public void setLinks(JsonApiLinks links) {
+    this.links = links;
   }
 
 
@@ -115,13 +201,17 @@ public class RelRef   {
       return false;
     }
     RelRef relRef = (RelRef) o;
-    return Objects.equals(this.type, relRef.type) &&
-        Objects.equals(this.meta, relRef.meta);
+    return Objects.equals(this.id, relRef.id) &&
+        Objects.equals(this.type, relRef.type) &&
+        Objects.equals(this.attributes, relRef.attributes) &&
+        Objects.equals(this.meta, relRef.meta) &&
+        Objects.equals(this.relationships, relRef.relationships) &&
+        Objects.equals(this.links, relRef.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, meta);
+    return Objects.hash(id, type, attributes, meta, relationships, links);
   }
 
   @Override
@@ -129,8 +219,12 @@ public class RelRef   {
     StringBuilder sb = new StringBuilder();
     sb.append("class RelRef {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }

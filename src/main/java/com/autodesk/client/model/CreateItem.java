@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,6 +26,9 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
+import com.autodesk.client.model.CreateItemData;
+import com.autodesk.client.model.CreateItemIncluded;
 import com.autodesk.client.model.JsonApiVersion;
 import com.autodesk.client.model.JsonApiVersionJsonapi;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -41,13 +44,34 @@ import java.util.List;
  */
 
 public class CreateItem   {
+  @JsonProperty("jsonapi")
+  private JsonApiVersionJsonapi jsonapi = null;
+
   @JsonProperty("data")
-  private Object data = null;
+  private CreateItemData data = null;
 
   @JsonProperty("included")
-  private List<Object> included = new ArrayList<Object>();
+  private List<CreateItemIncluded> included = new ArrayList<CreateItemIncluded>();
 
-  public CreateItem data(Object data) {
+  public CreateItem jsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+    return this;
+  }
+
+   /**
+   * Get jsonapi
+   * @return jsonapi
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiVersionJsonapi getJsonapi() {
+    return jsonapi;
+  }
+
+  public void setJsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+  }
+
+  public CreateItem data(CreateItemData data) {
     this.data = data;
     return this;
   }
@@ -56,16 +80,16 @@ public class CreateItem   {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public Object getData() {
+  @ApiModelProperty(example = "null", value = "")
+  public CreateItemData getData() {
     return data;
   }
 
-  public void setData(Object data) {
+  public void setData(CreateItemData data) {
     this.data = data;
   }
 
-  public CreateItem included(List<Object> included) {
+  public CreateItem included(List<CreateItemIncluded> included) {
     this.included = included;
     return this;
   }
@@ -75,11 +99,11 @@ public class CreateItem   {
    * @return included
   **/
   @ApiModelProperty(example = "null", required = true, value = "")
-  public List<Object> getIncluded() {
+  public List<CreateItemIncluded> getIncluded() {
     return included;
   }
 
-  public void setIncluded(List<Object> included) {
+  public void setIncluded(List<CreateItemIncluded> included) {
     this.included = included;
   }
 
@@ -93,13 +117,14 @@ public class CreateItem   {
       return false;
     }
     CreateItem createItem = (CreateItem) o;
-    return Objects.equals(this.data, createItem.data) &&
+    return Objects.equals(this.jsonapi, createItem.jsonapi) &&
+        Objects.equals(this.data, createItem.data) &&
         Objects.equals(this.included, createItem.included);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, included);
+    return Objects.hash(jsonapi, data, included);
   }
 
   @Override
@@ -107,6 +132,7 @@ public class CreateItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateItem {\n");
     
+    sb.append("    jsonapi: ").append(toIndentedString(jsonapi)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    included: ").append(toIndentedString(included)).append("\n");
     sb.append("}");

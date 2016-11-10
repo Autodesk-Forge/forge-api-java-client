@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -36,7 +36,13 @@ import com.autodesk.client.ApiResponse;
 
 import java.io.File;
 
+import com.autodesk.client.model.BadInput;
+import com.autodesk.client.model.Version;
+import com.autodesk.client.model.Forbidden;
+import com.autodesk.client.model.NotFound;
+import com.autodesk.client.model.Item;
 import com.autodesk.client.model.JsonApiCollection;
+import com.autodesk.client.model.Refs;
 import com.autodesk.client.model.CreateRef;
 
 
@@ -71,10 +77,10 @@ public class VersionsApi {
    * Returns the version with the given &#x60;version_id&#x60;. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param versionId the &#x60;version id&#x60; (required)
-   * @return Object
+   * @return Version
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getVersion(String projectId, String versionId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Version> getVersion(String projectId, String versionId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -111,7 +117,7 @@ public class VersionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Version> localVarReturnType = new GenericType<Version>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -119,10 +125,10 @@ public class VersionsApi {
    * Returns the item the given version is associated with. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param versionId the &#x60;version id&#x60; (required)
-   * @return Object
+   * @return Item
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getVersionItem(String projectId, String versionId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Item> getVersionItem(String projectId, String versionId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -159,7 +165,7 @@ public class VersionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Item> localVarReturnType = new GenericType<Item>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -197,9 +203,9 @@ public class VersionsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[type]", filterType));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[type]", filterType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
 
     
     
@@ -226,10 +232,10 @@ public class VersionsApi {
    * @param filterRefType filter by &#x60;refType&#x60; (optional)
    * @param filterDirection filter by the direction of the reference (optional)
    * @param filterExtensionType filter by the extension type (optional)
-   * @return Object
+   * @return Refs
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getVersionRelationshipsRefs(String projectId, String versionId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
+  public ApiResponse<Refs> getVersionRelationshipsRefs(String projectId, String versionId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -253,11 +259,11 @@ public class VersionsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[type]", filterType));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[refType]", filterRefType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[type]", filterType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[refType]", filterRefType));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[direction]", filterDirection));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
 
     
     
@@ -271,7 +277,7 @@ public class VersionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Refs> localVarReturnType = new GenericType<Refs>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**

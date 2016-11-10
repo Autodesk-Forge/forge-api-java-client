@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,14 +26,21 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
 import com.autodesk.client.model.BaseAttributesCreatedUpdated;
+import com.autodesk.client.model.ItemAttributes;
+import com.autodesk.client.model.ItemRelationships;
+import com.autodesk.client.model.JsonApiDocument;
 import com.autodesk.client.model.JsonApiLinks;
 import com.autodesk.client.model.JsonApiMeta;
 import com.autodesk.client.model.JsonApiResource;
+import com.autodesk.client.model.JsonApiVersionJsonapi;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -41,6 +48,21 @@ import io.swagger.annotations.ApiModelProperty;
  */
 
 public class Item   {
+  @JsonProperty("jsonapi")
+  private JsonApiVersionJsonapi jsonapi = null;
+
+  @JsonProperty("data")
+  private JsonApiResource data = null;
+
+  @JsonProperty("included")
+  private List<JsonApiResource> included = new ArrayList<JsonApiResource>();
+
+  @JsonProperty("links")
+  private JsonApiLinks links = null;
+
+  @JsonProperty("id")
+  private String id = null;
+
   /**
    * Gets or Sets type
    */
@@ -63,10 +85,103 @@ public class Item   {
   private TypeEnum type = null;
 
   @JsonProperty("attributes")
-  private Object attributes = null;
+  private ItemAttributes attributes = null;
+
+  @JsonProperty("meta")
+  private JsonApiMeta meta = null;
 
   @JsonProperty("relationships")
-  private Object relationships = null;
+  private ItemRelationships relationships = null;
+
+  public Item jsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+    return this;
+  }
+
+   /**
+   * Get jsonapi
+   * @return jsonapi
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiVersionJsonapi getJsonapi() {
+    return jsonapi;
+  }
+
+  public void setJsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+  }
+
+  public Item data(JsonApiResource data) {
+    this.data = data;
+    return this;
+  }
+
+   /**
+   * Get data
+   * @return data
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public JsonApiResource getData() {
+    return data;
+  }
+
+  public void setData(JsonApiResource data) {
+    this.data = data;
+  }
+
+  public Item included(List<JsonApiResource> included) {
+    this.included = included;
+    return this;
+  }
+
+   /**
+   * Get included
+   * @return included
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public List<JsonApiResource> getIncluded() {
+    return included;
+  }
+
+  public void setIncluded(List<JsonApiResource> included) {
+    this.included = included;
+  }
+
+  public Item links(JsonApiLinks links) {
+    this.links = links;
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public JsonApiLinks getLinks() {
+    return links;
+  }
+
+  public void setLinks(JsonApiLinks links) {
+    this.links = links;
+  }
+
+  public Item id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * resource id
+   * @return id
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "resource id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 
   public Item type(TypeEnum type) {
     this.type = type;
@@ -86,7 +201,7 @@ public class Item   {
     this.type = type;
   }
 
-  public Item attributes(Object attributes) {
+  public Item attributes(ItemAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -95,16 +210,34 @@ public class Item   {
    * Get attributes
    * @return attributes
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public Object getAttributes() {
+  @ApiModelProperty(example = "null", value = "")
+  public ItemAttributes getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(ItemAttributes attributes) {
     this.attributes = attributes;
   }
 
-  public Item relationships(Object relationships) {
+  public Item meta(JsonApiMeta meta) {
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiMeta getMeta() {
+    return meta;
+  }
+
+  public void setMeta(JsonApiMeta meta) {
+    this.meta = meta;
+  }
+
+  public Item relationships(ItemRelationships relationships) {
     this.relationships = relationships;
     return this;
   }
@@ -113,12 +246,12 @@ public class Item   {
    * Get relationships
    * @return relationships
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public Object getRelationships() {
+  @ApiModelProperty(example = "null", value = "")
+  public ItemRelationships getRelationships() {
     return relationships;
   }
 
-  public void setRelationships(Object relationships) {
+  public void setRelationships(ItemRelationships relationships) {
     this.relationships = relationships;
   }
 
@@ -132,14 +265,20 @@ public class Item   {
       return false;
     }
     Item item = (Item) o;
-    return Objects.equals(this.type, item.type) &&
+    return Objects.equals(this.jsonapi, item.jsonapi) &&
+        Objects.equals(this.data, item.data) &&
+        Objects.equals(this.included, item.included) &&
+        Objects.equals(this.links, item.links) &&
+        Objects.equals(this.id, item.id) &&
+        Objects.equals(this.type, item.type) &&
         Objects.equals(this.attributes, item.attributes) &&
+        Objects.equals(this.meta, item.meta) &&
         Objects.equals(this.relationships, item.relationships);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, relationships);
+    return Objects.hash(jsonapi, data, included, links, id, type, attributes, meta, relationships);
   }
 
   @Override
@@ -147,8 +286,14 @@ public class Item   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Item {\n");
     
+    sb.append("    jsonapi: ").append(toIndentedString(jsonapi)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    included: ").append(toIndentedString(included)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -36,7 +36,15 @@ import com.autodesk.client.ApiResponse;
 
 import java.io.File;
 
+import com.autodesk.client.model.Item;
+import com.autodesk.client.model.BadInput;
+import com.autodesk.client.model.Forbidden;
+import com.autodesk.client.model.NotFound;
+import com.autodesk.client.model.Folder;
 import com.autodesk.client.model.JsonApiCollection;
+import com.autodesk.client.model.Refs;
+import com.autodesk.client.model.Version;
+import com.autodesk.client.model.Versions;
 import com.autodesk.client.model.CreateRef;
 
 
@@ -68,46 +76,13 @@ public class ItemsApi {
 
   /**
    * 
-   * Returns the health information for the &#x60;data&#x60; domain. The health check assesses the current working status of the &#39;data&#39; domain service. 
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<Void> getDataHealth( Credentials credentials) throws ApiException {
-
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/data/v1/health".replaceAll("\\{format\\}","json");
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/vnd.api+json", "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
-  }
-  /**
-   * 
    * Returns a resource item by ID for any item within a given project. Resource items represent word documents, fusion design files, drawings, spreadsheets, etc. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param itemId the &#x60;item id&#x60; (required)
-   * @return Object
+   * @return Item
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getItem(String projectId, String itemId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Item> getItem(String projectId, String itemId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -144,7 +119,7 @@ public class ItemsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Item> localVarReturnType = new GenericType<Item>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -152,9 +127,10 @@ public class ItemsApi {
    * Returns the \&quot;parent\&quot; folder for the given item. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param itemId the &#x60;item id&#x60; (required)
+   * @return Folder
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getItemParentFolder(String projectId, String itemId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Folder> getItemParentFolder(String projectId, String itemId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -191,9 +167,9 @@ public class ItemsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
-  }
+    GenericType<Folder> localVarReturnType = new GenericType<Folder>() {};
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+      }
   /**
    * 
    * Returns the resources (&#x60;items&#x60;, &#x60;folders&#x60;, and &#x60;versions&#x60;) which have a custom relationship with the given &#x60;item_id&#x60;. Custom relationships can be established between an item and other resources within the &#39;data&#39; domain service (folders, items, and versions). 
@@ -229,9 +205,9 @@ public class ItemsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[type]", filterType));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[type]", filterType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
 
     
     
@@ -258,10 +234,10 @@ public class ItemsApi {
    * @param filterRefType filter by &#x60;refType&#x60; (optional)
    * @param filterDirection filter by the direction of the reference (optional)
    * @param filterExtensionType filter by the extension type (optional)
-   * @return Object
+   * @return Refs
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getItemRelationshipsRefs(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
+  public ApiResponse<Refs> getItemRelationshipsRefs(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -285,11 +261,11 @@ public class ItemsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[type]", filterType));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[refType]", filterRefType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[type]", filterType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[refType]", filterRefType));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[direction]", filterDirection));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
 
     
     
@@ -303,7 +279,7 @@ public class ItemsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Refs> localVarReturnType = new GenericType<Refs>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -311,10 +287,10 @@ public class ItemsApi {
    * Returns the \&quot;tip\&quot; version for the given item. Multiple versions of a resource item can be uploaded in a project. The tip version is the most recent one. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param itemId the &#x60;item id&#x60; (required)
-   * @return Object
+   * @return Version
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getItemTip(String projectId, String itemId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Version> getItemTip(String projectId, String itemId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -351,7 +327,7 @@ public class ItemsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Version> localVarReturnType = new GenericType<Version>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -365,10 +341,10 @@ public class ItemsApi {
    * @param filterVersionNumber filter by &#x60;versionNumber&#x60; (optional)
    * @param pageNumber specify the page number (optional)
    * @param pageLimit specify the maximal number of elements per page (optional)
-   * @return Object
+   * @return Versions
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getItemVersions(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, List<Integer> filterVersionNumber, Integer pageNumber, Integer pageLimit,  Credentials credentials) throws ApiException {
+  public ApiResponse<Versions> getItemVersions(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, List<Integer> filterVersionNumber, Integer pageNumber, Integer pageLimit,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -392,10 +368,10 @@ public class ItemsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[type]", filterType));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[versionNumber]", filterVersionNumber));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[type]", filterType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[versionNumber]", filterVersionNumber));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[number]", pageNumber));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[limit]", pageLimit));
 
@@ -411,7 +387,7 @@ public class ItemsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Versions> localVarReturnType = new GenericType<Versions>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**

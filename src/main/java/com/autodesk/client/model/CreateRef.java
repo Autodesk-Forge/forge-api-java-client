@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,6 +26,8 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
+import com.autodesk.client.model.CreateRefData;
 import com.autodesk.client.model.JsonApiVersion;
 import com.autodesk.client.model.JsonApiVersionJsonapi;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,10 +41,31 @@ import io.swagger.annotations.ApiModelProperty;
  */
 
 public class CreateRef   {
-  @JsonProperty("data")
-  private Object data = null;
+  @JsonProperty("jsonapi")
+  private JsonApiVersionJsonapi jsonapi = null;
 
-  public CreateRef data(Object data) {
+  @JsonProperty("data")
+  private CreateRefData data = null;
+
+  public CreateRef jsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+    return this;
+  }
+
+   /**
+   * Get jsonapi
+   * @return jsonapi
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiVersionJsonapi getJsonapi() {
+    return jsonapi;
+  }
+
+  public void setJsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+  }
+
+  public CreateRef data(CreateRefData data) {
     this.data = data;
     return this;
   }
@@ -51,12 +74,12 @@ public class CreateRef   {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public Object getData() {
+  @ApiModelProperty(example = "null", value = "")
+  public CreateRefData getData() {
     return data;
   }
 
-  public void setData(Object data) {
+  public void setData(CreateRefData data) {
     this.data = data;
   }
 
@@ -70,12 +93,13 @@ public class CreateRef   {
       return false;
     }
     CreateRef createRef = (CreateRef) o;
-    return Objects.equals(this.data, createRef.data);
+    return Objects.equals(this.jsonapi, createRef.jsonapi) &&
+        Objects.equals(this.data, createRef.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(jsonapi, data);
   }
 
   @Override
@@ -83,6 +107,7 @@ public class CreateRef   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateRef {\n");
     
+    sb.append("    jsonapi: ").append(toIndentedString(jsonapi)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

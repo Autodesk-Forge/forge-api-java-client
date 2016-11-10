@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -36,6 +36,11 @@ import com.autodesk.client.ApiResponse;
 
 import java.io.File;
 
+import com.autodesk.client.model.Hub;
+import com.autodesk.client.model.Forbidden;
+import com.autodesk.client.model.NotFound;
+import com.autodesk.client.model.Projects;
+import com.autodesk.client.model.Hubs;
 
 
 import java.util.Arrays;
@@ -68,9 +73,10 @@ public class HubsApi {
    * 
    * Returns data on a specific &#x60;hub_id&#x60;. 
    * @param hubId the &#x60;hub id&#x60; for the current operation (required)
+   * @return Hub
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getHub(String hubId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Hub> getHub(String hubId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -101,19 +107,19 @@ public class HubsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
-  }
+    GenericType<Hub> localVarReturnType = new GenericType<Hub>() {};
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+      }
   /**
    * 
    * Returns a collection of projects for a given &#x60;hub_id&#x60;. A project represents an A360 project or a BIM 360 project which is set up under an A360 hub or BIM 360 account, respectively. Within a hub or an account, multiple projects can be created to be used. 
    * @param hubId the &#x60;hub id&#x60; for the current operation (required)
    * @param filterId filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)
    * @param filterExtensionType filter by the extension type (optional)
-   * @return Object
+   * @return Projects
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getHubProjects(String hubId, List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
+  public ApiResponse<Projects> getHubProjects(String hubId, List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -131,8 +137,8 @@ public class HubsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
 
     
     
@@ -146,7 +152,7 @@ public class HubsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Projects> localVarReturnType = new GenericType<Projects>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -154,10 +160,10 @@ public class HubsApi {
    * Returns a collection of accessible hubs for this member. A Hub represents an A360 Team/Personal hub or a BIM 360 account. 
    * @param filterId filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)
    * @param filterExtensionType filter by the extension type (optional)
-   * @return Object
+   * @return Hubs
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getHubs(List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
+  public ApiResponse<Hubs> getHubs(List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -169,8 +175,8 @@ public class HubsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
 
     
     
@@ -184,7 +190,7 @@ public class HubsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Hubs> localVarReturnType = new GenericType<Hubs>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

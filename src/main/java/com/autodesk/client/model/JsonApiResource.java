@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,6 +26,7 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
 import com.autodesk.client.model.JsonApiAttributes;
 import com.autodesk.client.model.JsonApiLinks;
 import com.autodesk.client.model.JsonApiMeta;
@@ -42,6 +43,12 @@ import io.swagger.annotations.ApiModelProperty;
  */
 
 public class JsonApiResource   {
+  @JsonProperty("id")
+  private String id = null;
+
+  @JsonProperty("type")
+  private String type = null;
+
   @JsonProperty("attributes")
   private JsonApiAttributes attributes = null;
 
@@ -53,6 +60,42 @@ public class JsonApiResource   {
 
   @JsonProperty("links")
   private JsonApiLinks links = null;
+
+  public JsonApiResource id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * resource id
+   * @return id
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "resource id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public JsonApiResource type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * resource type
+   * @return type
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "resource type")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
 
   public JsonApiResource attributes(JsonApiAttributes attributes) {
     this.attributes = attributes;
@@ -136,7 +179,9 @@ public class JsonApiResource   {
       return false;
     }
     JsonApiResource jsonApiResource = (JsonApiResource) o;
-    return Objects.equals(this.attributes, jsonApiResource.attributes) &&
+    return Objects.equals(this.id, jsonApiResource.id) &&
+        Objects.equals(this.type, jsonApiResource.type) &&
+        Objects.equals(this.attributes, jsonApiResource.attributes) &&
         Objects.equals(this.meta, jsonApiResource.meta) &&
         Objects.equals(this.relationships, jsonApiResource.relationships) &&
         Objects.equals(this.links, jsonApiResource.links);
@@ -144,7 +189,7 @@ public class JsonApiResource   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, meta, relationships, links);
+    return Objects.hash(id, type, attributes, meta, relationships, links);
   }
 
   @Override
@@ -152,6 +197,8 @@ public class JsonApiResource   {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiResource {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");

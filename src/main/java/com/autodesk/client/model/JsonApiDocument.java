@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,6 +26,7 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
 import com.autodesk.client.model.JsonApiDocumentBase;
 import com.autodesk.client.model.JsonApiLinksSelf;
 import com.autodesk.client.model.JsonApiResource;
@@ -34,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -42,8 +44,71 @@ import java.util.List;
  */
 
 public class JsonApiDocument   {
+  @JsonProperty("jsonapi")
+  private JsonApiVersionJsonapi jsonapi = null;
+
+  @JsonProperty("data")
+  private JsonApiResource data = null;
+
+  @JsonProperty("included")
+  private List<JsonApiResource> included = new ArrayList<JsonApiResource>();
+
   @JsonProperty("links")
   private JsonApiLinksSelf links = null;
+
+  public JsonApiDocument jsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+    return this;
+  }
+
+   /**
+   * Get jsonapi
+   * @return jsonapi
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiVersionJsonapi getJsonapi() {
+    return jsonapi;
+  }
+
+  public void setJsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+  }
+
+  public JsonApiDocument data(JsonApiResource data) {
+    this.data = data;
+    return this;
+  }
+
+   /**
+   * Get data
+   * @return data
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public JsonApiResource getData() {
+    return data;
+  }
+
+  public void setData(JsonApiResource data) {
+    this.data = data;
+  }
+
+  public JsonApiDocument included(List<JsonApiResource> included) {
+    this.included = included;
+    return this;
+  }
+
+   /**
+   * Get included
+   * @return included
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public List<JsonApiResource> getIncluded() {
+    return included;
+  }
+
+  public void setIncluded(List<JsonApiResource> included) {
+    this.included = included;
+  }
 
   public JsonApiDocument links(JsonApiLinksSelf links) {
     this.links = links;
@@ -73,12 +138,15 @@ public class JsonApiDocument   {
       return false;
     }
     JsonApiDocument jsonApiDocument = (JsonApiDocument) o;
-    return Objects.equals(this.links, jsonApiDocument.links);
+    return Objects.equals(this.jsonapi, jsonApiDocument.jsonapi) &&
+        Objects.equals(this.data, jsonApiDocument.data) &&
+        Objects.equals(this.included, jsonApiDocument.included) &&
+        Objects.equals(this.links, jsonApiDocument.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(links);
+    return Objects.hash(jsonapi, data, included, links);
   }
 
   @Override
@@ -86,6 +154,9 @@ public class JsonApiDocument   {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiDocument {\n");
     
+    sb.append("    jsonapi: ").append(toIndentedString(jsonapi)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    included: ").append(toIndentedString(included)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();

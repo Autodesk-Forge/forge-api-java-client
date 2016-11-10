@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,13 +26,20 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
+import com.autodesk.client.model.JsonApiDocument;
 import com.autodesk.client.model.JsonApiLinks;
 import com.autodesk.client.model.JsonApiMeta;
 import com.autodesk.client.model.JsonApiResource;
+import com.autodesk.client.model.JsonApiVersionJsonapi;
+import com.autodesk.client.model.ProjectAttributes;
+import com.autodesk.client.model.ProjectRelationships;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -40,6 +47,21 @@ import io.swagger.annotations.ApiModelProperty;
  */
 
 public class Project   {
+  @JsonProperty("jsonapi")
+  private JsonApiVersionJsonapi jsonapi = null;
+
+  @JsonProperty("data")
+  private JsonApiResource data = null;
+
+  @JsonProperty("included")
+  private List<JsonApiResource> included = new ArrayList<JsonApiResource>();
+
+  @JsonProperty("links")
+  private JsonApiLinks links = null;
+
+  @JsonProperty("id")
+  private String id = null;
+
   /**
    * Gets or Sets type
    */
@@ -62,10 +84,103 @@ public class Project   {
   private TypeEnum type = null;
 
   @JsonProperty("attributes")
-  private Object attributes = null;
+  private ProjectAttributes attributes = null;
+
+  @JsonProperty("meta")
+  private JsonApiMeta meta = null;
 
   @JsonProperty("relationships")
-  private Object relationships = null;
+  private ProjectRelationships relationships = null;
+
+  public Project jsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+    return this;
+  }
+
+   /**
+   * Get jsonapi
+   * @return jsonapi
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiVersionJsonapi getJsonapi() {
+    return jsonapi;
+  }
+
+  public void setJsonapi(JsonApiVersionJsonapi jsonapi) {
+    this.jsonapi = jsonapi;
+  }
+
+  public Project data(JsonApiResource data) {
+    this.data = data;
+    return this;
+  }
+
+   /**
+   * Get data
+   * @return data
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public JsonApiResource getData() {
+    return data;
+  }
+
+  public void setData(JsonApiResource data) {
+    this.data = data;
+  }
+
+  public Project included(List<JsonApiResource> included) {
+    this.included = included;
+    return this;
+  }
+
+   /**
+   * Get included
+   * @return included
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public List<JsonApiResource> getIncluded() {
+    return included;
+  }
+
+  public void setIncluded(List<JsonApiResource> included) {
+    this.included = included;
+  }
+
+  public Project links(JsonApiLinks links) {
+    this.links = links;
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public JsonApiLinks getLinks() {
+    return links;
+  }
+
+  public void setLinks(JsonApiLinks links) {
+    this.links = links;
+  }
+
+  public Project id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * resource id
+   * @return id
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "resource id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 
   public Project type(TypeEnum type) {
     this.type = type;
@@ -85,7 +200,7 @@ public class Project   {
     this.type = type;
   }
 
-  public Project attributes(Object attributes) {
+  public Project attributes(ProjectAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -94,16 +209,34 @@ public class Project   {
    * Get attributes
    * @return attributes
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public Object getAttributes() {
+  @ApiModelProperty(example = "null", value = "")
+  public ProjectAttributes getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(ProjectAttributes attributes) {
     this.attributes = attributes;
   }
 
-  public Project relationships(Object relationships) {
+  public Project meta(JsonApiMeta meta) {
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiMeta getMeta() {
+    return meta;
+  }
+
+  public void setMeta(JsonApiMeta meta) {
+    this.meta = meta;
+  }
+
+  public Project relationships(ProjectRelationships relationships) {
     this.relationships = relationships;
     return this;
   }
@@ -112,12 +245,12 @@ public class Project   {
    * Get relationships
    * @return relationships
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public Object getRelationships() {
+  @ApiModelProperty(example = "null", value = "")
+  public ProjectRelationships getRelationships() {
     return relationships;
   }
 
-  public void setRelationships(Object relationships) {
+  public void setRelationships(ProjectRelationships relationships) {
     this.relationships = relationships;
   }
 
@@ -131,14 +264,20 @@ public class Project   {
       return false;
     }
     Project project = (Project) o;
-    return Objects.equals(this.type, project.type) &&
+    return Objects.equals(this.jsonapi, project.jsonapi) &&
+        Objects.equals(this.data, project.data) &&
+        Objects.equals(this.included, project.included) &&
+        Objects.equals(this.links, project.links) &&
+        Objects.equals(this.id, project.id) &&
+        Objects.equals(this.type, project.type) &&
         Objects.equals(this.attributes, project.attributes) &&
+        Objects.equals(this.meta, project.meta) &&
         Objects.equals(this.relationships, project.relationships);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, relationships);
+    return Objects.hash(jsonapi, data, included, links, id, type, attributes, meta, relationships);
   }
 
   @Override
@@ -146,8 +285,14 @@ public class Project   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Project {\n");
     
+    sb.append("    jsonapi: ").append(toIndentedString(jsonapi)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    included: ").append(toIndentedString(included)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -36,7 +36,12 @@ import com.autodesk.client.ApiResponse;
 
 import java.io.File;
 
+import com.autodesk.client.model.BadInput;
+import com.autodesk.client.model.Forbidden;
+import com.autodesk.client.model.Folder;
+import com.autodesk.client.model.NotFound;
 import com.autodesk.client.model.JsonApiCollection;
+import com.autodesk.client.model.Refs;
 import com.autodesk.client.model.CreateRef;
 
 
@@ -71,9 +76,10 @@ public class FoldersApi {
    * Returns the folder by ID for any folder within a given project. All folders or sub-folders within a project are associated with their own unique ID, including the root folder. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param folderId the &#x60;folder id&#x60; (required)
+   * @return Folder
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getFolder(String projectId, String folderId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Folder> getFolder(String projectId, String folderId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -110,9 +116,9 @@ public class FoldersApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
-  }
+    GenericType<Folder> localVarReturnType = new GenericType<Folder>() {};
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+      }
   /**
    * 
    * Returns a collection of items and folders within a folder. Items represent word documents, fusion design files, drawings, spreadsheets, etc. 
@@ -150,9 +156,9 @@ public class FoldersApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[type]", filterType));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[type]", filterType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[number]", pageNumber));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[limit]", pageLimit));
 
@@ -176,9 +182,10 @@ public class FoldersApi {
    * Returns the parent folder (if it exists). In a project, subfolders and resource items are stored under a folder except the root folder which does not have a parent of its own. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param folderId the &#x60;folder id&#x60; (required)
+   * @return Folder
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getFolderParent(String projectId, String folderId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Folder> getFolderParent(String projectId, String folderId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -215,9 +222,9 @@ public class FoldersApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
-  }
+    GenericType<Folder> localVarReturnType = new GenericType<Folder>() {};
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+      }
   /**
    * 
    * Returns the resources (&#x60;items&#x60;, &#x60;folders&#x60;, and &#x60;versions&#x60;) which have a custom relationship with the given &#x60;folder_id&#x60;. Custom relationships can be established between a folder and other resources within the &#39;data&#39; domain service (folders, items, and versions). 
@@ -253,9 +260,9 @@ public class FoldersApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[type]", filterType));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[type]", filterType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
 
     
     
@@ -282,10 +289,10 @@ public class FoldersApi {
    * @param filterRefType filter by &#x60;refType&#x60; (optional)
    * @param filterDirection filter by the direction of the reference (optional)
    * @param filterExtensionType filter by the extension type (optional)
-   * @return Object
+   * @return Refs
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> getFolderRelationshipsRefs(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
+  public ApiResponse<Refs> getFolderRelationshipsRefs(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -309,11 +316,11 @@ public class FoldersApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[type]", filterType));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[id]", filterId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[refType]", filterRefType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[type]", filterType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[refType]", filterRefType));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[direction]", filterDirection));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[extension.type]", filterExtensionType));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
 
     
     
@@ -327,7 +334,7 @@ public class FoldersApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Refs> localVarReturnType = new GenericType<Refs>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**

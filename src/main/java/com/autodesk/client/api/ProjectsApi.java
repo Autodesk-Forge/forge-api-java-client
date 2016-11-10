@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -36,9 +36,18 @@ import com.autodesk.client.ApiResponse;
 
 import java.io.File;
 
+import com.autodesk.client.model.Project;
+import com.autodesk.client.model.Forbidden;
+import com.autodesk.client.model.NotFound;
+import com.autodesk.client.model.Hub;
+import com.autodesk.client.model.ItemCreated;
+import com.autodesk.client.model.BadInput;
+import com.autodesk.client.model.Conflict;
 import com.autodesk.client.model.CreateItem;
+import com.autodesk.client.model.StorageCreated;
 import com.autodesk.client.model.CreateStorage;
 import com.autodesk.client.model.CreateVersion;
+import com.autodesk.client.model.VersionCreated;
 
 
 import java.util.Arrays;
@@ -72,9 +81,10 @@ public class ProjectsApi {
    * Returns a project for a given &#x60;project_id&#x60;. 
    * @param hubId the &#x60;hub id&#x60; for the current operation (required)
    * @param projectId the &#x60;project id&#x60; (required)
+   * @return Project
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getProject(String hubId, String projectId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Project> getProject(String hubId, String projectId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -111,50 +121,18 @@ public class ProjectsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
-  }
-  /**
-   * 
-   * Returns health information for the &#x60;project&#x60; domain. The health check assesses the current working status of the &#39;project&#39; domain service. 
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<Void> getProjectHealth( Credentials credentials) throws ApiException {
-
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/project/v1/health".replaceAll("\\{format\\}","json");
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/vnd.api+json", "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
-  }
+    GenericType<Project> localVarReturnType = new GenericType<Project>() {};
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+      }
   /**
    * 
    * Returns the hub for a given &#x60;project_id&#x60;. 
    * @param hubId the &#x60;hub id&#x60; for the current operation (required)
    * @param projectId the &#x60;project id&#x60; (required)
+   * @return Hub
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getProjectHub(String hubId, String projectId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Hub> getProjectHub(String hubId, String projectId,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = null;
     
@@ -191,18 +169,18 @@ public class ProjectsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
-  }
+    GenericType<Hub> localVarReturnType = new GenericType<Hub>() {};
+    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+      }
   /**
    * 
    * Creates a new item in the &#39;data&#39; domain service. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param body describe the item to be created (required)
-   * @return Object
+   * @return ItemCreated
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> postItem(String projectId, CreateItem body,  Credentials credentials) throws ApiException {
+  public ApiResponse<ItemCreated> postItem(String projectId, CreateItem body,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = body;
     
@@ -238,7 +216,7 @@ public class ProjectsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<ItemCreated> localVarReturnType = new GenericType<ItemCreated>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -246,10 +224,10 @@ public class ProjectsApi {
    * Creates a storage location in the OSS where data can be uploaded to. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param body describe the file the storage is created for (required)
-   * @return Object
+   * @return StorageCreated
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> postStorage(String projectId, CreateStorage body,  Credentials credentials) throws ApiException {
+  public ApiResponse<StorageCreated> postStorage(String projectId, CreateStorage body,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = body;
     
@@ -285,7 +263,7 @@ public class ProjectsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<StorageCreated> localVarReturnType = new GenericType<StorageCreated>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -293,10 +271,10 @@ public class ProjectsApi {
    * Creates a new version of an item in the &#39;data&#39; domain service. 
    * @param projectId the &#x60;project id&#x60; (required)
    * @param body describe the version to be created (required)
-   * @return Object
+   * @return VersionCreated
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Object> postVersion(String projectId, CreateVersion body,  Credentials credentials) throws ApiException {
+  public ApiResponse<VersionCreated> postVersion(String projectId, CreateVersion body,  Credentials credentials) throws ApiException {
 
     Object localVarPostBody = body;
     
@@ -332,7 +310,7 @@ public class ProjectsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<VersionCreated> localVarReturnType = new GenericType<VersionCreated>() {};
     return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

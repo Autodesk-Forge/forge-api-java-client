@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -58,7 +58,6 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -105,12 +104,7 @@ public class ApiClient {
   }
 
   public static DateFormat buildDefaultDateFormat() {
-    // Use RFC3339 format for date and datetime.
-    // See http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-    // Use UTC as the default time zone.
-    dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-    return dateFormat;
+    return new RFC3339DateFormat();
   }
 
   /**
@@ -551,8 +545,8 @@ public class ApiClient {
     statusCode = response.getStatusInfo().getStatusCode();
     responseHeaders = response.getHeaders();
 
-    if(response.getStatusInfo() == ClientResponse.Status.NO_CONTENT) {
-      return null;
+    if(response.getStatusInfo().getStatusCode() == ClientResponse.Status.NO_CONTENT.getStatusCode()) {
+            return null;
     } else if (response.getStatusInfo().getFamily() == Family.SUCCESSFUL) {
       if (returnType == null)
         return new ApiResponse<T>(statusCode, responseHeaders, null);

@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -26,10 +26,12 @@
 package com.autodesk.client.model;
 
 import java.util.Objects;
+
 import com.autodesk.client.model.JsonApiAttributes;
 import com.autodesk.client.model.JsonApiLinks;
 import com.autodesk.client.model.JsonApiMeta;
 import com.autodesk.client.model.JsonApiResource;
+import com.autodesk.client.model.StorageRelationships;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -41,6 +43,9 @@ import io.swagger.annotations.ApiModelProperty;
  */
 
 public class Storage   {
+  @JsonProperty("id")
+  private String id = null;
+
   /**
    * Gets or Sets type
    */
@@ -62,8 +67,35 @@ public class Storage   {
   @JsonProperty("type")
   private TypeEnum type = null;
 
+  @JsonProperty("attributes")
+  private JsonApiAttributes attributes = null;
+
+  @JsonProperty("meta")
+  private JsonApiMeta meta = null;
+
   @JsonProperty("relationships")
-  private Object relationships = null;
+  private StorageRelationships relationships = null;
+
+  @JsonProperty("links")
+  private JsonApiLinks links = null;
+
+  public Storage id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * resource id
+   * @return id
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "resource id")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 
   public Storage type(TypeEnum type) {
     this.type = type;
@@ -83,7 +115,43 @@ public class Storage   {
     this.type = type;
   }
 
-  public Storage relationships(Object relationships) {
+  public Storage attributes(JsonApiAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(JsonApiAttributes attributes) {
+    this.attributes = attributes;
+  }
+
+  public Storage meta(JsonApiMeta meta) {
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiMeta getMeta() {
+    return meta;
+  }
+
+  public void setMeta(JsonApiMeta meta) {
+    this.meta = meta;
+  }
+
+  public Storage relationships(StorageRelationships relationships) {
     this.relationships = relationships;
     return this;
   }
@@ -92,13 +160,31 @@ public class Storage   {
    * Get relationships
    * @return relationships
   **/
-  @ApiModelProperty(example = "null", required = true, value = "")
-  public Object getRelationships() {
+  @ApiModelProperty(example = "null", value = "")
+  public StorageRelationships getRelationships() {
     return relationships;
   }
 
-  public void setRelationships(Object relationships) {
+  public void setRelationships(StorageRelationships relationships) {
     this.relationships = relationships;
+  }
+
+  public Storage links(JsonApiLinks links) {
+    this.links = links;
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public JsonApiLinks getLinks() {
+    return links;
+  }
+
+  public void setLinks(JsonApiLinks links) {
+    this.links = links;
   }
 
 
@@ -111,13 +197,17 @@ public class Storage   {
       return false;
     }
     Storage storage = (Storage) o;
-    return Objects.equals(this.type, storage.type) &&
-        Objects.equals(this.relationships, storage.relationships);
+    return Objects.equals(this.id, storage.id) &&
+        Objects.equals(this.type, storage.type) &&
+        Objects.equals(this.attributes, storage.attributes) &&
+        Objects.equals(this.meta, storage.meta) &&
+        Objects.equals(this.relationships, storage.relationships) &&
+        Objects.equals(this.links, storage.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, relationships);
+    return Objects.hash(id, type, attributes, meta, relationships, links);
   }
 
   @Override
@@ -125,8 +215,12 @@ public class Storage   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Storage {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }

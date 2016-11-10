@@ -1,6 +1,6 @@
-/**
+/*
  * Forge SDK
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. From visualizing data to 3D printing, take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -153,7 +153,7 @@ public class BucketsApi {
   }
   /**
    * 
-   * This endpoint will return the bucket owned by the application. This endpoint supports pagination.
+   * This endpoint will return the buckets owned by the application. This endpoint supports pagination.
    * @param bucketKey URL-encoded bucket key (required)
    * @return Bucket
    * @throws ApiException if fails to make API call
