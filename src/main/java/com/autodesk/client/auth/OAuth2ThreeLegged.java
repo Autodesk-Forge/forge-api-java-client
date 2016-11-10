@@ -59,6 +59,7 @@ public class OAuth2ThreeLegged implements Authentication {
     private String clientId;
     private String clientSecret;
     private String redirectUri;
+    private Boolean autoRefresh;
 
     // makes a POST request to url with form parameters and returns body as a string
     private String post(String url, Map<String,String> formParameters,Map<String,String> headers) throws ClientProtocolException, IOException, ApiException {
@@ -112,7 +113,33 @@ public class OAuth2ThreeLegged implements Authentication {
     }
 
 
-    public OAuth2ThreeLegged(String clientId, String clientSecret, String redirectUri, List<String> selectedScopes){
+    //validates that the selected scopes are not empty and also included in the list of all scopes.
+    private Boolean validateScopes(List<String> selectedScopes) throws Exception
+    {
+        if (this.scopes.size() > 0)
+        {
+            if (selectedScopes != null && selectedScopes.size() > 0) {
+                for (String key : selectedScopes) {
+                    if (!this.scopes.contains(key)) {
+                        throw new Exception(key + " scope is not allowed");
+                    }
+                }
+            }
+            else
+            {
+                // throw if scope is null or undefined
+                throw new Exception("Scope is missing or empty, you must provide a valid scope");
+            }
+        }
+        else
+        {
+            throw new Exception("Authentication does not allow any scopes");
+        }
+        return true;
+    }
+
+
+    public OAuth2ThreeLegged(String clientId, String clientSecret, String redirectUri, List<String> selectedScopes, Boolean autoRefresh) throws Exception{
 
         this.flow = OAuthFlow.accessCode;
         this.scopes = new ArrayList<String>();
@@ -120,6 +147,7 @@ public class OAuth2ThreeLegged implements Authentication {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.selectedScopes = selectedScopes;
+        this.autoRefresh = autoRefresh;
     
         this.name = "oauth2_access_code";
         this.type = "oauth2";
@@ -139,7 +167,8 @@ public class OAuth2ThreeLegged implements Authentication {
         this.scopes.add("account:write");
         this.scopes.add("user-profile:read");
     
-        //if(this.selectedScopes == null) this.selectedScopes = this.scopes;
+
+        validateScopes(selectedScopes);
     }
 
     @Override
@@ -158,8 +187,14 @@ public class OAuth2ThreeLegged implements Authentication {
         return this.name;
     }
 
-    public void setSelectedScopes(List<String> selectedScopes){
-        this.selectedScopes = selectedScopes;
+    public void setSelectedScopes(List<String> selectedScopes) throws Exception{
+        if(validateScopes(selectedScopes)){
+            this.selectedScopes = selectedScopes;
+        }
+    }
+
+    public Boolean isAutoRefresh() {
+        return this.autoRefresh;
     }
 
      /**
@@ -228,7 +263,7 @@ public class OAuth2ThreeLegged implements Authentication {
                 }
 
             } catch (IOException e) {
-                System.err.println("Exception when trying to get token");
+                System.err.println("Exception when trying to get access token");
                 e.printStackTrace();
             }
             return response;

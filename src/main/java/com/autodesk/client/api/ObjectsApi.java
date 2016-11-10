@@ -32,6 +32,7 @@ import com.autodesk.client.Configuration;
 import com.autodesk.client.model.*;
 import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.Authentication;
 import com.autodesk.client.ApiResponse;
 
 import java.io.File;
@@ -82,7 +83,7 @@ public class ObjectsApi {
    * @return ObjectDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ObjectDetails> copyTo(String bucketKey, String objectName, String newObjName,  Credentials credentials) throws ApiException {
+  public ApiResponse<ObjectDetails> copyTo(String bucketKey, String objectName, String newObjName,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -126,7 +127,7 @@ public class ObjectsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<ObjectDetails> localVarReturnType = new GenericType<ObjectDetails>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -138,7 +139,7 @@ public class ObjectsApi {
    * @return PostObjectSigned
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PostObjectSigned> createSignedResource(String bucketKey, String objectName, PostBucketsSigned postBucketsSigned, String access,  Credentials credentials) throws ApiException {
+  public ApiResponse<PostObjectSigned> createSignedResource(String bucketKey, String objectName, PostBucketsSigned postBucketsSigned, String access,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = postBucketsSigned;
     
@@ -183,7 +184,7 @@ public class ObjectsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<PostObjectSigned> localVarReturnType = new GenericType<PostObjectSigned>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -192,7 +193,7 @@ public class ObjectsApi {
    * @param objectName URL-encoded object name (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteObject(String bucketKey, String objectName,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteObject(String bucketKey, String objectName,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -230,7 +231,7 @@ public class ObjectsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * 
@@ -240,7 +241,7 @@ public class ObjectsApi {
    * @return InputStream
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InputStream> deleteSignedResource(String id, String region,  Credentials credentials) throws ApiException {
+  public ApiResponse<InputStream> deleteSignedResource(String id, String region,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -273,7 +274,7 @@ public class ObjectsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<InputStream> localVarReturnType = new GenericType<InputStream>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -287,7 +288,7 @@ public class ObjectsApi {
    * @return InputStream
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InputStream> getObject(String bucketKey, String objectName, String range, String ifNoneMatch, Date ifModifiedSince, String acceptEncoding,  Credentials credentials) throws ApiException {
+  public ApiResponse<InputStream> getObject(String bucketKey, String objectName, String range, String ifNoneMatch, Date ifModifiedSince, String acceptEncoding,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -333,7 +334,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<InputStream> localVarReturnType = new GenericType<InputStream>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -345,7 +346,7 @@ if (acceptEncoding != null)
    * @return ObjectFullDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ObjectFullDetails> getObjectDetails(String bucketKey, String objectName, Date ifModifiedSince, String with,  Credentials credentials) throws ApiException {
+  public ApiResponse<ObjectFullDetails> getObjectDetails(String bucketKey, String objectName, Date ifModifiedSince, String with,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -386,7 +387,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<ObjectFullDetails> localVarReturnType = new GenericType<ObjectFullDetails>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -398,7 +399,7 @@ if (acceptEncoding != null)
    * @return BucketObjects
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BucketObjects> getObjects(String bucketKey, Integer limit, String beginsWith, String startAt,  Credentials credentials) throws ApiException {
+  public ApiResponse<BucketObjects> getObjects(String bucketKey, Integer limit, String beginsWith, String startAt,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -433,7 +434,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<BucketObjects> localVarReturnType = new GenericType<BucketObjects>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -444,7 +445,7 @@ if (acceptEncoding != null)
    * @return Result
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Result> getSessionid(String bucketKey, String objectName, String sessionId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Result> getSessionid(String bucketKey, String objectName, String sessionId,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -488,7 +489,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Result> localVarReturnType = new GenericType<Result>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -502,7 +503,7 @@ if (acceptEncoding != null)
    * @return InputStream
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InputStream> getSignedResource(String id, String range, String ifNoneMatch, Date ifModifiedSince, String acceptEncoding, String region,  Credentials credentials) throws ApiException {
+  public ApiResponse<InputStream> getSignedResource(String id, String range, String ifNoneMatch, Date ifModifiedSince, String acceptEncoding, String region,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -543,7 +544,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<InputStream> localVarReturnType = new GenericType<InputStream>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -559,7 +560,7 @@ if (acceptEncoding != null)
    * @return ObjectDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ObjectDetails> uploadChunk(String bucketKey, String objectName, Integer contentLength, String contentRange, String sessionId, InputStream body, String contentDisposition, String ifMatch,  Credentials credentials) throws ApiException {
+  public ApiResponse<ObjectDetails> uploadChunk(String bucketKey, String objectName, Integer contentLength, String contentRange, String sessionId, InputStream body, String contentDisposition, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -627,7 +628,7 @@ if (sessionId != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<ObjectDetails> localVarReturnType = new GenericType<ObjectDetails>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -641,7 +642,7 @@ if (sessionId != null)
    * @return ObjectDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ObjectDetails> uploadObject(String bucketKey, String objectName, Integer contentLength, InputStream body, String contentDisposition, String ifMatch,  Credentials credentials) throws ApiException {
+  public ApiResponse<ObjectDetails> uploadObject(String bucketKey, String objectName, Integer contentLength, InputStream body, String contentDisposition, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -695,7 +696,7 @@ if (ifMatch != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<ObjectDetails> localVarReturnType = new GenericType<ObjectDetails>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -709,7 +710,7 @@ if (ifMatch != null)
    * @return PostObjectSigned
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PostObjectSigned> uploadSignedResource(String id, Integer contentLength, InputStream body, String contentDisposition, String xAdsRegion, String ifMatch,  Credentials credentials) throws ApiException {
+  public ApiResponse<PostObjectSigned> uploadSignedResource(String id, Integer contentLength, InputStream body, String contentDisposition, String xAdsRegion, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -759,7 +760,7 @@ if (ifMatch != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<PostObjectSigned> localVarReturnType = new GenericType<PostObjectSigned>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -773,7 +774,7 @@ if (ifMatch != null)
    * @return PostObjectSigned
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PostObjectSigned> uploadSignedResourcesChunk(String id, String contentRange, String sessionId, InputStream body, String contentDisposition, String xAdsRegion,  Credentials credentials) throws ApiException {
+  public ApiResponse<PostObjectSigned> uploadSignedResourcesChunk(String id, String contentRange, String sessionId, InputStream body, String contentDisposition, String xAdsRegion,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -828,6 +829,6 @@ if (sessionId != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<PostObjectSigned> localVarReturnType = new GenericType<PostObjectSigned>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

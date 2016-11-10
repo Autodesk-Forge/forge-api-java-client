@@ -49,23 +49,4 @@ public class Configuration {
     public static void setDefaultApiClient(ApiClient apiClient) {
         defaultApiClient = apiClient;
     }
-    /**
-    * the environemnt that the api should run on
-    */
-    public enum HostEnvironment{
-        dev, 
-        stg, 
-        prod
-    }
-
-    /**
-    * set the host by chosen environment
-    * @param environment
-    */
-    public static void setHostEnvironment(HostEnvironment environment){
-        Map<String,String> map = defaultApiClient.getHostEnvironments();
-        if(map.containsKey(environment.toString())) {
-            defaultApiClient.setBasePath(map.get(environment.toString()));
-        }
-    }
 }

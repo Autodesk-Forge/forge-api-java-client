@@ -32,6 +32,7 @@ import com.autodesk.client.Configuration;
 import com.autodesk.client.model.*;
 import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.Authentication;
 import com.autodesk.client.ApiResponse;
 
 import java.io.File;
@@ -73,7 +74,7 @@ public class WorkItemsApi {
    * @return WorkItemResp
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<WorkItemResp> createWorkItem(WorkItem workItem,  Credentials credentials) throws ApiException {
+  public ApiResponse<WorkItemResp> createWorkItem(WorkItem workItem,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = workItem;
     
@@ -104,7 +105,7 @@ public class WorkItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<WorkItemResp> localVarReturnType = new GenericType<WorkItemResp>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Removes a specific WorkItem.
@@ -112,7 +113,7 @@ public class WorkItemsApi {
    * @param id  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteWorkItem(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteWorkItem(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -144,7 +145,7 @@ public class WorkItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Returns the details of all WorkItems.
@@ -153,7 +154,7 @@ public class WorkItemsApi {
    * @return List<WorkItemResp>
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<WorkItemResp>> getAllWorkItems(Integer skip,  Credentials credentials) throws ApiException {
+  public ApiResponse<List<WorkItemResp>> getAllWorkItems(Integer skip,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -180,7 +181,7 @@ public class WorkItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<List<WorkItemResp>> localVarReturnType = new GenericType<List<WorkItemResp>>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns the details of a specific WorkItem.
@@ -189,7 +190,7 @@ public class WorkItemsApi {
    * @return WorkItemResp
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<WorkItemResp> getWorkItem(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<WorkItemResp> getWorkItem(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -221,6 +222,6 @@ public class WorkItemsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<WorkItemResp> localVarReturnType = new GenericType<WorkItemResp>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

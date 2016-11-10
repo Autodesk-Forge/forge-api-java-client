@@ -32,6 +32,7 @@ import com.autodesk.client.Configuration;
 import com.autodesk.client.model.*;
 import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.Authentication;
 import com.autodesk.client.ApiResponse;
 
 import java.io.File;
@@ -74,7 +75,7 @@ public class AppPackagesApi {
    * @return AppPackage
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AppPackage> createAppPackage(AppPackage appPackage,  Credentials credentials) throws ApiException {
+  public ApiResponse<AppPackage> createAppPackage(AppPackage appPackage,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = appPackage;
     
@@ -105,7 +106,7 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<AppPackage> localVarReturnType = new GenericType<AppPackage>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Removes a specific AppPackage.
@@ -113,7 +114,7 @@ public class AppPackagesApi {
    * @param id  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteAppPackage(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteAppPackage(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -145,7 +146,7 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Removes the version history of the specified AppPackage.
@@ -153,7 +154,7 @@ public class AppPackagesApi {
    * @param id  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteAppPackageHistory(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteAppPackageHistory(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -185,7 +186,7 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Returns the details of all AppPackages.
@@ -193,7 +194,7 @@ public class AppPackagesApi {
    * @return List<AppPackage>
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<AppPackage>> getAllAppPackages( Credentials credentials) throws ApiException {
+  public ApiResponse<List<AppPackage>> getAllAppPackages( Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -219,7 +220,7 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<List<AppPackage>> localVarReturnType = new GenericType<List<AppPackage>>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns the details of a specific AppPackage.
@@ -228,7 +229,7 @@ public class AppPackagesApi {
    * @return AppPackage
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AppPackage> getAppPackage(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<AppPackage> getAppPackage(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -260,7 +261,7 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<AppPackage> localVarReturnType = new GenericType<AppPackage>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns all old versions of a specified AppPackage.
@@ -269,7 +270,7 @@ public class AppPackagesApi {
    * @return List<AppPackage>
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<AppPackage>> getAppPackageVersions(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<List<AppPackage>> getAppPackageVersions(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -301,14 +302,14 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<List<AppPackage>> localVarReturnType = new GenericType<List<AppPackage>>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage.
    * 
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getUploadUrl( Credentials credentials) throws ApiException {
+  public ApiResponse<Void> getUploadUrl( Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -334,7 +335,7 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type&#x3D;binary/octet-stream.
@@ -342,7 +343,7 @@ public class AppPackagesApi {
    * @param require  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getUploadUrlWithRequireContentType(Boolean require,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> getUploadUrlWithRequireContentType(Boolean require,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -374,7 +375,7 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Updates an AppPackage by specifying only the changed attributes.
@@ -383,7 +384,7 @@ public class AppPackagesApi {
    * @param appPackage  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> patchAppPackage(String id, AppPackageOptional appPackage,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> patchAppPackage(String id, AppPackageOptional appPackage,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = appPackage;
     
@@ -420,7 +421,7 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Sets the AppPackage to the specified version.
@@ -429,7 +430,7 @@ public class AppPackagesApi {
    * @param appPackageVersion  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> setAppPackageVersion(String id, AppPackageVersion appPackageVersion,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> setAppPackageVersion(String id, AppPackageVersion appPackageVersion,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = appPackageVersion;
     
@@ -466,7 +467,7 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Updates an AppPackage by redefining the entire Activity object.
@@ -475,7 +476,7 @@ public class AppPackagesApi {
    * @param appPackage  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> updateAppPackage(String id, AppPackage appPackage,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> updateAppPackage(String id, AppPackage appPackage,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = appPackage;
     
@@ -512,6 +513,6 @@ public class AppPackagesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
 }

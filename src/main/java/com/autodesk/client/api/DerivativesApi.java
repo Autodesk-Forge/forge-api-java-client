@@ -32,6 +32,7 @@ import com.autodesk.client.Configuration;
 import com.autodesk.client.model.*;
 import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.Authentication;
 import com.autodesk.client.ApiResponse;
 
 import java.io.File;
@@ -80,7 +81,7 @@ public class DerivativesApi {
    * @return Result
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Result> deleteManifest(String urn,  Credentials credentials) throws ApiException {
+  public ApiResponse<Result> deleteManifest(String urn,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -112,7 +113,7 @@ public class DerivativesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Result> localVarReturnType = new GenericType<Result>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -122,7 +123,7 @@ public class DerivativesApi {
    * @param range This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getDerivativeManifest(String urn, String derivativeUrn, Integer range,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> getDerivativeManifest(String urn, String derivativeUrn, Integer range,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -162,7 +163,7 @@ public class DerivativesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * 
@@ -172,7 +173,7 @@ public class DerivativesApi {
    * @return Formats
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Formats> getFormats(Date ifModifiedSince, String acceptEncoding,  Credentials credentials) throws ApiException {
+  public ApiResponse<Formats> getFormats(Date ifModifiedSince, String acceptEncoding,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -202,7 +203,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Formats> localVarReturnType = new GenericType<Formats>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -212,7 +213,7 @@ if (acceptEncoding != null)
    * @return Manifest
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Manifest> getManifest(String urn, String acceptEncoding,  Credentials credentials) throws ApiException {
+  public ApiResponse<Manifest> getManifest(String urn, String acceptEncoding,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -246,7 +247,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Manifest> localVarReturnType = new GenericType<Manifest>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -256,7 +257,7 @@ if (acceptEncoding != null)
    * @return Metadata
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Metadata> getMetadata(String urn, String acceptEncoding,  Credentials credentials) throws ApiException {
+  public ApiResponse<Metadata> getMetadata(String urn, String acceptEncoding,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -290,7 +291,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Metadata> localVarReturnType = new GenericType<Metadata>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -301,7 +302,7 @@ if (acceptEncoding != null)
    * @return Metadata
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Metadata> getModelviewMetadata(String urn, String guid, String acceptEncoding,  Credentials credentials) throws ApiException {
+  public ApiResponse<Metadata> getModelviewMetadata(String urn, String guid, String acceptEncoding,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -341,7 +342,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Metadata> localVarReturnType = new GenericType<Metadata>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -352,7 +353,7 @@ if (acceptEncoding != null)
    * @return Metadata
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Metadata> getModelviewProperties(String urn, String guid, String acceptEncoding,  Credentials credentials) throws ApiException {
+  public ApiResponse<Metadata> getModelviewProperties(String urn, String guid, String acceptEncoding,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -392,7 +393,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Metadata> localVarReturnType = new GenericType<Metadata>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -403,7 +404,7 @@ if (acceptEncoding != null)
    * @return InputStream
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InputStream> getThumbnail(String urn, Integer width, Integer height,  Credentials credentials) throws ApiException {
+  public ApiResponse<InputStream> getThumbnail(String urn, Integer width, Integer height,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -437,7 +438,7 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<InputStream> localVarReturnType = new GenericType<InputStream>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -447,7 +448,7 @@ if (acceptEncoding != null)
    * @return Job
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Job> translate(JobPayload job, Boolean xAdsForce,  Credentials credentials) throws ApiException {
+  public ApiResponse<Job> translate(JobPayload job, Boolean xAdsForce,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = job;
     
@@ -480,6 +481,6 @@ if (acceptEncoding != null)
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Job> localVarReturnType = new GenericType<Job>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

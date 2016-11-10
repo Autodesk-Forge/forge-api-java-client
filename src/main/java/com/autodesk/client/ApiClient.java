@@ -62,7 +62,7 @@ import java.text.DateFormat;
 import java.io.IOException;
 import java.nio.file.Files;
 
-import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.*;
 
 
 public class ApiClient {
@@ -527,6 +527,8 @@ public class ApiClient {
   /**
    * Invoke API by sending HTTP request with the given options.
    *
+   * @param oauth2 The oauth object used to send secure requests
+   * @param credentials The credentials containing the access token used to send secure requests
    * @param path The sub-path of the HTTP URL
    * @param method The request method, one of "GET", "POST", "PUT", and "DELETE"
    * @param queryParams The query parameters
@@ -535,10 +537,23 @@ public class ApiClient {
    * @param formParams The form parameters
    * @param accept The request's Accept header
    * @param contentType The request's Content-Type header
-   * @param authNames The authentications to apply
    * @return The response body in type of string
    */
-   public <T> ApiResponse<T> invokeAPI(Credentials credentials, String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType, GenericType<T> returnType) throws ApiException {
+   public <T> ApiResponse<T> invokeAPI(Authentication oauth2, Credentials credentials, String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String accept, String contentType, GenericType<T> returnType) throws ApiException, Exception{
+
+    //try to auto refresh 2-legged/3-legged access token
+    if (oauth2 instanceof OAuth2TwoLegged){
+        OAuth2TwoLegged oauth2TwoLegged = (OAuth2TwoLegged)oauth2;
+        if(oauth2TwoLegged.isAutoRefresh() && oauth2TwoLegged.isAccessTokenExpired()){
+            credentials = oauth2TwoLegged.authenticate();
+        }
+    }
+    else if (oauth2 instanceof OAuth2ThreeLegged && credentials instanceof ThreeLeggedCredentials){
+        OAuth2ThreeLegged oauth2ThreeLegged = (OAuth2ThreeLegged)oauth2;
+        if(oauth2ThreeLegged.isAutoRefresh() && oauth2ThreeLegged.isAuthorized((ThreeLeggedCredentials)credentials)){
+            credentials = oauth2ThreeLegged.refreshAccessToken(((ThreeLeggedCredentials) credentials).getRefreshToken());
+        }
+    }
 
     ClientResponse response = getAPIResponse(credentials, path, method, queryParams, body, headerParams, formParams, accept, contentType);
 

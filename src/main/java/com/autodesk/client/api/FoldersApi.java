@@ -32,6 +32,7 @@ import com.autodesk.client.Configuration;
 import com.autodesk.client.model.*;
 import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.Authentication;
 import com.autodesk.client.ApiResponse;
 
 import java.io.File;
@@ -79,7 +80,7 @@ public class FoldersApi {
    * @return Folder
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Folder> getFolder(String projectId, String folderId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Folder> getFolder(String projectId, String folderId,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -112,12 +113,12 @@ public class FoldersApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Folder> localVarReturnType = new GenericType<Folder>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -132,7 +133,7 @@ public class FoldersApi {
    * @return JsonApiCollection
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<JsonApiCollection> getFolderContents(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, Integer pageNumber, Integer pageLimit,  Credentials credentials) throws ApiException {
+  public ApiResponse<JsonApiCollection> getFolderContents(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, Integer pageNumber, Integer pageLimit,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -170,12 +171,12 @@ public class FoldersApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<JsonApiCollection> localVarReturnType = new GenericType<JsonApiCollection>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -185,7 +186,7 @@ public class FoldersApi {
    * @return Folder
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Folder> getFolderParent(String projectId, String folderId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Folder> getFolderParent(String projectId, String folderId,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -218,12 +219,12 @@ public class FoldersApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Folder> localVarReturnType = new GenericType<Folder>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -236,7 +237,7 @@ public class FoldersApi {
    * @return JsonApiCollection
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<JsonApiCollection> getFolderRefs(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
+  public ApiResponse<JsonApiCollection> getFolderRefs(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterExtensionType,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -272,12 +273,12 @@ public class FoldersApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<JsonApiCollection> localVarReturnType = new GenericType<JsonApiCollection>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -292,7 +293,7 @@ public class FoldersApi {
    * @return Refs
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Refs> getFolderRelationshipsRefs(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
+  public ApiResponse<Refs> getFolderRelationshipsRefs(String projectId, String folderId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -330,12 +331,12 @@ public class FoldersApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Refs> localVarReturnType = new GenericType<Refs>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -345,7 +346,7 @@ public class FoldersApi {
    * @param body describe the ref to be created (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> postFolderRelationshipsRef(String projectId, String folderId, CreateRef body,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> postFolderRelationshipsRef(String projectId, String folderId, CreateRef body,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -383,11 +384,11 @@ public class FoldersApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
 }

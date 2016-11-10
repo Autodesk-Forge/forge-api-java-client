@@ -32,6 +32,7 @@ import com.autodesk.client.Configuration;
 import com.autodesk.client.model.*;
 import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.Authentication;
 import com.autodesk.client.ApiResponse;
 
 import java.io.File;
@@ -84,7 +85,7 @@ public class ProjectsApi {
    * @return Project
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Project> getProject(String hubId, String projectId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Project> getProject(String hubId, String projectId,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -117,12 +118,12 @@ public class ProjectsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Project> localVarReturnType = new GenericType<Project>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -132,7 +133,7 @@ public class ProjectsApi {
    * @return Hub
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Hub> getProjectHub(String hubId, String projectId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Hub> getProjectHub(String hubId, String projectId,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -165,12 +166,12 @@ public class ProjectsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Hub> localVarReturnType = new GenericType<Hub>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -180,7 +181,7 @@ public class ProjectsApi {
    * @return ItemCreated
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ItemCreated> postItem(String projectId, CreateItem body,  Credentials credentials) throws ApiException {
+  public ApiResponse<ItemCreated> postItem(String projectId, CreateItem body,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -212,12 +213,12 @@ public class ProjectsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<ItemCreated> localVarReturnType = new GenericType<ItemCreated>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -227,7 +228,7 @@ public class ProjectsApi {
    * @return StorageCreated
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<StorageCreated> postStorage(String projectId, CreateStorage body,  Credentials credentials) throws ApiException {
+  public ApiResponse<StorageCreated> postStorage(String projectId, CreateStorage body,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -259,12 +260,12 @@ public class ProjectsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<StorageCreated> localVarReturnType = new GenericType<StorageCreated>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -274,7 +275,7 @@ public class ProjectsApi {
    * @return VersionCreated
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<VersionCreated> postVersion(String projectId, CreateVersion body,  Credentials credentials) throws ApiException {
+  public ApiResponse<VersionCreated> postVersion(String projectId, CreateVersion body,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -306,11 +307,11 @@ public class ProjectsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<VersionCreated> localVarReturnType = new GenericType<VersionCreated>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

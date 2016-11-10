@@ -32,6 +32,7 @@ import com.autodesk.client.Configuration;
 import com.autodesk.client.model.*;
 import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.Authentication;
 import com.autodesk.client.ApiResponse;
 
 import java.io.File;
@@ -76,7 +77,7 @@ public class BucketsApi {
    * @return Bucket
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Bucket> createBucket(PostBucketsPayload postBuckets, String xAdsRegion,  Credentials credentials) throws ApiException {
+  public ApiResponse<Bucket> createBucket(PostBucketsPayload postBuckets, String xAdsRegion,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = postBuckets;
     
@@ -109,7 +110,7 @@ public class BucketsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Bucket> localVarReturnType = new GenericType<Bucket>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -117,7 +118,7 @@ public class BucketsApi {
    * @param bucketKey URL-encoded bucket key (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteBucket(String bucketKey,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteBucket(String bucketKey,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -149,7 +150,7 @@ public class BucketsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * 
@@ -158,7 +159,7 @@ public class BucketsApi {
    * @return Bucket
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Bucket> getBucketDetails(String bucketKey,  Credentials credentials) throws ApiException {
+  public ApiResponse<Bucket> getBucketDetails(String bucketKey,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -190,7 +191,7 @@ public class BucketsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Bucket> localVarReturnType = new GenericType<Bucket>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -201,7 +202,7 @@ public class BucketsApi {
    * @return Buckets
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Buckets> getBuckets(String region, Integer limit, String startAt,  Credentials credentials) throws ApiException {
+  public ApiResponse<Buckets> getBuckets(String region, Integer limit, String startAt,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -230,6 +231,6 @@ public class BucketsApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Buckets> localVarReturnType = new GenericType<Buckets>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

@@ -32,6 +32,7 @@ import com.autodesk.client.Configuration;
 import com.autodesk.client.model.*;
 import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.Authentication;
 import com.autodesk.client.ApiResponse;
 
 import java.io.File;
@@ -82,7 +83,7 @@ public class ItemsApi {
    * @return Item
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Item> getItem(String projectId, String itemId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Item> getItem(String projectId, String itemId,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -115,12 +116,12 @@ public class ItemsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Item> localVarReturnType = new GenericType<Item>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -130,7 +131,7 @@ public class ItemsApi {
    * @return Folder
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Folder> getItemParentFolder(String projectId, String itemId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Folder> getItemParentFolder(String projectId, String itemId,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -163,12 +164,12 @@ public class ItemsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Folder> localVarReturnType = new GenericType<Folder>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -181,7 +182,7 @@ public class ItemsApi {
    * @return JsonApiCollection
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<JsonApiCollection> getItemRefs(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
+  public ApiResponse<JsonApiCollection> getItemRefs(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterExtensionType,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -217,12 +218,12 @@ public class ItemsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<JsonApiCollection> localVarReturnType = new GenericType<JsonApiCollection>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -237,7 +238,7 @@ public class ItemsApi {
    * @return Refs
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Refs> getItemRelationshipsRefs(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Credentials credentials) throws ApiException {
+  public ApiResponse<Refs> getItemRelationshipsRefs(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterRefType, String filterDirection, List<String> filterExtensionType,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -275,12 +276,12 @@ public class ItemsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Refs> localVarReturnType = new GenericType<Refs>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -290,7 +291,7 @@ public class ItemsApi {
    * @return Version
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Version> getItemTip(String projectId, String itemId,  Credentials credentials) throws ApiException {
+  public ApiResponse<Version> getItemTip(String projectId, String itemId,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -323,12 +324,12 @@ public class ItemsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Version> localVarReturnType = new GenericType<Version>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -344,7 +345,7 @@ public class ItemsApi {
    * @return Versions
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Versions> getItemVersions(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, List<Integer> filterVersionNumber, Integer pageNumber, Integer pageLimit,  Credentials credentials) throws ApiException {
+  public ApiResponse<Versions> getItemVersions(String projectId, String itemId, List<String> filterType, List<String> filterId, List<String> filterExtensionType, List<Integer> filterVersionNumber, Integer pageNumber, Integer pageLimit,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -383,12 +384,12 @@ public class ItemsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Versions> localVarReturnType = new GenericType<Versions>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
@@ -398,7 +399,7 @@ public class ItemsApi {
    * @param body describe the ref to be created (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> postItemRelationshipsRef(String projectId, String itemId, CreateRef body,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> postItemRelationshipsRef(String projectId, String itemId, CreateRef body,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -436,11 +437,11 @@ public class ItemsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/vnd.api+json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
 }

@@ -32,6 +32,7 @@ import com.autodesk.client.Configuration;
 import com.autodesk.client.model.*;
 import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.Authentication;
 import com.autodesk.client.ApiResponse;
 
 import java.io.File;
@@ -74,7 +75,7 @@ public class ActivitiesApi {
    * @return Activity
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Activity> createActivity(Activity activity,  Credentials credentials) throws ApiException {
+  public ApiResponse<Activity> createActivity(Activity activity,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = activity;
     
@@ -105,7 +106,7 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Activity> localVarReturnType = new GenericType<Activity>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Removes a specific Activity.
@@ -113,7 +114,7 @@ public class ActivitiesApi {
    * @param id  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteActivity(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteActivity(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -145,7 +146,7 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Removes the version history of the specified Activity.
@@ -153,7 +154,7 @@ public class ActivitiesApi {
    * @param id  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteActivityHistory(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> deleteActivityHistory(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -185,7 +186,7 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Returns the details of a specific Activity.
@@ -194,7 +195,7 @@ public class ActivitiesApi {
    * @return Activity
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Activity> getActivity(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<Activity> getActivity(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -226,7 +227,7 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Activity> localVarReturnType = new GenericType<Activity>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns all old versions of a specified Activity.
@@ -235,7 +236,7 @@ public class ActivitiesApi {
    * @return List<Activity>
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<Activity>> getActivityVersions(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<List<Activity>> getActivityVersions(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -267,7 +268,7 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<List<Activity>> localVarReturnType = new GenericType<List<Activity>>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns the details of all Activities.
@@ -275,7 +276,7 @@ public class ActivitiesApi {
    * @return List<Activity>
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<Activity>> getAllActivities( Credentials credentials) throws ApiException {
+  public ApiResponse<List<Activity>> getAllActivities( Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -301,7 +302,7 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<List<Activity>> localVarReturnType = new GenericType<List<Activity>>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Updates an Activity by specifying only the changed attributes.
@@ -310,7 +311,7 @@ public class ActivitiesApi {
    * @param activity  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> patchActivity(String id, ActivityOptional activity,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> patchActivity(String id, ActivityOptional activity,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = activity;
     
@@ -347,7 +348,7 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Sets the Activity to the specified version.
@@ -356,7 +357,7 @@ public class ActivitiesApi {
    * @param activityVersion  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> setActivityVersion(String id, ActivityVersion activityVersion,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> setActivityVersion(String id, ActivityVersion activityVersion,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = activityVersion;
     
@@ -393,7 +394,7 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
   /**
    * Updates an Activity by redefining the entire Activity object.
@@ -402,7 +403,7 @@ public class ActivitiesApi {
    * @param activity  (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> updateActivity(String id, Activity activity,  Credentials credentials) throws ApiException {
+  public ApiResponse<Void> updateActivity(String id, Activity activity,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = activity;
     
@@ -439,6 +440,6 @@ public class ActivitiesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 
-    return apiClient.invokeAPI(credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
   }
 }

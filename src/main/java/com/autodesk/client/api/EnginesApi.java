@@ -32,6 +32,7 @@ import com.autodesk.client.Configuration;
 import com.autodesk.client.model.*;
 import com.autodesk.client.Pair;
 import com.autodesk.client.auth.Credentials;
+import com.autodesk.client.auth.Authentication;
 import com.autodesk.client.ApiResponse;
 
 import java.io.File;
@@ -71,7 +72,7 @@ public class EnginesApi {
    * @return List<Engine>
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<Engine>> getAllEngines( Credentials credentials) throws ApiException {
+  public ApiResponse<List<Engine>> getAllEngines( Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -97,7 +98,7 @@ public class EnginesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<List<Engine>> localVarReturnType = new GenericType<List<Engine>>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns the details of a specific AutoCAD core engine.
@@ -106,7 +107,7 @@ public class EnginesApi {
    * @return Engine
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Engine> getEngine(String id,  Credentials credentials) throws ApiException {
+  public ApiResponse<Engine> getEngine(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -138,6 +139,6 @@ public class EnginesApi {
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     GenericType<Engine> localVarReturnType = new GenericType<Engine>() {};
-    return apiClient.invokeAPI(credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }

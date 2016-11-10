@@ -53,11 +53,11 @@ public class OAuth2TwoLegged implements Authentication {
     private String type;
     private OAuthFlow flow;
     private String tokenUrl;
-    private String redirectUri;
     private List<String> scopes;
     private List<String> selectedScopes;
     private String clientId;
     private String clientSecret;
+    private Boolean autoRefresh;
 
     // makes a POST request to url with form parameters and returns body as a string
     private String post(String url, Map<String,String> formParameters,Map<String,String> headers) throws ClientProtocolException, IOException {
@@ -108,14 +108,39 @@ public class OAuth2TwoLegged implements Authentication {
         return scopeStr;
     }
 
+    //validates that the selected scopes are not empty and also included in the list of all scopes.
+    private Boolean validateScopes(List<String> selectedScopes) throws Exception
+    {
+        if (this.scopes.size() > 0)
+        {
+            if (selectedScopes != null && selectedScopes.size() > 0) {
+                for (String key : selectedScopes) {
+                    if (!this.scopes.contains(key)) {
+                        throw new Exception(key + " scope is not allowed");
+                    }
+               }
+            }
+            else
+            {
+                // throw if scope is null or undefined
+                throw new Exception("Scope is missing or empty, you must provide a valid scope");
+            }
+        }
+        else
+        {
+            throw new Exception("Authentication does not allow any scopes");
+        }
+        return true;
+    }
 
-    public OAuth2TwoLegged(String clientId, String clientSecret, List<String> selectedScopes){
+
+    public OAuth2TwoLegged(String clientId, String clientSecret, List<String> selectedScopes, Boolean autoRefresh) throws Exception{
         this.flow = OAuthFlow.application;
         this.scopes = new ArrayList<String>();
-        this.redirectUri = redirectUri;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.selectedScopes = selectedScopes;
+        this.autoRefresh = autoRefresh;
     
         this.name = "oauth2_application";
         this.type = "oauth2";
@@ -134,7 +159,8 @@ public class OAuth2TwoLegged implements Authentication {
         this.scopes.add("user-profile:read");
 
     
-      if(this.selectedScopes == null) this.selectedScopes = this.scopes;
+
+       validateScopes(selectedScopes);
     }
 
     @Override
@@ -149,33 +175,25 @@ public class OAuth2TwoLegged implements Authentication {
         return name;
     }
 
-    public void setSelectedScopes(List<String> selectedScopes){
-        this.selectedScopes = selectedScopes;
-    }
-
-    public String getAccessToken() {
-        if (this.credentials != null) {
-            return this.credentials.getAccessToken();
-        }
-        else{
-            return null;
+    public void setSelectedScopes(List<String> selectedScopes) throws Exception{
+        if(validateScopes(selectedScopes)){
+            this.selectedScopes = selectedScopes;
         }
     }
 
-    public Long getAccessTokenExpirationTime() {
-        if (this.credentials != null) {
-            return this.credentials.getExpiresAt();
-        }
-        else{
-            return Long.parseLong("0");
-        }
+    public Credentials getCredentials() {
+        return this.credentials;
+    }
+
+    public Boolean isAutoRefresh() {
+        return this.autoRefresh;
     }
 
     /**
      * Get the access token in a 2-legged flow
      * @return
      */
-    public Credentials authorize() throws Exception{
+    public Credentials authenticate() throws Exception{
 
         if(flow == OAuthFlow.application) {
 
@@ -211,17 +229,17 @@ public class OAuth2TwoLegged implements Authentication {
                     throw new RuntimeException("Unable to parse json " + body);
                 }
             } catch (IOException e) {
-                System.err.println("Exception when trying to get token");
+                System.err.println("Exception when trying to get access token");
                 e.printStackTrace();
             }
             return response;
         }
         else{
-            throw new Exception("authorize requires application flow type");
+            throw new Exception("getAccessToken requires application flow type");
         }
     }
 
-    public Boolean isAuthorized(){
-         return (this.credentials != null) && !!(this.credentials.getExpiresAt() != null && (this.credentials.getExpiresAt() > (new Date().getTime())));
+    public Boolean isAccessTokenExpired(){
+         return (this.credentials != null) && (this.credentials.getExpiresAt() <= (new Date().getTime()));
     }
 }
