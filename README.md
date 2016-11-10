@@ -96,7 +96,7 @@ import com.autodesk.client.auth.OAuth2ThreeLegged;
 import com.autodesk.client.auth.OAuth2TwoLegged;
 import com.autodesk.client.auth.Credentials;
 import com.autodesk.client.auth.ThreeLeggedCredentials;
-import com.autodesk.client.model.InlineResponse200;
+import com.autodesk.client.model.*;
 
 public class ForgeApiExample {
 
@@ -113,12 +113,12 @@ public class ForgeApiExample {
 
             // Get the buckets owned by an application.
             // Use the twoLeggedCredentials object that you retrieved previously.
-            ApiResponse<InlineResponse200> bucketsApiResponse = bucketsApi.getBuckets(null, null, null, twoLeggedCredentials);
+            ApiResponse<Buckets> bucketsApiResponse = bucketsApi.getBuckets(null, null, null, twoLeggedCredentials);
             System.out.println(bucketsApiResponse.getData());
             
             // Get the hubs that are accessible for a member.
             // Use the threeLeggedCredentials object that you retrieved previously.
-            ApiResponse<Object> hubsApiResponse = hubsApi.getHubs(null, null, threeLeggedCredentials);
+            ApiResponse<Hubs> hubsApiResponse = hubsApi.getHubs(null, null, threeLeggedCredentials);
             System.out.println(hubsApiResponse.getData());
             
         } catch (ApiException e) {
