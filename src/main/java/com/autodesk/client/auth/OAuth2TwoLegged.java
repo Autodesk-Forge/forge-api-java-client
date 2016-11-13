@@ -139,7 +139,7 @@ public class OAuth2TwoLegged implements Authentication {
      * @param clientId - the client id of the application
      * @param clientSecret - the client secret of the application
      * @param selectedScopes - the scope permissions used to generated access token
-     * @param autoRefresh - if set to true, the access token will be refreshed automatically (if expired) in every api call.
+     * @param autoRefresh - set autoRefresh to 'true' to automatically refresh the access token when it expires
      * @throws Exception
      */
     public OAuth2TwoLegged(String clientId, String clientSecret, List<String> selectedScopes, Boolean autoRefresh) throws Exception{
