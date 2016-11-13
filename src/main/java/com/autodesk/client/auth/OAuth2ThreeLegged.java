@@ -139,6 +139,15 @@ public class OAuth2ThreeLegged implements Authentication {
     }
 
 
+    /**
+     * OAuth2ThreeLegged Constructor
+     * @param clientId - the client id of the application
+     * @param clientSecret - the client secret of the application
+     * @param redirectUri - the redirect URI of the application
+     * @param selectedScopes - the scope permissions used to generated access token
+     * @param autoRefresh - if set to true, the access token will be refreshed automatically (if expired) in every api call.
+     * @throws Exception
+     */
     public OAuth2ThreeLegged(String clientId, String clientSecret, String redirectUri, List<String> selectedScopes, Boolean autoRefresh) throws Exception{
 
         this.flow = OAuthFlow.accessCode;
