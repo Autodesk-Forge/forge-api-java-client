@@ -35,7 +35,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -60,7 +60,7 @@ null (empty response body)
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -85,7 +85,7 @@ null (empty response body)
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -107,7 +107,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -179,7 +179,7 @@ null (empty response body)
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -204,7 +204,7 @@ null (empty response body)
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -230,7 +230,7 @@ null (empty response body)
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -256,7 +256,7 @@ null (empty response body)
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -282,7 +282,7 @@ null (empty response body)
 
 ### Authorization
 
-[oauth2_application](../README.md#authorizing-and-authenticating)
+[oauth2_application](../README.md#authentication)
 
 ### HTTP request headers
 

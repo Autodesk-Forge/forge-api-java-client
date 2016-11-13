@@ -32,7 +32,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_access_code](../README.md#authorizing-and-authenticating)
+[oauth2_access_code](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_access_code](../README.md#authorizing-and-authenticating)
+[oauth2_access_code](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_access_code](../README.md#authorizing-and-authenticating)
+[oauth2_access_code](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_access_code](../README.md#authorizing-and-authenticating)
+[oauth2_access_code](../README.md#authentication)
 
 ### HTTP request headers
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2_access_code](../README.md#authorizing-and-authenticating)
+[oauth2_access_code](../README.md#authentication)
 
 ### HTTP request headers
 
