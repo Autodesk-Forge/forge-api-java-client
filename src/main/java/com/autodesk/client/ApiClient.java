@@ -550,7 +550,7 @@ public class ApiClient {
     }
     else if (oauth2 instanceof OAuth2ThreeLegged && credentials instanceof ThreeLeggedCredentials){
         OAuth2ThreeLegged oauth2ThreeLegged = (OAuth2ThreeLegged)oauth2;
-        if(oauth2ThreeLegged.isAutoRefresh() && oauth2ThreeLegged.isAuthorized((ThreeLeggedCredentials)credentials)){
+        if(oauth2ThreeLegged.isAutoRefresh() && !oauth2ThreeLegged.isAuthorized((ThreeLeggedCredentials)credentials)){
             credentials = oauth2ThreeLegged.refreshAccessToken(((ThreeLeggedCredentials) credentials).getRefreshToken());
         }
     }
