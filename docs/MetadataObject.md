@@ -1,0 +1,12 @@
+
+# MetadataObject
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**objectid** | **Integer** | Unique ID for the object | 
+**name** | **String** | Name of the object | 
+**objects** | **List&lt;String&gt;** | Optional collection of “children” objects within the hierarchy |  [optional]
+
+
+
