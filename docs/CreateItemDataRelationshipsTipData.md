@@ -12,14 +12,14 @@ Name | Type | Description | Notes
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-VERSIONS | &quot;versions&quot;
+"VERSIONS" | &quot;versions&quot;
 
 
 <a name="IdEnum"></a>
 ## Enum: IdEnum
 Name | Value
 ---- | -----
-_1 | &quot;1&quot;
+"_1" | &quot;1&quot;
 
 
 

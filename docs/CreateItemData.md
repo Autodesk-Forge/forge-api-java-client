@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-ITEMS | &quot;items&quot;
+"ITEMS" | &quot;items&quot;
 
 
 

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-HUBS | &quot;hubs&quot;
+"HUBS" | &quot;hubs&quot;
 
 
 

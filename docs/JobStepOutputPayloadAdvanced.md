@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 ## Enum: ApplicationProtocolEnum
 Name | Value
 ---- | -----
-_203 | &quot;203&quot;
-_214 | &quot;214&quot;
-_242 | &quot;242&quot;
+"_203" | &quot;203&quot;
+"_214" | &quot;214&quot;
+"_242" | &quot;242&quot;
 
 
 

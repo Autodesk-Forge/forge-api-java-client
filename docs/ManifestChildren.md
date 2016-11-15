@@ -22,33 +22,33 @@ Name | Type | Description | Notes
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-RESOURCE | &quot;resource&quot;
-MANIFEST | &quot;manifest&quot;
-GEOMETRY | &quot;geometry&quot;
-VIEW | &quot;view&quot;
+"RESOURCE" | &quot;resource&quot;
+"MANIFEST" | &quot;manifest&quot;
+"GEOMETRY" | &quot;geometry&quot;
+"VIEW" | &quot;view&quot;
 
 
 <a name="RoleEnum"></a>
 ## Enum: RoleEnum
 Name | Value
 ---- | -----
-_2D | &quot;2d&quot;
-_3D | &quot;3d&quot;
-GRAPHICS | &quot;graphics&quot;
-MANIFEST | &quot;manifest&quot;
-THUMBNAIL | &quot;thumbnail&quot;
+"_2D" | &quot;2d&quot;
+"_3D" | &quot;3d&quot;
+"GRAPHICS" | &quot;graphics&quot;
+"MANIFEST" | &quot;manifest&quot;
+"THUMBNAIL" | &quot;thumbnail&quot;
 
 
 <a name="StatusEnum"></a>
 ## Enum: StatusEnum
 Name | Value
 ---- | -----
-PENDING | &quot;pending&quot;
-INPROGRESS | &quot;inprogress&quot;
-SUCCESS | &quot;success&quot;
-FAILED | &quot;failed&quot;
-TIMEOUT | &quot;timeout&quot;
-PARTIALSUCCESS | &quot;partialsuccess&quot;
+"PENDING" | &quot;pending&quot;
+"INPROGRESS" | &quot;inprogress&quot;
+"SUCCESS" | &quot;success&quot;
+"FAILED" | &quot;failed&quot;
+"TIMEOUT" | &quot;timeout&quot;
+"PARTIALSUCCESS" | &quot;partialsuccess&quot;
 
 
 

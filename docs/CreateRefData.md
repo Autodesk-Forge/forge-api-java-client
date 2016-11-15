@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-FOLDERS | &quot;folders&quot;
-ITEMS | &quot;items&quot;
-VERSIONS | &quot;versions&quot;
+"FOLDERS" | &quot;folders&quot;
+"ITEMS" | &quot;items&quot;
+"VERSIONS" | &quot;versions&quot;
 
 
 

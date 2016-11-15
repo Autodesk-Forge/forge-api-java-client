@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 ## Enum: AccessEnum
 Name | Value
 ---- | -----
-FULL | &quot;full&quot;
-READ | &quot;read&quot;
+"FULL" | &quot;full&quot;
+"READ" | &quot;read&quot;
 
 
 

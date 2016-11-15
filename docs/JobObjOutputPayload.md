@@ -12,12 +12,12 @@ Name | Type | Description | Notes
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-SVF | &quot;svf&quot;
-THUMBNAIL | &quot;thumbnail&quot;
-STL | &quot;stl&quot;
-STEP | &quot;step&quot;
-IGES | &quot;iges&quot;
-OBJ | &quot;obj&quot;
+"SVF" | &quot;svf&quot;
+"THUMBNAIL" | &quot;thumbnail&quot;
+"STL" | &quot;stl&quot;
+"STEP" | &quot;step&quot;
+"IGES" | &quot;iges&quot;
+"OBJ" | &quot;obj&quot;
 
 
 

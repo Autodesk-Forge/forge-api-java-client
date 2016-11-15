@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-VERSIONS | &quot;versions&quot;
+"VERSIONS" | &quot;versions&quot;
 
 
 

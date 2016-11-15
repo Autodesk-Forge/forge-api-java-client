@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 ## Enum: ExportFileStructureEnum
 Name | Value
 ---- | -----
-SINGLE | &quot;single&quot;
-MULTIPLE | &quot;multiple&quot;
+"SINGLE" | &quot;single&quot;
+"MULTIPLE" | &quot;multiple&quot;
 
 
 

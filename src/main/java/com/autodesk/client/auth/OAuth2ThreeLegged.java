@@ -138,16 +138,15 @@ public class OAuth2ThreeLegged implements Authentication {
         return true;
     }
 
-
     /**
-     * OAuth2ThreeLegged Constructor
-     * @param clientId - the client id of the application
-     * @param clientSecret - the client secret of the application
-     * @param redirectUri - the redirect URI of the application
-     * @param selectedScopes - the scope permissions used to generated access token
-     * @param autoRefresh - set autoRefresh to 'true' to automatically refresh the access token when it expires
-     * @throws Exception
-     */
+    * OAuth2ThreeLegged Constructor
+    * @param clientId - the client id of the application
+    * @param clientSecret - the client secret of the application
+    * @param redirectUri - the redirect URI of the application
+    * @param selectedScopes - the scope permissions used to generated access token
+    * @param autoRefresh - set autoRefresh to 'true' to automatically refresh the access token when it expires
+    * @throws Exception
+    */
     public OAuth2ThreeLegged(String clientId, String clientSecret, String redirectUri, List<String> selectedScopes, Boolean autoRefresh) throws Exception{
 
         this.flow = OAuthFlow.accessCode;

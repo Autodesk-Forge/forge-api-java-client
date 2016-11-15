@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-PROJECTS | &quot;projects&quot;
+"PROJECTS" | &quot;projects&quot;
 
 
 

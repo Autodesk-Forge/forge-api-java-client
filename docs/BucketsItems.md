@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 ## Enum: PolicyKeyEnum
 Name | Value
 ---- | -----
-TRANSIENT | &quot;transient&quot;
-TEMPORARY | &quot;temporary&quot;
-PERSISTENT | &quot;persistent&quot;
+"TRANSIENT" | &quot;transient&quot;
+"TEMPORARY" | &quot;temporary&quot;
+"PERSISTENT" | &quot;persistent&quot;
 
 
 

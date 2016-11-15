@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Enum: VersionEnum
 Name | Value
 ---- | -----
-_0 | &quot;1.0&quot;
+"_0" | &quot;1.0&quot;
 
 
 

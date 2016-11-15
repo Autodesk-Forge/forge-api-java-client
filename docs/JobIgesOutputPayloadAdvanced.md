@@ -14,28 +14,28 @@ Name | Type | Description | Notes
 ## Enum: SurfaceTypeEnum
 Name | Value
 ---- | -----
-BOUNDED | &quot;bounded&quot;
-TRIMMED | &quot;trimmed&quot;
-WIREFRAME | &quot;wireframe&quot;
+"BOUNDED" | &quot;bounded&quot;
+"TRIMMED" | &quot;trimmed&quot;
+"WIREFRAME" | &quot;wireframe&quot;
 
 
 <a name="SheetTypeEnum"></a>
 ## Enum: SheetTypeEnum
 Name | Value
 ---- | -----
-OPEN | &quot;open&quot;
-SURFACE | &quot;surface&quot;
-SHELL | &quot;shell&quot;
-WIREFRAME | &quot;wireframe&quot;
+"OPEN" | &quot;open&quot;
+"SURFACE" | &quot;surface&quot;
+"SHELL" | &quot;shell&quot;
+"WIREFRAME" | &quot;wireframe&quot;
 
 
 <a name="SolidTypeEnum"></a>
 ## Enum: SolidTypeEnum
 Name | Value
 ---- | -----
-SOLID | &quot;solid&quot;
-SURFACE | &quot;surface&quot;
-WIREFRAME | &quot;wireframe&quot;
+"SOLID" | &quot;solid&quot;
+"SURFACE" | &quot;surface&quot;
+"WIREFRAME" | &quot;wireframe&quot;
 
 
 

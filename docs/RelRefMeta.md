@@ -17,36 +17,36 @@ Name | Type | Description | Notes
 ## Enum: RefTypeEnum
 Name | Value
 ---- | -----
-DERIVED | &quot;derived&quot;
-DEPENDENCIES | &quot;dependencies&quot;
-AUXILIARY | &quot;auxiliary&quot;
-XREFS | &quot;xrefs&quot;
+"DERIVED" | &quot;derived&quot;
+"DEPENDENCIES" | &quot;dependencies&quot;
+"AUXILIARY" | &quot;auxiliary&quot;
+"XREFS" | &quot;xrefs&quot;
 
 
 <a name="DirectionEnum"></a>
 ## Enum: DirectionEnum
 Name | Value
 ---- | -----
-FROM | &quot;from&quot;
-TO | &quot;to&quot;
+"FROM" | &quot;from&quot;
+"TO" | &quot;to&quot;
 
 
 <a name="FromTypeEnum"></a>
 ## Enum: FromTypeEnum
 Name | Value
 ---- | -----
-FOLDERS | &quot;folders&quot;
-ITEMS | &quot;items&quot;
-VERSIONS | &quot;versions&quot;
+"FOLDERS" | &quot;folders&quot;
+"ITEMS" | &quot;items&quot;
+"VERSIONS" | &quot;versions&quot;
 
 
 <a name="ToTypeEnum"></a>
 ## Enum: ToTypeEnum
 Name | Value
 ---- | -----
-FOLDERS | &quot;folders&quot;
-ITEMS | &quot;items&quot;
-VERSIONS | &quot;versions&quot;
+"FOLDERS" | &quot;folders&quot;
+"ITEMS" | &quot;items&quot;
+"VERSIONS" | &quot;versions&quot;
 
 
 

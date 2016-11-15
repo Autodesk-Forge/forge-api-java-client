@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-FOLDERS | &quot;folders&quot;
+"FOLDERS" | &quot;folders&quot;
 
 
 

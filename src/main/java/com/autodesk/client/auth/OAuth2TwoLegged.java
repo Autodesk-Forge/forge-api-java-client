@@ -133,15 +133,14 @@ public class OAuth2TwoLegged implements Authentication {
         return true;
     }
 
-
     /**
-     * OAuth2TwoLegged Constructor
-     * @param clientId - the client id of the application
-     * @param clientSecret - the client secret of the application
-     * @param selectedScopes - the scope permissions used to generated access token
-     * @param autoRefresh - set autoRefresh to 'true' to automatically refresh the access token when it expires
-     * @throws Exception
-     */
+    * OAuth2TwoLegged Constructor
+    * @param clientId - the client id of the application
+    * @param clientSecret - the client secret of the application
+    * @param selectedScopes - the scope permissions used to generated access token
+    * @param autoRefresh - set autoRefresh to 'true' to automatically refresh the access token when it expires
+    * @throws Exception
+    */
     public OAuth2TwoLegged(String clientId, String clientSecret, List<String> selectedScopes, Boolean autoRefresh) throws Exception{
         this.flow = OAuthFlow.application;
         this.scopes = new ArrayList<String>();

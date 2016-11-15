@@ -16,24 +16,24 @@ Name | Type | Description | Notes
 ## Enum: OutputTypeEnum
 Name | Value
 ---- | -----
-STL | &quot;stl&quot;
-STEP | &quot;step&quot;
-IGES | &quot;iges&quot;
-OBJ | &quot;obj&quot;
-SVF | &quot;svf&quot;
-THUMBNAIL | &quot;thumbnail&quot;
+"STL" | &quot;stl&quot;
+"STEP" | &quot;step&quot;
+"IGES" | &quot;iges&quot;
+"OBJ" | &quot;obj&quot;
+"SVF" | &quot;svf&quot;
+"THUMBNAIL" | &quot;thumbnail&quot;
 
 
 <a name="StatusEnum"></a>
 ## Enum: StatusEnum
 Name | Value
 ---- | -----
-PENDING | &quot;pending&quot;
-INPROGRESS | &quot;inprogress&quot;
-SUCCESS | &quot;success&quot;
-FAILED | &quot;failed&quot;
-TIMEOUT | &quot;timeout&quot;
-PARTIALSUCCESS | &quot;partialsuccess&quot;
+"PENDING" | &quot;pending&quot;
+"INPROGRESS" | &quot;inprogress&quot;
+"SUCCESS" | &quot;success&quot;
+"FAILED" | &quot;failed&quot;
+"TIMEOUT" | &quot;timeout&quot;
+"PARTIALSUCCESS" | &quot;partialsuccess&quot;
 
 
 

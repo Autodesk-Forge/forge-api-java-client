@@ -13,16 +13,16 @@ Name | Type | Description | Notes
 ## Enum: FormatEnum
 Name | Value
 ---- | -----
-BINARY | &quot;binary&quot;
-ASCII | &quot;ascii&quot;
+"BINARY" | &quot;binary&quot;
+"ASCII" | &quot;ascii&quot;
 
 
 <a name="ExportFileStructureEnum"></a>
 ## Enum: ExportFileStructureEnum
 Name | Value
 ---- | -----
-SINGLE | &quot;single&quot;
-MULTIPLE | &quot;multiple&quot;
+"SINGLE" | &quot;single&quot;
+"MULTIPLE" | &quot;multiple&quot;
 
 
 
