@@ -90,11 +90,10 @@ Use the `threeLeggedCredentials` object to call the Forge APIs.
 ```java
 import com.autodesk.client.ApiException;
 import com.autodesk.client.ApiResponse;
-import com.autodesk.client.api.BucketsApi*;
-import com.autodesk.client.api.HubsApi*;
+import com.autodesk.client.api.BucketsApi;
+import com.autodesk.client.api.HubsApi;
 import com.autodesk.client.auth.*;
 import com.autodesk.client.model.*;
-import .;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,7 +101,13 @@ public class ForgeApiExample {
 
     public static void main(String[] args) {
 
-        try {
+        try {    
+            List<String> scopes = new ArrayList<String>();
+            scopes.add("data:read");
+            scopes.add("data:write");
+            scopes.add("bucket:create");
+            scopes.add("bucket:read");
+            
             // Initialize the oauth2TwoLegged object using the client key and client secret you received when creating the app on the Forge Developer portal:
             OAuth2TwoLegged oauth2TwoLegged = new OAuth2TwoLegged("<CLIENT_ID>", "<CLIENT_SECRET>", scopes, true);
             Credentials twoLeggedCredentials = oauth2TwoLegged.authenticate();
