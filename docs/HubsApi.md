@@ -49,8 +49,8 @@ Returns a collection of projects for a given &#x60;hub_id&#x60;. A project repre
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hubId** | **String**| the &#x60;hub id&#x60; for the current operation |
- **filterId** | [**List&lt;String&gt;**](String.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
- **filterExtensionType** | [**List&lt;String&gt;**](String.md)| filter by the extension type | [optional]
+ **filterId** | **List&lt;String&gt;**| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterExtensionType** | **List&lt;String&gt;**| filter by the extension type | [optional]
 
 ### Return type
 
@@ -77,8 +77,8 @@ Returns a collection of accessible hubs for this member. A Hub represents an A36
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filterId** | [**List&lt;String&gt;**](String.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
- **filterExtensionType** | [**List&lt;String&gt;**](String.md)| filter by the extension type | [optional]
+ **filterId** | **List&lt;String&gt;**| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterExtensionType** | **List&lt;String&gt;**| filter by the extension type | [optional]
 
 ### Return type
 

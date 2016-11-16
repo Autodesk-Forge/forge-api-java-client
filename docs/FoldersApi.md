@@ -54,9 +54,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **String**| the &#x60;project id&#x60; |
  **folderId** | **String**| the &#x60;folder id&#x60; |
- **filterType** | [**List&lt;String&gt;**](String.md)| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional]
- **filterId** | [**List&lt;String&gt;**](String.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
- **filterExtensionType** | [**List&lt;String&gt;**](String.md)| filter by the extension type | [optional]
+ **filterType** | **List&lt;String&gt;**| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterId** | **List&lt;String&gt;**| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterExtensionType** | **List&lt;String&gt;**| filter by the extension type | [optional]
  **pageNumber** | **Integer**| specify the page number | [optional]
  **pageLimit** | **Integer**| specify the maximal number of elements per page | [optional]
 
@@ -115,9 +115,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **String**| the &#x60;project id&#x60; |
  **folderId** | **String**| the &#x60;folder id&#x60; |
- **filterType** | [**List&lt;String&gt;**](String.md)| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional]
- **filterId** | [**List&lt;String&gt;**](String.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
- **filterExtensionType** | [**List&lt;String&gt;**](String.md)| filter by the extension type | [optional]
+ **filterType** | **List&lt;String&gt;**| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterId** | **List&lt;String&gt;**| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterExtensionType** | **List&lt;String&gt;**| filter by the extension type | [optional]
 
 ### Return type
 
@@ -146,11 +146,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectId** | **String**| the &#x60;project id&#x60; |
  **folderId** | **String**| the &#x60;folder id&#x60; |
- **filterType** | [**List&lt;String&gt;**](String.md)| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional]
- **filterId** | [**List&lt;String&gt;**](String.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
- **filterRefType** | [**List&lt;String&gt;**](String.md)| filter by &#x60;refType&#x60; | [optional]
+ **filterType** | **List&lt;String&gt;**| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterId** | **List&lt;String&gt;**| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterRefType** | **List&lt;String&gt;**| filter by &#x60;refType&#x60; | [optional]
  **filterDirection** | **String**| filter by the direction of the reference | [optional] [enum: from, to]
- **filterExtensionType** | [**List&lt;String&gt;**](String.md)| filter by the extension type | [optional]
+ **filterExtensionType** | **List&lt;String&gt;**| filter by the extension type | [optional]
 
 ### Return type
 
