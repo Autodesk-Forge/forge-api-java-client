@@ -92,9 +92,6 @@ public class ApiClient {
 
     dateFormat = ApiClient.buildDefaultDateFormat();
 
-    // Set default User-Agent.
-    setUserAgent("Swagger-Codegen/1.0.0/java");
-
     hostEnvironmentsList.put("dev", "https://developer-dev.api.autodesk.com");
     hostEnvironmentsList.put("stg", "https://developer-stg.api.autodesk.com");
     hostEnvironmentsList.put("prod", "https://developer.api.autodesk.com");
