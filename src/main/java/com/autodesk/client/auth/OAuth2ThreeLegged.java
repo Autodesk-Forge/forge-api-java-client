@@ -38,6 +38,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.joda.time.DateTime;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -257,12 +258,13 @@ public class OAuth2ThreeLegged implements Authentication {
                 // get the access token from json
                 try {
                     jsonObject = (JSONObject) new JSONParser().parse(responseBody);
-                    System.out.println("Response from forge:"+jsonObject.toJSONString());
 
                     String access_token = (String) jsonObject.get("access_token");
                     String refresh_token = (String) jsonObject.get("refresh_token");
-                    Long expires_in = (Long) jsonObject.get("expires_in");
-                    Long expiresAt = new Date().getTime() + expires_in * 1000;
+                    //calculate "expires at"
+                    long expires_in = (long)jsonObject.get("expires_in");
+                    DateTime later = DateTime.now().plusSeconds( (int)expires_in * 1000 );
+                    Long expiresAt = later.toDate().getTime();
 
                     response = new ThreeLeggedCredentials(access_token, expiresAt, refresh_token);
 
@@ -305,12 +307,13 @@ public class OAuth2ThreeLegged implements Authentication {
             // get the access token from json
             try {
                 jsonObject = (JSONObject) new JSONParser().parse(responseBody);
-                System.out.println("Response from forge:"+jsonObject.toJSONString());
 
                 String access_token = (String) jsonObject.get("access_token");
                 String refresh_token = (String) jsonObject.get("refresh_token");
-                Long expires_in = (Long) jsonObject.get("expires_in");
-                Long expiresAt = new Date().getTime() + expires_in * 1000;
+                //calculate "expires at"
+                long expires_in = (long)jsonObject.get("expires_in");
+                DateTime later = DateTime.now().plusSeconds( (int)expires_in * 1000 );
+                Long expiresAt = later.toDate().getTime();
 
                 response = new ThreeLeggedCredentials(access_token, expiresAt, refresh_token);
 
@@ -330,6 +333,6 @@ public class OAuth2ThreeLegged implements Authentication {
     }
 
     public Boolean isAuthorized(ThreeLeggedCredentials credentials){
-         return (credentials != null) && !!(credentials.getExpiresAt() != null && (credentials.getExpiresAt() > (new Date().getTime())));
+         return (credentials != null) && (credentials.getExpiresAt() != null && (credentials.getExpiresAt() > (new Date().getTime())));
     }
 }
