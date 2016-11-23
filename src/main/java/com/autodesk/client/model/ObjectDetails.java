@@ -43,7 +43,7 @@ public class ObjectDetails   {
   private String bucketKey = null;
 
   @JsonProperty("objectId")
-  private byte[] objectId = null;
+  private String objectId = null;
 
   @JsonProperty("objectKey")
   private String objectKey = null;
@@ -78,7 +78,7 @@ public class ObjectDetails   {
     this.bucketKey = bucketKey;
   }
 
-  public ObjectDetails objectId(byte[] objectId) {
+  public ObjectDetails objectId(String objectId) {
     this.objectId = objectId;
     return this;
   }
@@ -88,11 +88,11 @@ public class ObjectDetails   {
    * @return objectId
   **/
   @ApiModelProperty(example = "null", value = "Object URN")
-  public byte[] getObjectId() {
+  public String getObjectId() {
     return objectId;
   }
 
-  public void setObjectId(byte[] objectId) {
+  public void setObjectId(String objectId) {
     this.objectId = objectId;
   }
 
