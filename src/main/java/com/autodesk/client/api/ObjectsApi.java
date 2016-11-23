@@ -46,6 +46,7 @@ import com.autodesk.client.model.ObjectFullDetails;
 import com.autodesk.client.model.BucketObjects;
 import com.autodesk.client.model.Reason;
 import com.autodesk.client.model.Result;
+import java.io.File;
 
 
 import java.util.Arrays;
@@ -560,9 +561,9 @@ if (acceptEncoding != null)
    * @return ObjectDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ObjectDetails> uploadChunk(String bucketKey, String objectName, Integer contentLength, String contentRange, String sessionId, InputStream body, String contentDisposition, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<ObjectDetails> uploadChunk(String bucketKey, String objectName, Integer contentLength, String contentRange, String sessionId, File body, String contentDisposition, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
-    Object localVarPostBody = body;
+    Object localVarPostBody = null;
     
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
@@ -616,7 +617,9 @@ if (ifMatch != null)
 if (sessionId != null)
       localVarHeaderParams.put("Session-Id", apiClient.parameterToString(sessionId));
 
-    
+    if (body != null)
+      localVarFormParams.put("body", body);
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -642,9 +645,9 @@ if (sessionId != null)
    * @return ObjectDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ObjectDetails> uploadObject(String bucketKey, String objectName, Integer contentLength, InputStream body, String contentDisposition, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<ObjectDetails> uploadObject(String bucketKey, String objectName, Integer contentLength, File body, String contentDisposition, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
-    Object localVarPostBody = body;
+    Object localVarPostBody = null;
     
     // verify the required parameter 'bucketKey' is set
     if (bucketKey == null) {
@@ -684,7 +687,9 @@ if (contentDisposition != null)
 if (ifMatch != null)
       localVarHeaderParams.put("If-Match", apiClient.parameterToString(ifMatch));
 
-    
+    if (body != null)
+      localVarFormParams.put("body", body);
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -710,9 +715,9 @@ if (ifMatch != null)
    * @return PostObjectSigned
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PostObjectSigned> uploadSignedResource(String id, Integer contentLength, InputStream body, String contentDisposition, String xAdsRegion, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<PostObjectSigned> uploadSignedResource(String id, Integer contentLength, File body, String contentDisposition, String xAdsRegion, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
-    Object localVarPostBody = body;
+    Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
     if (id == null) {
@@ -748,7 +753,9 @@ if (xAdsRegion != null)
 if (ifMatch != null)
       localVarHeaderParams.put("If-Match", apiClient.parameterToString(ifMatch));
 
-    
+    if (body != null)
+      localVarFormParams.put("body", body);
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -774,9 +781,9 @@ if (ifMatch != null)
    * @return PostObjectSigned
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PostObjectSigned> uploadSignedResourcesChunk(String id, String contentRange, String sessionId, InputStream body, String contentDisposition, String xAdsRegion,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<PostObjectSigned> uploadSignedResourcesChunk(String id, String contentRange, String sessionId, File body, String contentDisposition, String xAdsRegion,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
-    Object localVarPostBody = body;
+    Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
     if (id == null) {
@@ -817,7 +824,9 @@ if (xAdsRegion != null)
 if (sessionId != null)
       localVarHeaderParams.put("Session-Id", apiClient.parameterToString(sessionId));
 
-    
+    if (body != null)
+      localVarFormParams.put("body", body);
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
