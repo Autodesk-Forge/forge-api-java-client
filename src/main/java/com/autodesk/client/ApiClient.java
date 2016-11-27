@@ -473,7 +473,7 @@ public class ApiClient {
 
     if (body != null && body.getClass().equals(File.class)) {
         try {
-            byte[] data = Files.readAllBytes(((File)body).toPath().getFileName());
+            byte[] data = Files.readAllBytes(((File)body).toPath());
             body = data;
             headerParams.put("Content-Length",  (new Integer(data.length)).toString());
             contentType = "application/octet-stream";
