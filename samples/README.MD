@@ -3,15 +3,14 @@
 ## Overview
 This sample app uses the Forge Java SDK to demonstrate the [OAuth](https://developer.autodesk.com/en/docs/oauth/v2/overview/) and [Data Management](https://developer.autodesk.com/en/docs/data/v2/overview/) Forge APIs. It shows a typical workflow:
 
-* [Create an authentication token](https://developer.autodesk.com/en/docs/oauth/v2/tutorials/get-2-legged-token/)
-* [Create a bucket](https://developer.autodesk.com/en/docs/data/v2/reference/http/buckets-POST/)
-* [Upload a file to the bucket](https://developer.autodesk.com/en/docs/data/v2/reference/http/buckets-:bucketKey-objects-:objectName-PUT/)
-* [Get a list of buckets](https://developer.autodesk.com/en/docs/data/v2/reference/http/buckets-GET/)
-* [Delete the file](https://developer.autodesk.com/en/docs/data/v2/reference/http/buckets-:bucketKey-objects-:objectName-DELETE/)
+* Create a 2-legged authentication token
+* Create a bucket (Buckets are arbitrary spaces that are created by applications and are used to store objects for later retrieval.)
+* Upload a file to the bucket
+* Get a list of buckets
+* Delete the file
 
 ### Requirements
 * Java version 7 and above.
-* A registered app on the <a href="https://developer.autodesk.com/myapps" target="_blank">Forge Developer portal</a>.
 
 ### Installation
 Clone the following repository:<br />
@@ -20,16 +19,15 @@ Clone the following repository:<br />
 
 ### Create an App
 
-[Create an app](https://developer.autodesk.com/en/docs/oauth/v2/tutorials/create-app/) on the Forge Developer portal, and select the Data Management API. Note the client ID and client secret.
+[Create an app](https://developer.autodesk.com/en/docs/oauth/v2/tutorials/create-app/) on the Forge Developer portal, and ensure that you select the Data Management API. Note the client ID and client secret.
 
 ### Configure the Parameters
 
 Before running the app you need to configure the following parameters from the *Main.java* file:
 
 * Replace `CLIENT_ID` and `CLIENT_SECRET` with the client ID and client secret generated when creating the app.
-Note that the app uses a <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" target="_blank">OAuth 2.0</a> client to retrieve the 2-legged access tokens.
 
-* Replace `BUCKET_KEY` with a name for the bucket.
+* Replace `BUCKET_KEY` with a unique name for the bucket.
 
 * Select a file, and replace `FILE_NAME` and `FILE_PATH` with the filename and file path.
 
