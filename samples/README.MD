@@ -4,7 +4,7 @@
 This sample app uses the Forge Java SDK to demonstrate the [OAuth](https://developer.autodesk.com/en/docs/oauth/v2/overview/) and [Data Management](https://developer.autodesk.com/en/docs/data/v2/overview/) Forge APIs. It shows a typical workflow:
 
 * Create a 2-legged authentication token
-* Create a bucket (Buckets are arbitrary spaces that are created by applications and are used to store objects for later retrieval.)
+* Create a bucket (an arbitrary space to store objects)
 * Upload a file to the bucket
 * Get a list of buckets
 * Delete the file
