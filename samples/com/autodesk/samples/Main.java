@@ -76,7 +76,7 @@ public class Main {
     private static void uploadFile() throws FileNotFoundException, ApiException, Exception {
         System.out.println("***** Sending uploadFile request" );
         File fileToUpload = new File(FILE_PATH);
-        ApiResponse<ObjectDetails> response = objectsApi.uploadObject(BUCKET_KEY, FILE_NAME, (int)fileToUpload.length(), fileToUpload, "txt", null, oauth2TwoLegged, twoLeggedCredentials);
+        ApiResponse<ObjectDetails> response = objectsApi.uploadObject(BUCKET_KEY, FILE_NAME, (int)fileToUpload.length(), fileToUpload, null, null, oauth2TwoLegged, twoLeggedCredentials);
 
         System.out.println("***** Response for uploadFile: ");
         ObjectDetails objectDetails = response.getData();
