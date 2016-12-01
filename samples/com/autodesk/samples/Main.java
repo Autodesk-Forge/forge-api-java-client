@@ -14,17 +14,20 @@ import java.util.List;
 
 public class Main {
 
-
     //TODO - insert your CLIENT_ID, CLIENT_SECRET
     private static final String CLIENT_ID = "";
     private static final String CLIENT_SECRET = "";
 
-    //TODO - choose a bucket key
+    // TODO - Choose a bucket key - A unique name you assign to a bucket. It must be globally unique across all applications and
+    // regions, otherwise the call will fail. Possible values: -_.a-z0-9 (between 3-128 characters in
+    // length). Note that you cannot change a bucket key.
     private static final String BUCKET_KEY = "my-chosen-bucket-key";
 
-    //TODO - choose a file to upload
-    private static final String FILE_NAME = "UploadedFileName";
-    private static final String FILE_PATH = "/path/to/file";
+    // TODO - Choose a file name - this would be the key for uploaded object
+    private static final String FILE_NAME = "my-file.extension";
+
+    //TODO - specify the full file name and path
+    private static final String FILE_PATH = "/path/to/your/file.extension";
 
     // Initialize the relevant clients; in this example, the Hubs and Buckets clients (part of the Data Management API).
     private static final BucketsApi bucketsApi = new BucketsApi();
