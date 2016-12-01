@@ -14,22 +14,22 @@ import java.util.List;
 
 public class Main {
 
-    //TODO - insert your CLIENT_ID, CLIENT_SECRET
+    //TODO - insert your CLIENT_ID and CLIENT_SECRET
     private static final String CLIENT_ID = "";
     private static final String CLIENT_SECRET = "";
 
-    // TODO - Choose a bucket key - A unique name you assign to a bucket. It must be globally unique across all applications and
+    // TODO - Choose a bucket key - a unique name to assign to a bucket. It must be globally unique across all applications and
     // regions, otherwise the call will fail. Possible values: -_.a-z0-9 (between 3-128 characters in
     // length). Note that you cannot change a bucket key.
     private static final String BUCKET_KEY = "my-chosen-bucket-key";
 
-    // TODO - Choose a file name - this would be the key for uploaded object
+    // TODO - Choose a filename - a key for the uploaded object
     private static final String FILE_NAME = "my-file.extension";
 
-    //TODO - specify the full file name and path
+    //TODO - specify the full filename and path
     private static final String FILE_PATH = "/path/to/your/file.extension";
 
-    // Initialize the relevant clients; in this example, the Hubs and Buckets clients (part of the Data Management API).
+    // Initialize the relevant clients; in this example, the Hubs and Buckets clients, which are part of the Data Management API
     private static final BucketsApi bucketsApi = new BucketsApi();
     private static final ObjectsApi objectsApi = new ObjectsApi();
 
@@ -55,7 +55,7 @@ public class Main {
     }
 
     /**
-     * Create a new bucket.
+     * Example of how to create a new bucket using Forge SDK.
      * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
      * @throws com.autodesk.client.ApiException
      * @throws Exception
@@ -70,7 +70,7 @@ public class Main {
     }
 
     /**
-     * Upload a File to previously created bucket.
+     * Example of how to upload a file to the bucket.
      * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
      * @throws java.io.FileNotFoundException
      * @throws com.autodesk.client.ApiException
@@ -89,7 +89,7 @@ public class Main {
     }
 
     /**
-     * Get the buckets owned by an application.
+     * Example of how to get the buckets owned by an application.
      * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
      * @throws com.autodesk.client.ApiException
      * @throws Exception
