@@ -40,7 +40,7 @@ import java.io.File;
 import com.autodesk.client.model.ObjectDetails;
 import com.autodesk.client.model.PostObjectSigned;
 import com.autodesk.client.model.PostBucketsSigned;
-import com.autodesk.client.model.InputStream;
+import java.io.File;
 import java.util.Date;
 import com.autodesk.client.model.ObjectFullDetails;
 import com.autodesk.client.model.BucketObjects;
@@ -238,10 +238,9 @@ public class ObjectsApi {
    * Delete a signed URL. A successful call to this endpoint requires bucket owner access.
    * @param id Id of signed resource (required)
    * @param region The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)
-   * @return InputStream
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InputStream> deleteSignedResource(String id, String region,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<Void> deleteSignedResource(String id, String region,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -273,9 +272,9 @@ public class ObjectsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<InputStream> localVarReturnType = new GenericType<InputStream>() {};
-    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
-      }
+
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+  }
   /**
    * 
    * Download an object.
@@ -285,10 +284,10 @@ public class ObjectsApi {
    * @param ifNoneMatch The value of this header is compared to the ETAG of the object. If they match, the body will not be included in the response. Only the object information will be included. (optional)
    * @param ifModifiedSince If the requested object has not been modified since the time specified in this field, an entity will not be returned from the server; instead, a 304 (not modified) response will be returned without any message body.  (optional)
    * @param acceptEncoding When gzip is specified, a gzip compressed stream of the object’s bytes will be returned in the response. Cannot use “Accept-Encoding:gzip” with Range header containing an end byte range. End byte range will not be honored if “Accept-Encoding: gzip” header is used.  (optional)
-   * @return InputStream
+   * @return File
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InputStream> getObject(String bucketKey, String objectName, String range, String ifNoneMatch, Date ifModifiedSince, String acceptEncoding,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<File> getObject(String bucketKey, String objectName, String range, String ifNoneMatch, Date ifModifiedSince, String acceptEncoding,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -333,7 +332,7 @@ if (acceptEncoding != null)
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<InputStream> localVarReturnType = new GenericType<InputStream>() {};
+    GenericType<File> localVarReturnType = new GenericType<File>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -500,10 +499,10 @@ if (acceptEncoding != null)
    * @param ifModifiedSince If the requested object has not been modified since the time specified in this field, an entity will not be returned from the server; instead, a 304 (not modified) response will be returned without any message body.  (optional)
    * @param acceptEncoding When gzip is specified, a gzip compressed stream of the object’s bytes will be returned in the response. Cannot use “Accept-Encoding:gzip” with Range header containing an end byte range. End byte range will not be honored if “Accept-Encoding: gzip” header is used.  (optional)
    * @param region The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)
-   * @return InputStream
+   * @return File
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InputStream> getSignedResource(String id, String range, String ifNoneMatch, Date ifModifiedSince, String acceptEncoding, String region,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<File> getSignedResource(String id, String range, String ifNoneMatch, Date ifModifiedSince, String acceptEncoding, String region,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -543,7 +542,7 @@ if (acceptEncoding != null)
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<InputStream> localVarReturnType = new GenericType<InputStream>() {};
+    GenericType<File> localVarReturnType = new GenericType<File>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**

@@ -108,7 +108,7 @@ null (empty response body)
 
 <a name="deleteSignedResource"></a>
 # **deleteSignedResource**
-> InputStream deleteSignedResource(id, region)
+> deleteSignedResource(id, region)
 
 
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InputStream**](InputStream.md)
+null (empty response body)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 <a name="getObject"></a>
 # **getObject**
-> InputStream getObject(bucketKey, objectName, range, ifNoneMatch, ifModifiedSince, acceptEncoding)
+> File getObject(bucketKey, objectName, range, ifNoneMatch, ifModifiedSince, acceptEncoding)
 
 
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InputStream**](InputStream.md)
+[**File**](File.md)
 
 ### Authorization
 
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 <a name="getSignedResource"></a>
 # **getSignedResource**
-> InputStream getSignedResource(id, range, ifNoneMatch, ifModifiedSince, acceptEncoding, region)
+> File getSignedResource(id, range, ifNoneMatch, ifModifiedSince, acceptEncoding, region)
 
 
 
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InputStream**](InputStream.md)
+[**File**](File.md)
 
 ### Authorization
 

@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 <a name="getThumbnail"></a>
 # **getThumbnail**
-> InputStream getThumbnail(urn, width, height)
+> File getThumbnail(urn, width, height)
 
 
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InputStream**](InputStream.md)
+[**File**](File.md)
 
 ### Authorization
 

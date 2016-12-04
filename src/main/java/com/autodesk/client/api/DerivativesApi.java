@@ -43,7 +43,7 @@ import com.autodesk.client.model.Formats;
 import java.util.Date;
 import com.autodesk.client.model.Manifest;
 import com.autodesk.client.model.Metadata;
-import com.autodesk.client.model.InputStream;
+import java.io.File;
 import com.autodesk.client.model.Job;
 import com.autodesk.client.model.JobPayload;
 
@@ -401,10 +401,10 @@ if (acceptEncoding != null)
    * @param urn The Base64 (URL Safe) encoded design URN  (required)
    * @param width The desired width of the thumbnail. Possible values are 100, 200 and 400.  (optional)
    * @param height The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)
-   * @return InputStream
+   * @return File
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InputStream> getThumbnail(String urn, Integer width, Integer height,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<File> getThumbnail(String urn, Integer width, Integer height,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -437,7 +437,7 @@ if (acceptEncoding != null)
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<InputStream> localVarReturnType = new GenericType<InputStream>() {};
+    GenericType<File> localVarReturnType = new GenericType<File>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
