@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.Date;
 
 
 /**
@@ -43,7 +44,7 @@ public class PostObjectSigned   {
   private String signedUrl = null;
 
   @JsonProperty("expiration")
-  private Integer expiration = null;
+  private Date expiration = null;
 
   public PostObjectSigned signedUrl(String signedUrl) {
     this.signedUrl = signedUrl;
@@ -63,7 +64,7 @@ public class PostObjectSigned   {
     this.signedUrl = signedUrl;
   }
 
-  public PostObjectSigned expiration(Integer expiration) {
+  public PostObjectSigned expiration(Date expiration) {
     this.expiration = expiration;
     return this;
   }
@@ -73,11 +74,11 @@ public class PostObjectSigned   {
    * @return expiration
   **/
   @ApiModelProperty(example = "null", required = true, value = "Value for expiration in minutes")
-  public Integer getExpiration() {
+  public Date getExpiration() {
     return expiration;
   }
 
-  public void setExpiration(Integer expiration) {
+  public void setExpiration(Date expiration) {
     this.expiration = expiration;
   }
 
