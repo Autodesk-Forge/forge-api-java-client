@@ -168,10 +168,9 @@ public class ObjectsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access", access));
 
-    if (access != null)
-      localVarHeaderParams.put("access", apiClient.parameterToString(access));
-
+    
     
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
