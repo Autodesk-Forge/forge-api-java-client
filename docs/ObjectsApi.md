@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 <a name="createSignedResource"></a>
 # **createSignedResource**
-> ObjectDetails createSignedResource(bucketKey, objectName, postBucketsSigned, access)
+> PostObjectSigned createSignedResource(bucketKey, objectName, postBucketsSigned, access)
 
 
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectDetails**](ObjectDetails.md)
+[**PostObjectSigned**](PostObjectSigned.md)
 
 ### Authorization
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 
 <a name="uploadSignedResource"></a>
 # **uploadSignedResource**
-> PostObjectSigned uploadSignedResource(id, contentLength, body, contentDisposition, xAdsRegion, ifMatch)
+> ObjectDetails uploadSignedResource(id, contentLength, body, contentDisposition, xAdsRegion, ifMatch)
 
 
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostObjectSigned**](PostObjectSigned.md)
+[**ObjectDetails**](ObjectDetails.md)
 
 ### Authorization
 
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 
 <a name="uploadSignedResourcesChunk"></a>
 # **uploadSignedResourcesChunk**
-> PostObjectSigned uploadSignedResourcesChunk(id, contentRange, sessionId, body, contentDisposition, xAdsRegion)
+> ObjectDetails uploadSignedResourcesChunk(id, contentRange, sessionId, body, contentDisposition, xAdsRegion)
 
 
 
@@ -406,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostObjectSigned**](PostObjectSigned.md)
+[**ObjectDetails**](ObjectDetails.md)
 
 ### Authorization
 

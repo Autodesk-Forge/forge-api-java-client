@@ -38,6 +38,7 @@ import com.autodesk.client.ApiResponse;
 import java.io.File;
 
 import com.autodesk.client.model.ObjectDetails;
+import com.autodesk.client.model.PostObjectSigned;
 import com.autodesk.client.model.PostBucketsSigned;
 import java.io.File;
 import java.util.Date;
@@ -45,7 +46,6 @@ import com.autodesk.client.model.ObjectFullDetails;
 import com.autodesk.client.model.BucketObjects;
 import com.autodesk.client.model.Reason;
 import com.autodesk.client.model.Result;
-import com.autodesk.client.model.PostObjectSigned;
 
 
 import java.util.Arrays;
@@ -136,10 +136,10 @@ public class ObjectsApi {
    * @param objectName URL-encoded object name (required)
    * @param postBucketsSigned Body Structure (required)
    * @param access Access for signed resource Acceptable values: &#x60;read&#x60;, &#x60;write&#x60;, &#x60;readwrite&#x60;. Default value: &#x60;read&#x60;  (optional, default to read)
-   * @return ObjectDetails
+   * @return PostObjectSigned
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ObjectDetails> createSignedResource(String bucketKey, String objectName, PostBucketsSigned postBucketsSigned, String access,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<PostObjectSigned> createSignedResource(String bucketKey, String objectName, PostBucketsSigned postBucketsSigned, String access,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = postBucketsSigned;
     
@@ -182,7 +182,7 @@ public class ObjectsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<ObjectDetails> localVarReturnType = new GenericType<ObjectDetails>() {};
+    GenericType<PostObjectSigned> localVarReturnType = new GenericType<PostObjectSigned>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -705,10 +705,10 @@ if (ifMatch != null)
    * @param contentDisposition The suggested default filename when downloading this object to a file after it has been uploaded. (optional)
    * @param xAdsRegion The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)
    * @param ifMatch If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)
-   * @return PostObjectSigned
+   * @return ObjectDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PostObjectSigned> uploadSignedResource(String id, Integer contentLength, File body, String contentDisposition, String xAdsRegion, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<ObjectDetails> uploadSignedResource(String id, Integer contentLength, File body, String contentDisposition, String xAdsRegion, String ifMatch,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -757,7 +757,7 @@ if (ifMatch != null)
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<PostObjectSigned> localVarReturnType = new GenericType<PostObjectSigned>() {};
+    GenericType<ObjectDetails> localVarReturnType = new GenericType<ObjectDetails>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -769,10 +769,10 @@ if (ifMatch != null)
    * @param body  (required)
    * @param contentDisposition The suggested default filename when downloading this object to a file after it has been uploaded. (optional)
    * @param xAdsRegion The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)
-   * @return PostObjectSigned
+   * @return ObjectDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PostObjectSigned> uploadSignedResourcesChunk(String id, String contentRange, String sessionId, File body, String contentDisposition, String xAdsRegion,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<ObjectDetails> uploadSignedResourcesChunk(String id, String contentRange, String sessionId, File body, String contentDisposition, String xAdsRegion,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = body;
     
@@ -826,7 +826,7 @@ if (sessionId != null)
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<PostObjectSigned> localVarReturnType = new GenericType<PostObjectSigned>() {};
+    GenericType<ObjectDetails> localVarReturnType = new GenericType<ObjectDetails>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
 }
