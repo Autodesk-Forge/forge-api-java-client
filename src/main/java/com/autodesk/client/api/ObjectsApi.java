@@ -38,7 +38,6 @@ import com.autodesk.client.ApiResponse;
 import java.io.File;
 
 import com.autodesk.client.model.ObjectDetails;
-import com.autodesk.client.model.PostObjectSigned;
 import com.autodesk.client.model.PostBucketsSigned;
 import java.io.File;
 import java.util.Date;
@@ -46,6 +45,7 @@ import com.autodesk.client.model.ObjectFullDetails;
 import com.autodesk.client.model.BucketObjects;
 import com.autodesk.client.model.Reason;
 import com.autodesk.client.model.Result;
+import com.autodesk.client.model.PostObjectSigned;
 
 
 import java.util.Arrays;
@@ -136,10 +136,10 @@ public class ObjectsApi {
    * @param objectName URL-encoded object name (required)
    * @param postBucketsSigned Body Structure (required)
    * @param access Access for signed resource Acceptable values: &#x60;read&#x60;, &#x60;write&#x60;, &#x60;readwrite&#x60;. Default value: &#x60;read&#x60;  (optional, default to read)
-   * @return PostObjectSigned
+   * @return ObjectDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PostObjectSigned> createSignedResource(String bucketKey, String objectName, PostBucketsSigned postBucketsSigned, String access,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<ObjectDetails> createSignedResource(String bucketKey, String objectName, PostBucketsSigned postBucketsSigned, String access,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = postBucketsSigned;
     
@@ -182,7 +182,7 @@ public class ObjectsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<PostObjectSigned> localVarReturnType = new GenericType<PostObjectSigned>() {};
+    GenericType<ObjectDetails> localVarReturnType = new GenericType<ObjectDetails>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**

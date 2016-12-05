@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 <a name="createSignedResource"></a>
 # **createSignedResource**
-> PostObjectSigned createSignedResource(bucketKey, objectName, postBucketsSigned, access)
+> ObjectDetails createSignedResource(bucketKey, objectName, postBucketsSigned, access)
 
 
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostObjectSigned**](PostObjectSigned.md)
+[**ObjectDetails**](ObjectDetails.md)
 
 ### Authorization
 
