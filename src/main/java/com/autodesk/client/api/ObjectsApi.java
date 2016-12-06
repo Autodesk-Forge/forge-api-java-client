@@ -436,61 +436,6 @@ if (acceptEncoding != null)
       }
   /**
    * 
-   * This endpoint returns status information about a resumable upload.
-   * @param bucketKey URL-encoded bucket key (required)
-   * @param objectName URL-encoded object name (required)
-   * @param sessionId Unique identifier of a session of a file being uploaded (required)
-   * @return Result
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<Result> getSessionid(String bucketKey, String objectName, String sessionId,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
-
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'bucketKey' is set
-    if (bucketKey == null) {
-      throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling getSessionid");
-    }
-    
-    // verify the required parameter 'objectName' is set
-    if (objectName == null) {
-      throw new ApiException(400, "Missing the required parameter 'objectName' when calling getSessionid");
-    }
-    
-    // verify the required parameter 'sessionId' is set
-    if (sessionId == null) {
-      throw new ApiException(400, "Missing the required parameter 'sessionId' when calling getSessionid");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}/status/{sessionId}".replaceAll("\\{format\\}","json")
-      .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
-      .replaceAll("\\{" + "objectName" + "\\}", apiClient.escapeString(objectName.toString()))
-      .replaceAll("\\{" + "sessionId" + "\\}", apiClient.escapeString(sessionId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/vnd.api+json", "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    GenericType<Result> localVarReturnType = new GenericType<Result>() {};
-    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
-      }
-  /**
-   * 
    * Download an object using a signed URL.
    * @param id Id of signed resource (required)
    * @param range A range of bytes to download from the specified object. (optional)
@@ -544,6 +489,60 @@ if (acceptEncoding != null)
     GenericType<File> localVarReturnType = new GenericType<File>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
+  /**
+   * 
+   * This endpoint returns status information about a resumable upload.
+   * @param bucketKey URL-encoded bucket key (required)
+   * @param objectName URL-encoded object name (required)
+   * @param sessionId Unique identifier of a session of a file being uploaded (required)
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> getStatusBySessionId(String bucketKey, String objectName, String sessionId,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'bucketKey' is set
+    if (bucketKey == null) {
+      throw new ApiException(400, "Missing the required parameter 'bucketKey' when calling getStatusBySessionId");
+    }
+    
+    // verify the required parameter 'objectName' is set
+    if (objectName == null) {
+      throw new ApiException(400, "Missing the required parameter 'objectName' when calling getStatusBySessionId");
+    }
+    
+    // verify the required parameter 'sessionId' is set
+    if (sessionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'sessionId' when calling getStatusBySessionId");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}/status/{sessionId}".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
+      .replaceAll("\\{" + "objectName" + "\\}", apiClient.escapeString(objectName.toString()))
+      .replaceAll("\\{" + "sessionId" + "\\}", apiClient.escapeString(sessionId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/vnd.api+json", "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+  }
   /**
    * 
    * This endpoint allows resumable uploads for large files in chunks.
