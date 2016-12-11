@@ -216,7 +216,7 @@ Class | Method | HTTP request | Description
 *ObjectsApi* | [**getObject**](docs/ObjectsApi.md#getObject) | **GET** /oss/v2/buckets/{bucketKey}/objects/{objectName} | 
 *ObjectsApi* | [**getObjectDetails**](docs/ObjectsApi.md#getObjectDetails) | **GET** /oss/v2/buckets/{bucketKey}/objects/{objectName}/details | 
 *ObjectsApi* | [**getObjects**](docs/ObjectsApi.md#getObjects) | **GET** /oss/v2/buckets/{bucketKey}/objects | 
-*ObjectsApi* | [**getSessionid**](docs/ObjectsApi.md#getSessionid) | **GET** /oss/v2/buckets/{bucketKey}/objects/{objectName}/status/{sessionId} | 
+*ObjectsApi* | [**getStatusBySessionId**](docs/ObjectsApi.md#getStatusBySessionId) | **GET** /oss/v2/buckets/{bucketKey}/objects/{objectName}/status/{sessionId} | 
 *ObjectsApi* | [**getSignedResource**](docs/ObjectsApi.md#getSignedResource) | **GET** /oss/v2/signedresources/{id} | 
 *ObjectsApi* | [**uploadChunk**](docs/ObjectsApi.md#uploadChunk) | **PUT** /oss/v2/buckets/{bucketKey}/objects/{objectName}/resumable | 
 *ObjectsApi* | [**uploadObject**](docs/ObjectsApi.md#uploadObject) | **PUT** /oss/v2/buckets/{bucketKey}/objects/{objectName} | 
