@@ -103,7 +103,7 @@ public class ObjectsApi {
     }
     
     // create path and map variables
-    String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}/copyTo/{newObjName}".replaceAll("\\{format\\}","json")
+    String localVarPath = "/oss/v2/buckets/{bucketKey}/objects/{objectName}/copyto/{newObjName}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "bucketKey" + "\\}", apiClient.escapeString(bucketKey.toString()))
       .replaceAll("\\{" + "objectName" + "\\}", apiClient.escapeString(objectName.toString()))
       .replaceAll("\\{" + "newObjName" + "\\}", apiClient.escapeString(newObjName.toString()));
