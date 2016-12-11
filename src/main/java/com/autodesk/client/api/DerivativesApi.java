@@ -108,7 +108,7 @@ public class DerivativesApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/x-www-form-urlencoded"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
