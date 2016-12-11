@@ -1,7 +1,7 @@
 # Forge Java Sample App
 
 ## Overview
-This sample app uses the Forge Java SDK to introduce the [OAuth](https://developer.autodesk.com/en/docs/oauth/v2/overview/) and [Data Management](https://developer.autodesk.com/en/docs/data/v2/overview/) Forge APIs. It shows a typical workflow:
+This sample app uses the Forge Java SDK to introduces the [OAuth](https://developer.autodesk.com/en/docs/oauth/v2/overview/) and [Data Management](https://developer.autodesk.com/en/docs/data/v2/overview/) Forge APIs. It shows the following workflow:
 
 * Create a 2-legged authentication token
 * Create a bucket (an arbitrary space to store objects)
