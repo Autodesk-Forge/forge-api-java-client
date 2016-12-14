@@ -560,7 +560,7 @@ public class ApiClient {
     if(response.getStatusInfo().getStatusCode() == ClientResponse.Status.NO_CONTENT.getStatusCode()) {
             return null;
     } else if (response.getStatusInfo().getFamily() == Family.SUCCESSFUL) {
-      if (returnType == null)
+      if (returnType == null || statusCode == 202)
         return new ApiResponse<T>(statusCode, responseHeaders, null);
       else
         return new ApiResponse<T>(statusCode, responseHeaders, response.getEntity(returnType));
