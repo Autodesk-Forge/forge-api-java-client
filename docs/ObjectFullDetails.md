@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bucketKey** | **String** | Bucket key |  [optional]
-**objectId** | **byte[]** | Object URN |  [optional]
+**objectId** | **String** | Object URN |  [optional]
 **objectKey** | **String** | Object name |  [optional]
 **sha1** | **byte[]** | Object SHA1 |  [optional]
 **size** | **Integer** | Object size |  [optional]
