@@ -27,6 +27,7 @@ package com.autodesk.client.model;
 
 import java.util.Objects;
 
+import com.autodesk.client.model.MetadataObject;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -48,7 +49,7 @@ public class MetadataObject   {
   private String name = null;
 
   @JsonProperty("objects")
-  private List<String> objects = new ArrayList<String>();
+  private List<MetadataObject> objects = new ArrayList<MetadataObject>();
 
   public MetadataObject objectid(Integer objectid) {
     this.objectid = objectid;
@@ -86,7 +87,7 @@ public class MetadataObject   {
     this.name = name;
   }
 
-  public MetadataObject objects(List<String> objects) {
+  public MetadataObject objects(List<MetadataObject> objects) {
     this.objects = objects;
     return this;
   }
@@ -96,11 +97,11 @@ public class MetadataObject   {
    * @return objects
   **/
   @ApiModelProperty(example = "null", value = "Optional collection of “children” objects within the hierarchy")
-  public List<String> getObjects() {
+  public List<MetadataObject> getObjects() {
     return objects;
   }
 
-  public void setObjects(List<String> objects) {
+  public void setObjects(List<MetadataObject> objects) {
     this.objects = objects;
   }
 
