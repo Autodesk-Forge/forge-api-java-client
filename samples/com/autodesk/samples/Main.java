@@ -29,7 +29,7 @@ public class Main {
     //TODO - specify the full filename and path
     private static final String FILE_PATH = "/path/to/your/file.extension";
 
-    // Initialize the relevant clients; in this example, the Hubs and Buckets clients, which are part of the Data Management API
+    // Initialize the relevant clients; in this example, the Buckets and Objects clients, which are part of the Data Management API
     private static final BucketsApi bucketsApi = new BucketsApi();
     private static final ObjectsApi objectsApi = new ObjectsApi();
 
