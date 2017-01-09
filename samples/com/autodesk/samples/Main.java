@@ -3,13 +3,18 @@ package com.autodesk.samples;
 import com.autodesk.client.ApiException;
 import com.autodesk.client.ApiResponse;
 import com.autodesk.client.api.BucketsApi;
+import com.autodesk.client.api.DerivativesApi;
 import com.autodesk.client.api.ObjectsApi;
 import com.autodesk.client.auth.Credentials;
 import com.autodesk.client.auth.OAuth2TwoLegged;
 import com.autodesk.client.model.*;
+import org.apache.commons.codec.binary.Base64;
 
+import javax.ws.rs.core.UriBuilder;
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -18,20 +23,15 @@ public class Main {
     private static final String CLIENT_ID = "";
     private static final String CLIENT_SECRET = "";
 
-    // TODO - Choose a bucket key - a unique name to assign to a bucket. It must be globally unique across all applications and
-    // regions, otherwise the call will fail. Possible values: -_.a-z0-9 (between 3-128 characters in
-    // length). Note that you cannot change a bucket key.
-    private static final String BUCKET_KEY = "my-chosen-bucket-key";
+    private static final String BUCKET_KEY = "forge-java-sample-app-" + CLIENT_ID.toLowerCase();
 
-    // TODO - Choose a filename - a key for the uploaded object
-    private static final String FILE_NAME = "my-file.extension";
+    private static final String FILE_NAME = "my-elephant.obj";
+    private static final String FILE_PATH = "samples/com/autodesk/samples/elephant.obj";
 
-    //TODO - specify the full filename and path
-    private static final String FILE_PATH = "/path/to/your/file.extension";
-
-    // Initialize the relevant clients; in this example, the Buckets and Objects clients, which are part of the Data Management API
+    // Initialize the relevant clients; in this example, the Objects, Buckets and Derivatives clients, which are part of the Data Management API and Model Derivatives API
     private static final BucketsApi bucketsApi = new BucketsApi();
     private static final ObjectsApi objectsApi = new ObjectsApi();
+    private static final DerivativesApi derivativesApi = new DerivativesApi();
 
     private static OAuth2TwoLegged oauth2TwoLegged;
     private static Credentials twoLeggedCredentials;
@@ -76,7 +76,7 @@ public class Main {
      * @throws com.autodesk.client.ApiException
      * @throws Exception
      */
-    private static void uploadFile() throws FileNotFoundException, ApiException, Exception {
+    private static ObjectDetails uploadFile() throws FileNotFoundException, ApiException, Exception {
         System.out.println("***** Sending uploadFile request" );
         File fileToUpload = new File(FILE_PATH);
         ApiResponse<ObjectDetails> response = objectsApi.uploadObject(BUCKET_KEY, FILE_NAME, (int)fileToUpload.length(), fileToUpload, null, null, oauth2TwoLegged, twoLeggedCredentials);
@@ -84,36 +84,93 @@ public class Main {
         System.out.println("***** Response for uploadFile: ");
         ObjectDetails objectDetails = response.getData();
         System.out.println("Uploaded object Details - Location: " + objectDetails.getLocation() + ", Size:"+objectDetails.getSize());
-
-
+        return objectDetails;
     }
 
     /**
-     * Example of how to get the buckets owned by an application.
+     * Example of how to send a translate to SVF job request.
      * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
+     * @param urn - the urn of the file to translate
      * @throws com.autodesk.client.ApiException
      * @throws Exception
      */
-    private static void getBuckets() throws ApiException, Exception{
-        System.out.println("***** Sending getBuckets request" );
-        ApiResponse<Buckets> getBucketsResponse = bucketsApi.getBuckets("US", null, null, oauth2TwoLegged, twoLeggedCredentials);
+    private static Job translateToSVF(String urn) throws ApiException, Exception{
+        System.out.println("***** Sending Derivative API translate request" );
 
-        System.out.println("***** Response for getBuckets: ");
-        List<BucketsItems> buckets = getBucketsResponse.getData().getItems();
-        for (BucketsItems bucket : buckets) {
-            System.out.println("bucket key:" + bucket.getBucketKey() + ", createdDate:" +bucket.getCreatedDate());
-        }
+        JobPayload job = new JobPayload();
+
+        byte[] urnBase64 = Base64.encodeBase64(urn.getBytes());
+
+        JobPayloadInput input = new JobPayloadInput();
+        input.setUrn(new String(urnBase64));
+
+        JobPayloadOutput output = new JobPayloadOutput();
+        JobPayloadItem formats = new JobPayloadItem();
+        formats.setType(JobPayloadItem.TypeEnum.SVF);
+        formats.setViews(Arrays.asList(JobPayloadItem.ViewsEnum._3D));
+        output.setFormats(Arrays.asList(formats));
+
+        job.setInput(input);
+        job.setOutput(output);
+
+        ApiResponse<Job> response = derivativesApi.translate(job,true,oauth2TwoLegged,twoLeggedCredentials);
+        System.out.println("***** Response for Translating File to SVF: " + response.getData());
+
+        return response.getData();
     }
 
     /**
-     * Delete the file uploaded by the application.
+     * Example of how to query the status of a translate job.
+     * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
+     * @param base64Urn - the urn of the file to translate in base 64 format
+     * @throws com.autodesk.client.ApiException
+     * @throws Exception
+     */
+    private static Manifest verifyJobComplete(String base64Urn) throws ApiException, Exception{
+        System.out.println("***** Sending getManifest request" );
+        boolean isComplete = false;
+        ApiResponse<Manifest> response = null;
+
+        while(!isComplete){
+            response = derivativesApi.getManifest(base64Urn,null,oauth2TwoLegged,twoLeggedCredentials);
+            Manifest manifest = response.getData();
+            if(response.getData().getProgress().equals("complete")){
+                isComplete = true;
+                System.out.println("***** Finished translating your file to SVF - status: " + manifest.getStatus() + ", progress:" + manifest.getProgress());
+            }
+            else{
+                System.out.println("***** Haven't finished translating your file to SVF - status: " + manifest.getStatus() + ", progress:" + manifest.getProgress());
+                Thread.sleep(1000);
+            }
+        }
+
+        return response.getData();
+
+    }
+
+    /**
+     * Open translated SVF file in the viewer
+     * Uses the twoLeggedCredentials object that you retrieved previously.
+     * Opens the file statically from your hard drive with url parameters for the accessToken and for the urn of the file to show.
+     * @param base64Urn
+     * @throws IOException
+     */
+    private static void openViewer(String base64Urn) throws IOException {
+        System.out.println("***** Opening SVF file in viewer with urn:" + base64Urn);
+        File htmlFile = new File("samples/com/autodesk/samples/viewer.html");
+        UriBuilder builder = UriBuilder.fromPath("file:///" + htmlFile.getAbsolutePath()).queryParam("token",twoLeggedCredentials.getAccessToken()).queryParam("urn",base64Urn);
+        Desktop.getDesktop().browse(builder.build());
+    }
+
+    /**
+     * Example of how to delete a file that was uploaded by the application.
      * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
      * @throws com.autodesk.client.ApiException
      * @throws Exception
      */
     private static void deleteFile() throws ApiException, Exception{
         System.out.println("***** Sending deleteFile request" );
-        ApiResponse<Void> response = objectsApi.deleteObject(BUCKET_KEY,FILE_NAME,oauth2TwoLegged,twoLeggedCredentials);
+        ApiResponse<Void> response = objectsApi.deleteObject(BUCKET_KEY, FILE_NAME, oauth2TwoLegged, twoLeggedCredentials);
         System.out.println("***** Response Code for deleting File: " + response.getStatusCode());
     }
 
@@ -121,39 +178,40 @@ public class Main {
 
         try{
             initializeOAuth();
+
+            try{
+                createBucket();
+            }
+            catch (ApiException e){
+                System.err.println("Error creating bucket : " + e.getResponseBody());
+            }
+
+            try{
+                ObjectDetails uploadedObject = uploadFile();
+
+                try{
+                    Job job = translateToSVF(uploadedObject.getObjectId());
+
+                    if(job.getResult().equals("success")){
+                        String base64Urn = job.getUrn();
+
+                        Manifest manifest = verifyJobComplete(base64Urn);
+                        if (manifest.getStatus().equals("success")){
+                            openViewer(manifest.getUrn());
+                        }
+                    }
+                }
+                catch (ApiException e){
+                    System.err.println("Error translating file : " + e.getResponseBody());
+                }
+
+            }
+            catch (ApiException e){
+                System.err.println("Error uploading file : " + e.getResponseBody());
+            }
         }
         catch (ApiException e){
             System.err.println("Error Initializing OAuth client : " + e.getResponseBody());
         }
-
-        try{
-            createBucket();
-        }
-        catch (ApiException e){
-            System.err.println("Error creating bucket : " + e.getResponseBody());
-        }
-
-        try{
-            uploadFile();
-        }
-        catch (ApiException e){
-            System.err.println("Error uploading file : " + e.getResponseBody());
-        }
-
-        try{
-            getBuckets();
-        }
-        catch (ApiException e){
-            System.err.println("Error getting buckets : " + e.getResponseBody());
-        }
-
-        try{
-            deleteFile();
-        }
-        catch (ApiException e){
-            System.err.println("Error deleting file : " + e.getResponseBody());
-        }
     }
-
 }
-
