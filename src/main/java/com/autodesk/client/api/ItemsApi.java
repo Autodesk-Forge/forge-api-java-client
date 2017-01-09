@@ -46,6 +46,9 @@ import com.autodesk.client.model.JsonApiCollection;
 import com.autodesk.client.model.Refs;
 import com.autodesk.client.model.Version;
 import com.autodesk.client.model.Versions;
+import com.autodesk.client.model.ItemCreated;
+import com.autodesk.client.model.Conflict;
+import com.autodesk.client.model.CreateItem;
 import com.autodesk.client.model.CreateRef;
 
 
@@ -390,6 +393,53 @@ public class ItemsApi {
 
     GenericType<Versions> localVarReturnType = new GenericType<Versions>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+      }
+  /**
+   * 
+   * Creates a new item in the &#39;data&#39; domain service. 
+   * @param projectId the &#x60;project id&#x60; (required)
+   * @param body describe the item to be created (required)
+   * @return ItemCreated
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ItemCreated> postItem(String projectId, CreateItem body,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+
+    Object localVarPostBody = body;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling postItem");
+    }
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling postItem");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/data/v1/projects/{project_id}/items".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/vnd.api+json", "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/vnd.api+json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    GenericType<ItemCreated> localVarReturnType = new GenericType<ItemCreated>() {};
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * 
