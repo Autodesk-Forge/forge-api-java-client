@@ -68,7 +68,6 @@ import com.autodesk.client.auth.*;
 public class ApiClient {
   private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
   private String basePath = "https://developer.api.autodesk.com/";
-  private Map<String,String> hostEnvironmentsList = new HashMap<String,String>();
   private boolean debugging = false;
   private int connectionTimeout = 0;
 
@@ -91,12 +90,6 @@ public class ApiClient {
     objectMapper.setDateFormat(ApiClient.buildDefaultDateFormat());
 
     dateFormat = ApiClient.buildDefaultDateFormat();
-
-    hostEnvironmentsList.put("dev", "https://developer-dev.api.autodesk.com");
-    hostEnvironmentsList.put("stg", "https://developer-stg.api.autodesk.com");
-    hostEnvironmentsList.put("prod", "https://developer.api.autodesk.com");
-    hostEnvironmentsList = Collections.unmodifiableMap(hostEnvironmentsList);
-
     rebuildHttpClient();
   }
 
@@ -148,11 +141,7 @@ public class ApiClient {
     this.httpClient = httpClient;
     return this;
   }
-
-  public Map<String,String> getHostEnvironments(){
-    return hostEnvironmentsList;
-  }
-
+    
   public String getBasePath() {
     return basePath;
   }
