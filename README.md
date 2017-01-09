@@ -200,7 +200,6 @@ Class | Method | HTTP request | Description
 *FoldersApi* | [**getFolderRelationshipsRefs**](docs/FoldersApi.md#getFolderRelationshipsRefs) | **GET** /data/v1/projects/{project_id}/folders/{folder_id}/relationships/refs | 
 *FoldersApi* | [**postFolderRelationshipsRef**](docs/FoldersApi.md#postFolderRelationshipsRef) | **POST** /data/v1/projects/{project_id}/folders/{folder_id}/relationships/refs | 
 *HubsApi* | [**getHub**](docs/HubsApi.md#getHub) | **GET** /project/v1/hubs/{hub_id} | 
-*HubsApi* | [**getHubProjects**](docs/HubsApi.md#getHubProjects) | **GET** /project/v1/hubs/{hub_id}/projects | 
 *HubsApi* | [**getHubs**](docs/HubsApi.md#getHubs) | **GET** /project/v1/hubs | 
 *ItemsApi* | [**getItem**](docs/ItemsApi.md#getItem) | **GET** /data/v1/projects/{project_id}/items/{item_id} | 
 *ItemsApi* | [**getItemParentFolder**](docs/ItemsApi.md#getItemParentFolder) | **GET** /data/v1/projects/{project_id}/items/{item_id}/parent | 
@@ -209,6 +208,7 @@ Class | Method | HTTP request | Description
 *ItemsApi* | [**getItemTip**](docs/ItemsApi.md#getItemTip) | **GET** /data/v1/projects/{project_id}/items/{item_id}/tip | 
 *ItemsApi* | [**getItemVersions**](docs/ItemsApi.md#getItemVersions) | **GET** /data/v1/projects/{project_id}/items/{item_id}/versions | 
 *ItemsApi* | [**postItemRelationshipsRef**](docs/ItemsApi.md#postItemRelationshipsRef) | **POST** /data/v1/projects/{project_id}/items/{item_id}/relationships/refs | 
+*ItemsApi* | [**postItem**](docs/ItemsApi.md#postItem) | **POST** /data/v1/projects/{project_id}/items | 
 *ObjectsApi* | [**copyTo**](docs/ObjectsApi.md#copyTo) | **PUT** /oss/v2/buckets/{bucketKey}/objects/{objectName}/copyTo/{newObjName} | 
 *ObjectsApi* | [**createSignedResource**](docs/ObjectsApi.md#createSignedResource) | **POST** /oss/v2/buckets/{bucketKey}/objects/{objectName}/signed | 
 *ObjectsApi* | [**deleteObject**](docs/ObjectsApi.md#deleteObject) | **DELETE** /oss/v2/buckets/{bucketKey}/objects/{objectName} | 
@@ -224,9 +224,9 @@ Class | Method | HTTP request | Description
 *ObjectsApi* | [**uploadSignedResourcesChunk**](docs/ObjectsApi.md#uploadSignedResourcesChunk) | **PUT** /oss/v2/signedresources/{id}/resumable | 
 *ProjectsApi* | [**getProject**](docs/ProjectsApi.md#getProject) | **GET** /project/v1/hubs/{hub_id}/projects/{project_id} | 
 *ProjectsApi* | [**getProjectHub**](docs/ProjectsApi.md#getProjectHub) | **GET** /project/v1/hubs/{hub_id}/projects/{project_id}/hub | 
-*ProjectsApi* | [**postItem**](docs/ProjectsApi.md#postItem) | **POST** /data/v1/projects/{project_id}/items | 
 *ProjectsApi* | [**postStorage**](docs/ProjectsApi.md#postStorage) | **POST** /data/v1/projects/{project_id}/storage | 
 *ProjectsApi* | [**postVersion**](docs/ProjectsApi.md#postVersion) | **POST** /data/v1/projects/{project_id}/versions | 
+*ProjectsApi* | [**getHubProjects**](docs/ProjectsApi.md#getHubProjects) | **GET** /project/v1/hubs/{hub_id}/projects | 
 *VersionsApi* | [**getVersion**](docs/VersionsApi.md#getVersion) | **GET** /data/v1/projects/{project_id}/versions/{version_id} | 
 *VersionsApi* | [**getVersionItem**](docs/VersionsApi.md#getVersionItem) | **GET** /data/v1/projects/{project_id}/versions/{version_id}/item | 
 *VersionsApi* | [**getVersionRefs**](docs/VersionsApi.md#getVersionRefs) | **GET** /data/v1/projects/{project_id}/versions/{version_id}/refs | 
