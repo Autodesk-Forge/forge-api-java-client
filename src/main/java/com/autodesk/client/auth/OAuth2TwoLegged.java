@@ -229,7 +229,7 @@ public class OAuth2TwoLegged implements Authentication {
                     String access_token = (String) jsonObject.get("access_token");
                     //calculate "expires at"
                     long expires_in = (long)jsonObject.get("expires_in");
-                    DateTime later = DateTime.now().plusSeconds( (int)expires_in * 1000 );
+                    DateTime later = DateTime.now().plusSeconds((int)expires_in);
                     Long expiresAt = later.toDate().getTime();
 
                     this.credentials = new Credentials(access_token, expiresAt);
