@@ -39,6 +39,7 @@ import java.io.File;
 
 import com.autodesk.client.model.WorkItemResp;
 import com.autodesk.client.model.WorkItem;
+import com.autodesk.client.model.DesignAutomationWorkItems;
 
 
 import java.util.Arrays;
@@ -151,10 +152,10 @@ public class WorkItemsApi {
    * Returns the details of all WorkItems.
    * 
    * @param skip  (optional)
-   * @return List<WorkItemResp>
+   * @return DesignAutomationWorkItems
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<WorkItemResp>> getAllWorkItems(Integer skip,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<DesignAutomationWorkItems> getAllWorkItems(Integer skip,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -180,7 +181,7 @@ public class WorkItemsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<List<WorkItemResp>> localVarReturnType = new GenericType<List<WorkItemResp>>() {};
+    GenericType<DesignAutomationWorkItems> localVarReturnType = new GenericType<DesignAutomationWorkItems>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**

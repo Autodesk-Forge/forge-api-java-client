@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 <a name="getActivityVersions"></a>
 # **getActivityVersions**
-> List&lt;Activity&gt; getActivityVersions(id)
+> DesignAutomationActivities getActivityVersions(id)
 
 Returns all old versions of a specified Activity.
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;Activity&gt;**](Activity.md)
+[**DesignAutomationActivities**](DesignAutomationActivities.md)
 
 ### Authorization
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllActivities"></a>
 # **getAllActivities**
-> List&lt;Activity&gt; getAllActivities()
+> DesignAutomationActivities getAllActivities()
 
 Returns the details of all Activities.
 
@@ -151,7 +151,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;Activity&gt;**](Activity.md)
+[**DesignAutomationActivities**](DesignAutomationActivities.md)
 
 ### Authorization
 

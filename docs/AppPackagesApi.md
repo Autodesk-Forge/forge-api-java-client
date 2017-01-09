@@ -94,7 +94,7 @@ null (empty response body)
 
 <a name="getAllAppPackages"></a>
 # **getAllAppPackages**
-> List&lt;AppPackage&gt; getAllAppPackages()
+> DesignAutomationAppPackages getAllAppPackages()
 
 Returns the details of all AppPackages.
 
@@ -103,7 +103,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;AppPackage&gt;**](AppPackage.md)
+[**DesignAutomationAppPackages**](DesignAutomationAppPackages.md)
 
 ### Authorization
 
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 <a name="getAppPackageVersions"></a>
 # **getAppPackageVersions**
-> List&lt;AppPackage&gt; getAppPackageVersions(id)
+> DesignAutomationAppPackages getAppPackageVersions(id)
 
 Returns all old versions of a specified AppPackage.
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;AppPackage&gt;**](AppPackage.md)
+[**DesignAutomationAppPackages**](DesignAutomationAppPackages.md)
 
 ### Authorization
 

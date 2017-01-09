@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="getAllEngines"></a>
 # **getAllEngines**
-> List&lt;Engine&gt; getAllEngines()
+> DesignAutomationEngines getAllEngines()
 
 Returns the details of all available AutoCAD core engines.
 
@@ -19,7 +19,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;Engine&gt;**](Engine.md)
+[**DesignAutomationEngines**](DesignAutomationEngines.md)
 
 ### Authorization
 

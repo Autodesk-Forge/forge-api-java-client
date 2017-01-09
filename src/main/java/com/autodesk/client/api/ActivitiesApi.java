@@ -38,6 +38,7 @@ import com.autodesk.client.ApiResponse;
 import java.io.File;
 
 import com.autodesk.client.model.Activity;
+import com.autodesk.client.model.DesignAutomationActivities;
 import com.autodesk.client.model.ActivityOptional;
 import com.autodesk.client.model.ActivityVersion;
 
@@ -233,10 +234,10 @@ public class ActivitiesApi {
    * Returns all old versions of a specified Activity.
    * 
    * @param id  (required)
-   * @return List<Activity>
+   * @return DesignAutomationActivities
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<Activity>> getActivityVersions(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<DesignAutomationActivities> getActivityVersions(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -267,16 +268,16 @@ public class ActivitiesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<List<Activity>> localVarReturnType = new GenericType<List<Activity>>() {};
+    GenericType<DesignAutomationActivities> localVarReturnType = new GenericType<DesignAutomationActivities>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
    * Returns the details of all Activities.
    * 
-   * @return List<Activity>
+   * @return DesignAutomationActivities
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<Activity>> getAllActivities( Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<DesignAutomationActivities> getAllActivities( Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -301,7 +302,7 @@ public class ActivitiesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<List<Activity>> localVarReturnType = new GenericType<List<Activity>>() {};
+    GenericType<DesignAutomationActivities> localVarReturnType = new GenericType<DesignAutomationActivities>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**

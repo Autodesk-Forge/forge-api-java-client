@@ -62,7 +62,7 @@ null (empty response body)
 
 <a name="getAllWorkItems"></a>
 # **getAllWorkItems**
-> List&lt;WorkItemResp&gt; getAllWorkItems(skip)
+> DesignAutomationWorkItems getAllWorkItems(skip)
 
 Returns the details of all WorkItems.
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;WorkItemResp&gt;**](WorkItemResp.md)
+[**DesignAutomationWorkItems**](DesignAutomationWorkItems.md)
 
 ### Authorization
 

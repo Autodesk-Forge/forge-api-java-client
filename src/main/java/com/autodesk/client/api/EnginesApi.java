@@ -37,6 +37,7 @@ import com.autodesk.client.ApiResponse;
 
 import java.io.File;
 
+import com.autodesk.client.model.DesignAutomationEngines;
 import com.autodesk.client.model.Engine;
 
 
@@ -69,10 +70,10 @@ public class EnginesApi {
   /**
    * Returns the details of all available AutoCAD core engines.
    * 
-   * @return List<Engine>
+   * @return DesignAutomationEngines
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<Engine>> getAllEngines( Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<DesignAutomationEngines> getAllEngines( Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -97,7 +98,7 @@ public class EnginesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<List<Engine>> localVarReturnType = new GenericType<List<Engine>>() {};
+    GenericType<DesignAutomationEngines> localVarReturnType = new GenericType<DesignAutomationEngines>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**

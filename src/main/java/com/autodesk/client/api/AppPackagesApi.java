@@ -38,6 +38,7 @@ import com.autodesk.client.ApiResponse;
 import java.io.File;
 
 import com.autodesk.client.model.AppPackage;
+import com.autodesk.client.model.DesignAutomationAppPackages;
 import com.autodesk.client.model.AppPackageOptional;
 import com.autodesk.client.model.AppPackageVersion;
 
@@ -191,10 +192,10 @@ public class AppPackagesApi {
   /**
    * Returns the details of all AppPackages.
    * 
-   * @return List<AppPackage>
+   * @return DesignAutomationAppPackages
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<AppPackage>> getAllAppPackages( Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<DesignAutomationAppPackages> getAllAppPackages( Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -219,7 +220,7 @@ public class AppPackagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<List<AppPackage>> localVarReturnType = new GenericType<List<AppPackage>>() {};
+    GenericType<DesignAutomationAppPackages> localVarReturnType = new GenericType<DesignAutomationAppPackages>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
@@ -267,10 +268,10 @@ public class AppPackagesApi {
    * Returns all old versions of a specified AppPackage.
    * 
    * @param id  (required)
-   * @return List<AppPackage>
+   * @return DesignAutomationAppPackages
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<AppPackage>> getAppPackageVersions(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<DesignAutomationAppPackages> getAppPackageVersions(String id,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -301,7 +302,7 @@ public class AppPackagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<List<AppPackage>> localVarReturnType = new GenericType<List<AppPackage>>() {};
+    GenericType<DesignAutomationAppPackages> localVarReturnType = new GenericType<DesignAutomationAppPackages>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
       }
   /**
