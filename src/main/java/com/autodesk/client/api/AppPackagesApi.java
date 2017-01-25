@@ -354,7 +354,7 @@ public class AppPackagesApi {
     }
     
     // create path and map variables
-    String localVarPath = "/autocad.io/us-east/v2/AppPackage/Operations.GetUploadUrl(RequireContentType={require})".replaceAll("\\{format\\}","json")
+    String localVarPath = "/autocad.io/us-east/v2/AppPackages/Operations.GetUploadUrl(RequireContentType={require})".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "require" + "\\}", apiClient.escapeString(require.toString()));
 
     // query params
