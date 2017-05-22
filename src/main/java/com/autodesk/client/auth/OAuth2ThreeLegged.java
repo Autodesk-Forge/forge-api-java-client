@@ -175,7 +175,7 @@ public class OAuth2ThreeLegged implements Authentication {
         this.scopes.add("account:read");
         this.scopes.add("account:write");
         this.scopes.add("user-profile:read");
-    
+        this.scopes.add("viewables:read");
 
         validateScopes(selectedScopes);
     }
