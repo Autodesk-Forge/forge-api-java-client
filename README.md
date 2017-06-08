@@ -9,8 +9,36 @@ including <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" ta
 * A registered app on the <a href="https://developer.autodesk.com/myapps" target="_blank">Forge Developer portal</a>.
 * [Apache Maven](https://maven.apache.org/).
 
-### Installation
-Manually install all the JARs from the <a href="https://github.com/Autodesk-Forge/forge-api-java-client-jars" target="_blank">*forge-api-java-client-jars*</a> repo.
+### Install the Library
+
+To install the API client library to your local Maven repository, simply execute:
+
+```shell
+mvn install
+```
+
+#### Maven users
+Add the following dependency to your `pom.xml`:
+``` xml
+<dependency>
+    <groupId>com.autodesk</groupId>
+    <artifactId>com-autodesk-client</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+#### Gradle users
+
+Add this dependency to your project's build file:
+
+```groovy
+repositories {
+    mavenLocal()
+}
+dependencies {
+    compile "com.autodesk:com-autodesk-client:1.0.0"
+}
+```
 
 ## Tutorial
 Follow this tutorial to see a step-by-step authentication guide, and examples of how to use the Forge APIs.
