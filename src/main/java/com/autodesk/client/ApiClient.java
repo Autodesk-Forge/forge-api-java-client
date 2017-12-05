@@ -64,6 +64,11 @@ import java.nio.file.Files;
 
 import com.autodesk.client.auth.*;
 
+//to solve the issue of GET:metadata/:guid with accepted encodeing is 'gzip' 
+//https://stackoverflow.com/questions/47573466/model-derivative-api-responses-not-mapping-through-jackson
+import com.sun.jersey.api.client.filter.GZIPContentEncodingFilter;
+
+
 
 public class ApiClient {
   private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
@@ -111,6 +116,12 @@ public class ApiClient {
     if (debugging) {
       client.addFilter(new LoggingFilter());
     }
+    
+    //to solve the issue of GET:metadata/:guid with accepted encodeing is 'gzip' 
+    //in the past, when clients use gzip header, actually it doesn't trigger a gzip encoding... So everything is fine 
+    //After the release, the content is return in gzip, while the sdk doesn't handle it correctly
+    client.addFilter(new GZIPContentEncodingFilter(false));
+
     this.httpClient = client;
     return this;
   }
