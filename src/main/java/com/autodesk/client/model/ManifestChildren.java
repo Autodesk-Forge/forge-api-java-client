@@ -81,7 +81,11 @@ public class ManifestChildren   {
     
     MANIFEST("manifest"),
     
-    THUMBNAIL("thumbnail");
+    THUMBNAIL("thumbnail"),
+    
+    //to solved the issue GetManifest is returning an unhandled role enum
+    PROPERTYDB("Autodesk.CloudPlatform.PropertyDatabase");
+    
 
     private String value;
 
