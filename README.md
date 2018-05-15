@@ -26,7 +26,7 @@ mvn install
 #### Maven users
 Add the following dependency to your `pom.xml`:
 
-```
+```xml
 <dependency>
    	<groupId>com.autodesk</groupId>
    	<artifactId>forge-java-sdk</artifactId>
