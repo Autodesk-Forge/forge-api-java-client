@@ -24,7 +24,7 @@ import java.util.List;
 //simple test without much error checking
 //check the first guid of the metadata only
 
-public class MainMatedata {
+public class MainMetadata {
 
     //TODO - insert your CLIENT_ID and CLIENT_SECRET
     private static final String CLIENT_ID = "<your client id>";
