@@ -25,11 +25,12 @@ mvn install
 
 #### Maven users
 Add the following dependency to your `pom.xml`:
-``` xml
+
+```
 <dependency>
-    <groupId>com.autodesk</groupId>
-    <artifactId>com-autodesk-client</artifactId>
-    <version>1.0.0</version>
+   	<groupId>com.autodesk</groupId>
+   	<artifactId>forge-java-sdk</artifactId>
+   	<version>1.0.1</version>
 </dependency>
 ```
 
@@ -42,15 +43,14 @@ repositories {
     mavenLocal()
 }
 dependencies {
-    compile "com.autodesk:com-autodesk-client:1.0.0"
+    compile "com.autodesk:forge-java-sdk:1.0.1"
 }
 ```
 
 ## Tutorial
-Follow this tutorial to see a step-by-step authentication guide, and examples of how to use the Forge APIs.
+Follow this tutorial to see a step-by-step process and examples of how to use the Forge APIs.
 
-### Create an App
-Create an app on the Forge Developer portal. Note the client ID and client secret.
+[Learn Forge](https://learnforge.autodesk.io/)
 
 ### Authentication
 This SDK comes with an <a href="https://developer.autodesk.com/en/docs/oauth/v2/overview/" target="_blank">OAuth 2.0</a> client that allows you to retrieve 2-legged and 3-legged tokens. It also enables you to refresh 3-legged tokens. This tutorial uses both 2-legged and 3-legged tokens for calling different Data Management endpoints.
