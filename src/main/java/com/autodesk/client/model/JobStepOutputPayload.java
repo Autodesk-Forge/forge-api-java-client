@@ -45,6 +45,8 @@ public class JobStepOutputPayload   {
   public enum TypeEnum {
     SVF("svf"),
     
+    IFC("ifc"),
+
     THUMBNAIL("thumbnail"),
     
     STL("stl"),
