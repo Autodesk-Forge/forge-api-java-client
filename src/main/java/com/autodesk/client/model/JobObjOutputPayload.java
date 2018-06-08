@@ -27,7 +27,7 @@ package com.autodesk.client.model;
 
 import java.util.Objects;
 
-import com.autodesk.client.model.JobIgesOutputPayloadAdvanced;
+import com.autodesk.client.model.JobObjOutputPayloadAdvanced;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
