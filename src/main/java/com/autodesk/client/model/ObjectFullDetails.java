@@ -55,7 +55,7 @@ public class ObjectFullDetails   {
   private byte[] sha1 = null;
 
   @JsonProperty("size")
-  private Integer size = null;
+  private Long size = null;
 
   @JsonProperty("contentType")
   private String contentType = null;
@@ -141,7 +141,7 @@ public class ObjectFullDetails   {
     this.sha1 = sha1;
   }
 
-  public ObjectFullDetails size(Integer size) {
+  public ObjectFullDetails size(Long size) {
     this.size = size;
     return this;
   }
@@ -151,11 +151,11 @@ public class ObjectFullDetails   {
    * @return size
   **/
   @ApiModelProperty(example = "null", value = "Object size")
-  public Integer getSize() {
+  public Long getSize() {
     return size;
   }
 
-  public void setSize(Integer size) {
+  public void setSize(Long size) {
     this.size = size;
   }
 
