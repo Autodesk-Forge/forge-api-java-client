@@ -274,7 +274,7 @@ Class | Method | HTTP request | Description
 
 ### Thumbnail
 
-![thumbnail](/java.png)
+![thumbnail](/thumbnail.png)
 
 ## Support
 
