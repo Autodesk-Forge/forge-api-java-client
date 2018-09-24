@@ -22,8 +22,8 @@
  * limitations under the License.
  */
 
-
 package com.autodesk.client.auth;
+
 import com.autodesk.client.ApiException;
 import com.autodesk.client.Pair;
 import com.autodesk.client.Configuration;
@@ -46,7 +46,6 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.*;
 
-
 public class OAuth2ThreeLegged implements Authentication {
 
     private String name;
@@ -61,14 +60,16 @@ public class OAuth2ThreeLegged implements Authentication {
     private String clientSecret;
     private String redirectUri;
     private Boolean autoRefresh;
+    private ThreeLeggedCredentials credentials;
 
     // makes a POST request to url with form parameters and returns body as a string
-    private String post(String url, Map<String,String> formParameters,Map<String,String> headers) throws ClientProtocolException, IOException, ApiException {
+    private String post(String url, Map<String, String> formParameters, Map<String, String> headers)
+            throws ClientProtocolException, IOException, ApiException {
         HttpPost request = new HttpPost(url);
 
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 
-        for(String key: headers.keySet()){
+        for (String key : headers.keySet()) {
             request.setHeader(key, headers.get(key));
         }
 
@@ -97,15 +98,16 @@ public class OAuth2ThreeLegged implements Authentication {
         return body;
     }
 
-    private String getScopes(){
+    private String getScopes() {
         String scopeStr = "";
-        if(!selectedScopes.isEmpty()){
+        if (!selectedScopes.isEmpty()) {
             int index = 0;
             for (String key : selectedScopes) {
                 index++;
                 if (scopes.contains(key)) {
                     scopeStr += key;
-                    if(index < selectedScopes.size()) scopeStr += "%20";
+                    if (index < selectedScopes.size())
+                        scopeStr += "%20";
 
                 }
             }
@@ -113,42 +115,39 @@ public class OAuth2ThreeLegged implements Authentication {
         return scopeStr;
     }
 
-
-    //validates that the selected scopes are not empty and also included in the list of all scopes.
-    private Boolean validateScopes(List<String> selectedScopes) throws Exception
-    {
-        if (this.scopes.size() > 0)
-        {
+    // validates that the selected scopes are not empty and also included in the
+    // list of all scopes.
+    private Boolean validateScopes(List<String> selectedScopes) throws Exception {
+        if (this.scopes.size() > 0) {
             if (selectedScopes != null && selectedScopes.size() > 0) {
                 for (String key : selectedScopes) {
                     if (!this.scopes.contains(key)) {
                         throw new Exception(key + " scope is not allowed");
                     }
                 }
-            }
-            else
-            {
+            } else {
                 // throw if scope is null or undefined
                 throw new Exception("Scope is missing or empty, you must provide a valid scope");
             }
-        }
-        else
-        {
+        } else {
             throw new Exception("Authentication does not allow any scopes");
         }
         return true;
     }
 
     /**
-    * OAuth2ThreeLegged Constructor
-    * @param clientId - the client id of the application
-    * @param clientSecret - the client secret of the application
-    * @param redirectUri - the redirect URI of the application
-    * @param selectedScopes - the scope permissions used to generated access token
-    * @param autoRefresh - set autoRefresh to 'true' to automatically refresh the access token when it expires
-    * @throws Exception
-    */
-    public OAuth2ThreeLegged(String clientId, String clientSecret, String redirectUri, List<String> selectedScopes, Boolean autoRefresh) throws Exception{
+     * OAuth2ThreeLegged Constructor
+     * 
+     * @param clientId       - the client id of the application
+     * @param clientSecret   - the client secret of the application
+     * @param redirectUri    - the redirect URI of the application
+     * @param selectedScopes - the scope permissions used to generated access token
+     * @param autoRefresh    - set autoRefresh to 'true' to automatically refresh
+     *                       the access token when it expires
+     * @throws Exception
+     */
+    public OAuth2ThreeLegged(String clientId, String clientSecret, String redirectUri, List<String> selectedScopes,
+            Boolean autoRefresh) throws Exception {
 
         this.flow = OAuthFlow.accessCode;
         this.scopes = new ArrayList<String>();
@@ -157,11 +156,11 @@ public class OAuth2ThreeLegged implements Authentication {
         this.clientSecret = clientSecret;
         this.selectedScopes = selectedScopes;
         this.autoRefresh = autoRefresh;
-    
+
         this.name = "oauth2_access_code";
         this.type = "oauth2";
         this.tokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/gettoken";
-        this.authorizationUrl = Configuration.getDefaultApiClient().getBasePath() +  "/authentication/v1/authorize";
+        this.authorizationUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/authorize";
         this.refreshTokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/refreshtoken";
         this.scopes.add("data:read");
         this.scopes.add("data:write");
@@ -185,7 +184,8 @@ public class OAuth2ThreeLegged implements Authentication {
     public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams) {
     }
 
-    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, ThreeLeggedCredentials credentials) {
+    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams,
+            ThreeLeggedCredentials credentials) {
         if (credentials != null && credentials.getAccessToken() != null) {
             headerParams.put("Authorization", "Bearer " + credentials.getAccessToken());
         }
@@ -196,8 +196,8 @@ public class OAuth2ThreeLegged implements Authentication {
         return this.name;
     }
 
-    public void setSelectedScopes(List<String> selectedScopes) throws Exception{
-        if(validateScopes(selectedScopes)){
+    public void setSelectedScopes(List<String> selectedScopes) throws Exception {
+        if (validateScopes(selectedScopes)) {
             this.selectedScopes = selectedScopes;
         }
     }
@@ -206,18 +206,19 @@ public class OAuth2ThreeLegged implements Authentication {
         return this.autoRefresh;
     }
 
-     /**
-     * Get the authentication url for a 3-legged flow. Redirect the user to this url for authorizing your application.
+    /**
+     * Get the authentication url for a 3-legged flow. Redirect the user to this url
+     * for authorizing your application.
+     * 
      * @return
      */
-    public String getAuthenticationUrl() throws Exception{
+    public String getAuthenticationUrl() throws Exception {
 
-        if(flow == OAuthFlow.accessCode) {
-            //build the URL
-            StringBuilder oauthUrl = new StringBuilder().append(this.authorizationUrl)
-                    .append("?client_id=").append(this.clientId)
-                    .append("&response_type=code")
-                    .append("&redirect_uri=").append(this.redirectUri);
+        if (flow == OAuthFlow.accessCode) {
+            // build the URL
+            StringBuilder oauthUrl = new StringBuilder().append(this.authorizationUrl).append("?client_id=")
+                    .append(this.clientId).append("&response_type=code").append("&redirect_uri=")
+                    .append(this.redirectUri);
 
             String scopeStr = getScopes();
             if (!scopeStr.isEmpty()) {
@@ -225,19 +226,19 @@ public class OAuth2ThreeLegged implements Authentication {
             }
 
             return oauthUrl.toString();
-        }
-        else{
+        } else {
             throw new Exception("getAuthToken requires accessCode flow type");
         }
     }
 
     /**
      * Get the access token for a 3-legged flow
+     * 
      * @return
      */
-    public ThreeLeggedCredentials getAccessToken(String code) throws Exception{
+    public ThreeLeggedCredentials getAccessToken(String code) throws Exception {
 
-        if(flow == OAuthFlow.accessCode) {
+        if (flow == OAuthFlow.accessCode) {
 
             Map<String, String> formParams = new HashMap<>();
             formParams.put("client_id", this.clientId);
@@ -249,7 +250,7 @@ public class OAuth2ThreeLegged implements Authentication {
             Map<String, String> headers = new HashMap<>();
             headers.put("content-type", "application/x-www-form-urlencoded");
 
-                    ThreeLeggedCredentials response = null;
+            ThreeLeggedCredentials response = null;
             try {
                 String responseBody = post(this.tokenUrl, formParams, headers);
 
@@ -261,9 +262,9 @@ public class OAuth2ThreeLegged implements Authentication {
 
                     String access_token = (String) jsonObject.get("access_token");
                     String refresh_token = (String) jsonObject.get("refresh_token");
-                    //calculate "expires at"
-                    long expires_in = (long)jsonObject.get("expires_in");
-                    DateTime later = DateTime.now().plusSeconds((int)expires_in);
+                    // calculate "expires at"
+                    long expires_in = (long) jsonObject.get("expires_in");
+                    DateTime later = DateTime.now().plusSeconds((int) expires_in);
                     Long expiresAt = later.toDate().getTime();
 
                     response = new ThreeLeggedCredentials(access_token, expiresAt, refresh_token);
@@ -277,21 +278,21 @@ public class OAuth2ThreeLegged implements Authentication {
                 e.printStackTrace();
             }
             return response;
-        }
-        else{
+        } else {
             throw new Exception("getAuthToken requires accessCode flow type");
         }
     }
 
     /**
      * Refresh the access token for a 3-legged flow
+     * 
      * @return
      */
-    public ThreeLeggedCredentials refreshAccessToken(String refreshToken){
+    public ThreeLeggedCredentials refreshAccessToken(String refreshToken) {
 
         Map<String, String> formParams = new HashMap<>();
         formParams.put("client_id", this.clientId);
-        formParams .put("client_secret", this.clientSecret);
+        formParams.put("client_secret", this.clientSecret);
         formParams.put("grant_type", "refresh_token");
         formParams.put("refresh_token", refreshToken);
 
@@ -310,12 +311,28 @@ public class OAuth2ThreeLegged implements Authentication {
 
                 String access_token = (String) jsonObject.get("access_token");
                 String refresh_token = (String) jsonObject.get("refresh_token");
-                //calculate "expires at"
-                long expires_in = (long)jsonObject.get("expires_in");
-                DateTime later = DateTime.now().plusSeconds((int)expires_in);
+                // calculate "expires at"
+                long expires_in = (long) jsonObject.get("expires_in");
+                DateTime later = DateTime.now().plusSeconds((int) expires_in);
                 Long expiresAt = later.toDate().getTime();
 
-                response = new ThreeLeggedCredentials(access_token, expiresAt, refresh_token);
+                // should we delete the last this.credentials?
+                this.credentials = new ThreeLeggedCredentials(access_token, expiresAt, refresh_token);
+                response = this.credentials;
+
+                // refresh access token 3 minutes (3*60 seconds) in advance.
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        // get token again
+                        try {
+                            refreshAccessToken(refresh_token);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, (expires_in - 3 * 60) * 1000);
 
             } catch (ParseException e) {
                 throw new RuntimeException("Unable to parse json " + responseBody);
@@ -324,15 +341,15 @@ public class OAuth2ThreeLegged implements Authentication {
         } catch (IOException e) {
             System.err.println("Exception when trying to refresh token");
             e.printStackTrace();
-        }
-        catch (ApiException e) {
+        } catch (ApiException e) {
             System.err.println("Exception when trying to refresh token");
             e.printStackTrace();
         }
         return response;
     }
 
-    public Boolean isAuthorized(ThreeLeggedCredentials credentials){
-         return (credentials != null) && (credentials.getExpiresAt() != null && (credentials.getExpiresAt() > (new Date().getTime())));
+    public Boolean isAuthorized(ThreeLeggedCredentials credentials) {
+        return (credentials != null)
+                && (credentials.getExpiresAt() != null && (credentials.getExpiresAt() > (new Date().getTime())));
     }
 }
