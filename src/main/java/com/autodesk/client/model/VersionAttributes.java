@@ -59,7 +59,27 @@ public class VersionAttributes   {
 
   @JsonProperty("extension")
   private BaseAttributesExtensionObject extension = null;
+  
+  //add more attributes for response
+  @JsonProperty("createTime")
+  private String createTime = null;
+  
+  @JsonProperty("createUserId")
+  private String createUserId = null;
+  
+  @JsonProperty("createUserName")
+  private String createUserName = null;
+  
+  @JsonProperty("lastModifiedTime")
+  private String lastModifiedTime = null;
+  
+  @JsonProperty("lastModifiedUserId")
+  private String lastModifiedUserId = null;
 
+  @JsonProperty("lastModifiedUserName")
+  private String lastModifiedUserName = null;
+   
+  
   public VersionAttributes name(String name) {
     this.name = name;
     return this;
@@ -236,5 +256,4 @@ public class VersionAttributes   {
     }
     return o.toString().replace("\n", "\n    ");
   }
-}
-
+} 

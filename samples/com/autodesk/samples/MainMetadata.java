@@ -1,4 +1,4 @@
-package com.mycompany.MainMatedata;
+package com.autodesk.samples;
 
 import com.autodesk.client.ApiException;
 import com.autodesk.client.ApiResponse;

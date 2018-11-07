@@ -22,8 +22,8 @@
  * limitations under the License.
  */
 
-
 package com.autodesk.client.auth;
+
 import com.autodesk.client.Pair;
 import com.autodesk.client.Configuration;
 import org.apache.http.HttpEntity;
@@ -45,8 +45,6 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.*;
 
-
-
 public class OAuth2TwoLegged implements Authentication {
 
     private Credentials credentials;
@@ -61,12 +59,13 @@ public class OAuth2TwoLegged implements Authentication {
     private Boolean autoRefresh;
 
     // makes a POST request to url with form parameters and returns body as a string
-    private String post(String url, Map<String,String> formParameters,Map<String,String> headers) throws ClientProtocolException, IOException {
+    private String post(String url, Map<String, String> formParameters, Map<String, String> headers)
+            throws ClientProtocolException, IOException {
         HttpPost request = new HttpPost(url);
 
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 
-        for(String key: headers.keySet()){
+        for (String key : headers.keySet()) {
             request.setHeader(key, headers.get(key));
         }
 
@@ -88,68 +87,68 @@ public class OAuth2TwoLegged implements Authentication {
         String body = EntityUtils.toString(entity);
 
         if (response.getStatusLine().getStatusCode() != 200) {
-            throw new RuntimeException("Expected 200 but got " + response.getStatusLine().getStatusCode() + ", with body " + body);
+            throw new RuntimeException(
+                    "Expected 200 but got " + response.getStatusLine().getStatusCode() + ", with body " + body);
         }
 
         return body;
     }
 
-    private String getScopes(){
+    private String getScopes() {
         String scopeStr = "";
-        if(!selectedScopes.isEmpty()){
+        if (!selectedScopes.isEmpty()) {
             int index = 0;
             for (String key : selectedScopes) {
                 index++;
                 if (scopes.contains(key)) {
                     scopeStr += key;
-                    if(index < selectedScopes.size()) scopeStr += " ";
+                    if (index < selectedScopes.size())
+                        scopeStr += " ";
                 }
             }
         }
         return scopeStr;
     }
 
-    //validates that the selected scopes are not empty and also included in the list of all scopes.
-    private Boolean validateScopes(List<String> selectedScopes) throws Exception
-    {
-        if (this.scopes.size() > 0)
-        {
+    // validates that the selected scopes are not empty and also included in the
+    // list of all scopes.
+    private Boolean validateScopes(List<String> selectedScopes) throws Exception {
+        if (this.scopes.size() > 0) {
             if (selectedScopes != null && selectedScopes.size() > 0) {
                 for (String key : selectedScopes) {
                     if (!this.scopes.contains(key)) {
                         throw new Exception(key + " scope is not allowed");
                     }
-               }
-            }
-            else
-            {
+                }
+            } else {
                 // throw if scope is null or undefined
                 throw new Exception("Scope is missing or empty, you must provide a valid scope");
             }
-        }
-        else
-        {
+        } else {
             throw new Exception("Authentication does not allow any scopes");
         }
         return true;
     }
 
     /**
-    * OAuth2TwoLegged Constructor
-    * @param clientId - the client id of the application
-    * @param clientSecret - the client secret of the application
-    * @param selectedScopes - the scope permissions used to generated access token
-    * @param autoRefresh - set autoRefresh to 'true' to automatically refresh the access token when it expires
-    * @throws Exception
-    */
-    public OAuth2TwoLegged(String clientId, String clientSecret, List<String> selectedScopes, Boolean autoRefresh) throws Exception{
+     * OAuth2TwoLegged Constructor
+     * 
+     * @param clientId       - the client id of the application
+     * @param clientSecret   - the client secret of the application
+     * @param selectedScopes - the scope permissions used to generated access token
+     * @param autoRefresh    - set autoRefresh to 'true' to automatically refresh
+     *                       the access token when it expires
+     * @throws Exception
+     */
+    public OAuth2TwoLegged(String clientId, String clientSecret, List<String> selectedScopes, Boolean autoRefresh)
+            throws Exception {
         this.flow = OAuthFlow.application;
         this.scopes = new ArrayList<String>();
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.selectedScopes = selectedScopes;
         this.autoRefresh = autoRefresh;
-    
+
         this.name = "oauth2_application";
         this.type = "oauth2";
         this.tokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/authenticate";
@@ -182,8 +181,8 @@ public class OAuth2TwoLegged implements Authentication {
         return name;
     }
 
-    public void setSelectedScopes(List<String> selectedScopes) throws Exception{
-        if(validateScopes(selectedScopes)){
+    public void setSelectedScopes(List<String> selectedScopes) throws Exception {
+        if (validateScopes(selectedScopes)) {
             this.selectedScopes = selectedScopes;
         }
     }
@@ -198,11 +197,12 @@ public class OAuth2TwoLegged implements Authentication {
 
     /**
      * Get the access token in a 2-legged flow
+     * 
      * @return
      */
-    public Credentials authenticate() throws Exception{
+    public Credentials authenticate() throws Exception {
 
-        if(flow == OAuthFlow.application) {
+        if (flow == OAuthFlow.application) {
 
             final String url = this.tokenUrl;
 
@@ -212,7 +212,7 @@ public class OAuth2TwoLegged implements Authentication {
             body.put("client_secret", this.clientSecret);
 
             String scopeStr = getScopes();
-            if(!scopeStr.isEmpty()) {
+            if (!scopeStr.isEmpty()) {
                 body.put("scope", scopeStr);
             }
 
@@ -226,13 +226,28 @@ public class OAuth2TwoLegged implements Authentication {
                     jsonObject = (JSONObject) new JSONParser().parse(bodyResponse);
 
                     String access_token = (String) jsonObject.get("access_token");
-                    //calculate "expires at"
-                    long expires_in = (long)jsonObject.get("expires_in");
-                    DateTime later = DateTime.now().plusSeconds((int)expires_in);
+                    // calculate "expires at"
+                    long expires_in = (long) jsonObject.get("expires_in");
+                    DateTime later = DateTime.now().plusSeconds((int) expires_in);
                     Long expiresAt = later.toDate().getTime();
 
+                    // should we delete the last this.credentials?
                     this.credentials = new Credentials(access_token, expiresAt);
-                    response = new Credentials(access_token, expiresAt);
+                    response = this.credentials;
+
+                    // refresh token 3 minutes (3*60 seconds) in advance.
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            // get token again
+                            try {
+                                authenticate();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, (expires_in - 3 * 60) * 1000);
 
                 } catch (ParseException e) {
                     throw new RuntimeException("Unable to parse json " + body);
@@ -242,13 +257,12 @@ public class OAuth2TwoLegged implements Authentication {
                 e.printStackTrace();
             }
             return response;
-        }
-        else{
+        } else {
             throw new Exception("getAccessToken requires application flow type");
         }
     }
 
-    public Boolean isAccessTokenExpired(){
-         return (this.credentials != null) && (this.credentials.getExpiresAt() <= (new Date().getTime()));
+    public Boolean isAccessTokenExpired() {
+        return (this.credentials != null) && (this.credentials.getExpiresAt() <= (new Date().getTime()));
     }
 }
