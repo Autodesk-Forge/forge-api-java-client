@@ -30,7 +30,7 @@ Add the following dependency to your `pom.xml`:
 <dependency>
    	<groupId>com.autodesk</groupId>
    	<artifactId>forge-java-sdk</artifactId>
-   	<version>1.0.1</version>
+   	<version>1.0.2</version>
 </dependency>
 ```
 
@@ -43,7 +43,7 @@ repositories {
     mavenLocal()
 }
 dependencies {
-    compile "com.autodesk:forge-java-sdk:1.0.1"
+    compile "com.autodesk:forge-java-sdk:1.0.2"
 }
 ```
 
