@@ -5,7 +5,7 @@
   <artifactId>com-autodesk-client</artifactId>
   <packaging>jar</packaging>
   <name>com-autodesk-client</name>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 
   <prerequisites>
     <maven>2.2.0</maven>

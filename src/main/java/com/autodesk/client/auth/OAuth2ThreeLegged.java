@@ -310,7 +310,7 @@ public class OAuth2ThreeLegged implements Authentication {
                 jsonObject = (JSONObject) new JSONParser().parse(responseBody);
 
                 String access_token = (String) jsonObject.get("access_token");
-                String refresh_token = (String) jsonObject.get("refresh_token");
+                final String refresh_token = (String) jsonObject.get("refresh_token");
                 // calculate "expires at"
                 long expires_in = (long) jsonObject.get("expires_in");
                 DateTime later = DateTime.now().plusSeconds((int) expires_in);
