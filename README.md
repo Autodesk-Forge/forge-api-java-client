@@ -29,7 +29,7 @@ Add the following dependency to your `pom.xml`:
 ```xml
 <dependency>
    	<groupId>com.autodesk</groupId>
-   	<artifactId>forge-java-sdk</artifactId>
+   	<artifactId>com-autodesk-client</artifactId>
    	<version>1.0.2</version>
 </dependency>
 ```
@@ -43,7 +43,7 @@ repositories {
     mavenLocal()
 }
 dependencies {
-    compile "com.autodesk:forge-java-sdk:1.0.2"
+    compile "com.autodesk:com-autodesk-client:1.0.2"
 }
 ```
 
