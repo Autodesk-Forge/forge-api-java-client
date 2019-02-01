@@ -45,6 +45,8 @@ public class JobThumbnailOutputPayload   {
   public enum TypeEnum {
     SVF("svf"),
     
+    IFC("ifc"),
+
     THUMBNAIL("thumbnail"),
     
     STL("stl"),
