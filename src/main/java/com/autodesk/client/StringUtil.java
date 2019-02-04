@@ -25,6 +25,15 @@
 
 package com.autodesk.client;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+
 
 public class StringUtil {
   /**
@@ -64,4 +73,48 @@ public class StringUtil {
     }
     return out.toString();
   }
+
+	public static class JacksonMapper {
+
+		private static final ObjectMapper mapper = new ObjectMapper();
+
+		private static final JacksonMapper INSTANCE;
+
+		static {
+			INSTANCE = new JacksonMapper();
+		}
+
+		private JacksonMapper() {
+			// not called
+		}
+
+		public static JacksonMapper getInstance() {
+
+			return INSTANCE;
+		}
+
+		public Map<String, String> toMap(String jsonString) throws Exception {
+
+			return mapper.readValue(jsonString, new TypeReference<HashMap<String, String>>() {
+			});
+
+		}
+		/**
+		 * Convert JSON to {@link List} {@link Pair}
+		 * @param jsonString
+		 * @return
+		 * @throws Exception
+		 */
+		public List<Pair> toListPair(String jsonString) throws Exception {
+			List<Pair> list = new ArrayList<>();
+			Map<String, String> map = toMap(jsonString);
+			for (Map.Entry<String, String> entry : map.entrySet())
+			{
+				list.add(new Pair(entry.getKey(), entry.getValue()));
+			}
+			return list;
+		}
+		
+	}
 }
+
