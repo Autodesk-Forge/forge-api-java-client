@@ -2,6 +2,7 @@ package com.autodesk.samples;
 
 import com.autodesk.client.ApiException;
 import com.autodesk.client.ApiResponse;
+import com.autodesk.client.Pair;
 import com.autodesk.client.api.BucketsApi;
 import com.autodesk.client.api.DerivativesApi;
 import com.autodesk.client.api.ObjectsApi;
@@ -18,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
+
 //to test getting metadata and metadata (model view)
 //in order to test the issue at:
 // https://stackoverflow.com/questions/47573466/model-derivative-api-responses-not-mapping-through-jackson/47589522
@@ -32,13 +34,9 @@ public class MainMetadata {
 
     private static final String BUCKET_KEY = "forge-java-sample-app-" + CLIENT_ID.toLowerCase();
 
-    private static final String FILE_NAME = "my-elephant.obj";
-    private static final String FILE_PATH = "elephant.obj";
-    
-    //private static final String FILE_NAME = "RevitNative.rvt";
-    //private static final String FILE_PATH = "RevitNative.rvt"; 
-    
-    
+    private static final String FILE_NAME = "rac_basic_sample_project.rvt";
+    private static final String FILE_PATH = "samples/com/autodesk/samples/rac_basic_sample_project.rvt";
+
     private static OAuth2TwoLegged oauth2TwoLegged;
     
     // Initialize the relevant clients; in this example, the Objects, Buckets and Derivatives clients, which are part of the Data Management API and Model Derivatives API
@@ -156,13 +154,22 @@ public class MainMetadata {
             }
             else{
                 System.out.println("***** Haven't finished translating your file to SVF - status: " + manifest.getStatus() + ", progress:" + manifest.getProgress());
-             }
+                //avoid frequent requests
+                Thread.sleep(2000);
+            }
         }
 
         return response.getData();
 
     }
 
+    /**
+     * Example of how to get guid of specific metadata.
+     * To make it simpler, get the first metadata only.
+     * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
+     * @throws com.autodesk.client.ApiException
+     * @throws Exception
+     */
     private static Metadata GetMetadata(String base64Urn) throws ApiException, Exception{
         System.out.println("***** Sending get Metadata request" );
         boolean isComplete = false;
@@ -189,17 +196,29 @@ public class MainMetadata {
 
     }
 
-    private static Metadata GetMetadataForGuid(String base64Urn,String guid) throws ApiException, Exception{
+    /**
+     * Example of how to get specific metadata.
+     * The first HTTP request will respond with 202, which means the extracting of metadata started
+     * Keep querying the same endpoint until it tells 200, then the response includes the metadata.
+     * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
+     * @throws com.autodesk.client.ApiException
+     * @throws Exception
+     */
+    private static Metadata GetMetadataForGuid(String base64Urn, String guid) throws ApiException, Exception{
         System.out.println("***** Sending get Metadata (Model View) for guid" );
         boolean isComplete = false;
         ApiResponse<Metadata> response = null;
 
-        while(!isComplete)  {     
+        List<Pair> queryParams = null;
+
+        while(!isComplete)  {
+
             response = derivativesApi.getModelviewMetadata(base64Urn,
-            guid,
-            "gzip",oauth2TwoLegged,twoLeggedCredentials);
-            Metadata metadata = response.getData();  
-        
+                    guid,
+                    "gzip",queryParams,oauth2TwoLegged,twoLeggedCredentials);
+
+            Metadata metadata = response.getData();
+
             if(response.getStatusCode() == 200){
                isComplete = true;
                System.out.println("***** Metadata (Model View): ");
@@ -207,6 +226,18 @@ public class MainMetadata {
             }
             else if(response.getStatusCode() == 202) { 
                System.out.println("***** (202) Waiting for Model View Preparation: ");
+                Thread.sleep(2000);
+            }
+            else if(response.getStatusCode() == 413) {
+                System.out.println("***** (413) : Request Entity Too Large. Now request with ");
+                System.out.println("***** (413) : Request Entity Too Large.");
+
+                //with 'forgeget'
+                if(queryParams == null)
+                    queryParams = new ArrayList<Pair>();
+                if(!queryParams.contains(new Pair("forceget","true")))
+                    queryParams.add(new Pair("forceget","true"));
+                Thread.sleep(2000);
             }
             else
             {
@@ -270,7 +301,8 @@ public class MainMetadata {
 
                         Manifest manifest = verifyJobComplete(base64Urn);
                         if (manifest.getStatus().equals("success")){
-                            GetMetadata(base64Urn);   
+                            GetMetadata(base64Urn);
+                            //This test
                             //openViewer(manifest.getUrn());
                         }
                     }

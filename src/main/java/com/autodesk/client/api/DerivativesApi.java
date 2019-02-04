@@ -324,7 +324,7 @@ public class DerivativesApi {
 		final String[] localVarContentTypes = { "application/json" };
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-		GenericType<Metadata> localVarReturnType = new GenericType<Metadata>() {
+			GenericType<Metadata> localVarReturnType = new GenericType<Metadata>() {
 		};
 		return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody,
 				localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
@@ -352,7 +352,7 @@ public class DerivativesApi {
 	 * @return Metadata
 	 * @throws ApiException if fails to make API call
 	 */
-	public ApiResponse<Metadata> getModelviewMetadata(String urn, String guid, String acceptEncoding,
+	public ApiResponse<Metadata> getModelviewMetadata(String urn, String guid, String acceptEncoding,List<Pair> queryParams,
 			Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
 		Object localVarPostBody = null;
@@ -386,6 +386,9 @@ public class DerivativesApi {
 		final String[] localVarContentTypes = { "application/json" };
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
+		if(queryParams != null)
+			localVarQueryParams.addAll(queryParams);
+
 		GenericType<Metadata> localVarReturnType = new GenericType<Metadata>() {
 		};
 		return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody,
@@ -397,14 +400,14 @@ public class DerivativesApi {
    * @param urn The Base64 (URL Safe) encoded design URN  (required)
    * @param guid Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID  (required)
    * @param acceptEncoding Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID  (required)
-   * @param queryParam Send Json parameters for query URL
+   * @param queryParams Send Json parameters for query URL.
    * @param oauth2
    * @param credentials
    * @return
    * @throws ApiException if fails to make API call
    * @throws Exception
    */
-  public ApiResponse<Metadata> getModelviewProperties(String urn, String guid, String acceptEncoding, String queryParam, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<Metadata> getModelviewProperties(String urn, String guid, String acceptEncoding, List<Pair> queryParams, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -426,8 +429,8 @@ public class DerivativesApi {
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     
-    if (queryParam!=null)
-    	localVarQueryParams.addAll(JacksonMapper.getInstance().toListPair(queryParam));
+    if (queryParams!=null)
+    	localVarQueryParams.addAll(queryParams);
     
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();

@@ -20,8 +20,8 @@ import java.util.List;
 public class Main {
 
     //TODO - insert your CLIENT_ID and CLIENT_SECRET
-    private static final String CLIENT_ID = "";
-    private static final String CLIENT_SECRET = "";
+    private static final String CLIENT_ID = "<your client id>";
+    private static final String CLIENT_SECRET = "<your client secret>";
 
     private static final String BUCKET_KEY = "forge-java-sample-app-" + CLIENT_ID.toLowerCase();
 
@@ -140,7 +140,7 @@ public class Main {
             }
             else{
                 System.out.println("***** Haven't finished translating your file to SVF - status: " + manifest.getStatus() + ", progress:" + manifest.getProgress());
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             }
         }
 
