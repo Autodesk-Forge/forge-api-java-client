@@ -23,12 +23,16 @@ Clone the following repository:<br />
 
 ### Configure the Parameters
 
-Open the *Main.java* file, and replace `CLIENT_ID` and `CLIENT_SECRET` with the client ID and client secret generated when creating the app.
+Open the *Main.java* file or  *MainMetadata.java* file, and replace `CLIENT_ID` and `CLIENT_SECRET` with the client ID and client secret generated when creating the app.
+The demo file **rac_basic_sample_project.rvt** can be found at https://knowledge.autodesk.com/support/revit-products/getting-started/caas/CloudHelp/cloudhelp/2018/ENU/Revit-GetStarted/files/GUID-61EF2F22-3A1F-4317-B925-1E85F138BE88-htm.html.
+Download it and put into the same folder. Or use your own model.
 
 Note that depending on your IDE, you might need to mark the *samples* directory as the source root directory.
 
 ### Run the App
 Run the app from your IDE console.
+
+To test MetaData of a model,
 
 ## Support
 forge.help@autodesk.com

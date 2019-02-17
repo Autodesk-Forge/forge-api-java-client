@@ -21,8 +21,6 @@ import java.util.List;
 
 
 //to test getting metadata and metadata (model view)
-//in order to test the issue at:
-// https://stackoverflow.com/questions/47573466/model-derivative-api-responses-not-mapping-through-jackson/47589522
 //simple test without much error checking
 //check the first guid of the metadata only
 
@@ -34,16 +32,18 @@ public class MainMetadata {
 
     private static final String BUCKET_KEY = "forge-java-sample-app-" + CLIENT_ID.toLowerCase();
 
+    // the demo file "rac_basic_sample_project.rvt" can be found at
+    // https://knowledge.autodesk.com/support/revit-products/getting-started/caas/CloudHelp/cloudhelp/2018/ENU/Revit-GetStarted/files/GUID-61EF2F22-3A1F-4317-B925-1E85F138BE88-htm.html
     private static final String FILE_NAME = "rac_basic_sample_project.rvt";
     private static final String FILE_PATH = "samples/com/autodesk/samples/rac_basic_sample_project.rvt";
 
     private static OAuth2TwoLegged oauth2TwoLegged;
-    
+
     // Initialize the relevant clients; in this example, the Objects, Buckets and Derivatives clients, which are part of the Data Management API and Model Derivatives API
-    
-      
+
+
     private static final ObjectsApi objectsApi = new ObjectsApi();
-    
+
     private static final BucketsApi bucketsApi = new BucketsApi();
     private static final DerivativesApi derivativesApi = new DerivativesApi();
 
@@ -65,7 +65,7 @@ public class MainMetadata {
         //Set autoRefresh to `true` to automatically refresh the access token when it expires.
         oauth2TwoLegged = new OAuth2TwoLegged(CLIENT_ID, CLIENT_SECRET, scopes, true);
         twoLeggedCredentials = oauth2TwoLegged.authenticate();
-         
+
     }
 
     /**
@@ -149,8 +149,8 @@ public class MainMetadata {
             response = derivativesApi.getManifest(base64Urn,null,oauth2TwoLegged,twoLeggedCredentials);
             Manifest manifest = response.getData();
             if(response.getData().getProgress().equals("complete")){
-                 isComplete = true;
-                 System.out.println("***** Finished translating your file to SVF - status: " + manifest.getStatus() + ", progress:" + manifest.getProgress());
+                isComplete = true;
+                System.out.println("***** Finished translating your file to SVF - status: " + manifest.getStatus() + ", progress:" + manifest.getProgress());
             }
             else{
                 System.out.println("***** Haven't finished translating your file to SVF - status: " + manifest.getStatus() + ", progress:" + manifest.getProgress());
@@ -176,23 +176,23 @@ public class MainMetadata {
         ApiResponse<Metadata> response = null;
 
         response = derivativesApi.getMetadata(base64Urn,
-            null,oauth2TwoLegged,twoLeggedCredentials);
-        Metadata metadata = response.getData();  
+                null,oauth2TwoLegged,twoLeggedCredentials);
+        Metadata metadata = response.getData();
 
         if(response.getStatusCode() == 200){
 
             //assume the first node is what we wanted to check.
             String guid = metadata.getData().getMetadata().get(0).getGuid();
-            System.out.println("guid: " + guid);   
+            System.out.println("guid: " + guid);
 
             GetMetadataForGuid(base64Urn,guid);
-        } 
+        }
         else
         {
             System.out.println("***** get metadata failed, response code: " + response.getStatusCode());
-            
-        } 
-         return response.getData();
+
+        }
+        return response.getData();
 
     }
 
@@ -220,12 +220,12 @@ public class MainMetadata {
             Metadata metadata = response.getData();
 
             if(response.getStatusCode() == 200){
-               isComplete = true;
-               System.out.println("***** Metadata (Model View): ");
-               System.out.println(metadata.toString()); 
+                isComplete = true;
+                System.out.println("***** Metadata (Model View): ");
+                System.out.println(metadata.toString());
             }
-            else if(response.getStatusCode() == 202) { 
-               System.out.println("***** (202) Waiting for Model View Preparation: ");
+            else if(response.getStatusCode() == 202) {
+                System.out.println("***** (202) Waiting for Model View Preparation: ");
                 Thread.sleep(2000);
             }
             else if(response.getStatusCode() == 413) {
@@ -241,13 +241,13 @@ public class MainMetadata {
             }
             else
             {
-                isComplete = true; 
+                isComplete = true;
                 System.out.println("***** Get Metadata (Model View) failed ");
-                
-            } 
+
+            }
         }
         return response.getData();
-        
+
     }
 
     /**
@@ -260,10 +260,10 @@ public class MainMetadata {
     private static void openViewer(String base64Urn) throws IOException {
         System.out.println("***** Opening SVF file in viewer with urn:" + base64Urn);
         File htmlFile = new File("samples/com/autodesk/samples/viewer.html");
-        UriBuilder builder = UriBuilder.fromPath("file:///" + htmlFile.getAbsolutePath() + 
-        "?token=" + twoLeggedCredentials.getAccessToken() + "&urn="+base64Urn); 
-        //Desktop.getDesktop().browse("file:///" + htmlFile.getAbsolutePath() + 
-       // "?token=" + twoLeggedCredentials.getAccessToken() + "&urn="+base64Urn);
+        UriBuilder builder = UriBuilder.fromPath("file:///" + htmlFile.getAbsolutePath() +
+                "?token=" + twoLeggedCredentials.getAccessToken() + "&urn="+base64Urn);
+        //Desktop.getDesktop().browse("file:///" + htmlFile.getAbsolutePath() +
+        // "?token=" + twoLeggedCredentials.getAccessToken() + "&urn="+base64Urn);
     }
 
     /**
