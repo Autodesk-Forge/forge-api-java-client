@@ -42,6 +42,7 @@ import com.sun.jersey.multipart.file.FileDataBodyPart;
 import javax.ws.rs.core.Response.Status.Family;
 import javax.ws.rs.core.MediaType;
 
+import java.io.FileInputStream;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
@@ -471,16 +472,20 @@ public class ApiClient {
       throw new ApiException(500, "Cannot have body and form params");
     }
 
-    if (body != null && body.getClass().equals(File.class)) {
+    Object requestBody = null;
+    if (body != null) {
+      if (body.getClass().equals(File.class))
+      {
         try {
-            byte[] data = Files.readAllBytes(((File)body).toPath());
-            body = data;
-            headerParams.put("Content-Length",  (new Integer(data.length)).toString());
-            contentType = "application/octet-stream";
+          File file = (File) body;
+          requestBody = new FileInputStream(file);
+          headerParams.put("Content-Length", Long.toString(file.length()));
+          contentType = "application/octet-stream";
+        } catch (IOException e) {
+          throw new ApiException(400, "There was a problem reading the file: " + e.getMessage());
         }
-        catch(IOException e){
-            throw new ApiException(400, "There was a problem reading the file: " + e.getMessage());
-        }
+      } else
+        requestBody = serialize(body, contentType, formParams);
     }
 
     updateParamsForAuth(credentials, headerParams);
@@ -507,11 +512,11 @@ public class ApiClient {
     if ("GET".equals(method)) {
       response = (ClientResponse) builder.get(ClientResponse.class);
     } else if ("POST".equals(method)) {
-      response = builder.type(contentType).post(ClientResponse.class, serialize(body, contentType, formParams));
+      response = builder.type(contentType).post(ClientResponse.class, requestBody);
     } else if ("PUT".equals(method)) {
-      response = builder.type(contentType).put(ClientResponse.class, serialize(body, contentType, formParams));
+      response = builder.type(contentType).put(ClientResponse.class, requestBody);
     } else if ("DELETE".equals(method)) {
-      response = builder.type(contentType).delete(ClientResponse.class, serialize(body, contentType, formParams));
+      response = builder.type(contentType).delete(ClientResponse.class, requestBody);
     } else if ("PATCH".equals(method)) {
       response = builder.type(contentType).header("X-HTTP-Method-Override", "PATCH").post(ClientResponse.class, serialize(body, contentType, formParams));
     }
