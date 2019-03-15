@@ -29,7 +29,7 @@ Add the following dependency to your `pom.xml`:
 ```xml
 <dependency>
    	<groupId>com.autodesk</groupId>
-   	<artifactId>com-autodesk-client</artifactId>
+   	<artifactId>forge-java-sdk</artifactId>
    	<version>1.0.2</version>
 </dependency>
 ```
