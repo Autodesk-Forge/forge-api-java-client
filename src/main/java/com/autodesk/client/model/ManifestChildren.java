@@ -85,6 +85,8 @@ public class ManifestChildren   {
     
     IFC("ifc"),
 
+    OBJ("obj"),
+    
     //to solved the issue GetManifest is returning an unhandled role enum
     PROPERTYDB("Autodesk.CloudPlatform.PropertyDatabase");
     

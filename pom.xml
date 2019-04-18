@@ -9,7 +9,7 @@
     <name>forge-java-sdk</name>
     <description>SDK of Autodesk Forge</description>
     <url>https://github.com/Autodesk-Forge/forge-api-java-client</url>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <prerequisites>
         <maven>2.2.0</maven>
     </prerequisites>
