@@ -2,6 +2,7 @@ package com.autodesk.samples;
 
 import com.autodesk.client.ApiException;
 import com.autodesk.client.ApiResponse;
+import com.autodesk.client.Pair;
 import com.autodesk.client.api.BucketsApi;
 import com.autodesk.client.api.DerivativesApi;
 import com.autodesk.client.api.ObjectsApi;
@@ -18,9 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 
 
+
 //to test getting metadata and metadata (model view)
-//in order to test the issue at:
-// https://stackoverflow.com/questions/47573466/model-derivative-api-responses-not-mapping-through-jackson/47589522
 //simple test without much error checking
 //check the first guid of the metadata only
 
@@ -32,20 +32,18 @@ public class MainMetadata {
 
     private static final String BUCKET_KEY = "forge-java-sample-app-" + CLIENT_ID.toLowerCase();
 
-    private static final String FILE_NAME = "my-elephant.obj";
-    private static final String FILE_PATH = "elephant.obj";
-    
-    //private static final String FILE_NAME = "RevitNative.rvt";
-    //private static final String FILE_PATH = "RevitNative.rvt"; 
-    
-    
+    // the demo file "rac_basic_sample_project.rvt" can be found at
+    // https://knowledge.autodesk.com/support/revit-products/getting-started/caas/CloudHelp/cloudhelp/2018/ENU/Revit-GetStarted/files/GUID-61EF2F22-3A1F-4317-B925-1E85F138BE88-htm.html
+    private static final String FILE_NAME = "rac_basic_sample_project.rvt";
+    private static final String FILE_PATH = "samples/com/autodesk/samples/rac_basic_sample_project.rvt";
+
     private static OAuth2TwoLegged oauth2TwoLegged;
-    
+
     // Initialize the relevant clients; in this example, the Objects, Buckets and Derivatives clients, which are part of the Data Management API and Model Derivatives API
-    
-      
+
+
     private static final ObjectsApi objectsApi = new ObjectsApi();
-    
+
     private static final BucketsApi bucketsApi = new BucketsApi();
     private static final DerivativesApi derivativesApi = new DerivativesApi();
 
@@ -67,7 +65,7 @@ public class MainMetadata {
         //Set autoRefresh to `true` to automatically refresh the access token when it expires.
         oauth2TwoLegged = new OAuth2TwoLegged(CLIENT_ID, CLIENT_SECRET, scopes, true);
         twoLeggedCredentials = oauth2TwoLegged.authenticate();
-         
+
     }
 
     /**
@@ -151,72 +149,105 @@ public class MainMetadata {
             response = derivativesApi.getManifest(base64Urn,null,oauth2TwoLegged,twoLeggedCredentials);
             Manifest manifest = response.getData();
             if(response.getData().getProgress().equals("complete")){
-                 isComplete = true;
-                 System.out.println("***** Finished translating your file to SVF - status: " + manifest.getStatus() + ", progress:" + manifest.getProgress());
+                isComplete = true;
+                System.out.println("***** Finished translating your file to SVF - status: " + manifest.getStatus() + ", progress:" + manifest.getProgress());
             }
             else{
                 System.out.println("***** Haven't finished translating your file to SVF - status: " + manifest.getStatus() + ", progress:" + manifest.getProgress());
-             }
+                //avoid frequent requests
+                Thread.sleep(2000);
+            }
         }
 
         return response.getData();
 
     }
 
+    /**
+     * Example of how to get guid of specific metadata.
+     * To make it simpler, get the first metadata only.
+     * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
+     * @throws com.autodesk.client.ApiException
+     * @throws Exception
+     */
     private static Metadata GetMetadata(String base64Urn) throws ApiException, Exception{
         System.out.println("***** Sending get Metadata request" );
         boolean isComplete = false;
         ApiResponse<Metadata> response = null;
 
         response = derivativesApi.getMetadata(base64Urn,
-            null,oauth2TwoLegged,twoLeggedCredentials);
-        Metadata metadata = response.getData();  
+                null,oauth2TwoLegged,twoLeggedCredentials);
+        Metadata metadata = response.getData();
 
         if(response.getStatusCode() == 200){
 
             //assume the first node is what we wanted to check.
             String guid = metadata.getData().getMetadata().get(0).getGuid();
-            System.out.println("guid: " + guid);   
+            System.out.println("guid: " + guid);
 
             GetMetadataForGuid(base64Urn,guid);
-        } 
+        }
         else
         {
             System.out.println("***** get metadata failed, response code: " + response.getStatusCode());
-            
-        } 
-         return response.getData();
+
+        }
+        return response.getData();
 
     }
 
-    private static Metadata GetMetadataForGuid(String base64Urn,String guid) throws ApiException, Exception{
+    /**
+     * Example of how to get specific metadata.
+     * The first HTTP request will respond with 202, which means the extracting of metadata started
+     * Keep querying the same endpoint until it tells 200, then the response includes the metadata.
+     * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
+     * @throws com.autodesk.client.ApiException
+     * @throws Exception
+     */
+    private static Metadata GetMetadataForGuid(String base64Urn, String guid) throws ApiException, Exception{
         System.out.println("***** Sending get Metadata (Model View) for guid" );
         boolean isComplete = false;
         ApiResponse<Metadata> response = null;
 
-        while(!isComplete)  {     
+        List<Pair> queryParams = null;
+
+        while(!isComplete)  {
+
             response = derivativesApi.getModelviewMetadata(base64Urn,
-            guid,
-            "gzip",oauth2TwoLegged,twoLeggedCredentials);
-            Metadata metadata = response.getData();  
-        
+                    guid,
+                    "gzip",queryParams,oauth2TwoLegged,twoLeggedCredentials);
+
+            Metadata metadata = response.getData();
+
             if(response.getStatusCode() == 200){
-               isComplete = true;
-               System.out.println("***** Metadata (Model View): ");
-               System.out.println(metadata.toString()); 
+                isComplete = true;
+                System.out.println("***** Metadata (Model View): ");
+                System.out.println(metadata.toString());
             }
-            else if(response.getStatusCode() == 202) { 
-               System.out.println("***** (202) Waiting for Model View Preparation: ");
+            else if(response.getStatusCode() == 202) {
+                System.out.println("***** (202) Waiting for Model View Preparation: ");
+                Thread.sleep(2000);
+            }
+            else if(response.getStatusCode() == 413) {
+                System.out.println("***** (413) : Request Entity Too Large. Now request with ");
+                System.out.println("***** (413) : Request Entity Too Large.");
+
+                //with 'forgeget'
+                if(queryParams == null)
+                    queryParams = new ArrayList<Pair>();
+                if(!queryParams.contains(new Pair("forceget","true")))
+                    queryParams.add(new Pair("forceget","true"));
+                Thread.sleep(2000);
             }
             else
             {
-                isComplete = true; 
+                isComplete = true;
                 System.out.println("***** Get Metadata (Model View) failed ");
-                
-            } 
+
+            }
         }
         return response.getData();
-        
+
     }
 
     /**
@@ -229,10 +260,10 @@ public class MainMetadata {
     private static void openViewer(String base64Urn) throws IOException {
         System.out.println("***** Opening SVF file in viewer with urn:" + base64Urn);
         File htmlFile = new File("samples/com/autodesk/samples/viewer.html");
-        UriBuilder builder = UriBuilder.fromPath("file:///" + htmlFile.getAbsolutePath() + 
-        "?token=" + twoLeggedCredentials.getAccessToken() + "&urn="+base64Urn); 
-        //Desktop.getDesktop().browse("file:///" + htmlFile.getAbsolutePath() + 
-       // "?token=" + twoLeggedCredentials.getAccessToken() + "&urn="+base64Urn);
+        UriBuilder builder = UriBuilder.fromPath("file:///" + htmlFile.getAbsolutePath() +
+                "?token=" + twoLeggedCredentials.getAccessToken() + "&urn="+base64Urn);
+        //Desktop.getDesktop().browse("file:///" + htmlFile.getAbsolutePath() +
+        // "?token=" + twoLeggedCredentials.getAccessToken() + "&urn="+base64Urn);
     }
 
     /**
@@ -270,7 +301,8 @@ public class MainMetadata {
 
                         Manifest manifest = verifyJobComplete(base64Urn);
                         if (manifest.getStatus().equals("success")){
-                            GetMetadata(base64Urn);   
+                            GetMetadata(base64Urn);
+                            //This test
                             //openViewer(manifest.getUrn());
                         }
                     }

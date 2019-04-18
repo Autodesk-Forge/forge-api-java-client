@@ -68,7 +68,7 @@ public class JobObjOutputPayloadAdvanced   {
   private String modelGuid = null;
 
   @JsonProperty("objectIds")
-  private List<String> objectIds = new ArrayList<String>();
+  private List<Integer> objectIds = new ArrayList<Integer>();
 
   public JobObjOutputPayloadAdvanced exportFileStructure(ExportFileStructureEnum exportFileStructure) {
     this.exportFileStructure = exportFileStructure;
@@ -106,7 +106,7 @@ public class JobObjOutputPayloadAdvanced   {
     this.modelGuid = modelGuid;
   }
 
-  public JobObjOutputPayloadAdvanced objectIds(List<String> objectIds) {
+  public JobObjOutputPayloadAdvanced objectIds(List<Integer> objectIds) {
     this.objectIds = objectIds;
     return this;
   }
@@ -116,11 +116,11 @@ public class JobObjOutputPayloadAdvanced   {
    * @return objectIds
   **/
   @ApiModelProperty(example = "null", value = "Required for geometry extractions. List object ids to be translated. -1 will extract the entire model. ")
-  public List<String> getObjectIds() {
+  public List<Integer> getObjectIds() {
     return objectIds;
   }
 
-  public void setObjectIds(List<String> objectIds) {
+  public void setObjectIds(List<Integer> objectIds) {
     this.objectIds = objectIds;
   }
 
