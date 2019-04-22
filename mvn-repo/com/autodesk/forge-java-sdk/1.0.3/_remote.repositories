@@ -1,0 +1,8 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Apr 22 13:49:58 BRT 2019
+forge-java-sdk-1.0.3-sources.jar>=
+forge-java-sdk-1.0.3-jar-with-dependencies.jar>=
+forge-java-sdk-1.0.3-tests.jar>=
+forge-java-sdk-1.0.3.jar>=
+forge-java-sdk-1.0.3-javadoc.jar>=
+forge-java-sdk-1.0.3.pom>=
