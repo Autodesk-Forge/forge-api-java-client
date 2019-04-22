@@ -174,6 +174,75 @@ public class DerivativesApi {
 
 	/**
 	 * 
+	 * Downloads a selected derivative. To download the file, you need to specify
+	 * the file’s URN, which you retrieve by calling the [GET
+	 * {urn}/manifest](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-manifest-GET)
+	 * endpoint. Note that the Model Derivative API uses 2 types of URNs. The
+	 * **design URN** is generated when you upload the source design file to Forge,
+	 * and is used when calling most of the Model Derivative endpoints. A
+	 * **derivative URN** is generated for each translated output file format, and
+	 * is used for downloading the output design files. You can set the range of
+	 * bytes that are returned when downloading the derivative, using the range
+	 * header.
+	 * 
+	 * @param urn           The Base64 (URL Safe) encoded design URN (required)
+	 * @param derivativeUrn The URL-encoded URN of the derivatives. The URN is
+	 *                      retrieved from the GET :urn/manifest endpoint.
+	 *                      (required)
+	 * @param range         This is the standard RFC 2616 range request header. It
+	 *                      only supports one range specifier per request: 1.
+	 *                      Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2.
+	 *                      Range:bytes&#x3D;64-127 (returns the second set of 64
+	 *                      bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes
+	 *                      from offset 1022 to the end) 4. If the range header is
+	 *                      not specified, the whole content is returned. (optional)
+	 * @throws ApiException if fails to make API call
+	 */
+	public ApiResponse<File> downloadDerivative(String urn, String derivativeUrn, Integer range,
+			Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+
+		Object localVarPostBody = null;
+
+		// verify the required parameter 'urn' is set
+		if (urn == null) {
+			throw new ApiException(400, "Missing the required parameter 'urn' when calling getDerivativeManifest");
+		}
+
+		// verify the required parameter 'derivativeUrn' is set
+		if (derivativeUrn == null) {
+			throw new ApiException(400,
+					"Missing the required parameter 'derivativeUrn' when calling getDerivativeManifest");
+		}
+
+		// create path and map variables
+		String localVarPath = "/modelderivative/v2/designdata/{urn}/manifest/{derivativeUrn}"
+				.replaceAll("\\{format\\}", "json")
+				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
+				.replaceAll("\\{" + "derivativeUrn" + "\\}", apiClient.escapeString(derivativeUrn.toString()));
+
+		// query params
+		List<Pair> localVarQueryParams = new ArrayList<Pair>();
+		Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+		Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+		if (range != null)
+			localVarHeaderParams.put("Range", apiClient.parameterToString(range));
+
+		final String[] localVarAccepts = { "application/octet-stream" };
+		final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+		final String[] localVarContentTypes = { "application/json" };
+		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+		GenericType<File> localVarReturnType = new GenericType<File>() {
+		};
+
+		return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody,
+				localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+	}
+
+	/**
+	 * 
 	 * Returns an up-to-date list of Forge-supported translations, that you can use
 	 * to identify which types of derivatives are supported for each source file
 	 * type. You can set this endpoint to only return the list of supported
