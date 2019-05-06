@@ -67,10 +67,10 @@ public class DerivativesApi {
 	}
 
 	/**
-	 * 
+	 *
 	 * Deletes the manifest and all its translated output files (derivatives).
 	 * However, it does not delete the design source file.
-	 * 
+	 *
 	 * @param urn The Base64 (URL Safe) encoded design URN (required)
 	 * @return Result
 	 * @throws ApiException if fails to make API call
@@ -107,7 +107,7 @@ public class DerivativesApi {
 	}
 
 	/**
-	 * 
+	 *
 	 * Downloads a selected derivative. To download the file, you need to specify
 	 * the file’s URN, which you retrieve by calling the [GET
 	 * {urn}/manifest](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-manifest-GET)
@@ -118,7 +118,7 @@ public class DerivativesApi {
 	 * is used for downloading the output design files. You can set the range of
 	 * bytes that are returned when downloading the derivative, using the range
 	 * header.
-	 * 
+	 *
 	 * @param urn           The Base64 (URL Safe) encoded design URN (required)
 	 * @param derivativeUrn The URL-encoded URN of the derivatives. The URN is
 	 *                      retrieved from the GET :urn/manifest endpoint.
@@ -132,7 +132,7 @@ public class DerivativesApi {
 	 *                      not specified, the whole content is returned. (optional)
 	 * @throws ApiException if fails to make API call
 	 */
-	public ApiResponse<Void> getDerivativeManifest(String urn, String derivativeUrn, Integer range,
+	public ApiResponse<File> getDerivativeManifest(String urn, String derivativeUrn, Integer range,
 			Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
 		Object localVarPostBody = null;
@@ -169,11 +169,11 @@ public class DerivativesApi {
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
 		return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody,
-				localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, null);
+				localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, new GenericType<File>(){});
 	}
 
 	/**
-	 * 
+	 *
 	 * Returns an up-to-date list of Forge-supported translations, that you can use
 	 * to identify which types of derivatives are supported for each source file
 	 * type. You can set this endpoint to only return the list of supported
@@ -182,7 +182,7 @@ public class DerivativesApi {
 	 * table](https://developer.autodesk.com/en/docs/model-derivative/v2/overview/supported-translations)
 	 * for more details about supported translations. Note that we are constantly
 	 * adding new file formats to the list of Forge translations.
-	 * 
+	 *
 	 * @param ifModifiedSince The supported formats are only returned if they were
 	 *                        modified since the specified date. An invalid date
 	 *                        returns the latest supported format list. If the
@@ -226,7 +226,7 @@ public class DerivativesApi {
 	}
 
 	/**
-	 * 
+	 *
 	 * Returns information about derivatives that correspond to a specific source
 	 * file, including derviative URNs and statuses. The URNs of the derivatives are
 	 * used to download the generated derivatives when calling the [GET
@@ -237,7 +237,7 @@ public class DerivativesApi {
 	 * have different &#x60;status&#x60; values. When translating a source file a
 	 * second time, the previously created manifest is not deleted; it appends the
 	 * information (only new translations) to the manifest.
-	 * 
+	 *
 	 * @param urn            The Base64 (URL Safe) encoded design URN (required)
 	 * @param acceptEncoding If specified with &#x60;gzip&#x60; or &#x60;*&#x60;,
 	 *                       content will be compressed and returned in a GZIP
@@ -280,7 +280,7 @@ public class DerivativesApi {
 	}
 
 	/**
-	 * 
+	 *
 	 * Returns a list of model view (metadata) IDs for a design model. The metadata
 	 * ID enables end users to select an object tree and properties for a specific
 	 * model view. Although most design apps (e.g., Fusion and Inventor) only allow
@@ -288,7 +288,7 @@ public class DerivativesApi {
 	 * Revit) allow users to design models with multiple model views (e.g., HVAC,
 	 * architecture, perspective). Note that you can only retrieve metadata from an
 	 * input file that has been translated into an SVF file.
-	 * 
+	 *
 	 * @param urn            The Base64 (URL Safe) encoded design URN (required)
 	 * @param acceptEncoding If specified with &#x60;gzip&#x60; or &#x60;*&#x60;,
 	 *                       content will be compressed and returned in a GZIP
@@ -331,7 +331,7 @@ public class DerivativesApi {
 	}
 
 	/**
-	 * 
+	 *
 	 * Returns an object tree, i.e., a hierarchical list of objects for a model
 	 * view. To call this endpoint you first need to call the [GET
 	 * {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET)
@@ -341,7 +341,7 @@ public class DerivativesApi {
 	 * multiple model views (e.g., HVAC, architecture, perspective). Note that you
 	 * can only retrieve metadata from an input file that has been translated into
 	 * an SVF file.
-	 * 
+	 *
 	 * @param urn            The Base64 (URL Safe) encoded design URN (required)
 	 * @param guid           Unique model view ID. Call [GET
 	 *                       {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET)
@@ -396,7 +396,7 @@ public class DerivativesApi {
 	}
 
 	/**
-   * Returns a list of properties for each object in an object tree. Properties are returned according to object ID and do not follow a hierarchical structure.  The following image displays a typical list of properties for a Revit object:  ![](https://developer.doc.autodesk.com/bPlouYTd/7/_images/Properties.png)  To call this endpoint you need to first call the [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) endpoint, which returns a list of model view (metadata) IDs for a design input model. Select a model view (metadata) ID to use when calling the Get Properties endpoint.  Note that you can only get properties from a design input file that was previously translated into an SVF file. 
+   * Returns a list of properties for each object in an object tree. Properties are returned according to object ID and do not follow a hierarchical structure.  The following image displays a typical list of properties for a Revit object:  ![](https://developer.doc.autodesk.com/bPlouYTd/7/_images/Properties.png)  To call this endpoint you need to first call the [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) endpoint, which returns a list of model view (metadata) IDs for a design input model. Select a model view (metadata) ID to use when calling the Get Properties endpoint.  Note that you can only get properties from a design input file that was previously translated into an SVF file.
    * @param urn The Base64 (URL Safe) encoded design URN  (required)
    * @param guid Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID  (required)
    * @param acceptEncoding Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID  (required)
@@ -410,17 +410,17 @@ public class DerivativesApi {
   public ApiResponse<Metadata> getModelviewProperties(String urn, String guid, String acceptEncoding, List<Pair> queryParams, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'urn' is set
     if (urn == null) {
       throw new ApiException(400, "Missing the required parameter 'urn' when calling getModelviewProperties");
     }
-    
+
     // verify the required parameter 'guid' is set
     if (guid == null) {
       throw new ApiException(400, "Missing the required parameter 'guid' when calling getModelviewProperties");
     }
-    
+
     // create path and map variables
     String localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}/properties".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
@@ -428,10 +428,10 @@ public class DerivativesApi {
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    
+
     if (queryParams!=null)
     	localVarQueryParams.addAll(queryParams);
-    
+
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
@@ -439,7 +439,7 @@ public class DerivativesApi {
     if (acceptEncoding != null)
       localVarHeaderParams.put("Accept-Encoding", apiClient.parameterToString(acceptEncoding));
 
-    
+
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
     };
@@ -455,7 +455,7 @@ public class DerivativesApi {
   }
 
 	/**
-	 * 
+	 *
 	 * Returns a list of properties for each object in an object tree. Properties
 	 * are returned according to object ID and do not follow a hierarchical
 	 * structure. The following image displays a typical list of properties for a
@@ -467,7 +467,7 @@ public class DerivativesApi {
 	 * input model. Select a model view (metadata) ID to use when calling the Get
 	 * Properties endpoint. Note that you can only get properties from a design
 	 * input file that was previously translated into an SVF file.
-	 * 
+	 *
 	 * @param urn            The Base64 (URL Safe) encoded design URN (required)
 	 * @param guid           Unique model view ID. Call [GET
 	 *                       {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET)
@@ -485,9 +485,9 @@ public class DerivativesApi {
 	}
 
 	/**
-	 * 
+	 *
 	 * Returns the thumbnail for the source file.
-	 * 
+	 *
 	 * @param urn    The Base64 (URL Safe) encoded design URN (required)
 	 * @param width  The desired width of the thumbnail. Possible values are 100,
 	 *               200 and 400. (optional)
@@ -531,7 +531,7 @@ public class DerivativesApi {
 	}
 
 	/**
-	 * 
+	 *
 	 * Translate a source file from one format to another. Derivatives are stored in
 	 * a manifest that is updated each time this endpoint is used on a source file.
 	 * Note that this endpoint is asynchronous and initiates a process that runs in
@@ -539,7 +539,7 @@ public class DerivativesApi {
 	 * Use the [GET
 	 * {urn}/manifest](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-manifest-GET)
 	 * endpoint to poll for the job’s completion.
-	 * 
+	 *
 	 * @param job       (required)
 	 * @param xAdsForce &#x60;true&#x60;: the endpoint replaces previously
 	 *                  translated output file types with the newly generated

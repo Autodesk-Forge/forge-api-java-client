@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**File**](File.md)
 
 ### Authorization
 
@@ -271,4 +271,3 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/vnd.api+json, application/json
-
