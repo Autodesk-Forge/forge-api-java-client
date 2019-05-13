@@ -161,10 +161,26 @@ public class ManifestChildren   {
 
   @JsonProperty("messages")
   private Messages messages = null;
+  
+  @JsonProperty("children")
+  private List<ManifestChildren> children = new ArrayList<ManifestChildren>();
 
   public ManifestChildren type(TypeEnum type) {
     this.type = type;
     return this;
+  }
+  
+  /**
+   * Get children
+   * @return children
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public List<ManifestChildren> getChildren() {
+    return children;
+  }
+
+  public void setChildren(List<ManifestChildren> children) {
+    this.children = children;
   }
 
    /**
