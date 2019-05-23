@@ -104,6 +104,9 @@ public class ManifestChildren   {
   @JsonProperty("role")
   private RoleEnum role = null;
 
+  @JsonProperty("guid")
+  private String guid = null;
+
   @JsonProperty("name")
   private String name = null;
 
@@ -225,6 +228,20 @@ public class ManifestChildren   {
     return this;
   }
 
+
+  /**
+   * GUID of the derivative child
+   * @return guid
+   **/
+  @ApiModelProperty(example = "null", value = "GUID of the derivative child")
+  public String getGuid() {
+    return guid;
+  }
+  public void setGuid(String guid) {
+    this.guid = guid;
+  }
+
+
   /**
    * Name of the derivative child
    * @return name
@@ -259,7 +276,7 @@ public class ManifestChildren   {
 
   /**
    * ViewableID of the derivative child
-   * @return vieweableID
+   * @return viewableID
    **/
   @ApiModelProperty(example = "null", value = "ViewableID of the derivative child")
   public String getViewableID() {
@@ -464,6 +481,7 @@ public class ManifestChildren   {
 
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
+    sb.append("    guid: ").append(toIndentedString(guid)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    phaseNames: ").append(toIndentedString(phaseNames)).append("\n");
     sb.append("    viewableID: ").append(toIndentedString(viewableID)).append("\n");
