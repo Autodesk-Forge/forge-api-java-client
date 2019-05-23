@@ -47,11 +47,11 @@ public class ManifestChildren   {
    */
   public enum TypeEnum {
     RESOURCE("resource"),
-    
+
     MANIFEST("manifest"),
-    
+
     GEOMETRY("geometry"),
-    
+
     VIEW("view");
 
     private String value;
@@ -74,20 +74,20 @@ public class ManifestChildren   {
    */
   public enum RoleEnum {
     _2D("2d"),
-    
+
     _3D("3d"),
-    
+
     GRAPHICS("graphics"),
-    
+
     MANIFEST("manifest"),
-    
+
     THUMBNAIL("thumbnail"),
-    
+
     IFC("ifc"),
 
     //to solved the issue GetManifest is returning an unhandled role enum
     PROPERTYDB("Autodesk.CloudPlatform.PropertyDatabase");
-    
+
 
     private String value;
 
@@ -107,6 +107,12 @@ public class ManifestChildren   {
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("phaseNames")
+  private String phaseNames = null;
+
+  @JsonProperty("viewableID")
+  private String viewableID = null;
+
   @JsonProperty("hasThumbnail")
   private Boolean hasThumbnail = null;
 
@@ -120,19 +126,19 @@ public class ManifestChildren   {
   private String progress = null;
 
   /**
-   * Status of the requested entity; possible values are: `pending`, `success`, `inprogress`, `failed`, `timeout` and `partialsuccess` 
+   * Status of the requested entity; possible values are: `pending`, `success`, `inprogress`, `failed`, `timeout` and `partialsuccess`
    */
   public enum StatusEnum {
     PENDING("pending"),
-    
+
     INPROGRESS("inprogress"),
-    
+
     SUCCESS("success"),
-    
+
     FAILED("failed"),
-    
+
     TIMEOUT("timeout"),
-    
+
     PARTIALSUCCESS("partialsuccess");
 
     private String value;
@@ -161,7 +167,7 @@ public class ManifestChildren   {
 
   @JsonProperty("messages")
   private Messages messages = null;
-  
+
   @JsonProperty("children")
   private List<ManifestChildren> children = new ArrayList<ManifestChildren>();
 
@@ -169,11 +175,11 @@ public class ManifestChildren   {
     this.type = type;
     return this;
   }
-  
+
   /**
    * Get children
    * @return children
-  **/
+   **/
   @ApiModelProperty(example = "null", required = true, value = "")
   public List<ManifestChildren> getChildren() {
     return children;
@@ -183,10 +189,10 @@ public class ManifestChildren   {
     this.children = children;
   }
 
-   /**
+  /**
    * Type of this JSON object
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "null", required = true, value = "Type of this JSON object")
   public TypeEnum getType() {
     return type;
@@ -201,10 +207,10 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
+  /**
    * Output file type
    * @return role
-  **/
+   **/
   @ApiModelProperty(example = "null", required = true, value = "Output file type")
   public RoleEnum getRole() {
     return role;
@@ -219,11 +225,11 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
-   * Output file type
+  /**
+   * Name of the derivative child
    * @return name
-  **/
-  @ApiModelProperty(example = "null", value = "Output file type")
+   **/
+  @ApiModelProperty(example = "null", value = "Name of the derivative child")
   public String getName() {
     return name;
   }
@@ -237,10 +243,38 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
+  /**
+   * Phasename of the derivative child
+   * @return phaseNames
+   **/
+  @ApiModelProperty(example = "null", value = "Phasename of the derivative child")
+  public String getPhaseNames() {
+    return phaseNames;
+  }
+
+  public void setPhaseNames(String phaseNames) {
+    this.phaseNames = phaseNames;
+  }
+
+
+  /**
+   * ViewableID of the derivative child
+   * @return vieweableID
+   **/
+  @ApiModelProperty(example = "null", value = "ViewableID of the derivative child")
+  public String getViewableID() {
+    return viewableID;
+  }
+
+  public void setViewableID(String viewableID) {
+    this.viewableID = viewableID;
+  }
+
+
+  /**
    * Indicates if a thumbnail has been generated 
    * @return hasThumbnail
-  **/
+   **/
   @ApiModelProperty(example = "null", value = "Indicates if a thumbnail has been generated ")
   public Boolean getHasThumbnail() {
     return hasThumbnail;
@@ -255,10 +289,10 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
+  /**
    * MIME type of the generated file
    * @return mime
-  **/
+   **/
   @ApiModelProperty(example = "null", required = true, value = "MIME type of the generated file")
   public String getMime() {
     return mime;
@@ -273,10 +307,10 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
+  /**
    * Output file URN; used as a file identifier
    * @return urn
-  **/
+   **/
   @ApiModelProperty(example = "null", value = "Output file URN; used as a file identifier")
   public String getUrn() {
     return urn;
@@ -291,10 +325,10 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
+  /**
    * Translation progress for requested entity
    * @return progress
-  **/
+   **/
   @ApiModelProperty(example = "null", value = "Translation progress for requested entity")
   public String getProgress() {
     return progress;
@@ -309,10 +343,10 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
+  /**
    * Status of the requested entity; possible values are: `pending`, `success`, `inprogress`, `failed`, `timeout` and `partialsuccess` 
    * @return status
-  **/
+   **/
   @ApiModelProperty(example = "null", value = "Status of the requested entity; possible values are: `pending`, `success`, `inprogress`, `failed`, `timeout` and `partialsuccess` ")
   public StatusEnum getStatus() {
     return status;
@@ -327,10 +361,10 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
+  /**
    * Available thumbnail resolution
    * @return resolution
-  **/
+   **/
   @ApiModelProperty(example = "null", value = "Available thumbnail resolution")
   public List<String> getResolution() {
     return resolution;
@@ -345,10 +379,10 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
+  /**
    * Get modelGUID
    * @return modelGUID
-  **/
+   **/
   @ApiModelProperty(example = "null", value = "")
   public String getModelGUID() {
     return modelGUID;
@@ -363,10 +397,10 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
+  /**
    * Get objectIds
    * @return objectIds
-  **/
+   **/
   @ApiModelProperty(example = "null", value = "")
   public List<Integer> getObjectIds() {
     return objectIds;
@@ -381,10 +415,10 @@ public class ManifestChildren   {
     return this;
   }
 
-   /**
+  /**
    * Get messages
    * @return messages
-  **/
+   **/
   @ApiModelProperty(example = "null", value = "")
   public Messages getMessages() {
     return messages;
@@ -405,17 +439,17 @@ public class ManifestChildren   {
     }
     ManifestChildren manifestChildren = (ManifestChildren) o;
     return Objects.equals(this.type, manifestChildren.type) &&
-        Objects.equals(this.role, manifestChildren.role) &&
-        Objects.equals(this.name, manifestChildren.name) &&
-        Objects.equals(this.hasThumbnail, manifestChildren.hasThumbnail) &&
-        Objects.equals(this.mime, manifestChildren.mime) &&
-        Objects.equals(this.urn, manifestChildren.urn) &&
-        Objects.equals(this.progress, manifestChildren.progress) &&
-        Objects.equals(this.status, manifestChildren.status) &&
-        Objects.equals(this.resolution, manifestChildren.resolution) &&
-        Objects.equals(this.modelGUID, manifestChildren.modelGUID) &&
-        Objects.equals(this.objectIds, manifestChildren.objectIds) &&
-        Objects.equals(this.messages, manifestChildren.messages);
+            Objects.equals(this.role, manifestChildren.role) &&
+            Objects.equals(this.name, manifestChildren.name) &&
+            Objects.equals(this.hasThumbnail, manifestChildren.hasThumbnail) &&
+            Objects.equals(this.mime, manifestChildren.mime) &&
+            Objects.equals(this.urn, manifestChildren.urn) &&
+            Objects.equals(this.progress, manifestChildren.progress) &&
+            Objects.equals(this.status, manifestChildren.status) &&
+            Objects.equals(this.resolution, manifestChildren.resolution) &&
+            Objects.equals(this.modelGUID, manifestChildren.modelGUID) &&
+            Objects.equals(this.objectIds, manifestChildren.objectIds) &&
+            Objects.equals(this.messages, manifestChildren.messages);
   }
 
   @Override
@@ -427,10 +461,12 @@ public class ManifestChildren   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ManifestChildren {\n");
-    
+
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    phaseNames: ").append(toIndentedString(phaseNames)).append("\n");
+    sb.append("    viewableID: ").append(toIndentedString(viewableID)).append("\n");
     sb.append("    hasThumbnail: ").append(toIndentedString(hasThumbnail)).append("\n");
     sb.append("    mime: ").append(toIndentedString(mime)).append("\n");
     sb.append("    urn: ").append(toIndentedString(urn)).append("\n");
