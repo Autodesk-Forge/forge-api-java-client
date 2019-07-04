@@ -23,11 +23,11 @@ Clone the following repository:<br />
 
 ### Configure the Parameters
 
-Open the *Main.java* file or  *MainMetadata.java* file, and replace `CLIENT_ID` and `CLIENT_SECRET` with the client ID and client secret generated when creating the app.
-The demo file **rac_basic_sample_project.rvt** can be found at https://knowledge.autodesk.com/support/revit-products/getting-started/caas/CloudHelp/cloudhelp/2018/ENU/Revit-GetStarted/files/GUID-61EF2F22-3A1F-4317-B925-1E85F138BE88-htm.html.
-Download it and put into the same folder. Or use your own model.
+Open the *Main.java* file or *MainMetadata.java* file,and replace `CLIENT_ID` and `CLIENT_SECRET` with the client ID and client secret generated when **creating an app**.
 
-Note that depending on your IDE, you might need to mark the *samples* directory as the source root directory.
+To work with *MainMetadata.java* , provide a demo file in the same folder (to make the repository with small size, the file is not attached in default) . The demo file **rac_basic_sample_project.rvt** can be found at [Revit sample files](https://knowledge.autodesk.com/support/revit-products/getting-started/caas/CloudHelp/cloudhelp/2018/ENU/Revit-GetStarted/files/GUID-61EF2F22-3A1F-4317-B925-1E85F138BE88-htm.html). Download it and put into the same folder. Or use your own model, but remember to change the file name at [this line](https://github.com/Autodesk-Forge/forge-api-java-client/blob/master/samples/com/autodesk/samples/MainMetadata.java#L38)
+
+ Note that depending on your IDE, you might need to mark the *samples* directory as the source root directory.
 
 ### Run the App
 Run the app from your IDE console.
