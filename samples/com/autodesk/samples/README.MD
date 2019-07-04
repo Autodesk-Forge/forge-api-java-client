@@ -31,8 +31,11 @@ To work with *MainMetadata.java* , provide a demo file in the same folder (to ma
 
 ### Run the App
 Run the app from your IDE console.
+*Main.java*: run the app until a web page pops out with loading the translated model. Check console of IDE if there is any error. It also indicates the progress and status of each API call.
+
+*MainMetadata.java*: run the app. Check console of IDE if there is any error. It also indicates the progress and status of each API call. It finally dumps the metadata (model structure) of the model. 
 
 To test MetaData of a model,
 
 ## Support
-forge.help@autodesk.com
+Should you have any questions, please email at forge.help@autodesk.com
