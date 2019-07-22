@@ -42,11 +42,11 @@ import java.util.List;
 
 public class JobObjOutputPayloadAdvanced   {
   /**
-   * `single` (default): creates one OBJ file for all the input files (assembly file)  `multiple`: creates a separate OBJ file for each object 
+   * `single` (default): creates one OBJ file for all the input files (assembly file)  `multiple`: creates a separate OBJ file for each object
    */
   public enum ExportFileStructureEnum {
     SINGLE("single"),
-    
+
     MULTIPLE("multiple");
 
     private String value;
@@ -67,6 +67,9 @@ public class JobObjOutputPayloadAdvanced   {
   @JsonProperty("modelGuid")
   private String modelGuid = null;
 
+  @JsonProperty("switchLoader")
+  private Boolean switchLoader = false;
+
   @JsonProperty("objectIds")
   private List<Integer> objectIds = new ArrayList<Integer>();
 
@@ -76,7 +79,7 @@ public class JobObjOutputPayloadAdvanced   {
   }
 
    /**
-   * `single` (default): creates one OBJ file for all the input files (assembly file)  `multiple`: creates a separate OBJ file for each object 
+   * `single` (default): creates one OBJ file for all the input files (assembly file)  `multiple`: creates a separate OBJ file for each object
    * @return exportFileStructure
   **/
   @ApiModelProperty(example = "null", value = "`single` (default): creates one OBJ file for all the input files (assembly file)  `multiple`: creates a separate OBJ file for each object ")
@@ -112,9 +115,22 @@ public class JobObjOutputPayloadAdvanced   {
   }
 
    /**
-   * Required for geometry extractions. List object ids to be translated. -1 will extract the entire model. 
-   * @return objectIds
+   * Switch the default pipeline to Revit - see here for details: https://forge.autodesk.com/blog/model-derivative-ifc-pipeline-call-change
+   * @return switchLoader
   **/
+  @ApiModelProperty(example = "null", value = "Switch the default pipeline to Revit")
+  public Boolean getSwitchLoader() {
+    return switchLoader;
+  }
+
+  public void setSwitchLoader(Boolean switchLoader) {
+    this.switchLoader = switchLoader;
+  }
+
+  /**
+   * Required for geometry extractions. List object ids to be translated. -1 will extract the entire model.
+   * @return objectIds
+   **/
   @ApiModelProperty(example = "null", value = "Required for geometry extractions. List object ids to be translated. -1 will extract the entire model. ")
   public List<Integer> getObjectIds() {
     return objectIds;
@@ -123,7 +139,6 @@ public class JobObjOutputPayloadAdvanced   {
   public void setObjectIds(List<Integer> objectIds) {
     this.objectIds = objectIds;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -135,7 +150,7 @@ public class JobObjOutputPayloadAdvanced   {
     }
     JobObjOutputPayloadAdvanced jobObjOutputPayloadAdvanced = (JobObjOutputPayloadAdvanced) o;
     return Objects.equals(this.exportFileStructure, jobObjOutputPayloadAdvanced.exportFileStructure) &&
-        Objects.equals(this.modelGuid, jobObjOutputPayloadAdvanced.modelGuid) &&
+        Objects.equals(this.modelGuid, jobObjOutputPayloadAdvanced.modelGuid) && Objects.equals(this.switchLoader, jobObjOutputPayloadAdvanced.switchLoader) &&
         Objects.equals(this.objectIds, jobObjOutputPayloadAdvanced.objectIds);
   }
 
@@ -148,9 +163,10 @@ public class JobObjOutputPayloadAdvanced   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobObjOutputPayloadAdvanced {\n");
-    
+
     sb.append("    exportFileStructure: ").append(toIndentedString(exportFileStructure)).append("\n");
     sb.append("    modelGuid: ").append(toIndentedString(modelGuid)).append("\n");
+    sb.append("    switchLoader: ").append(toIndentedString(switchLoader)).append("\n");
     sb.append("    objectIds: ").append(toIndentedString(objectIds)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -167,4 +183,3 @@ public class JobObjOutputPayloadAdvanced   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-
