@@ -52,6 +52,8 @@ public class ManifestChildren   {
 
     GEOMETRY("geometry"),
 
+    FOLDER("folder"),
+
     VIEW("view");
 
     private String value;
