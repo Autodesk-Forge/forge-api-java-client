@@ -111,7 +111,8 @@ public class BucketsApi {
 
     GenericType<Bucket> localVarReturnType = new GenericType<Bucket>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
-      }
+  }
+
   /**
    * 
    * This endpoint will delete a bucket. 
