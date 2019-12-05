@@ -32,51 +32,52 @@ import java.util.Objects;
 
 
 /**
- * Command Published
+ * CreateStorageDataAttributes
  */
 
-public class CommandPublish {
-  @JsonProperty("jsonapi")
-  private JsonApiVersionJsonapi jsonapi = null;
+public class CommandPublishDataAttributes {
+  @JsonProperty("status")
+  private String status = null;
 
-  @JsonProperty("data")
-  private CommandPublishData data = null;
+  @JsonProperty("extension")
+  private BaseAttributesExtensionObject extension = null;
 
-  public CommandPublish jsonapi(JsonApiVersionJsonapi jsonapi) {
-    this.jsonapi = jsonapi;
+  public CommandPublishDataAttributes status(String status) {
+    this.status = status;
     return this;
   }
 
    /**
-   * Get jsonapi
-   * @return jsonapi
+   * Get status
+   * @return status
   **/
-  @ApiModelProperty(example = "null", value = "")
-  public JsonApiVersionJsonapi getJsonapi() {
-    return jsonapi;
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public String getStatus() {
+    return status;
   }
 
-  public void setJsonapi(JsonApiVersionJsonapi jsonapi) {
-    this.jsonapi = jsonapi;
+  public void setStatus(String status) {
+    this.status = status;
   }
 
-  public CommandPublish data(CommandPublishData data) {
-    this.data = data;
+  public CommandPublishDataAttributes extension(BaseAttributesExtensionObject extension) {
+    this.extension = extension;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Get extension
+   * @return extension
   **/
-  @ApiModelProperty(example = "null", required = false, value = "")
-  public CommandPublishData getData() {
-    return data;
+  @ApiModelProperty(example = "null", required = true, value = "")
+  public BaseAttributesExtensionObject getExtension() {
+    return extension;
   }
 
-  public void setData(CommandPublishData data) {
-    this.data = data;
+  public void setExtension(BaseAttributesExtensionObject extension) {
+    this.extension = extension;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -86,23 +87,23 @@ public class CommandPublish {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CommandPublish storageCreated = (CommandPublish) o;
-    return Objects.equals(this.jsonapi, storageCreated.jsonapi) &&
-        Objects.equals(this.data, storageCreated.data);
+    CommandPublishDataAttributes createStorageDataAttributes = (CommandPublishDataAttributes) o;
+    return Objects.equals(this.status, createStorageDataAttributes.status) &&
+        Objects.equals(this.extension, createStorageDataAttributes.extension);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(jsonapi, data);
+    return Objects.hash(status, extension);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class StorageCreated {\n");
+    sb.append("class CreateStorageDataAttributes {\n");
 
-    sb.append("    jsonapi: ").append(toIndentedString(jsonapi)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    extension: ").append(toIndentedString(extension)).append("\n");
     sb.append("}");
     return sb.toString();
   }

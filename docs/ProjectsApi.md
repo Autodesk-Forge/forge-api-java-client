@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getProjectHub**](ProjectsApi.md#getProjectHub) | **GET** /project/v1/hubs/{hub_id}/projects/{project_id}/hub | 
 [**postStorage**](ProjectsApi.md#postStorage) | **POST** /data/v1/projects/{project_id}/storage | 
 [**postVersion**](ProjectsApi.md#postVersion) | **POST** /data/v1/projects/{project_id}/versions | 
+[**topFolders**](ProjectsApi.md#topFolders) | **GET** /project/v1/hubs/{hub_id}/projects/{project_id}/hub | 
 
 
 <a name="getHubProjects"></a>
@@ -152,3 +153,32 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/vnd.api+json
  - **Accept**: application/vnd.api+json, application/json
 
+
+<a name="topFolders"></a>
+# **topFolders**
+> Get topFolders(hubId, projectId)
+
+
+
+Get the top folders for a Hub and a Project. 
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **hubId** | **String**| the &#x60;hub id&#x60; |
+ **projectId** | **String**| the &#x60;project id&#x60; |
+ 
+
+### Return type
+
+[**Folder**](Folder.md)
+
+### Authorization
+
+[oauth2_access_code](../README.md#authentication)
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json
+ - **Accept**: application/vnd.api+json, application/json

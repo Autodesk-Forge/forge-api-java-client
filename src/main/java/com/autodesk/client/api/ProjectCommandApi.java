@@ -83,7 +83,7 @@ public class ProjectCommandApi {
         }
 
         // create path and map variables
-        String localVarPath = "/data/v1/projects/{project_id}/commands".replaceAll("\\{format\\}","json")
+        String localVarPath = "/data/v1/projects/{project_id}/commands"
                 .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()));
 
         // query params

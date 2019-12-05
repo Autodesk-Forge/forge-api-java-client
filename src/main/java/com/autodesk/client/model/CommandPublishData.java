@@ -35,7 +35,7 @@ import java.util.Objects;
  * Storage
  */
 
-public class Command {
+public class CommandPublishData {
   @JsonProperty("id")
   private String id = null;
 
@@ -63,7 +63,7 @@ public class Command {
   @JsonProperty("attributes")
   private JsonApiAttributes attributes = null;
 
-  public Command id(String id) {
+  public CommandPublishData id(String id) {
     this.id = id;
     return this;
   }
@@ -81,7 +81,7 @@ public class Command {
     this.id = id;
   }
 
-  public Command type(TypeEnum type) {
+  public CommandPublishData type(TypeEnum type) {
     this.type = type;
     return this;
   }
@@ -99,7 +99,7 @@ public class Command {
     this.type = type;
   }
 
-  public Command attributes(JsonApiAttributes attributes) {
+  public CommandPublishData attributes(JsonApiAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -125,7 +125,7 @@ public class Command {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Command storage = (Command) o;
+    CommandPublishData storage = (CommandPublishData) o;
     return Objects.equals(this.id, storage.id) &&
         Objects.equals(this.type, storage.type) &&
         Objects.equals(this.attributes, storage.attributes);
