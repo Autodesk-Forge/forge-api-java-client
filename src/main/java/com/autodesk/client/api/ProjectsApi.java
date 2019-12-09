@@ -86,7 +86,7 @@ public class ProjectsApi {
    * @return Projects
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Projects> getHubProjects(String hubId, List<String> filterId, List<String> filterExtensionType,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<Projects> getHubProjects(String hubId, List<String> filterId, List<String> filterExtensionType, Integer pageNumber, Integer pageLimit, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -106,7 +106,8 @@ public class ProjectsApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
-
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[number]", pageNumber));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[limit]", pageLimit));
     
     
     final String[] localVarAccepts = {
