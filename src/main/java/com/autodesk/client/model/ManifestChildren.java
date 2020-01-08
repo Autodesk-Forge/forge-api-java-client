@@ -27,9 +27,7 @@ package com.autodesk.client.model;
 
 import java.util.Objects;
 
-import com.autodesk.client.model.Messages;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -89,7 +87,7 @@ public class ManifestChildren   {
 
     //to solved the issue GetManifest is returning an unhandled role enum
     PROPERTYDB("Autodesk.CloudPlatform.PropertyDatabase"),
-    
+
     AEC_MODELDATA("Autodesk.AEC.ModelData"),
 
     OBJ("obj");
@@ -166,6 +164,9 @@ public class ManifestChildren   {
 
   @JsonProperty("resolution")
   private List<String> resolution = new ArrayList<String>();
+
+  @JsonProperty("camera")
+  private List<String> camera = new ArrayList<String>();
 
   @JsonProperty("modelGUID")
   private String modelGUID = null;
@@ -294,7 +295,7 @@ public class ManifestChildren   {
 
 
   /**
-   * Indicates if a thumbnail has been generated 
+   * Indicates if a thumbnail has been generated
    * @return hasThumbnail
    **/
   @ApiModelProperty(example = "null", value = "Indicates if a thumbnail has been generated ")
@@ -366,7 +367,7 @@ public class ManifestChildren   {
   }
 
   /**
-   * Status of the requested entity; possible values are: `pending`, `success`, `inprogress`, `failed`, `timeout` and `partialsuccess` 
+   * Status of the requested entity; possible values are: `pending`, `success`, `inprogress`, `failed`, `timeout` and `partialsuccess`
    * @return status
    **/
   @ApiModelProperty(example = "null", value = "Status of the requested entity; possible values are: `pending`, `success`, `inprogress`, `failed`, `timeout` and `partialsuccess` ")
@@ -395,6 +396,25 @@ public class ManifestChildren   {
   public void setResolution(List<String> resolution) {
     this.resolution = resolution;
   }
+
+  public ManifestChildren camera(List<String> camera) {
+    this.camera = camera;
+    return this;
+  }
+
+  /**
+   * Available _3D camera
+   * @return camera
+   **/
+  @ApiModelProperty(example = "null", value = "Available _3D camera")
+  public List<String> getCamera() {
+    return camera;
+  }
+
+  public void setCamera(List<String> camera) {
+    this.camera = camera;
+  }
+
 
   public ManifestChildren modelGUID(String modelGUID) {
     this.modelGUID = modelGUID;
@@ -471,12 +491,13 @@ public class ManifestChildren   {
             Objects.equals(this.resolution, manifestChildren.resolution) &&
             Objects.equals(this.modelGUID, manifestChildren.modelGUID) &&
             Objects.equals(this.objectIds, manifestChildren.objectIds) &&
-            Objects.equals(this.messages, manifestChildren.messages);
+            Objects.equals(this.messages, manifestChildren.messages) &&
+            Objects.equals(this.camera, manifestChildren.camera);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, role, name, hasThumbnail, mime, urn, progress, status, resolution, modelGUID, objectIds, messages);
+    return Objects.hash(type, role, name, hasThumbnail, mime, urn, progress, status, resolution, modelGUID, objectIds, messages, camera);
   }
 
   @Override
@@ -499,6 +520,7 @@ public class ManifestChildren   {
     sb.append("    modelGUID: ").append(toIndentedString(modelGUID)).append("\n");
     sb.append("    objectIds: ").append(toIndentedString(objectIds)).append("\n");
     sb.append("    messages: ").append(toIndentedString(messages)).append("\n");
+    sb.append("    camera: ").append(toIndentedString(camera)).append("\n");
     sb.append("}");
     return sb.toString();
   }
