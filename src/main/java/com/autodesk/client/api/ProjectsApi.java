@@ -58,6 +58,7 @@ import java.util.Map;
 
 
 public class ProjectsApi {
+
   private ApiClient apiClient;
 
   public ProjectsApi() {
@@ -85,7 +86,7 @@ public class ProjectsApi {
    * @return Projects
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Projects> getHubProjects(String hubId, List<String> filterId, List<String> filterExtensionType,  Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<Projects> getHubProjects(String hubId, List<String> filterId, List<String> filterExtensionType, Integer pageNumber, Integer pageLimit, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
     
@@ -105,7 +106,8 @@ public class ProjectsApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[id]", filterId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "filter[extension.type]", filterExtensionType));
-
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[number]", pageNumber));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "page[limit]", pageLimit));
     
     
     final String[] localVarAccepts = {
@@ -263,8 +265,9 @@ public class ProjectsApi {
 
     GenericType<StorageCreated> localVarReturnType = new GenericType<StorageCreated>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
-      }
-  /**
+  }
+
+   /**
    * 
    * Creates a new version of an item in the &#39;data&#39; domain service. 
    * @param projectId the &#x60;project id&#x60; (required)
@@ -294,9 +297,6 @@ public class ProjectsApi {
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
     
     final String[] localVarAccepts = {
       "application/vnd.api+json", "application/json"
@@ -310,5 +310,46 @@ public class ProjectsApi {
 
     GenericType<VersionCreated> localVarReturnType = new GenericType<VersionCreated>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
-      }
+  }
+
+  /**
+   *
+   * Creates a new version of an item in the &#39;data&#39; domain service.
+   * @param projectId the &#x60;project id&#x60; (required)
+   * @param hubId the &#x60;hub id&#x60; (required)
+   * @return VersionCreated
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Folder> topFolders(String hubId, String projectId, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+
+    Object localVarPostBody = null;
+
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling postVersion");
+    }
+
+    // create path and map variables
+    String localVarPath = "/project/v1/hubs/{hub_id}/projects/{project_id}/hub"
+            .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
+            .replaceAll("\\{" + "hub_id" + "\\}", apiClient.escapeString(hubId.toString()));;
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    final String[] localVarAccepts = {
+            "application/vnd.api+json", "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+            "application/vnd.api+json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    GenericType<Folder> localVarReturnType = new GenericType<Folder>() {};
+    return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
+  }
 }
