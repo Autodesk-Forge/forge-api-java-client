@@ -90,7 +90,9 @@ public class ManifestChildren   {
 
     AEC_MODELDATA("Autodesk.AEC.ModelData"),
 
-    OBJ("obj");
+    OBJ("obj"),
+
+    ORIGINAL_THUMBNAIL("original-thumbnail");
 
     private String value;
 
