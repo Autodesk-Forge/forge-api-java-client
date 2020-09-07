@@ -48,6 +48,9 @@ public class MetadataCollection   {
   @JsonProperty("properties")
   private Object properties = null;
 
+  @JsonProperty("externalid")
+  private String externalid = null;
+
   public MetadataCollection objectid(Integer objectid) {
     this.objectid = objectid;
     return this;
@@ -102,6 +105,24 @@ public class MetadataCollection   {
     this.properties = properties;
   }
 
+    public MetadataCollection externalid(String externalid) {
+    this.externalid = externalid;
+    return this;
+  }
+
+   /**
+   * External ID for the object
+   * @return externalId
+  **/
+  @ApiModelProperty(example = "null", required = true, value = "External ID for the object")
+  public String getExternalid() {
+    return externalid;
+  }
+
+  public void setExternalId(String externalid) {
+    this.externalid = externalid;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -114,7 +135,8 @@ public class MetadataCollection   {
     MetadataCollection metadataCollection = (MetadataCollection) o;
     return Objects.equals(this.objectid, metadataCollection.objectid) &&
         Objects.equals(this.name, metadataCollection.name) &&
-        Objects.equals(this.properties, metadataCollection.properties);
+        Objects.equals(this.properties, metadataCollection.properties) &&
+        Objects.equals(this.externalid, metadataCollection.externalid);
   }
 
   @Override
@@ -130,6 +152,7 @@ public class MetadataCollection   {
     sb.append("    objectid: ").append(toIndentedString(objectid)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    externalid: ").append(toIndentedString(externalid)).append("\n");
     sb.append("}");
     return sb.toString();
   }
