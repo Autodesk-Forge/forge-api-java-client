@@ -9,3 +9,4 @@ target
 .project
 .settings
 .vscode/settings.json
+samples/com/autodesk/samples/rac_basic_sample_project.rvt

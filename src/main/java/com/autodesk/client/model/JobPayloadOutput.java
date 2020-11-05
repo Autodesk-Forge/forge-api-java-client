@@ -49,6 +49,7 @@ public class JobPayloadOutput   {
     this.formats = formats;
     return this;
   }
+  
 
    /**
    * Group of requested formats/types. User can request multiple formats.
@@ -61,6 +62,17 @@ public class JobPayloadOutput   {
 
   public void setFormats(List<JobPayloadItem> formats) {
     this.formats = formats;
+  }
+
+  @JsonProperty("destination")
+  private JobPayloadDestination destination = new JobPayloadDestination();
+
+  public JobPayloadDestination destination() {
+    return this.destination;
+  }
+  
+  public void setDestination(JobPayloadDestination o) {
+	    this.destination = o;
   }
 
 

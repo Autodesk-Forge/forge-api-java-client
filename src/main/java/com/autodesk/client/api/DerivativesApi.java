@@ -49,6 +49,7 @@ import com.sun.jersey.api.client.GenericType;
 
 public class DerivativesApi {
 	private ApiClient apiClient;
+	private String region;
 
 	public DerivativesApi() {
 		this(Configuration.getDefaultApiClient());
@@ -56,6 +57,7 @@ public class DerivativesApi {
 
 	public DerivativesApi(ApiClient apiClient) {
 		this.apiClient = apiClient;
+		this.region = "us"; //by default
 	}
 
 	public ApiClient getApiClient() {
@@ -64,6 +66,14 @@ public class DerivativesApi {
 
 	public void setApiClient(ApiClient apiClient) {
 		this.apiClient = apiClient;
+	}
+	
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String o) {
+		this.region = o;
 	}
 
 	/**
@@ -88,6 +98,11 @@ public class DerivativesApi {
 		// create path and map variables
 		String localVarPath = "/modelderivative/v2/designdata/{urn}/manifest".replaceAll("\\{format\\}", "json")
 				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
+		
+		if(this.region == "emea") {
+			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/manifest".replaceAll("\\{format\\}", "json")
+					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
+		}
 
 		// query params
 		List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -153,6 +168,14 @@ public class DerivativesApi {
 				.replaceAll("\\{format\\}", "json")
 				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
 				.replaceAll("\\{" + "derivativeUrn" + "\\}", apiClient.escapeString(derivativeUrn.toString()));
+		
+		if(this.region == "emea") {
+			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/manifest/{derivativeUrn}"
+					.replaceAll("\\{format\\}", "json")
+					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
+					.replaceAll("\\{" + "derivativeUrn" + "\\}", apiClient.escapeString(derivativeUrn.toString()));
+		}
+
 
 		// query params
 		List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -258,6 +281,10 @@ public class DerivativesApi {
 		// create path and map variables
 		String localVarPath = "/modelderivative/v2/designdata/{urn}/manifest".replaceAll("\\{format\\}", "json")
 				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
+		if(this.region == "emea") {
+			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/manifest".replaceAll("\\{format\\}", "json")
+					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
+		}
 
 		// query params
 		List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -308,7 +335,14 @@ public class DerivativesApi {
 
 		// create path and map variables
 		String localVarPath = "/modelderivative/v2/designdata/{urn}/metadata".replaceAll("\\{format\\}", "json")
-				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
+						.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
+		
+		if(this.region == "emea") {
+			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/metadata".replaceAll("\\{format\\}", "json")
+					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
+		}
+		//may have more regions in the future
+		
 
 		// query params
 		List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -371,6 +405,12 @@ public class DerivativesApi {
 		String localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}".replaceAll("\\{format\\}", "json")
 				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
 				.replaceAll("\\{" + "guid" + "\\}", apiClient.escapeString(guid.toString()));
+		
+		if(this.region == "emea") {
+			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/metadata/{guid}".replaceAll("\\{format\\}", "json")
+					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
+					.replaceAll("\\{" + "guid" + "\\}", apiClient.escapeString(guid.toString()));
+		}
 
 		// query params
 		List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -425,6 +465,12 @@ public class DerivativesApi {
     String localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}/properties".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
       .replaceAll("\\{" + "guid" + "\\}", apiClient.escapeString(guid.toString()));
+    
+    if(this.region == "emea") {
+    	localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/metadata/{guid}/properties".replaceAll("\\{format\\}","json")
+    		      .replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
+    		      .replaceAll("\\{" + "guid" + "\\}", apiClient.escapeString(guid.toString()));
+    }
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -509,6 +555,11 @@ public class DerivativesApi {
 		// create path and map variables
 		String localVarPath = "/modelderivative/v2/designdata/{urn}/thumbnail".replaceAll("\\{format\\}", "json")
 				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
+		
+		if(this.region == "emea") {
+			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/thumbnail".replaceAll("\\{format\\}", "json")
+					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
+		}
 
 		// query params
 		List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -560,6 +611,7 @@ public class DerivativesApi {
 
 		// create path and map variables
 		String localVarPath = "/modelderivative/v2/designdata/job".replaceAll("\\{format\\}", "json");
+		
 
 		// query params
 		List<Pair> localVarQueryParams = new ArrayList<Pair>();
