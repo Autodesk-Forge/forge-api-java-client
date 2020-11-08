@@ -236,7 +236,7 @@ public class OAuth2ThreeLegged implements Authentication {
      * 
      * @return
      */
-    public ThreeLeggedCredentials getAccessToken(String code) throws Exception {
+    public ThreeLeggedCredentials authenticate(String code) throws Exception {
 
         if (flow == OAuthFlow.accessCode) {
 
@@ -246,6 +246,8 @@ public class OAuth2ThreeLegged implements Authentication {
             formParams.put("code", code);
             formParams.put("grant_type", "authorization_code");
             formParams.put("redirect_uri", this.redirectUri);
+            formParams.put("response_type", "code");
+
 
             Map<String, String> headers = new HashMap<>();
             headers.put("content-type", "application/x-www-form-urlencoded");
@@ -352,4 +354,6 @@ public class OAuth2ThreeLegged implements Authentication {
         return (credentials != null)
                 && (credentials.getExpiresAt() != null && (credentials.getExpiresAt() > (new Date().getTime())));
     }
+     
+    
 }

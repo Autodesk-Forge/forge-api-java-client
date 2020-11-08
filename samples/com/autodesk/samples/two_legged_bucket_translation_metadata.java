@@ -24,7 +24,7 @@ import java.util.List;
 //simple test without much error checking
 //check the first guid of the metadata only
 
-public class oss_test_bucket_translation_metadata {
+public class two_legged_bucket_translation_metadata {
 
     //TODO - insert your CLIENT_ID and CLIENT_SECRET
 	 private static final String CLIENT_ID = "<your forge client key>";

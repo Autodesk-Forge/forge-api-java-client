@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class oss_test_bucket_translation_viewer{
+public class two_legged_bucket_translation_viewer{
 
     // TODO - insert your CLIENT_ID and CLIENT_SECRET
     private static final String CLIENT_ID = "<your forge client key>";

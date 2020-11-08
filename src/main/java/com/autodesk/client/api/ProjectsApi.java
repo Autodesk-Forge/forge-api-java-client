@@ -314,10 +314,10 @@ public class ProjectsApi {
 
   /**
    *
-   * Creates a new version of an item in the &#39;data&#39; domain service.
+   * Get top folders list of a specific project.
    * @param projectId the &#x60;project id&#x60; (required)
    * @param hubId the &#x60;hub id&#x60; (required)
-   * @return VersionCreated
+   * @return Folder
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Folder> topFolders(String hubId, String projectId, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
@@ -352,4 +352,20 @@ public class ProjectsApi {
     GenericType<Folder> localVarReturnType = new GenericType<Folder>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
   }
+  
+  /**
+  *
+  * Get the profile information of an authorizing end user in a three-legged context..
+  * @param none 
+  * @return UserAtMe
+  * @throws ApiException if fails to make API call
+  */
+ public ApiResponse<UserAtMe> getUserAtMe(Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+
+    // create path
+   String localVarPath = "/userprofile/v1/users/@me" ; 
+   Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+   GenericType<UserAtMe> localVarReturnType = new GenericType<UserAtMe>() {};
+   return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", null, null, localVarHeaderParams, null, null, null, localVarReturnType);
+ }
 }
