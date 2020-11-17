@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//This sample will test end-points of Data Management API by 3 legged token
+
 public class three_legged_dm{
 
     // TODO - insert your CLIENT_ID and CLIENT_SECRET, CALLBACK of Forge App
@@ -43,7 +45,7 @@ public class three_legged_dm{
     private static String region = "us"; 
 
     /**
-     * Initialize the 3-legged OAuth 2.0 client, and optionally set specific scopes.
+     * Initialize the 3-legged OAuth 2.0 client, and  set specific scopes.
      * 
      * @throws Exception
      */
@@ -59,6 +61,15 @@ public class three_legged_dm{
         oauthThreeLegged =  new OAuth2ThreeLegged(CLIENT_ID,CLIENT_SECRET, CALLBACK,scopes, Boolean.valueOf(true));
         threeLeggedCredentials = oauthThreeLegged.authenticate(OAUTH_CODE);
     }
+    
+    /**
+     * Example of get user at me data using Forge SDK. Uses the
+     * oauthThreeLegged and threeLeggedCredentials objects that you retrieved
+     * previously.
+     * 
+     * @throws           com.autodesk.client.ApiException
+     * @throws Exception
+     */
     
     private static void getUserAtMe() throws ApiException, Exception {
         System.out.println("***** Sending get user @ me request");

@@ -320,17 +320,17 @@ public class ProjectsApi {
    * @return Folder
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Folder> topFolders(String hubId, String projectId, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
+  public ApiResponse<Folders> topFolders(String hubId, String projectId, Authentication oauth2, Credentials credentials) throws ApiException, Exception {
 
     Object localVarPostBody = null;
 
     // verify the required parameter 'projectId' is set
-    if (projectId == null) {
-      throw new ApiException(400, "Missing the required parameter 'projectId' when calling postVersion");
+    if (hubId == null || projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'hubId or projectId' when calling postVersion");
     }
 
     // create path and map variables
-    String localVarPath = "/project/v1/hubs/{hub_id}/projects/{project_id}/hub"
+    String localVarPath = "/project/v1/hubs/{hub_id}/projects/{project_id}/topFolders"
             .replaceAll("\\{" + "project_id" + "\\}", apiClient.escapeString(projectId.toString()))
             .replaceAll("\\{" + "hub_id" + "\\}", apiClient.escapeString(hubId.toString()));;
 
@@ -349,7 +349,7 @@ public class ProjectsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    GenericType<Folder> localVarReturnType = new GenericType<Folder>() {};
+    GenericType<Folders> localVarReturnType = new GenericType<Folders>() {};
     return apiClient.invokeAPI(oauth2, credentials, localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarReturnType);
   }
   
