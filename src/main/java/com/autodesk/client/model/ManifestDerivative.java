@@ -65,6 +65,8 @@ public class ManifestDerivative   {
     
     SVF("svf"),
     
+    SVF2("svf2"),
+    
     THUMBNAIL("thumbnail");
 
     private String value;

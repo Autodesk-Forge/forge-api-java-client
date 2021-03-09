@@ -5,8 +5,10 @@ import com.autodesk.client.ApiResponse;
 import com.autodesk.client.api.BucketsApi;
 import com.autodesk.client.api.DerivativesApi;
 import com.autodesk.client.api.HubsApi;
+import com.autodesk.client.api.ItemsApi;
 import com.autodesk.client.api.ObjectsApi;
 import com.autodesk.client.api.ProjectsApi;
+import com.autodesk.client.api.VersionsApi;
 import com.autodesk.client.api.FoldersApi;
 
 import com.autodesk.client.auth.Credentials;
@@ -26,8 +28,15 @@ import java.util.List;
 public class two_legged_bim360_dm{
 
     // TODO - insert your CLIENT_ID and CLIENT_SECRET
-    private static final String CLIENT_ID = "<your forge client key>";
-    private static final String CLIENT_SECRET = "<your forge client secret>";
+	 private static final String CLIENT_ID = "<your forge client key>";
+	 private static final String CLIENT_SECRET = "<your forge client secret>";
+	 
+	 //input the names of the objects to inspect
+	 private static final String BIM_ACCOUNT_NAME = "<your BIM account name>"; //e.g. Autodesk Forge Partner Development
+	 private static final String BIM_PROJECT_NAME = "<your BIM project name>"; // e.g. Forge Concert Hall
+	 private static final String BIM_FOLDER_NAME = "<folder name>";//e.g.Project Files
+	 private static final String BIM_ITEM_NAME = "<file name in this folder>"; //e.g. rst_advanced_sample_project.rvt
+
 
     //backup for future test
     //private static final String BUCKET_KEY = "forge-java-sample-app-" + CLIENT_ID.toLowerCase();
@@ -40,9 +49,11 @@ public class two_legged_bim360_dm{
     //private static final DerivativesApi derivativesApi = new DerivativesApi();
     
     // Initialize the relevant clients;     
-    private static final  HubsApi oHubApi = new HubsApi(); 
-    private static final  ProjectsApi oProjectApi = new ProjectsApi(); 
-    private static final  FoldersApi oFolderApi = new FoldersApi(); 
+    private static final  HubsApi oHubsApi = new HubsApi(); 
+    private static final  ProjectsApi oProjecstApi = new ProjectsApi(); 
+    private static final  FoldersApi oFoldersApi = new FoldersApi(); 
+    private static final  ItemsApi oItemsApi = new ItemsApi(); 
+    private static final  VersionsApi oVersionsApi = new VersionsApi(); 
 
 
     private static OAuth2TwoLegged oauth2TwoLegged;
@@ -74,7 +85,7 @@ public class two_legged_bim360_dm{
     private static Hubs getHubs() throws  ApiException, Exception {
     	
         System.out.println("***** Sending get hubs request");
-        ApiResponse<Hubs> response =oHubApi.getHubs(null,null,oauth2TwoLegged,twoLeggedCredentials);
+        ApiResponse<Hubs> response =oHubsApi.getHubs(null,null,oauth2TwoLegged,twoLeggedCredentials);
 
         System.out.println("***** Response for getHubs: ");
         Hubs hubs = response.getData();
@@ -87,7 +98,7 @@ public class two_legged_bim360_dm{
     	//get first page (limit =200)
 
     	System.out.println("***** Sending get projects request");
-        ApiResponse<Projects> response =oProjectApi.getHubProjects(hubId,null,null,0,200,oauth2TwoLegged,twoLeggedCredentials);
+        ApiResponse<Projects> response =oProjecstApi.getHubProjects(hubId,null,null,0,200,oauth2TwoLegged,twoLeggedCredentials);
 
         System.out.println("***** Response for getProjects: ");
         Projects projects = response.getData();
@@ -99,7 +110,7 @@ public class two_legged_bim360_dm{
     private static Folders getTopFolders(String hubId,String projectId) throws  ApiException, Exception {
 
     	System.out.println("***** Sending get top folders request");
-        ApiResponse<Folders> response =oProjectApi.topFolders(hubId,projectId,oauth2TwoLegged,twoLeggedCredentials);
+        ApiResponse<Folders> response =oProjecstApi.topFolders(hubId,projectId,oauth2TwoLegged,twoLeggedCredentials);
 
         System.out.println("***** Response for getTopFolders: ");
         Folders folders = response.getData();
@@ -111,7 +122,7 @@ public class two_legged_bim360_dm{
     private static Folder getFolder(String projectId,String folderId) throws  ApiException, Exception {
 
     	System.out.println("***** Sending get one folder request");
-        ApiResponse<Folder> response = oFolderApi.getFolder(projectId,folderId,oauth2TwoLegged,twoLeggedCredentials);
+        ApiResponse<Folder> response = oFoldersApi.getFolder(projectId,folderId,oauth2TwoLegged,twoLeggedCredentials);
 
         System.out.println("***** Response for get one folder: ");
         Folder folder = response.getData();
@@ -137,39 +148,46 @@ public class two_legged_bim360_dm{
 
         try {
             	initializeOAuth(); 
+            	
                 Hubs hubs = getHubs();
-                
-                if(hubs.getData().size() >0 ) {
-                	//print one hub info 
-                	//assume the  hub is what we want to test
+                if(hubs.getData().size() ==0 )
+                    throw new Exception("hubs size ==0 ");
+
+            	//print one hub info 
+            	//assume the  hub is what we want to test
                 	
-                	Integer HUB_INDEX = 0;
-                	Hub hub = hubs.getData().get(HUB_INDEX); 
-                    System.out.println("One BIM360 Hub: <id>: " + hub.getId() + " <name>:" + hub.getAttributes().getName() ); 
+                Hub hub = hubs.getData().stream()
+                      	  .filter(f -> BIM_ACCOUNT_NAME.equals(f.getAttributes().getName()))
+                      	  .findAny()
+                      	  .orElse(null);  
+                System.out.println("One BIM360 Hub: <id>: " + hub.getId() + " <name>:" + hub.getAttributes().getName() ); 
                     
                     String hubId = hub.getId(); 
                     Projects projects = getProjects(hubId);
-                    if(projects.getData().size() >0 ) {
+                    if(projects.getData().size() ==0 )
+                        throw new Exception("projects size ==0 ");
                     	//print one project info
                     	//assume the  project is what we want to test
-                    	Integer PROJECT_INDEX = 3;
-                    	Project project = projects.getData().get(PROJECT_INDEX); 
+                    	Project project = projects.getData().stream()
+                      	  .filter(f -> BIM_PROJECT_NAME.equals(f.getAttributes().getName()))
+                      	  .findAny()
+                      	  .orElse(null);  
                         System.out.println("One BIM360 Project: <id>: " + project.getId() + " <name>:" + project.getAttributes().getName() ); 
                     
                         String projectId = project.getId(); 
 
                         //get top folders 
                         Folders folders = getTopFolders(hubId,projectId); 
-                        if(folders.getData().size() >0 ) {
+                        if(folders.getData().size() ==0 )
+                            throw new Exception("folders size ==0 ");
                         	
                         	//using 2 legged token, topFolders will return 
                         	//all folders, including hidden folders
                         	//print one folder info
                         	//assume specific visible  folder is what we want to test
-                        	String FOLDER_NAME = "Project Files";
                         	
                         	Folder folder = folders.getData().stream()
-                        	  .filter(f -> FOLDER_NAME.equals(f.getAttributes().getName()))
+                        	  .filter(f -> BIM_FOLDER_NAME.equals(f.getAttributes().getName()))
                         	  .findAny()
                         	  .orElse(null);
                             System.out.println("One BIM360 Folder: <id>: " + folder.getId() + " <name>:" + folder.getAttributes().getName() ); 
@@ -178,10 +196,8 @@ public class two_legged_bim360_dm{
                             //get one folder
                             Folder folder_byGetOneFolder = getFolder(projectId,folderId );
                             
-                        }
-                    }
-                }       
-             
+                            
+                       
         } catch (ApiException e) {
             System.err.println("Error with test : " + e.getResponseBody());
         }

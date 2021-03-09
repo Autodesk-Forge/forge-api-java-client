@@ -27,15 +27,15 @@ import java.util.List;
 public class two_legged_bucket_translation_metadata {
 
     //TODO - insert your CLIENT_ID and CLIENT_SECRET
-	 private static final String CLIENT_ID = "<your forge client key>";
-	 private static final String CLIENT_SECRET = "<your forge client secret>";
+	private static final String CLIENT_ID = "<your forge client key>";
+	private static final String CLIENT_SECRET = "<your forge client secret>";
 
     private static final String BUCKET_KEY = "forge-java-sample-app-" + CLIENT_ID.toLowerCase();
 
     // the demo file "rac_basic_sample_project.rvt" can be found at
     // https://knowledge.autodesk.com/support/revit-products/getting-started/caas/CloudHelp/cloudhelp/2021/ENU/Revit-GetStarted/files/GUID-61EF2F22-3A1F-4317-B925-1E85F138BE88-htm.html    private static final String FILE_NAME = "rac_basic_sample_project.rvt";
-    private static final String FILE_NAME = "rac_basic_sample_project.rvt";
-    private static final String FILE_PATH = "samples/com/autodesk/samples/rac_basic_sample_project.rvt";
+    private static final String FILE_NAME = "my-elephant.obj";
+    private static final String FILE_PATH = "samples/com/autodesk/samples/elephant.obj";
 
     private static OAuth2TwoLegged oauth2TwoLegged;
 
@@ -123,7 +123,7 @@ public class two_legged_bucket_translation_metadata {
 
         JobPayloadOutput output = new JobPayloadOutput();
         JobPayloadItem formats = new JobPayloadItem();
-        formats.setType(JobPayloadItem.TypeEnum.SVF);
+        formats.setType(JobPayloadItem.TypeEnum.SVF); // or SVF2
         formats.setViews(Arrays.asList(JobPayloadItem.ViewsEnum._3D));
         output.setFormats(Arrays.asList(formats));
         if(region != "us") {

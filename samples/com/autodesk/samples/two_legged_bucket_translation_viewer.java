@@ -20,8 +20,8 @@ import java.util.List;
 public class two_legged_bucket_translation_viewer{
 
     // TODO - insert your CLIENT_ID and CLIENT_SECRET
-    private static final String CLIENT_ID = "<your forge client key>";
-    private static final String CLIENT_SECRET = "<your forge client secret>";
+	private static final String CLIENT_ID = "<your forge client key>";
+	private static final String CLIENT_SECRET = "<your forge client secret>";
 
     private static final String BUCKET_KEY = "forge-java-sample-app-" + CLIENT_ID.toLowerCase();
 
@@ -120,7 +120,7 @@ public class two_legged_bucket_translation_viewer{
 
         JobPayloadOutput output = new JobPayloadOutput();
         JobPayloadItem formats = new JobPayloadItem();
-        formats.setType(JobPayloadItem.TypeEnum.SVF);
+        formats.setType(JobPayloadItem.TypeEnum.SVF); // or SVF2
         formats.setViews(Arrays.asList(JobPayloadItem.ViewsEnum._3D));
         output.setFormats(Arrays.asList(formats)); 
         if(region != "us") {
