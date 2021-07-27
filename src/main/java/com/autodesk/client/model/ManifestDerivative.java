@@ -64,6 +64,7 @@ public class ManifestDerivative   {
     OBJ("obj"),
     
     SVF("svf"),
+    SVF2("svf2"),
     
     THUMBNAIL("thumbnail");
 
