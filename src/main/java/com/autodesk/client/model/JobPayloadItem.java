@@ -54,6 +54,8 @@ public class JobPayloadItem   {
   public enum TypeEnum {
     SVF("svf"),
     
+    SVF2("svf2"),
+    
     RVT("rvt"),
     
     IFC("ifc"),
