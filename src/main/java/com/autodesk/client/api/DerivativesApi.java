@@ -98,8 +98,8 @@ public class DerivativesApi {
 		// create path and map variables
 		String localVarPath = "/modelderivative/v2/designdata/{urn}/manifest".replaceAll("\\{format\\}", "json")
 				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
-		
-		if(this.region == "emea") {
+
+		if (this.region != null && this.region.equalsIgnoreCase("emea")) {
 			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/manifest".replaceAll("\\{format\\}", "json")
 					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
 		}
@@ -168,8 +168,8 @@ public class DerivativesApi {
 				.replaceAll("\\{format\\}", "json")
 				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
 				.replaceAll("\\{" + "derivativeUrn" + "\\}", apiClient.escapeString(derivativeUrn.toString()));
-		
-		if(this.region == "emea") {
+
+		if (this.region != null && this.region.equalsIgnoreCase("emea")) {
 			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/manifest/{derivativeUrn}"
 					.replaceAll("\\{format\\}", "json")
 					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
@@ -281,7 +281,7 @@ public class DerivativesApi {
 		// create path and map variables
 		String localVarPath = "/modelderivative/v2/designdata/{urn}/manifest".replaceAll("\\{format\\}", "json")
 				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
-		if(this.region == "emea") {
+		if (this.region != null && this.region.equalsIgnoreCase("emea")) {
 			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/manifest".replaceAll("\\{format\\}", "json")
 					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
 		}
@@ -336,8 +336,8 @@ public class DerivativesApi {
 		// create path and map variables
 		String localVarPath = "/modelderivative/v2/designdata/{urn}/metadata".replaceAll("\\{format\\}", "json")
 						.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
-		
-		if(this.region == "emea") {
+
+		if (this.region != null && this.region.equalsIgnoreCase("emea")) {
 			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/metadata".replaceAll("\\{format\\}", "json")
 					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
 		}
@@ -405,8 +405,8 @@ public class DerivativesApi {
 		String localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}".replaceAll("\\{format\\}", "json")
 				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
 				.replaceAll("\\{" + "guid" + "\\}", apiClient.escapeString(guid.toString()));
-		
-		if(this.region == "emea") {
+
+		if (this.region != null && this.region.equalsIgnoreCase("emea")) {
 			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/metadata/{guid}".replaceAll("\\{format\\}", "json")
 					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
 					.replaceAll("\\{" + "guid" + "\\}", apiClient.escapeString(guid.toString()));
@@ -465,8 +465,8 @@ public class DerivativesApi {
     String localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}/properties".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
       .replaceAll("\\{" + "guid" + "\\}", apiClient.escapeString(guid.toString()));
-    
-    if(this.region == "emea") {
+
+	if (this.region != null && this.region.equalsIgnoreCase("emea")) {
     	localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/metadata/{guid}/properties".replaceAll("\\{format\\}","json")
     		      .replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()))
     		      .replaceAll("\\{" + "guid" + "\\}", apiClient.escapeString(guid.toString()));
@@ -555,8 +555,8 @@ public class DerivativesApi {
 		// create path and map variables
 		String localVarPath = "/modelderivative/v2/designdata/{urn}/thumbnail".replaceAll("\\{format\\}", "json")
 				.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
-		
-		if(this.region == "emea") {
+
+		if (this.region != null && this.region.equalsIgnoreCase("emea")) {
 			localVarPath = "/modelderivative/v2/regions/eu/designdata/{urn}/thumbnail".replaceAll("\\{format\\}", "json")
 					.replaceAll("\\{" + "urn" + "\\}", apiClient.escapeString(urn.toString()));
 		}
