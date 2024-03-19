@@ -151,7 +151,7 @@ public class OAuth2TwoLegged implements Authentication {
 
         this.name = "oauth2_application";
         this.type = "oauth2";
-        this.tokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/authenticate";
+        this.tokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v2/token";
         this.scopes.add("data:read");
         this.scopes.add("data:write");
         this.scopes.add("data:create");
@@ -196,7 +196,7 @@ public class OAuth2TwoLegged implements Authentication {
     }
 
     /**
-     * Get the access token in a 2-legged flow
+     * Get the access token in a 2-legged flow (updated to v2)
      * 
      * @return
      */
@@ -205,11 +205,14 @@ public class OAuth2TwoLegged implements Authentication {
         if (flow == OAuthFlow.application) {
 
             final String url = this.tokenUrl;
+            
+            Map<String, String> headers = new HashMap<>();
+            headers.put("Content-Type", "application/x-www-form-urlencoded");
+            headers.put("Accept", "application/json");
+            headers.put("Authorization", getAuthorizationString());
 
             Map<String, String> body = new HashMap<>();
             body.put("grant_type", "client_credentials");
-            body.put("client_id", this.clientId);
-            body.put("client_secret", this.clientSecret);
 
             String scopeStr = getScopes();
             if (!scopeStr.isEmpty()) {
@@ -218,7 +221,7 @@ public class OAuth2TwoLegged implements Authentication {
 
             Credentials response = null;
             try {
-                String bodyResponse = post(url, body, new HashMap<String, String>());
+                String bodyResponse = post(url, body, headers);
                 JSONObject jsonObject = null;
 
                 // get the access token from json
@@ -260,6 +263,11 @@ public class OAuth2TwoLegged implements Authentication {
         } else {
             throw new Exception("getAccessToken requires application flow type");
         }
+    }
+    
+    private String getAuthorizationString() {
+    	String encodedClientIdSecret = Base64.getEncoder().encodeToString((this.clientId + ":" + this.clientSecret).getBytes());
+    	return "Basic " + encodedClientIdSecret;
     }
 
     public Boolean isAccessTokenExpired() {
