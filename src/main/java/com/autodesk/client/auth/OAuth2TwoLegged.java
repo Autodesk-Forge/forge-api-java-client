@@ -151,7 +151,7 @@ public class OAuth2TwoLegged implements Authentication {
 
         this.name = "oauth2_application";
         this.type = "oauth2";
-        this.tokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v1/authenticate";
+        this.tokenUrl = Configuration.getDefaultApiClient().getBasePath() + "/authentication/v2/token";
         this.scopes.add("data:read");
         this.scopes.add("data:write");
         this.scopes.add("data:create");
